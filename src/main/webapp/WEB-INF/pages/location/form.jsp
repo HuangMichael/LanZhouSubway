@@ -42,12 +42,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default"
-                data-dismiss="modal">取消
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消
         </button>
-        <button type="button" id="saveBtn" name="saveBtn" onclick="save()"
-                class="btn btn-danger">保存
+        <button id="saveBtn" name="saveBtn" class="btn btn-danger">保存
         </button>
-    </div>
     </div>
 </form>

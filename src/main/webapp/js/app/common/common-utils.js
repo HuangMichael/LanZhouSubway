@@ -200,6 +200,17 @@ function showMessageBox(type, message) {
     $.bootstrapGrowl(message, {type: type, align: "right", stackup_spacing: 30})
 }
 
+
+/**
+ *
+ * @param type  info  danger
+ * @param message center
+ */
+function showMessage(type, message) {
+    type = (type == true) ? "info" : "danger";
+    $.bootstrapGrowl(message, {type: type, align: "right", stackup_spacing: 30})
+}
+
 /**
  *
  * @param type info  danger
@@ -339,7 +350,7 @@ var showStatus = function (value) {
  * @param value
  * @returns {string}
  */
-var showYes =function (value) {
+var showYes = function (value) {
     return (value) ? "是" : "否";
 }
 

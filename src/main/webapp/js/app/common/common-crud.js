@@ -63,14 +63,9 @@ function saveMainObject(formName) {
     var url = getMainObject() + "/save";
     $.post(url, object, function (data) {
         if (data.result) {
-            showMessageBox("info", data["resultDesc"]);
-            setFormReadStatus(formName, true);
-            formTab.data("status", "saved");
             $(dataTableName).bootgrid("reload");
-        } else {
-            showMessageBox("danger", data["resultDesc"]);
-            setFormReadStatus(formName, false);
         }
+        showMessage(data.result, data["resultDesc"]);
     });
 }
 

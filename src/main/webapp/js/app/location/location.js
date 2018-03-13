@@ -168,21 +168,35 @@ function edit(id) {
 }
 
 
-function save() {
-    var object = getFormDataAsJSON(formName);
-    var location = JSON.parse(object);
-    var url = "/location/save";
-    var obj = {
-        location: location
-    }
-    $.post(url, obj, function (data) {
-        if (data.result) {
-            $("#editModal").modal("hide");
-            $(dataTableName).bootgrid("reload");
-            showMessageBox("info", data["resultDesc"]);
-        } else {
-            showMessageBox("danger", data["resultDesc"]);
-        }
-    })
+// /**
+//  *
+//  */
+// function save() {
+//
+//
+//     console.log("let it  be  easy---");
+//     var object = getFormJsonData("form");
+//     var location = JSON.parse(object);
+//     var url = "/location/save";
+//     var obj = {
+//         location: location
+//     }
+//     $.post(url, obj, function (data) {
+//         if (data.result) {
+//             $("#editModal").modal("hide");
+//             $(dataTableName).bootgrid("reload");
+//         }
+//         showMessage(data.result, data["resultDesc"]);
+//     })
+// }
+
+
+/**
+ * 编辑记录
+ */
+function add() {
+    vdm.$set("location", null);
+    $("#editModal").modal("show");
 }
+
 

@@ -77,6 +77,7 @@ public class LocationController extends BaseController {
     public ReturnObject save(Location location) {
         location.setAuthKey("01");
         location.setLocLevel(1l);
+        location.setStatus("1");
         System.out.println("location--------------" + location.toString());
         return locationService.save(location);
     }
