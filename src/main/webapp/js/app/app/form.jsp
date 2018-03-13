@@ -5,10 +5,10 @@
     <div class="form-group">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="name" class="col-md-2 control-label">分类名称</label>
+                <label for="className" class="col-md-2 control-label">分类名称</label>
                 <div class="col-md-4">
                     <input class="form-control" id="id" name="id" v-model="eqClass.id" type="hidden"/>
-                    <input class="form-control" id="name" name="name" v-model="eqClass.name"/>
+                    <input class="form-control" id="className" name="className" v-model="eqClass.className"/>
                 </div>
                 <label for="classLevel" class="col-md-2 control-label">分类级别</label>
                 <div class="col-md-4">
@@ -32,7 +32,7 @@
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <select class="form-control " id="status" v-model="eqClass.status">
+                    <select class="form-control" id="status" v-model="eqClass.status">
                         <option value="1" selected>有效</option>
                         <option value="0">无效</option>
                     </select>

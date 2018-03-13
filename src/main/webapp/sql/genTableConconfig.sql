@@ -19,5 +19,5 @@ SELECT
 FROM
     information_schema.columns c
 WHERE
-    c.table_schema = 'gscms'
-        AND c.table_name = 't_columns_content'
+    c.table_schema = 'lzdt'
+        AND c.table_name = 't_app'

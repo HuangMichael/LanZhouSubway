@@ -1,69 +1,39 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<form class="form-horizontal" role="form" id="woForm" method="post" action="/workOrder/save">
+<form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-           <%-- <div class="form-group">
-                <label for="orderDesc" class="col-md-2 control-label">设备位置</label>
-                <div class="col-md-10">
-                    <input class="form-control" value="${locations.description}"/>
-                </div>
-            </div>--%>
-
-           <%-- <div class="form-group">
-                <label for="orderDesc" class="col-md-2 control-label">设备分类</label>
-
-                <div class="col-md-10">
-                    <form:select path="equipmentsClassificationList"  class="form-control"  id="equip_class_id">
-                        <form:options itemLabel="description" items="${equipmentsClassificationList}" itemValue="id"></form:options>
-                    </form:select>
-                </div>
-            </div>--%>
             <div class="form-group">
-                <label for="orderDesc" class="col-md-2 control-label">故障描述</label>
-
-                <div class="col-md-10">
-                    <input class="form-control" id="orderDesc" type="text" name="orderDesc" required="required"/>
+                <label for="name" class="col-md-2 control-label">应用名称</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="id" name="id" v-model="app.id" type="hidden"/>
+                    <input class="form-control" id="name" name="name" v-model="app.name"/>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="reporter" class="col-md-2 control-label">报告人员</label>
-
-                <div class="col-md-10">
-                    <input class="form-control" id="reporter" type="text"
-                           name="reporter"/>
+                <label for="appDesc" class="col-md-2 control-label">应用描述</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="appDesc" name="appDesc" v-model="app.appDesc"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="reportTelephone" class="col-md-2 control-label">报告电话</label>
-
-                <div class="col-md-10">
-                    <input class="form-control" id="reportTelephone" type="text"
-                           name="reporter"/>
+                <label for="sortNo" class="col-md-2 control-label">排序</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="sortNo" name="sortNo" v-model="app.sortNo"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="reportTime" class="col-md-2 control-label">报告时间</label>
-
-                <div class="col-md-10">
-                    <input class="form-control" id="reportTime" type="date"
-                           name="reportTime"/>
+                <label for="status" class="col-md-2 control-label">状态</label>
+                <div class="col-md-4">
+                    <select class="form-control" id="status" v-model="app.status">
+                        <option value="1" selected>有效</option>
+                        <option value="0">无效</option>
+                    </select>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default"
-                data-dismiss="modal">关闭
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消
         </button>
-        <button type="button" id="saveWorkOrder" name="saveWorkOrder"
-                class="btn btn-primary">保存
+        <button id="saveBtn" name="saveBtn" class="btn btn-danger">保存
         </button>
-    </div>
     </div>
 </form>
-
-
-
