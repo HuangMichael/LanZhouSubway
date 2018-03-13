@@ -40,14 +40,14 @@
             <div class="form-group">
                 <label for="isOut" class="col-md-2 control-label">是否外单位</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="isOut" v-model="unit.isOut">
+                    <select class="form-control" id="isOut" name="isOut" v-model="unit.isOut">
                         <option value="1" selected>是</option>
                         <option value="0">否</option>
                     </select>
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="status" v-model="unit.status">
+                    <select class="form-control" id="status" name="status" v-model="unit.status">
                         <option value="1" selected>有效</option>
                         <option value="0">无效</option>
                     </select>
