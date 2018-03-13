@@ -2,6 +2,7 @@ package com.subway.tableConfig;
 
 import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
+import com.subway.object.ReturnObject;
 import com.subway.service.app.ResourceService;
 import com.subway.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,15 +55,6 @@ public class TableConfigController extends BaseController {
     }
 
 
-    /**
-     * @return 查询所有的表配置信息
-     */
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    @ResponseBody
-    public List<TableConfig> findAll() {
-        return tableConfigService.findAll();
-    }
-
 
     /**
      * @param id
@@ -90,6 +82,19 @@ public class TableConfigController extends BaseController {
         tableConfigService.setDataList(dataList);
         tableConfigService.exportExcel(request, response, docName, titles, colNames);
     }
+
+
+
+    /**
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/formatConfig/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ReturnObject formatConfig(@PathVariable("id") Long id) {
+        return tableConfigService.formatConfig(id);
+    }
+
 
 
 }

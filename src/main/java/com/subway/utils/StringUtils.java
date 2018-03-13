@@ -1,5 +1,7 @@
 package com.subway.utils;
 
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -120,6 +122,27 @@ public class StringUtils {
     }
 
 
+    //将表名转换为DMO的字段名，比如 operate_type 转换后为 operateType
+    public static String dealColumnName(ResultSetMetaData rsmd, int i) throws SQLException {
+        String columnName = rsmd.getColumnName(i + 1).toLowerCase();
+        String charAfterLine = String.valueOf(columnName.charAt((columnName.indexOf("_") + 1)));
+        String convertedChar = charAfterLine.toUpperCase();
+        columnName = columnName.replace("_" + charAfterLine, convertedChar);
+        return columnName;
+    }
+
+
+    /**
+     * @param columnName
+     * @return
+     */
+    //将表名转换为DMO的字段名，比如 operate_type 转换后为 operateType
+    public static String convertColName(String columnName) {
+        String charAfterLine = String.valueOf(columnName.charAt((columnName.indexOf("_") + 1)));
+        String convertedChar = charAfterLine.toUpperCase();
+        columnName = columnName.replace("_" + charAfterLine, convertedChar);
+        return columnName;
+    }
 
 
 }

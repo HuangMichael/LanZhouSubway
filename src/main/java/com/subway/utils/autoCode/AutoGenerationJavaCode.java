@@ -54,14 +54,14 @@ public class AutoGenerationJavaCode {
 
 
         templateList.add(new com.subway.template.Template("Template.ftl", ".java", GEN_FILE_PATH + "src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("jsTemplate.ftl", ".js", GEN_FILE_PATH+"src/main/webapp/js/app/"));
-        templateList.add(new com.subway.template.Template("listTemplate.ftl", "list.jsp", GEN_FILE_PATH+"src/main/webapp/WEB-INF/pages/"));
-        templateList.add(new com.subway.template.Template("tableListTemplate.ftl", "tableList.jsp", GEN_FILE_PATH+"src/main/webapp/WEB-INF/pages/"));
-        templateList.add(new com.subway.template.Template("formTemplate.ftl", "form.jsp", GEN_FILE_PATH+"src/main/webapp/WEB-INF/pages/"));
+        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("jsTemplate.ftl", ".js", GEN_FILE_PATH + "src/main/webapp/js/app/"));
+        templateList.add(new com.subway.template.Template("listTemplate.ftl", "list.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
+        templateList.add(new com.subway.template.Template("tableListTemplate.ftl", "tableList.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
+        templateList.add(new com.subway.template.Template("formTemplate.ftl", "form.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
 
     }
 
@@ -152,7 +152,7 @@ public class AutoGenerationJavaCode {
                 filePath = template.getFileUrl() + subDirName + "/" + "list.jsp";
             } else if (template.getFileName().equals("tableList.jsp")) {
                 filePath = template.getFileUrl() + subDirName + "/" + "tableList.jsp";
-            }else if (template.getFileName().equals("form.jsp")) {
+            } else if (template.getFileName().equals("form.jsp")) {
                 filePath = template.getFileUrl() + subDirName + "/" + "form.jsp";
             }
             log.info("filePath---------------" + filePath);
@@ -183,7 +183,7 @@ public class AutoGenerationJavaCode {
         Map<String, Object> columnMap = new HashMap<>();
         int size = rsmd.getColumnCount();
         for (int i = 0; i < size; i++) {
-            String columnName = dealColumnName(rsmd, i);
+            String columnName = StringUtils.dealColumnName(rsmd, i);
             columnMap.put(columnName, columnName);
         }
         conn.close();
@@ -196,21 +196,6 @@ public class AutoGenerationJavaCode {
      * @return 根据app配置的数据库配置表信息获取配置列信息
      */
 
-
-    /**
-     * @param rsmd
-     * @param i
-     * @return
-     * @throws SQLException
-     */
-    //将表名转换为DMO的字段名，比如 operate_type 转换后为 operateType
-    private String dealColumnName(ResultSetMetaData rsmd, int i) throws SQLException {
-        String columnName = rsmd.getColumnName(i + 1).toLowerCase();
-        String charAfterLine = String.valueOf(columnName.charAt((columnName.indexOf("_") + 1)));
-        String convertedChar = charAfterLine.toUpperCase();
-        columnName = columnName.replace("_" + charAfterLine, convertedChar);
-        return columnName;
-    }
 
     /**
      * @return 将表名转换为类型类名

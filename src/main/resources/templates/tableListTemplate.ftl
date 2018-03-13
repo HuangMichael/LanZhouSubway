@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=gb2312" %>
 <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
 <#list columns as c>
 <th data-column-id="${c.colName}" data-width="5%"  <#if c.converter? length gt 0>
