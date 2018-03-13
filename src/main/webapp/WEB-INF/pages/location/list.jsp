@@ -11,57 +11,45 @@
                     <!-- BOX -->
                     <div class="box border blue">
                         <div class="box-title">
-                            <h4><i class="fa fa-table"></i>位置信息</h4>
+                            <h4><i class="fa fa-table"></i>浣嶇疆淇℃伅</h4>
                         </div>
                         <%@include file="../common/common-menubar.jsp" %>
                         <div class="box-body">
                             <div id="contentDiv">
                                 <div class="box-body">
-                                    <div class="tabbable">
-                                        <ul class="nav nav-tabs" id="myTab">
-                                            <li class="active">
-                                                <a href="#tab_1_0" data-toggle="tab">
-                                                    <i class="fa fa-home" id="eq"></i>位置信息</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div class="form-group" style="margin-bottom:10px;position:inherit"
-                                                 id="searchBox">
-                                                <div class="col-md-2">
-                                                    <input class="form-control" id="name"
-                                                           name="name"
-                                                           placeholder="关键字"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button id="searchBtn" class="btn btn-default" onclick="search()">查询
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade in active" id="tab_1_0">
-                                                <table id="locationListTable"
-                                                       class="table table-bordered table-hover table-striped"
-                                                       data-toggle="bootgrid" data-ajax="true"
-                                                       data-url="/location/data">
-                                                    <thead>
-                                                    <tr>
-                                                        <%@include file="tableList.jsp" %>
-                                                    </tr>
-                                                    </thead>
-                                                </table>
-                                            </div>
 
+                                    <div class="form-group" style="margin-bottom:10px;position:inherit"
+                                         id="searchBox">
+                                        <div class="col-md-2">
+                                            <input class="form-control" id="locName"
+                                                   name="locName"
+                                                   placeholder="浣嶇疆鍚嶇О"/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button id="searchBtn" class="btn btn-default" onclick="search()">鏌ヨ
+                                            </button>
                                         </div>
                                     </div>
+                                    <table id="locationListTable"
+                                           class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                        <tr>
+                                            <%@include file="tableList.jsp" %>
+                                        </tr>
+                                        </thead>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- /BOX -->
                 </div>
             </div>
-            <%@include file="../common/common-back2top.jsp" %>
+            <!-- /BOX -->
         </div>
-        <!-- /CONTENT-->
     </div>
+    <%@include file="../common/common-back2top.jsp" %>
+</div>
+<!-- /CONTENT-->
+</div>
 </div>
 <script type="text/javascript" src="/js/app/location/location.js"></script>
