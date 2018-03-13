@@ -50,10 +50,6 @@ public class UserController extends BaseController {
     UserSearchService userSearchService;
 
 
-//    @Autowired
-//    PersonRepository personRepository;
-
-
     @Autowired
     ResourceService resourceService;
 
@@ -225,5 +221,18 @@ public class UserController extends BaseController {
         boolean result = userService.removeLoc(userId);
         return commonDataService.getReturnType(result, "用户数据授权取消成功", "用户数据授权取消失败");
     }
+
+
+
+    /**
+     * @param id
+     * @return 删除信息
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ReturnObject delete(@PathVariable("id") Long id) {
+        return userService.delete(id);
+    }
+
 
 }

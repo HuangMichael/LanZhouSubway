@@ -8,6 +8,7 @@ import com.subway.service.commonData.CommonDataService;
 import com.subway.service.dev.AppSearchService;
 import com.subway.service.dev.AppService;
 import com.subway.utils.PageUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
@@ -28,12 +29,13 @@ import java.util.Map;
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/app")
+@Slf4j
 public class AppController extends BaseController {
     @Autowired
     AppService appService;
+
     @Autowired
     AppSearchService appSearchService;
-
 
     @Autowired
     CommonDataService commonDataService;
@@ -64,6 +66,8 @@ public class AppController extends BaseController {
     @ResponseBody
     public ReturnObject autoCode(@RequestParam("appId") Long appId) {
         //根据应用选择的应用配置信息
+
+        System.out.println("appId---------------" + appId);
         boolean result = appService.autoCode(appId);
         return commonDataService.getReturnType(result, "应用生成成功", "应用生成失败");
     }

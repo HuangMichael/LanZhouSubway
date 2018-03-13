@@ -22,6 +22,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.subway.utils.ConstantUtils.CONTEXT_PATH;
+import static com.subway.utils.ConstantUtils.GEN_FILE_PATH;
+
 
 /**
  * 自动生成代码
@@ -51,14 +54,14 @@ public class AutoGenerationJavaCode {
     static {
 
 
-        templateList.add(new com.subway.template.Template("Template.ftl", ".java", "E:\\dev\\gscms\\src\\main\\java\\com\\subway\\"));
-        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", "E:\\dev\\gscms\\src\\main\\java\\com\\subway\\"));
-        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", "E:\\dev\\gscms\\src\\main\\java\\com\\subway\\"));
-        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", "E:\\dev\\gscms\\src\\main\\java\\com\\subway\\"));
-        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", "E:\\dev\\gscms\\src\\main\\java\\com\\subway\\"));
-        templateList.add(new com.subway.template.Template("jsTemplate.ftl", ".js", "E:\\dev\\gscms\\src\\main\\webapp\\js\\app\\"));
-        templateList.add(new com.subway.template.Template("listTemplate.ftl", "list.jsp", "E:\\dev\\gscms\\src\\main\\webapp\\WEB-INF\\pages\\"));
-        templateList.add(new com.subway.template.Template("tableListTemplate.ftl", "tableList.jsp", "E:\\dev\\gscms\\src\\main\\webapp\\WEB-INF\\pages\\"));
+        templateList.add(new com.subway.template.Template("Template.ftl", ".java", GEN_FILE_PATH + "src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH+"src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("jsTemplate.ftl", ".js", GEN_FILE_PATH+"src/main/webapp/js/app/"));
+        templateList.add(new com.subway.template.Template("listTemplate.ftl", "list.jsp", GEN_FILE_PATH+"src/main/webapp/WEB-INF/pages/"));
+        templateList.add(new com.subway.template.Template("tableListTemplate.ftl", "tableList.jsp", GEN_FILE_PATH+"src/main/webapp/WEB-INF/pages/"));
 
     }
 
@@ -109,7 +112,7 @@ public class AutoGenerationJavaCode {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public void genCode(App app,List<TableColumnConfig> tableColumnConfigList) throws IOException, TemplateException, ClassNotFoundException,
+    public void genCode(App app, List<TableColumnConfig> tableColumnConfigList) throws IOException, TemplateException, ClassNotFoundException,
             SQLException {
         Configuration cfg = new Configuration(new Version("2.3.27-incubating"));
         cfg.setDefaultEncoding("UTF-8");
@@ -134,7 +137,7 @@ public class AutoGenerationJavaCode {
         for (com.subway.template.Template template : templateList) {
             Template temp = cfg.getTemplate(template.getTemplateName(), "UTF-8");
 
-            String path = template.getFileUrl() + "\\" + subDirName + "\\";
+            String path = template.getFileUrl() + "/" + subDirName + "/";
             File dir = new File(path);
             //检查目录是否存在，不存在则创建
             if (!dir.exists()) {
@@ -142,17 +145,17 @@ public class AutoGenerationJavaCode {
             }
             String filePath = "";
             if (template.getFileName().endsWith(".java")) {
-                filePath = template.getFileUrl()  + subDirName + "/" + className + template.getFileName();
+                filePath = template.getFileUrl() + subDirName + "/" + className + template.getFileName();
             } else if (template.getFileName().endsWith(".js")) {
-                filePath = template.getFileUrl()  + subDirName + "/" + subDirName + template.getFileName();
+                filePath = template.getFileUrl() + subDirName + "/" + subDirName + template.getFileName();
             } else if (template.getFileName().equals("list.jsp")) {
-                filePath = template.getFileUrl()  + subDirName + "/" + "list.jsp";
+                filePath = template.getFileUrl() + subDirName + "/" + "list.jsp";
             } else if (template.getFileName().equals("tableList.jsp")) {
-                filePath = template.getFileUrl()  + subDirName + "/" + "tableList.jsp";
+                filePath = template.getFileUrl() + subDirName + "/" + "tableList.jsp";
             }
 
 
-            log.info("filePath---------------"+filePath);
+            log.info("filePath---------------" + filePath);
             File docFile = new File(filePath);
             if (!docFile.exists()) {
                 Writer docOut = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(docFile)));
@@ -192,8 +195,6 @@ public class AutoGenerationJavaCode {
      * @param app app
      * @return 根据app配置的数据库配置表信息获取配置列信息
      */
-
-
 
 
     /**

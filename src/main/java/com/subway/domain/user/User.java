@@ -25,10 +25,19 @@ public class User {
     @JsonIgnore
     @Column(length = 50, columnDefinition = "default '123456'")
     private String password;
-    @Column(scale = 1000)
-    private long sortNo;
-    @Column(nullable = false, length = 1, columnDefinition = "varchar(1) default '1'")
-    private String status;
+
+    @Column(length = 20)
+    private String personName;
+
+    @Column(length = 20)
+    private String idCard;
+
+
+    @Column(length = 50)
+    private String email;
+
+    @Column(length = 20)
+    private String telephone;
 
     @OneToOne
     @JoinColumn(name = "person_id")
@@ -37,6 +46,12 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roleList;
+
+    @Column(scale = 1000)
+    private long sortNo;
+
+    @Column(nullable = false, length = 1, columnDefinition = "varchar(1) default '1'")
+    private String status;
 
 
 }

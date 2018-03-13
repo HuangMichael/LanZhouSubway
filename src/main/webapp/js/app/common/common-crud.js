@@ -195,13 +195,13 @@ function add() {
 }
 
 
-/**
- * 编辑记录 使文本框可编辑
- */
-function edit() {
-    formReadOnly = !formReadOnly;
-    setFormReadStatus(formName, formReadOnly);
-}
+// /**
+//  * 编辑记录 使文本框可编辑
+//  */
+// function edit() {
+//     formReadOnly = !formReadOnly;
+//     setFormReadStatus(formName, formReadOnly);
+// }
 
 
 /**
@@ -588,3 +588,62 @@ $(function () {
     })
 
 });
+
+
+/**
+ * 删除记录
+ */
+function del(id) {
+
+    var url = getMainObject() + "/delete/" + id;
+    if (id) {
+        bootbox.confirm({
+            message: "确定要删除该记录么？",
+            buttons: {
+                confirm: {
+                    label: '确定',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: '取消',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function (msg) {
+                            if (msg) {
+                                showMessageBox("info", "记录删除成功！");
+                                $(dataTableName).bootgrid("reload");
+                            }
+                        },
+                        error: function (msg) {
+                            showMessageBox("danger", "对不起，数据有关联，不能删除！ ");
+                        }
+                    });
+                }
+            }
+        });
+    }
+}
+
+
+/**
+ * 删除记录
+ */
+function edit(id) {
+    var object = findByIdAndObjectName(id, mainObject);
+    vdm.$set(mainObject, object);
+    $("#editModal").modal("show");
+}
+
+
+/**
+ * 显示上传下载
+ */
+function showUpload() {
+    $("#uploadModal").modal("show");
+}

@@ -241,4 +241,17 @@ public class UserService extends BaseService {
         return result;
     }
 
+
+
+    /**
+     * @param id id
+     * @return 根据id删除对象
+     */
+    public ReturnObject delete(Long id) {
+        userRepository.delete(id);
+        User user = userRepository.getOne(id);
+        return commonDataService.getReturnType(user == null, "记录删除成功", "记录删除失败");
+    }
+
+
 }

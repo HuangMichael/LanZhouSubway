@@ -1,8 +1,3 @@
-var locs = [];
-var eqs = [];
-var persons = [];
-var listTab = $('#myTab li:eq(0) a');
-var formTab = $('#myTab li:eq(1) a');
 var object = null;
 formName = "#detailForm";
 $.ajaxSettings.async = false;
@@ -38,19 +33,53 @@ $(function () {
         persons = data;
     });
 
+    var recordId = null;
+    // initBootGridMenu(dataTableName, null);
 
-    initBootGridMenu(dataTableName, null);
+
+    var grid = $(dataTableName).bootgrid({
+        selection: true,
+        ajax: true,
+        post: function () {
+            return {
+                id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
+            };
+        },
+        url: "/" + mainObject + "/data",
+        formatters: {
+            "commands": function (column, row) {
+                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
+                    "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
+            }
+        },
+        converters: {
+            showStatus: {
+                to: function (value) {
+                    return (value) ? "有效" : "无效";
+                }
+            }
+
+        }
+    }).on("loaded.rs.jquery.bootgrid", function () {
+        /* Executes after data is loaded and rendered */
+        grid.find(".command-edit").on("click", function (e) {
+            edit($(this).data("row-id"));
+        }).end().find(".command-delete").on("click", function (e) {
+            del($(this).data("row-id"));
+        }).end().find(".command-upload").on("click", function (e) {
+            recordId = $(this).data("row-id");
+            showUpload();
+        });
+    });
+
+
     // initSelect.call();
     //初始化查询所有的
-    ids = findAllRecordId();
-    selectedIds = ids;
     validateForm.call(validationConfig);
     vdm = new Vue({
         el: formName,
         data: {
-            user: findById(selectedIds[pointer]),
-            // locs: locs,
-            persons: persons
+            user: null
         }
     });
 });

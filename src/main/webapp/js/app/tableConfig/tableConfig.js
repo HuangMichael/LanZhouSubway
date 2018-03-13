@@ -45,7 +45,9 @@ $(function () {
             }
 
         }
-    }).on("loaded.rs.jquery.bootgrid", function () {
+    });
+
+    grid.on("loaded.rs.jquery.bootgrid", function () {
         /* Executes after data is loaded and rendered */
         grid.find(".command-edit").on("click", function (e) {
             edit($(this).data("row-id"));
@@ -153,9 +155,8 @@ function del(id) {
  */
 function edit(id) {
     var object = findByIdAndObjectName(id, mainObject);
-
     console.log("member-----------------------" + JSON.stringify(object));
-    vdm.$set("member", object);
+    vdm.$set(mainObject, object);
     $("#editModal").modal("show");
 }
 
