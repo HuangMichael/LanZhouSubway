@@ -15,6 +15,24 @@
                     <input class="form-control" id="appDesc" name="appDesc" v-model="app.appDesc"/>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="status" class="col-md-2 control-label">数据表</label>
+                <div class="col-md-4">
+                    <select class="form-control" id="tableConfig.id" v-model="app.tableConfig.id">
+                        <template v-for="config in tableConfigs">
+                            <option :value="option.id" v-if="config.id == app.tableConfig.id" selected>
+                                {{config.tableName}}
+                            </option>
+                            <option :value="option.id" v-else>
+                                {{config.tableName}}
+                            </option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+
+
             <div class="form-group">
                 <label for="sortNo" class="col-md-2 control-label">排序</label>
                 <div class="col-md-4">

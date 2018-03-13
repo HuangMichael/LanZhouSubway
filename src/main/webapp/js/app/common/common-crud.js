@@ -301,6 +301,7 @@ function findAllRecordId() {
 }
 
 
+
 /**
  *导出excel
  */
@@ -643,4 +644,21 @@ function edit(id) {
  */
 function showUpload() {
     $("#uploadModal").modal("show");
+}
+
+
+
+/**
+ *查询所有的表配置信息
+ * @param url
+ * @return {Array}
+ * */
+function findListByUrl(url) {
+
+    var dataList = [];
+    $.ajaxSettings.async = false;
+    $.getJSON(url, function (data) {
+        dataList = data;
+    });
+    return dataList;
 }

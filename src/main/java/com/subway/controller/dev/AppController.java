@@ -3,10 +3,12 @@ package com.subway.controller.dev;
 
 import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
+import com.subway.domain.dev.App;
 import com.subway.object.ReturnObject;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.service.dev.AppSearchService;
 import com.subway.service.dev.AppService;
+import com.subway.tableConfig.TableConfig;
 import com.subway.utils.PageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -57,6 +56,16 @@ public class AppController extends BaseController {
         return new PageUtils().searchBySortService(appSearchService, searchPhrase, 1, current, rowCount, pageable);
     }
 
+
+    /**
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public App findById(@PathVariable("id") Long id) {
+        return appService.findById(id);
+    }
 
     /**
      * @param appId

@@ -2,7 +2,7 @@
  * Created by huangbin on 2018-3-1 09:46:42.
 
  */
-
+var tableConfigs = [];
 
 $(function () {
 
@@ -11,8 +11,6 @@ $(function () {
     docName = "位置信息";
     mainObject = "app";
     formName = "#form";
-
-
     var validateOptions = {
         message: '该值无效 ',
         fields: {
@@ -103,7 +101,9 @@ $(function () {
     vdm = new Vue({
         el: formName,
         data: {
-            app: null
+            app: null,
+            tableConfigs: []
+
         }
     });
     initSelect();
@@ -160,8 +160,12 @@ function del(id) {
  * 编辑记录
  */
 function edit(id) {
+
+    tableConfigs = findListByUrl("/tableConfig/findAll");
     var object = findByIdAndObjectName(id, mainObject);
     vdm.$set("app", object);
+    vdm.$set("tableConfigs", tableConfigs);
+    // tableConfigs: tableConfigs
     $("#editModal").modal("show");
 }
 
@@ -188,3 +192,4 @@ function genApp(recordId) {
     })
 
 }
+

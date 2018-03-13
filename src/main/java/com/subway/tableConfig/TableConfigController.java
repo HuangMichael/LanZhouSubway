@@ -19,6 +19,7 @@ import java.util.Map;
 
 /**
  * 数据库配置查询业务类
+ *
  * @author huangbin
  * @generate by autoCode
  * @Date 2018-3-1
@@ -50,6 +51,16 @@ public class TableConfigController extends BaseController {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
         return new PageUtils().searchBySortService(tableConfigSearchService, searchPhrase, 2, current, rowCount, pageable);
+    }
+
+
+    /**
+     * @return 查询所有的表配置信息
+     */
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TableConfig> findAll() {
+        return tableConfigService.findAll();
     }
 
 
