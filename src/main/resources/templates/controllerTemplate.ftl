@@ -65,6 +65,17 @@ return ${subDirName}Service.delete(id);
 }
 
 
+/**
+* @param ${subDirName} 信息
+* @return 保存信息
+*/
+@RequestMapping(value = "/save", method = RequestMethod.POST)
+@ResponseBody
+public ReturnObject save(${className} ${subDirName}) {
+return ${subDirName}Service.save(${subDirName});
+}
+
+
 
 
 @ResponseBody

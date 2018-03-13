@@ -30,6 +30,14 @@ public class TableColumnConfig implements Serializable {
     private String dataType; //该列的数据类型
 
 
+    @Column(length = 50)
+    private String converter; //数据转换器
+
+
+    @Column(length = 50)
+    private String formatter; //数据格式化
+
+
     @Column(length = 100, nullable = false)
     private String classType; //对应的类的类型
 

@@ -46,7 +46,18 @@ return  ${subDirName}Repository.findAll(pageable);
 public ReturnObject delete(Long id) {
 ${subDirName}Repository.delete(id);
 ${className} ${subDirName} = ${subDirName}Repository.getOne(id);
-return commonDataService.getReturnType(member == null, "记录删除成功", "记录删除失败");
+return commonDataService.getReturnType(${subDirName} == null, "记录删除成功", "记录删除失败");
+}
+
+
+/**
+* @param ${subDirName}
+* @return 保存信息
+*/
+public ReturnObject save(${className} ${subDirName}) {
+
+${subDirName} = ${subDirName}Repository.save(${subDirName});
+return commonDataService.getReturnType(${subDirName} != null, "记录保存成功！", "记录删除失败!");
 }
 
 

@@ -57,7 +57,6 @@ public class LocationService extends BaseService {
      */
     public ReturnObject save(Location location) {
 
-
         location = locationRepository.save(location);
         return commonDataService.getReturnType(location != null, "记录保存成功！", "记录删除失败!");
     }
