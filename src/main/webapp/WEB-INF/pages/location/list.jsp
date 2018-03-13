@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <select class="form-control" id="status">
-                                                <option value="1">有效</option>
+                                                <option value="1" selected>有效</option>
                                                 <option value="0">无效</option>
                                             </select>
                                         </div>
@@ -61,7 +61,6 @@
     <%@include file="../common/common-back2top.jsp" %>
 </div>
 <!-- /CONTENT-->
-
 
 
 <!-- 模态框（Modal） -->

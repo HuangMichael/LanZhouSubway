@@ -57,11 +57,13 @@ function validateForm(validationConfig) {
  *保存或者更新 后刷新数据列表
  * */
 function saveMainObject(formName) {
+
     var objStr = getFormDataAsJSON(formName);
     var object = JSON.parse(objStr);
     console.log("save" + JSON.stringify(object));
     var url = getMainObject() + "/save";
     $.post(url, object, function (data) {
+        $("#editModal").modal("hide");
         if (data.result) {
             $(dataTableName).bootgrid("reload");
         }

@@ -35,8 +35,12 @@
                 </div>
 
                 <label for="status" class="col-md-2 control-label">状态</label>
+
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="location.status" required/>
+                    <select class="form-control" id="status" v-model="location.status">
+                        <option value="1" selected>有效</option>
+                        <option value="0">无效</option>
+                    </select>
                 </div>
             </div>
         </div>
