@@ -4,6 +4,7 @@
  */
 
 
+var rowId = null;
 $(function () {
     dataTableName = "#equipmentListTable";
     docName = "设备信息";
@@ -56,6 +57,7 @@ $(function () {
         formatters: {
 
             "reportFix": function (column, row) {
+                rowId = row.id;
                 return "<button type='button' class='btn btn-xs btn-default command-wrench' data-row-id='" + row.id + "' onclick='reportFix(" + row.id + ")'><span class='fa fa-wrench'></span></button> "
             }
             ,
@@ -89,6 +91,44 @@ $(function () {
 
     validateForm.call(validateOptions);
 
+
+    var fixConfig = {
+        message: '',
+        fields: {
+
+            "creator": {
+                message: '记录人无效',
+                validators: {
+                    notEmpty: {
+                        message: '记录人不能为空'
+                    }
+                }
+            },
+            "reporter": {
+                message: '报修人无效',
+                validators: {
+                    notEmpty: {
+                        message: '报修人不能为空'
+                    }
+                }
+            },
+            "orderDesc": {
+                message: '故障描述无效',
+                validators: {
+                    notEmpty: {
+                        message: '故障描述不能为空'
+                    }
+                }
+            },
+        }
+    };
+    validateFixForm.call(fixConfig);
+
+
+    $('#reportFixModal').on('show.bs.modal', function (event) {
+        var modal = $(this);  //get modal itself
+        modal.find("#id").val(rowId);
+    });
 
 });
 
@@ -155,4 +195,32 @@ function add() {
 
 function reportFix(id) {
     $("#reportFixModal").modal("show");
+}
+
+
+/**
+ *
+ * @param validationConfig
+ */
+function validateFixForm(validationConfig) {
+    $("#reportFixForm")
+        .bootstrapValidator(validationConfig)
+        .on('success.form.bv', function (e) {
+            e.preventDefault();
+            reportFixData("reportFixForm");
+        });
+}
+
+
+/**
+ *
+ * @param form
+ */
+function reportFixData(form) {
+    var param = JSON.parse(getFormJsonData(form));
+    var url = "/workOrder/reportFix";
+    $.post(url, param, function (data) {
+        $("#reportFixModal").modal("hide");
+        showMessage(data["result"], data["resultDesc"]);
+    });
 }

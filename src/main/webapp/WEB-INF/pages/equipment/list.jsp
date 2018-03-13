@@ -21,8 +21,7 @@
                                          id="searchBox">
                                         <div class="col-md-2">
                                             <input class="form-control" id="description"
-                                                   name="description"
-                                            />
+                                                   name="description"/>
 
                                         </div>
                                         <div class="col-md-2">
