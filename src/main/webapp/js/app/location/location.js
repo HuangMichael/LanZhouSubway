@@ -71,9 +71,6 @@ $(function () {
     ];
 
 
-    initSelect();
-
-
     var grid = $(dataTableName).bootgrid({
         selection: true,
         ajax: true,
@@ -109,7 +106,7 @@ $(function () {
             location: null
         }
     });
-
+    initSelect();
 
     validateForm.call(validateOptions);
 
@@ -118,7 +115,8 @@ $(function () {
 
 
 /**
- * ɾ����¼
+ * 删除记录
+ * @param id
  */
 function del(id) {
 
