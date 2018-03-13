@@ -19,4 +19,10 @@ public class ConstantUtils {
     public static final String AUDIT_STATUS_3 = "3"; //终审
     public static final String AUDIT_STATUS_4 = "4"; //发布
 
+
+    public static final String SAVE_SUCCESS = "信息保存成功"; //
+    public static final String SAVE_FAILURE = "信息保存失败"; //发布
+    public static final String DELETE_SUCCESS = "信息删除成功"; //发布
+    public static final String DELETE_FAILURE = "信息删除失败"; //发布
+
 }

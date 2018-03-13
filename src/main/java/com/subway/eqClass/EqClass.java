@@ -21,7 +21,7 @@ public class EqClass {
     private long id;
 
     @Column(length = 20)
-    private String className;
+    private String name;
 
     @Column(length = 1)
     private String hasChild;

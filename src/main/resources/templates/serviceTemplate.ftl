@@ -10,6 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.subway.object.ReturnObject;
+import static com.subway.utils.ConstantUtils.*;
+
+
 /**
 * ${comment}业务类
 *
@@ -46,7 +49,7 @@ return  ${subDirName}Repository.findAll(pageable);
 public ReturnObject delete(Long id) {
 ${subDirName}Repository.delete(id);
 ${className} ${subDirName} = ${subDirName}Repository.getOne(id);
-return commonDataService.getReturnType(${subDirName} == null, "记录删除成功", "记录删除失败");
+return commonDataService.getReturnType(${subDirName} == null, DELETE_SUCCESS, DELETE_FAILURE);
 }
 
 
@@ -57,7 +60,7 @@ return commonDataService.getReturnType(${subDirName} == null, "记录删除成�
 public ReturnObject save(${className} ${subDirName}) {
 
 ${subDirName} = ${subDirName}Repository.save(${subDirName});
-return commonDataService.getReturnType(${subDirName} != null, "记录保存成功！", "记录删除失败!");
+return commonDataService.getReturnType(${subDirName} != null, SAVE_SUCCESS, SAVE_FAILURE);
 }
 
 

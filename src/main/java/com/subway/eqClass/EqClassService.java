@@ -10,59 +10,71 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.subway.object.ReturnObject;
+
+import static com.subway.utils.ConstantUtils.*;
+
 /**
-* Éè±¸·ÖÀàÒµÎñÀà
-*
-* @author huangbin
-* @generate by autoCode
-* @Date 2018-3-1
-*/
+ * ï¿½è±¸ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½
+ *
+ * @author huangbin
+ * @generate by autoCode
+ * @Date 2018-3-1
+ */
 @Service
 public class EqClassService extends BaseService {
 
 
-@Autowired
-EqClassRepository eqClassRepository;
+    @Autowired
+    EqClassRepository eqClassRepository;
 
 
-@Autowired
-CommonDataService commonDataService;
+    @Autowired
+    CommonDataService commonDataService;
 
-public List
-<EqClass> findAll() {
-return  eqClassRepository.findAll();
-}
-
-
-public Page< EqClass> findAll(Pageable pageable) {
-return  eqClassRepository.findAll(pageable);
-}
+    /**
+     * @return
+     */
+    public List<EqClass> findAll() {
+        return eqClassRepository.findAll();
+    }
 
 
-/**
-* @param id id
-* @return ¸ù¾ÝidÉ¾³ý¶ÔÏó
-*/
-public ReturnObject delete(Long id) {
-eqClassRepository.delete(id);
-EqClass eqClass = eqClassRepository.getOne(id);
-return commonDataService.getReturnType(eqClass == null, "¼ÇÂ¼É¾³ý³É¹¦", "¼ÇÂ¼É¾³ýÊ§°Ü");
-}
+    /**
+     * @param pageable
+     * @return
+     */
+    public Page<EqClass> findAll(Pageable pageable) {
+        return eqClassRepository.findAll(pageable);
+    }
 
 
-/**
-* @param eqClass
-* @return ±£´æÐÅÏ¢
-*/
-public ReturnObject save(EqClass eqClass) {
+    /**
+     * @param id id
+     * @return ï¿½ï¿½ï¿½ï¿½idÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public ReturnObject delete(Long id) {
+        eqClassRepository.delete(id);
+        EqClass eqClass = eqClassRepository.getOne(id);
+        return commonDataService.getReturnType(eqClass == null, DELETE_SUCCESS, DELETE_FAILURE);
+    }
 
-eqClass = eqClassRepository.save(eqClass);
-return commonDataService.getReturnType(eqClass != null, "¼ÇÂ¼±£´æ³É¹¦£¡", "¼ÇÂ¼É¾³ýÊ§°Ü!");
-}
+
+    /**
+     * @param eqClass
+     * @return
+     */
+    public ReturnObject save(EqClass eqClass) {
+        eqClass = eqClassRepository.save(eqClass);
+        return commonDataService.getReturnType(eqClass != null, SAVE_SUCCESS, SAVE_FAILURE);
+    }
 
 
-public  EqClass findById(Long id) {
-return  eqClassRepository.getOne(id);
-}
+    /**
+     * @param id
+     * @return
+     */
+    public EqClass findById(Long id) {
+        return eqClassRepository.getOne(id);
+    }
 
 }
