@@ -32,26 +32,10 @@ public class EquipmentService extends BaseService {
     @Autowired
     CommonDataService commonDataService;
 
+
     /**
+     * @param id
      * @return
-     */
-    public List<Equipment> findAll() {
-        return equipmentRepository.findAll();
-    }
-
-
-    /**
-     * @param pageable
-     * @return
-     */
-    public Page<Equipment> findAll(Pageable pageable) {
-        return equipmentRepository.findAll(pageable);
-    }
-
-
-    /**
-     * @param id id
-     * @return ����idɾ������
      */
     public ReturnObject delete(Long id) {
         equipmentRepository.delete(id);
@@ -62,7 +46,7 @@ public class EquipmentService extends BaseService {
 
     /**
      * @param equipment
-     * @return ������Ϣ
+     * @return
      */
     public ReturnObject save(Equipment equipment) {
 

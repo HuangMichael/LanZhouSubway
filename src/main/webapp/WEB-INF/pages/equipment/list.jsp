@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="container">
@@ -11,7 +11,7 @@
                     <!-- BOX -->
                     <div class="box border blue">
                         <div class="box-title">
-                            <h4><i class="fa fa-table"></i>设备信息</h4>
+                            <h4><i class="fa fa-table"></i>璁惧淇℃伅</h4>
                         </div>
                         <%@include file="../common/common-menubar.jsp" %>
                         <div class="box-body">
@@ -20,22 +20,22 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name"
-                                                   name="name"
-                                                   placeholder="关键字"/>
+                                            <input class="form-control" id="description"
+                                                   name="description"
+                                            />
 
                                         </div>
                                         <div class="col-md-2">
                                             <select class="form-control" id="status">
-                                                <option value="1" selected>有效</option>
-                                                <option value="0">无效</option>
+                                                <option value="1" selected>鏈夋晥</option>
+                                                <option value="0">鏃犳晥</option>
                                             </select>
                                         </div>
                                         <div class="col-md-2">
                                             <button id="clearBtn" class="btn btn-default"
-                                                    onclick="resetSearch()">清空
+                                                    onclick="resetSearch()">娓呴櫎
                                             </button>
-                                            <button id="searchBtn" class="btn btn-default" onclick="search()">查询
+                                            <button id="searchBtn" class="btn btn-default" onclick="search()">鏌ヨ
                                             </button>
                                         </div>
                                     </div>
@@ -61,7 +61,6 @@
 </div>
 
 
-<!-- 模态框（Modal） -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -70,7 +69,7 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel1">
-                    编辑记录
+                    缂栬緫璁板綍
                 </h4>
             </div>
             <div class="modal-body">
@@ -87,7 +86,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span>&times;</span>
                 </button>
-                <h4 class="modal-title pull-left" id="myModalLabel2">请选择文件</h4>
+                <h4 class="modal-title pull-left" id="myModalLabel2">涓婁紶鍥剧墖</h4>
             </div>
             <div class="modal-body">
                 <div id="dropZone" class="dropzone"></div>

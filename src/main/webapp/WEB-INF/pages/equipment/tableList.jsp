@@ -1,69 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
-<th data-column-id="id" data-width="5%"  >ÐòºÅ
-
-</th>
-<th data-column-id="eqCode" data-width="5%"  >Éè±¸±àºÅ
-
-</th>
-<th data-column-id="eamNo" data-width="5%"  >×Ê²ú±àºÅ
-
-</th>
-<th data-column-id="description" data-width="5%"  >ÃèÊö
-
-</th>
-<th data-column-id="eqModel" data-width="5%"  >Éè±¸ÐÍºÅ
-
-</th>
-<th data-column-id="expectedYear" data-width="5%"  >Ô¤¼ÆÄêÏÞ
-
-</th>
-<th data-column-id="maintainer" data-width="5%"  >Î¬ÐÞÈËÔ±
-
-</th>
-<th data-column-id="manageLevel" data-width="5%"  >¹ÜÀíµÈ¼¶
-
-</th>
-<th data-column-id="manager" data-width="5%"  >¹ÜÀíÈËÔ±
-
-</th>
-<th data-column-id="netValue" data-width="5%"  >¾»Öµ
-
-</th>
-<th data-column-id="originalValue" data-width="5%"  >Ô­Öµ
-
-</th>
-<th data-column-id="productDate" data-width="5%"  >³ö³§ÈÕÆÚ
-
-</th>
-<th data-column-id="productFactory" data-width="5%"  >Éú²ú³§¼Ò
-
-</th>
-<th data-column-id="purchaseDate" data-width="5%"  >¹ºÖÃÈÕÆÚ
-
-</th>
-<th data-column-id="purchasePrice" data-width="5%"  >¹ºÖÃ¼Û¸ñ
-
-</th>
-<th data-column-id="runDate" data-width="5%"  >ÔËÐÐÈÕÆÚ
-
-</th>
-<th data-column-id="setupDate" data-width="5%"  >°²×°ÈÕÆÚ
-
-</th>
-<th data-column-id="warrantyPeriod" data-width="5%"  >±£ÐÞÆÚÏÞ
-
-</th>
-<th data-column-id="eq_class_id" data-width="5%"  >Éè±¸·ÖÀà
-
-</th>
-<th data-column-id="location_id" data-width="5%"  >ËùÊôÎ»ÖÃ
-
-</th>
-<th data-column-id="authKey" data-width="5%"  >ÊÚÈ¨Âë
-
-</th>
-<th data-column-id="commands" data-formatter="commands"
-    data-sortable="false" data-width="10%">±à¼­|É¾³ý
-</th>
+<th data-column-id="id" data-width="5%">åºå·</th>
+<th data-column-id="eqCode" data-width="5%">è®¾å¤‡ç¼–å·</th>
+<th data-column-id="description" data-width="5%">è®¾å¤‡æè¿°</th>
+<th data-column-id="eqModel" data-width="5%">è®¾å¤‡åž‹å·</th>
+<th data-column-id="maintainer" data-width="5%">ç»´ä¿®äººå‘˜</th>
+<th data-column-id="manageLevel" data-width="5%">ç®¡ç†ç­‰çº§</th>
+<th data-column-id="manager" data-width="5%">ç®¡ç†äººå‘˜</th>
+<th data-column-id="netValue" data-width="5%" data-visible='false'>å‡€å€¼</th>
+<th data-column-id="originalValue" data-width="5%" data-visible='false'>åŽŸå€¼</th>
+<th data-column-id="productDate" data-width="5%">ç”Ÿäº§æ—¥æœŸ</th>
+<th data-column-id="productFactory" data-width="5%">ç”Ÿäº§åŽ‚å®¶</th>
+<th data-column-id="expectedYear" data-width="5%" data-visible='false'>é¢„è®¡å¹´é™</th>
+<th data-column-id="purchaseDate" data-width="5%" data-visible='false'>è´­ç½®æ—¥æœŸ</th>
+<th data-column-id="purchasePrice" data-width="5%" data-visible='false'>è´­ç½®ä»·æ ¼</th>
+<th data-column-id="runDate" data-width="5%" data-visible='false'>è¿è¡Œæ—¥æœŸ</th>
+<th data-column-id="setupDate" data-width="5%" data-visible='false'>å®‰è£…æ—¥æœŸ</th>
+<th data-column-id="warrantyPeriod" data-width="5%" data-visible='false'>ä¿ä¿®æœŸé™</th>
+<th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="10%">ç¼–è¾‘|åˆ é™¤</th>
 

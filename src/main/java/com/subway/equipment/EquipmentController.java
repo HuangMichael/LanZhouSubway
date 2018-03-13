@@ -52,7 +52,7 @@ public class EquipmentController extends BaseController {
         Map
                 <String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(equipmentSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(equipmentSearchService, searchPhrase, 2, current, rowCount, pageable);
     }
 
 
