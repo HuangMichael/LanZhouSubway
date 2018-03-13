@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="name" class="col-md-2 control-label">单位名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="unit.id"/>
+                    <input class="form-control" id="id" name="id" v-model="unit.id" type="hidden"/>
                     <input class="form-control" id="name" name="name" v-model="unit.name"/>
                 </div>
 
@@ -38,19 +38,21 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="isOut" class="col-md-2 control-label">是否外单位</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="isOut" name="isOut" v-model="unit.isOut"/>
+                </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status"  v-model="unit.status"/>
+                    <input class="form-control" id="status" name="status" v-model="unit.status"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default"
-                data-dismiss="modal">取消
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消
         </button>
-        <button id="saveBtn" name="saveBtn"
-                class="btn btn-danger">保存
+        <button id="saveBtn" name="saveBtn" class="btn btn-danger">保存
         </button>
     </div>
     </div>

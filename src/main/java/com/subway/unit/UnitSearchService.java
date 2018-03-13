@@ -30,7 +30,7 @@ public class UnitSearchService extends BaseService implements SortedSearchable {
      */
     public List<Unit> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return unitRepository.findAll();
+        return unitRepository.findByNameContainingAndStatus(array[0],array[1]);
     }
 
 
@@ -42,7 +42,7 @@ public class UnitSearchService extends BaseService implements SortedSearchable {
      */
     public Page<Unit> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return unitRepository.findAll(pageable);
+        return unitRepository.findByNameContainingAndStatus(array[0],array[1],pageable);
     }
 
 }

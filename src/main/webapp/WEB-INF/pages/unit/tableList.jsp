@@ -6,7 +6,7 @@
 <th data-column-id="contact" data-width="10%">联系人</th>
 <th data-column-id="telephone" data-width="10%">联系电话</th>
 <th data-column-id="workDays" data-width="10%">工作制</th>
-<th data-column-id="sortNo" data-width="10%">排序</th>
+<th data-column-id="isOut" data-width="10%" data-converter="showYes">是否外单位</th>
 <th data-column-id="status" data-width="10%" data-converter="showStatus">状态</th>
 <th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="10%">编辑|删除</th>
 

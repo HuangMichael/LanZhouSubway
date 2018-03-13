@@ -18,6 +18,10 @@ public class Unit implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(length = 50, nullable = false)
+    private String name;//外委单位名称
+
     @Column(length = 200)
     private String unitDesc;//外委单位名称
 
@@ -37,6 +41,6 @@ public class Unit implements java.io.Serializable {
     @Column(length = 1, columnDefinition = "default 1")
     private String isOut; //外部标识 默认为外部
 
-    @Column(length = 1, columnDefinition = "default '1'")
+    @Column(length = 1, columnDefinition = "default '1'", nullable = false)
     private String status;  //使用状态
 }
