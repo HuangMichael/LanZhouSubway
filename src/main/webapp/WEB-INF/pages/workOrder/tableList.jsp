@@ -12,7 +12,7 @@
 <th data-column-id="reporter" data-width="5%">报修人
 
 </th>
-<th data-column-id="reportType" data-width="10%">报修类型
+<th data-column-id="reportType" data-width="10%" data-converter="showReportType">报修类型
 
 </th>
 <th data-column-id="reportTime" data-width="10%">报修时间
@@ -21,9 +21,9 @@
 <th data-column-id="creator" data-width="5%">记录人
 
 </th>
-<th data-column-id="deadline" data-width="10%">维修期限
-</th>
-<th data-column-id="status" data-width="5%">状态</th>
+<th data-column-id="orderState" data-width="10%" data-converter="showOrderState">工单状态</th>
+
+<th data-column-id="status" data-width="5%" data-converter="showStatus">状态</th>
 
 <th data-column-id="commands" data-formatter="commands"
     data-sortable="false" data-width="6%">编辑|删除

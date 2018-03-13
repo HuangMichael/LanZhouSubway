@@ -32,10 +32,15 @@ $(function () {
             };
         },
         url: "/" + mainObject + "/data",
-
         converters: {
+            showOrderState: {
+                to: showOrderState
+            },
             showStatus: {
                 to: showStatus
+            },
+            showReportType:{
+                to:showReportType
             }
         }
     })
@@ -51,7 +56,6 @@ $(function () {
         }
     });
     initSelect();
-
 
 
 });

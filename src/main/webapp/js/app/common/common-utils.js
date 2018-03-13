@@ -362,3 +362,27 @@ var showYes = function (value) {
 var showDate = function (value) {
     return transformYMD(value);
 }
+
+
+/**
+ *
+ * @param value
+ */
+var showOrderState = function (value) {
+    var orderState = ["报修车", "已分配", "已维修", "已完成"];
+    return orderState[value];
+}
+
+
+/**
+ *
+ * @param value
+ */
+var showReportType = function (value) {
+    var reportTypes = {"s": "设备报修", "w": "位置报修"}
+    return reportTypes[value];
+}
+
+
+
+
