@@ -7,5 +7,5 @@
 <th data-column-id="limitHours" data-width="5%">维修时限(小时)</th>
 <th data-column-id="sortNo" data-width="5%">排序</th>
 <th data-column-id="status" data-width="5%" data-converter="showStatus">状态</th>
-<th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="10%"></th>
+<th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="10%">编辑|删除</th>
 

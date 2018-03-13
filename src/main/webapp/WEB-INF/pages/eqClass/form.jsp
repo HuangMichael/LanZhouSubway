@@ -4,63 +4,46 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-                    <div class="form-group">
-                <label for="id" class="col-md-2 control-label">–Ú∫≈</label>
+            <div class="form-group">
+                <label for="className" class="col-md-2 control-label">ÂàÜÁ±ªÂêçÁß∞</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="eqClass.id"/>
+                    <input class="form-control" id="id" name="id" v-model="eqClass.id" type="hidden"/>
+                    <input class="form-control" id="className" name="className" v-model="eqClass.className"/>
+                </div>
+                <label for="classLevel" class="col-md-2 control-label">ÂàÜÁ±ªÁ∫ßÂà´</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="classLevel" name="classLevel" v-model="eqClass.classLevel"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="class_name" class="col-md-2 control-label">∑÷¿‡√˚≥∆</label>
+                <label for="hasChild" class="col-md-2 control-label">ÊúâÂ≠êÂàÜÁ±ª?</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="class_name" name="class_name" v-model="eqClass.class_name"/>
+                    <input class="form-control" id="hasChild" name="hasChild" v-model="eqClass.hasChild"/>
+                </div>
+                <label for="limitHours" class="col-md-2 control-label">Áª¥‰øÆÊó∂Èôê</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="limitHours" name="limitHours" v-model="eqClass.limitHours"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="class_level" class="col-md-2 control-label">∑÷¿‡º∂±</label>
+                <label for="parentId" class="col-md-2 control-label">‰∏äÁ∫ßÂàÜÁ±ª</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="class_level" name="class_level" v-model="eqClass.class_level"/>
+                    <input class="form-control" id="parentId" name="parentId" v-model="eqClass.parentId"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="has_child" class="col-md-2 control-label"> «∑Ò”–◊”∑÷¿‡</label>
+                <label for="status" class="col-md-2 control-label">Áä∂ÊÄÅ</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="has_child" name="has_child" v-model="eqClass.has_child"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="limit_hours" class="col-md-2 control-label">Œ¨–ﬁ ±œﬁ</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="limit_hours" name="limit_hours" v-model="eqClass.limit_hours"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="parent_id" class="col-md-2 control-label">…œº∂∑÷¿‡</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="parent_id" name="parent_id" v-model="eqClass.parent_id"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="sort_no" class="col-md-2 control-label">≈≈–Ú</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="sort_no" name="sort_no" v-model="eqClass.sort_no"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="status" class="col-md-2 control-label">◊¥Ã¨</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="eqClass.status"/>
+                    <select class="form-control" id="status" v-model="eqClass.status">
+                        <option value="1" selected>ÊúâÊïà</option>
+                        <option value="0">Êó†Êïà</option>
+                    </select>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default"
-                data-dismiss="modal">πÿ±’
+        <button type="button" class="btn btn-default" data-dismiss="modal">ÂèñÊ∂à
         </button>
-        <button type="button" id="saveBtn" name="saveBtn"
-                class="btn btn-danger">±£¥Ê
+        <button id="saveBtn" name="saveBtn" class="btn btn-danger">‰øùÂ≠ò
         </button>
-    </div>
     </div>
 </form>

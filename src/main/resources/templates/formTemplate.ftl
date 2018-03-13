@@ -8,7 +8,8 @@
             <div class="form-group">
                 <label for="${c.colName}" class="col-md-2 control-label">${c.colDesc}</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="${c.colName}" name="${c.colName}" v-model="${subDirName}.${c.colName}"/>
+                    <input class="form-control" id="${c.colName}" name="${c.colName}"
+                           v-model="${subDirName}.${c.colName}"/>
                 </div>
             </div>
         </#list>
@@ -18,7 +19,7 @@
         <button type="button" class="btn btn-default"
                 data-dismiss="modal">关闭
         </button>
-        <button type="button" id="saveBtn" name="saveBtn"
+        <button id="saveBtn" name="saveBtn"
                 class="btn btn-danger">保存
         </button>
     </div>

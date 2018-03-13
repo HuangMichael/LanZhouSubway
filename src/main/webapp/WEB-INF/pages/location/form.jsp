@@ -10,7 +10,6 @@
                     <input class="form-control" id="id" name="id" v-model="location.id" type="hidden"/>
                     <input class="form-control" id="locName" name="locName" v-model="location.locName" required/>
                 </div>
-
                 <label for="locDesc" class="col-md-2 control-label">位置描述</label>
                 <div class="col-md-4">
                     <input class="form-control" id="locDesc" name="locDesc" v-model="location.locDesc" required/>
@@ -18,7 +17,6 @@
 
             </div>
             <div class="form-group">
-
                 <label for="locLevel" class="col-md-2 control-label">位置级别</label>
                 <div class="col-md-4">
                     <input class="form-control" id="locLevel" name="locLevel" v-model="location.locLevel" required/>
@@ -33,9 +31,7 @@
                 <div class="col-md-4">
                     <input class="form-control" id="parentId" name="parentId" v-model="location.parentId"/>
                 </div>
-
                 <label for="status" class="col-md-2 control-label">状态</label>
-
                 <div class="col-md-4">
                     <select class="form-control" id="status" v-model="location.status">
                         <option value="1" selected>有效</option>
