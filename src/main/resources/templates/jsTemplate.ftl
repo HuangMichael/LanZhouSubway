@@ -149,12 +149,12 @@ type: "GET",
 url: url,
 success: function (msg) {
 if (msg) {
-showMessageBox("info", "记录删除成功!");
+showMessage(msg.result, msg["resultDesc"]);
 $(dataTableName).bootgrid("reload");
 }
 },
 error: function (msg) {
-showMessageBox("danger", "记录删除失败!");
+showMessage(msg.result, msg["resultDesc"]);
 }
 });
 }

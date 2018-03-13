@@ -80,7 +80,7 @@ $(function () {
         url: "/" + mainObject + "/data",
         formatters: {
             "genApp": function (column, row) {
-                return "<button type='button' class='btn btn-xs btn-default command-plus' data-row-id='" + row.id + "' onclick='genApp(\" + row.id + \")'><span class='fa fa-plus-circle'></span></button> "
+                return "<button type='button' class='btn btn-xs btn-default command-plus' data-row-id='" + row.id + "' onclick='genApp(" + row.id + ")'><span class='fa fa-plus-circle'></span></button> "
             },
             "commands": function (column, row) {
                 return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
@@ -174,6 +174,8 @@ function edit(id) {
  * 编辑记录
  */
 function add() {
+    tableConfigs = findListByUrl("/tableConfig/findAll");
+    vdm.$set("tableConfigs", tableConfigs);
     vdm.$set("app", null);
     $("#editModal").modal("show");
 }

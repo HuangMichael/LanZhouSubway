@@ -22,10 +22,10 @@
                     <select class="form-control" id="tableConfig.id" v-model="app.tableConfig.id">
                         <template v-for="config in tableConfigs">
                             <option :value="option.id" v-if="config.id == app.tableConfig.id" selected>
-                                {{config.tableName}}
+                                {{config.tableName}}{{config.tableDesc}}
                             </option>
                             <option :value="option.id" v-else>
-                                {{config.tableName}}
+                                {{config.tableName}}{{config.tableDesc}}
                             </option>
                         </template>
                     </select>
