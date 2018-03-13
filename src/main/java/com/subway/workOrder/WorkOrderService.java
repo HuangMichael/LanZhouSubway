@@ -1,71 +1,126 @@
 package com.subway.workOrder;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.subway.equipment.Equipment;
+import com.subway.equipment.EquipmentRepository;
+import com.subway.location.Location;
+import com.subway.location.LocationRepository;
 import com.subway.service.app.BaseService;
+import com.subway.service.reportFix.WorkOrderReport;
+import com.subway.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.subway.service.commonData.CommonDataService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.subway.object.ReturnObject;
+
 import static com.subway.utils.ConstantUtils.*;
 
 
 /**
-* π§µ•–≈œ¢“µŒÒ¿‡
-*
-* @author huangbin
-* @generate by autoCode
-* @Date 2018-3-1
-*/
+ * ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩœ¢“µÔøΩÔøΩÔøΩÔøΩ
+ *
+ * @author huangbin
+ * @generate by autoCode
+ * @Date 2018-3-1
+ */
 @Service
-public class WorkOrderService extends BaseService {
+public class WorkOrderService extends BaseService implements WorkOrderReport {
 
 
-@Autowired
-WorkOrderRepository workOrderRepository;
+    @Autowired
+    EquipmentRepository equipmentRepository;
 
 
-@Autowired
-CommonDataService commonDataService;
-
-public List
-<WorkOrder> findAll() {
-return  workOrderRepository.findAll();
-}
+    @Autowired
+    LocationRepository locationRepository;
 
 
-public Page< WorkOrder> findAll(Pageable pageable) {
-return  workOrderRepository.findAll(pageable);
-}
+    @Autowired
+    WorkOrderRepository workOrderRepository;
 
 
-/**
-* @param id id
-* @return ∏˘æ›id…æ≥˝∂‘œÛ
-*/
-public ReturnObject delete(Long id) {
-workOrderRepository.delete(id);
-WorkOrder workOrder = workOrderRepository.getOne(id);
-return commonDataService.getReturnType(workOrder == null, DELETE_SUCCESS, DELETE_FAILURE);
-}
+    @Autowired
+    CommonDataService commonDataService;
+
+    public List
+            <WorkOrder> findAll() {
+        return workOrderRepository.findAll();
+    }
 
 
-/**
-* @param workOrder
-* @return ±£¥Ê–≈œ¢
-*/
-public ReturnObject save(WorkOrder workOrder) {
-
-workOrder = workOrderRepository.save(workOrder);
-return commonDataService.getReturnType(workOrder != null, SAVE_SUCCESS, SAVE_FAILURE);
-}
+    public Page<WorkOrder> findAll(Pageable pageable) {
+        return workOrderRepository.findAll(pageable);
+    }
 
 
-public  WorkOrder findById(Long id) {
-return  workOrderRepository.getOne(id);
-}
+    /**
+     * @param id id
+     * @return ÔøΩÔøΩÔøΩÔøΩid…æÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+     */
+    public ReturnObject delete(Long id) {
+        workOrderRepository.delete(id);
+        WorkOrder workOrder = workOrderRepository.getOne(id);
+        return commonDataService.getReturnType(workOrder == null, DELETE_SUCCESS, DELETE_FAILURE);
+    }
 
+
+    /**
+     * @param workOrder
+     * @return ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩœ¢
+     */
+    public ReturnObject save(WorkOrder workOrder) {
+
+        workOrder = workOrderRepository.save(workOrder);
+        return commonDataService.getReturnType(workOrder != null, SAVE_SUCCESS, SAVE_FAILURE);
+    }
+
+
+    /**
+     * @param id
+     * @return
+     */
+    public WorkOrder findById(Long id) {
+        return workOrderRepository.getOne(id);
+    }
+
+    /**
+     * @param type Êä•‰øÆÊñπÂºè ÊåâÁÖßËÆæÂ§áÊä•‰øÆ  ÊåâÁÖß‰ΩçÁΩÆÊä•‰øÆ
+     * @param id
+     * @param orderDesc
+     * @param reporter
+     * @return
+     */
+    public WorkOrder reportFix(String type, Long id, String orderDesc, String reporter) {
+
+        Equipment equipment;
+        Location location = null;
+        //ÂàõÂª∫ ‰∏Ä‰∏™Â∑•Âçï
+        String orderLineNo = DateUtils.convertDate2Str(new Date(), "yyyyMMddHHmmss");
+        WorkOrder workOrder = new WorkOrder();
+        workOrder.setAuthKey("01");
+        workOrder.setCreator("huangbin");
+        workOrder.setOrderDesc(orderDesc);
+        workOrder.setExpired(false);
+        workOrder.setOrderLineNo(orderLineNo);
+        if (type.equals("s")) {
+            equipment = equipmentRepository.findOne(id);
+            workOrder.setEquipment(equipment);
+            workOrder.setEqClass(equipment.getEqClass());
+        } else {
+            location = locationRepository.getOne(id);
+            workOrder.setLocation(location);
+        }
+
+        workOrder.setLocation(location);
+        workOrder.setReportTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
+        workOrder.setReporter(reporter);
+        workOrder.setStatus("1");
+        workOrder.setOrderState("0");
+        return workOrderRepository.save(workOrder);
+    }
 }

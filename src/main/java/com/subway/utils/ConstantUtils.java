@@ -25,4 +25,8 @@ public class ConstantUtils {
     public static final String DELETE_SUCCESS = "信息删除成功"; //发布
     public static final String DELETE_FAILURE = "信息删除失败"; //发布
 
+
+    public static final String REPORT_FIX_SUCCESS = "报修成功"; //发布
+    public static final String REPORT_FIX_FAILURE = "报修失败"; //发布
+
 }

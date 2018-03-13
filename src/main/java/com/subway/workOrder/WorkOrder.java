@@ -1,6 +1,8 @@
 package com.subway.workOrder;
 
+import com.subway.eqClass.EqClass;
 import com.subway.equipment.Equipment;
+import com.subway.location.Location;
 import com.subway.unit.Unit;
 import lombok.Data;
 
@@ -23,9 +25,20 @@ public class WorkOrder {
     @Column(length = 200)
     private String orderDesc;  //故障描述
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "equipment_id", referencedColumnName = "id")
     private Equipment equipment;
+
+
+    @ManyToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
+
+
+    @ManyToOne
+    @JoinColumn(name = "eq_class_id", referencedColumnName = "id")
+    private EqClass eqClass;
+
 
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "id")
@@ -47,6 +60,10 @@ public class WorkOrder {
 
     @Column(length = 1)
     private boolean expired;
+
+    @Column(length = 1)
+    private String orderState;
+
 
     @Column(length = 1)
     private String status;

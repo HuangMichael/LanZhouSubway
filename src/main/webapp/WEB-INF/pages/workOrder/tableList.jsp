@@ -1,31 +1,31 @@
-<%@ page contentType="text/html;charset=gb2312" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
-<th data-column-id="id" data-width="5%">ÐòºÅ
+<th data-column-id="id" data-width="5%">åºå·
 
 </th>
-<th data-column-id="orderLineNo" data-width="10%">¹¤µ¥ÐÐºÅ
+<th data-column-id="orderLineNo" data-width="10%">å·¥å•è¡Œå·
 
 </th>
-<th data-column-id="orderDesc" data-width="15%">±¨ÐÞµ¥ÃèÊö
+<th data-column-id="orderDesc" data-width="15%">æŠ¥ä¿®å•æè¿°
 
 </th>
-<th data-column-id="reporter" data-width="5%">±¨ÐÞÈË
+<th data-column-id="reporter" data-width="5%">æŠ¥ä¿®äºº
 
 </th>
-<th data-column-id="reportType" data-width="10%">±¨ÐÞÀàÐÍ
+<th data-column-id="reportType" data-width="10%">æŠ¥ä¿®ç±»åž‹
 
 </th>
-<th data-column-id="reportTime" data-width="10%">±¨ÐÞÊ±¼ä
+<th data-column-id="reportTime" data-width="10%">æŠ¥ä¿®æ—¶é—´
 
 </th>
-<th data-column-id="creator" data-width="5%">¼ÇÂ¼ÈË
+<th data-column-id="creator" data-width="5%">è®°å½•äºº
 
 </th>
-<th data-column-id="deadline" data-width="10%">Î¬ÐÞÆÚÏÞ
+<th data-column-id="deadline" data-width="10%">ç»´ä¿®æœŸé™
 </th>
-<th data-column-id="status" data-width="5%">×´Ì¬</th>
+<th data-column-id="status" data-width="5%">çŠ¶æ€</th>
 
 <th data-column-id="commands" data-formatter="commands"
-    data-sortable="false" data-width="6%">±à¼­|É¾³ý
+    data-sortable="false" data-width="6%">ç¼–è¾‘|åˆ é™¤
 </th>
 

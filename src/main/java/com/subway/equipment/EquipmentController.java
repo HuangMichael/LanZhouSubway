@@ -104,6 +104,4 @@ public class EquipmentController extends BaseController {
         equipmentService.setDataList(dataList);
         equipmentService.exportExcel(request, response, docName, titles, colNames);
     }
-
-
 }

@@ -154,7 +154,5 @@ function add() {
 }
 
 function reportFix(id) {
-
-    alert("报修" + id);
-
+    $("#reportFixModal").modal("show");
 }
