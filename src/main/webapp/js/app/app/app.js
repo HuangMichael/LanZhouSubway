@@ -200,12 +200,7 @@ function genApp(recordId) {
         appId: recordId
     };
     $.post(url, data, function (data) {
-        if (data.result) {
-            showMessageBox("info", data["resultDesc"]);
-        } else {
-            showMessageBox("danger", data["resultDesc"]);
-
-        }
+        showMessage(data.result, data["resultDesc"]);
     })
 
 }
