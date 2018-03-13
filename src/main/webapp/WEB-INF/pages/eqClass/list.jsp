@@ -22,16 +22,18 @@
                                         <div class="col-md-2">
                                             <input class="form-control" id="eqName"
                                                    name="eqName" placeholder="分类名称"/>
-                                            <div class="col-md-2">
-                                                <select class="form-control" id="status">
-                                                    <option value="1" selected>有效</option>
-                                                    <option value="0">无效</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button id="clearBtn" class="btn btn-default"
-                                                        onclick="resetSearch()">清空
-                                                </button>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <select class="form-control" id="status">
+                                                <option value="1" selected>有效</option>
+                                                <option value="0">无效</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button id="clearBtn" class="btn btn-default"
+                                                    onclick="resetSearch()">清空
+                                            </button>
                                             <button id="searchBtn" class="btn btn-default" onclick="search()">查询
                                             </button>
                                         </div>
