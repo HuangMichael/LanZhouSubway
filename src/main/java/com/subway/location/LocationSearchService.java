@@ -30,7 +30,7 @@ public class LocationSearchService extends BaseService implements SortedSearchab
      */
     public List<Location> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return locationRepository.findByLocNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
+        return locationRepository.findByLocNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1],"01");
     }
 
 
@@ -41,8 +41,8 @@ public class LocationSearchService extends BaseService implements SortedSearchab
      * @return
      */
     public Page<Location> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
-        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return locationRepository.findByLocNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
+        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
+        return locationRepository.findByLocNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1],"01", pageable);
     }
 
 }

@@ -10,6 +10,55 @@ $(function () {
     dataTableName = "#locationListTable";
     docName = "位置信息";
     mainObject = "location";
+    formName = "#form";
+
+
+    var validateOptions = {
+        message: '该值无效 ',
+        fields: {
+            "locName": {
+                message: '位置名称无效',
+                validators: {
+                    notEmpty: {
+                        message: '位置名称不能为空!'
+                    }
+                }
+            },
+
+            "locName": {
+                message: '位置名称无效',
+                validators: {
+                    notEmpty: {
+                        message: '位置名称不能为空!'
+                    }
+                }
+            },
+            "locDesc": {
+                message: '位置描述无效',
+                validators: {
+                    notEmpty: {
+                        message: '位置描述不能为空!'
+                    }
+                }
+            },
+            "locLevel": {
+                message: '位置级别无效',
+                validators: {
+                    notEmpty: {
+                        message: '位置级别不能为空!'
+                    }
+                }
+            },
+            "status": {
+                message: '状态无效',
+                validators: {
+                    notEmpty: {
+                        message: '状态不能为空!'
+                    }
+                }
+            },
+        }
+    };
 
 
     var searchVue = new Vue({
@@ -18,9 +67,11 @@ $(function () {
 
     searchModel = [
         {"param": "locName", "paramDesc": "位置名称"},
-        {"param": "status", "paramDesc": "状态"},
-        {"param": "authKey", "paramDesc": "01"}
+        {"param": "status", "paramDesc": "状态"}
     ];
+
+
+    initSelect();
 
 
     var grid = $(dataTableName).bootgrid({
@@ -34,11 +85,11 @@ $(function () {
         url: "/" + mainObject + "/data",
         formatters: {
             "upload": function (column, row) {
-                return "<button type=\"button\" class=\"btn btn-xs btn-default command-upload\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-upload\"></span></button> "
+                return "<button type='button' class='btn btn-xs btn-default command-upload' data-row-id='" + row.id + "'><span class='fa fa-upload'></span></button> "
             },
             "commands": function (column, row) {
-                return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
-                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></button>";
+                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
+                    "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
             }
         },
         converters: {
@@ -46,16 +97,7 @@ $(function () {
                 to: showStatus
             }
         }
-    }).on("loaded.rs.jquery.bootgrid", function () {
-        /* Executes after data is loaded and rendered */
-        grid.find(".command-edit").on("click", function (e) {
-            alert("You pressed edit on row: " + $(this).data("row-id"));
-        }).end().find(".command-delete").on("click", function (e) {
-            del($(this).data("row-id"));
-        }).end().find(".command-upload").on("click", function (e) {
-            showUpload();
-        });
-    });
+    })
 
 
     $("#searchBtn").trigger("click");
@@ -64,9 +106,12 @@ $(function () {
     vdm = new Vue({
         el: formName,
         data: {
-            member: null,
+            location: null
         }
     });
+
+
+    validateForm.call(validateOptions);
 
 
 });
@@ -114,11 +159,30 @@ function del(id) {
 
 
 /**
- * ɾ����¼
+ * 编辑记录
  */
 function edit(id) {
     var object = findByIdAndObjectName(id, mainObject);
     vdm.$set("location", object);
     $("#editModal").modal("show");
+}
+
+
+function save() {
+    var object = getFormDataAsJSON(formName);
+    var location = JSON.parse(object);
+    var url = "/location/save";
+    var obj = {
+        location: location
+    }
+    $.post(url, obj, function (data) {
+        if (data.result) {
+            $("#editModal").modal("hide");
+            $(dataTableName).bootgrid("reload");
+            showMessageBox("info", data["resultDesc"]);
+        } else {
+            showMessageBox("danger", data["resultDesc"]);
+        }
+    })
 }
 

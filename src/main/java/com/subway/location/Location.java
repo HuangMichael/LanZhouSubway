@@ -41,4 +41,5 @@ public class Location implements java.io.Serializable {
     @Column(length = 1, nullable = false) //默认位置正常
     private String status;//状态
 
+
 }

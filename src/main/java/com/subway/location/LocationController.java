@@ -4,6 +4,7 @@ import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
 import com.subway.service.app.ResourceService;
 import com.subway.utils.PageUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +29,7 @@ import java.util.Map;
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/location")
+@Slf4j
 public class LocationController extends BaseController {
 
     @Autowired
@@ -51,7 +53,7 @@ public class LocationController extends BaseController {
     public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(locationSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(locationSearchService, searchPhrase, 2, current, rowCount, pageable);
     }
 
 
@@ -63,6 +65,20 @@ public class LocationController extends BaseController {
     @ResponseBody
     public Location findById(@PathVariable("id") Long id) {
         return locationService.findById(id);
+    }
+
+
+    /**
+     * @param location 位置信息
+     * @return 保存位置信息
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(Location location) {
+        location.setAuthKey("01");
+        location.setLocLevel(1l);
+        System.out.println("location--------------" + location.toString());
+        return locationService.save(location);
     }
 
 

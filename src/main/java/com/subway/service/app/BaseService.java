@@ -77,7 +77,7 @@ public class BaseService {
     public String[] assembleSearchArrayWithAuthKey(String searchPhrase, int paramSize) {
 
 
-        String array[] = new String[paramSize + 1];
+        String array[] = new String[paramSize];
         if (!searchPhrase.isEmpty()) {
             array = searchPhrase.split(",", paramSize + 1);
         } else {
@@ -85,7 +85,11 @@ public class BaseService {
                 array[i] = "";
             }
         }
-        array[paramSize] = "01";
+
+        log.info("array----1------" + array.toString());
+        array[paramSize - 1] = "01";
+
+        log.info("array------2----" + array.toString());
         return array;
     }
 

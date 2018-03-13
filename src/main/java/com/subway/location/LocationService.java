@@ -41,16 +41,32 @@ public class LocationService extends BaseService {
 
 
     /**
-     * @param id id
-     * @return ����idɾ������
+     * @param id
+     * @return
      */
     public ReturnObject delete(Long id) {
         locationRepository.delete(id);
         Location location = locationRepository.getOne(id);
-        return commonDataService.getReturnType(location == null, "��¼ɾ���ɹ�", "��¼ɾ��ʧ��");
+        return commonDataService.getReturnType(location == null, "记录删除成功！", "记录删除失败!");
     }
 
 
+    /**
+     * @param location
+     * @return 保存位置信息
+     */
+    public ReturnObject save(Location location) {
+
+
+        location = locationRepository.save(location);
+        return commonDataService.getReturnType(location != null, "记录保存成功！", "记录删除失败!");
+    }
+
+
+    /**
+     * @param id
+     * @return
+     */
     public Location findById(Long id) {
         return locationRepository.getOne(id);
     }
