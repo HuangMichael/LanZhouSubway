@@ -324,3 +324,30 @@ function setFormReadStatus(formId, formLocked, except) {
     }
 }
 
+/**
+ *
+ * @param value
+ * @returns {string}
+ */
+var showStatus = function (value) {
+    return (value) ? "有效" : "无效";
+}
+
+
+/**
+ *
+ * @param value
+ * @returns {string}
+ */
+var showYes =function (value) {
+    return (value) ? "是" : "否";
+}
+
+
+/**
+ *
+ * @param value
+ */
+var showDate = function (value) {
+    return transformYMD(value);
+}

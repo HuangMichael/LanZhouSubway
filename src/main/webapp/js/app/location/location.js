@@ -17,7 +17,9 @@ $(function () {
     });
 
     searchModel = [
-        {"param": "name", "paramDesc": "位置名称"}
+        {"param": "locName", "paramDesc": "位置名称"},
+        {"param": "status", "paramDesc": "状态"},
+        {"param": "authKey", "paramDesc": "01"}
     ];
 
 
@@ -40,20 +42,8 @@ $(function () {
             }
         },
         converters: {
-            datetime: {
-                to: function (value) {
-                    return transformYMD(value);
-                }
-            },
-            showYes: {
-                to: function (value) {
-                    return (value) ? "是" : "否";
-                }
-            },
             showStatus: {
-                to: function (value) {
-                    return (value) ? "有效" : "无效";
-                }
+                to: showStatus
             }
         }
     }).on("loaded.rs.jquery.bootgrid", function () {

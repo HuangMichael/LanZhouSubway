@@ -72,6 +72,27 @@ public class BaseService {
     /**
      * @param searchPhrase 查询字符串
      * @param paramSize    参数个数
+     * @return 组装查询参数数组
+     */
+    public String[] assembleSearchArrayWithAuthKey(String searchPhrase, int paramSize) {
+
+
+        String array[] = new String[paramSize + 1];
+        if (!searchPhrase.isEmpty()) {
+            array = searchPhrase.split(",", paramSize + 1);
+        } else {
+            for (int i = 0; i < paramSize; i++) {
+                array[i] = "";
+            }
+        }
+        array[paramSize] = "01";
+        return array;
+    }
+
+
+    /**
+     * @param searchPhrase 查询字符串
+     * @param paramSize    参数个数
      * @param separatable  是否数据隔离
      * @return 组装查询参数数组
      */

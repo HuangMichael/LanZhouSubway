@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * λ����Ϣҵ���ѯ��
+ * 位置信息查询业务类
  *
  * @author huangbin
  * @generate by autoCode
@@ -23,15 +23,26 @@ public class LocationSearchService extends BaseService implements SortedSearchab
     LocationRepository locationRepository;
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize 参数个数
+     * @return
+     */
     public List<Location> findByConditions(String searchPhrase, int paramsSize) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return locationRepository.findAll();
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return locationRepository.findByLocNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
     }
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @param pageable
+     * @return
+     */
     public Page<Location> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return locationRepository.findAll(pageable);
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return locationRepository.findByLocNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
     }
 
 }

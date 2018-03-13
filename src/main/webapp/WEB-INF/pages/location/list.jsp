@@ -24,8 +24,19 @@
                                             <input class="form-control" id="locName"
                                                    name="locName"
                                                    placeholder="位置名称"/>
+
                                         </div>
                                         <div class="col-md-2">
+                                            <select class="form-control" id="status">
+                                                <option value="1">有效</option>
+                                                <option value="0">无效</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+
+                                            <button id="clearBtn" class="btn btn-default"
+                                                    onclick="resetSearch()">清空
+                                            </button>
                                             <button id="searchBtn" class="btn btn-default" onclick="search()">查询
                                             </button>
                                         </div>
