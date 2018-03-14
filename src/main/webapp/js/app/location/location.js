@@ -85,8 +85,7 @@ $(function () {
                 return "<button type='button' class='btn btn-xs btn-default command-upload' data-row-id='" + row.id + "'><span class='fa fa-upload'></span></button> "
             },
             "commands": function (column, row) {
-                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
-                    "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
+                return edit_del_btn;
             }
         },
         converters: {

@@ -158,7 +158,7 @@ public class AutoGenerationJavaCode {
             log.info("filePath---------------" + filePath);
             File docFile = new File(filePath);
             if (!docFile.exists()) {
-                Writer docOut = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(docFile)));
+                Writer docOut = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(docFile), "UTF-8"));// 完美解决乱码
                 temp.process(rootMap, docOut);
                 log.info("文件" + docFile + "不存在，已经重新生成");
             }

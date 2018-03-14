@@ -1,30 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
-<th data-column-id="id" data-width="5%">ÐòºÅ
-
-</th>
-<th data-column-id="matName" data-width="5%">ÎïÁÏÃû³Æ
-
-</th>
-<th data-column-id="matPrice" data-width="5%">µ¥¼Û
-
-</th>
-<th data-column-id="matAmount" data-width="5%">ÊýÁ¿
-
-</th>
-<th data-column-id="matModel" data-width="5%">ÐÍºÅ
-
-</th>
-<th data-column-id="workOrder_id" data-width="5%">¹¤µ¥
-
-</th>
-<th data-column-id="authKey" data-width="5%">ÊÚÈ¨Âë
-
-</th>
-<th data-column-id="status" data-width="5%">×´Ì¬
-
-</th>
-<th data-column-id="commands" data-formatter="commands"
-    data-sortable="false" data-width="10%">±à¼­|É¾³ý
-</th>
+<th data-column-id="id" data-width="5%">åºå·</th>
+<th data-column-id="matName" data-width="30%">ç‰©æ–™åç§°</th>
+<th data-column-id="matPrice" data-width="5%">å•ä»·</th>
+<th data-column-id="matAmount" data-width="5%">æ•°é‡</th>
+<th data-column-id="matModel" data-width="10%">åž‹å·</th>
+<th data-column-id="workOrder_id" data-width="5%">å·¥å•</th>
+<th data-column-id="status" data-width="5%" data-converter="showStatus">çŠ¶æ€</th>
+<th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="10%">ç¼–è¾‘|åˆ é™¤</th>
 

@@ -1,186 +1,176 @@
 /**
-* Created by huangbin on 2018-3-1 09:46:42.
+ * Created by huangbin on 2018-3-1 09:46:42.
 
-*/
+ */
 
 
 $(function () {
 
 
-//µ¼³ö±ØĞëÅäÖÃµÄÁ½¸öÁ¿
-dataTableName = "#woMaterialCostListTable";
-docName = "¹¤µ¥ÎïÁÏÏûºÄ";
-mainObject = "woMaterialCost";
-formName = "#form";
+//å¯¼å‡ºå¿…é¡»é…ç½®çš„ä¸¤ä¸ªé‡
+    dataTableName = "#woMaterialCostListTable";
+    docName = "å·¥å•ç‰©æ–™æ¶ˆè€—";
+    mainObject = "woMaterialCost";
+    formName = "#form";
 
 
-var searchVue = new Vue({
-el: "#searchBox"
-});
+    var searchVue = new Vue({
+        el: "#searchBox"
+    });
 
 
+    var validateOptions = {
+        message: 'è¯¥å€¼æ— æ•ˆ ',
+        fields: {
+            "locName": {
+                message: 'ä½ç½®åç§°æ— æ•ˆ',
+                validators: {
+                    notEmpty: {
+                        message: 'ä½ç½®åç§°ä¸èƒ½ä¸ºç©º!'
+                    }
+                }
+            },
 
-var validateOptions = {
-message: '¸ÃÖµÎŞĞ§ ',
-fields: {
-"locName": {
-message: 'Î»ÖÃÃû³ÆÎŞĞ§',
-validators: {
-notEmpty: {
-message: 'Î»ÖÃÃû³Æ²»ÄÜÎª¿Õ!'
-}
-}
-},
-
-"locName": {
-message: 'Î»ÖÃÃû³ÆÎŞĞ§',
-validators: {
-notEmpty: {
-message: 'Î»ÖÃÃû³Æ²»ÄÜÎª¿Õ!'
-}
-}
-},
-"locDesc": {
-message: 'Î»ÖÃÃèÊöÎŞĞ§',
-validators: {
-notEmpty: {
-message: 'Î»ÖÃÃèÊö²»ÄÜÎª¿Õ!'
-}
-}
-},
-"locLevel": {
-message: 'Î»ÖÃ¼¶±ğÎŞĞ§',
-validators: {
-notEmpty: {
-message: 'Î»ÖÃ¼¶±ğ²»ÄÜÎª¿Õ!'
-}
-}
-},
-"status": {
-message: '×´Ì¬ÎŞĞ§',
-validators: {
-notEmpty: {
-message: '×´Ì¬²»ÄÜÎª¿Õ!'
-}
-}
-},
-}
-};
-
-
-searchModel = [
-{"param": "locName", "paramDesc": "Ãû³Æ"},
-{"param": "status", "paramDesc": "×´Ì¬"}
-];
+            "locName": {
+                message: 'ä½ç½®åç§°æ— æ•ˆ',
+                validators: {
+                    notEmpty: {
+                        message: 'ä½ç½®åç§°ä¸èƒ½ä¸ºç©º!'
+                    }
+                }
+            },
+            "locDesc": {
+                message: 'ä½ç½®æè¿°æ— æ•ˆ',
+                validators: {
+                    notEmpty: {
+                        message: 'ä½ç½®æè¿°ä¸èƒ½ä¸ºç©º!'
+                    }
+                }
+            },
+            "locLevel": {
+                message: 'ä½ç½®çº§åˆ«æ— æ•ˆ',
+                validators: {
+                    notEmpty: {
+                        message: 'ä½ç½®çº§åˆ«ä¸èƒ½ä¸ºç©º!'
+                    }
+                }
+            },
+            "status": {
+                message: 'çŠ¶æ€æ— æ•ˆ',
+                validators: {
+                    notEmpty: {
+                        message: 'çŠ¶æ€ä¸èƒ½ä¸ºç©º!'
+                    }
+                }
+            },
+        }
+    };
 
 
-var grid = $(dataTableName).bootgrid({
-selection: true,
-ajax: true,
-post: function () {
-return {
-id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
-};
-},
-url: "/" + mainObject + "/data",
-formatters: {
-"upload": function (column, row) {
-return "
-<button type='button' class='btn btn-xs btn-default command-upload' data-row-id='" + row.id + "'><span
-        class='fa fa-upload'></span></button> "
-},
-"commands": function (column, row) {
-return "
-<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "'
-        onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
-"
-<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "'
-        onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
-}
-},
-converters: {
-showStatus: {
-to: showStatus
-}
-}
-})
+    searchModel = [
+        {"param": "ecName", "paramDesc": "ç‰©èµ„åç§°"},
+        {"param": "status", "paramDesc": "çŠ¶æ€"}
+    ];
 
 
-$("#searchBtn").trigger("click");
+    var grid = $(dataTableName).bootgrid({
+        selection: true,
+        ajax: true,
+        post: function () {
+            return {
+                id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
+            };
+        },
+        url: "/" + mainObject + "/data",
+        formatters: {
+            "commands": function (column, row) {
+                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " + "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
+
+            }
+        },
+        converters: {
+            showStatus: {
+                to: showStatus
+            }
+        }
+    })
 
 
-vdm = new Vue({
-el: formName,
-data: {
-"woMaterialCost": null
-}
-});
-initSelect();
+    $("#searchBtn").trigger("click");
 
-validateForm.call(validateOptions);
+
+    vdm = new Vue({
+        el: formName,
+        data: {
+            "woMaterialCost": null
+        }
+    });
+    initSelect();
+
+    validateForm.call(validateOptions);
 
 
 });
 
 
 /**
-* É¾³ı¼ÇÂ¼
-* @param id
-*/
+ * åˆ é™¤è®°å½•
+ * @param id
+ */
 function del(id) {
 
-var url = getMainObject() + "/delete/" + id;
-if (id) {
-bootbox.confirm({
-message: "È·¶¨É¾³ı¸Ã¼ÇÂ¼Ã´",
-buttons: {
-confirm: {
-label: 'È·¶¨',
-className: 'btn-success'
-},
-cancel: {
-label: 'È¡Ïû',
-className: 'btn-danger'
-}
-},
-callback: function (result) {
-if (result) {
-$.ajax({
-type: "GET",
-url: url,
-success: function (msg) {
-if (msg) {
-showMessage(msg.result, msg["resultDesc"]);
-$(dataTableName).bootgrid("reload");
-}
-},
-error: function (msg) {
-showMessage(msg.result, msg["resultDesc"]);
-}
-});
-}
-}
-});
-}
+    var url = getMainObject() + "/delete/" + id;
+    if (id) {
+        bootbox.confirm({
+            message: "ç¡®å®šåˆ é™¤è¯¥è®°å½•ä¹ˆ",
+            buttons: {
+                confirm: {
+                    label: 'ç¡®å®š',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'å–æ¶ˆ',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function (msg) {
+                            if (msg) {
+                                showMessage(msg.result, msg["resultDesc"]);
+                                $(dataTableName).bootgrid("reload");
+                            }
+                        },
+                        error: function (msg) {
+                            showMessage(msg.result, msg["resultDesc"]);
+                        }
+                    });
+                }
+            }
+        });
+    }
 }
 
 
 /**
-* ±à¼­¼ÇÂ¼
-*/
+ * ç¼–è¾‘è®°å½•
+ */
 function edit(id) {
-var object = findByIdAndObjectName(id, mainObject);
-vdm.$set("woMaterialCost", object);
-$("#editModal").modal("show");
+    var object = findByIdAndObjectName(id, mainObject);
+    vdm.$set("woMaterialCost", object);
+    $("#editModal").modal("show");
 }
 
 
 /**
-* ±à¼­¼ÇÂ¼
-*/
+ * ç¼–è¾‘è®°å½•
+ */
 function add() {
-vdm.$set("woMaterialCost", null);
-$("#editModal").modal("show");
+    vdm.$set("woMaterialCost", null);
+    $("#editModal").modal("show");
 }
 
 

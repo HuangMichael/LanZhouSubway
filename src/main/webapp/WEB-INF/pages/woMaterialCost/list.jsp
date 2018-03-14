@@ -11,7 +11,7 @@
                     <!-- BOX -->
                     <div class="box border blue">
                         <div class="box-title">
-                            <h4><i class="fa fa-table"></i>π§µ•ŒÔ¡œœ˚∫ƒ</h4>
+                            <h4><i class="fa fa-table"></i>Â∑•ÂçïÁâ©ÊñôÊ∂àËÄó</h4>
                         </div>
                         <%@include file="../common/common-menubar.jsp" %>
                         <div class="box-body">
@@ -20,22 +20,22 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name"
-                                                   name="name"
-                                                   placeholder="πÿº¸◊÷"/>
+                                            <input class="form-control" id="ecName"
+                                                   name="ecName"
+                                                   placeholder="Áâ©ËµÑÂêçÁß∞"/>
 
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="status">
-                                                <option value="1" selected>”––ß</option>
-                                                <option value="0">Œﬁ–ß</option>
+                                            <select class="form-control" id="status" onchange="search()">
+                                                <option value="1" selected>ÊúâÊïà</option>
+                                                <option value="0">Êó†Êïà</option>
                                             </select>
                                         </div>
                                         <div class="col-md-2">
                                             <button id="clearBtn" class="btn btn-default"
-                                                    onclick="resetSearch()">«Âø’
+                                                    onclick="resetSearch()">Ê∏ÖÁ©∫
                                             </button>
-                                            <button id="searchBtn" class="btn btn-default" onclick="search()">≤È—Ø
+                                            <button id="searchBtn" class="btn btn-default" onclick="search()">Êü•ËØ¢
                                             </button>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
 </div>
 
 
-<!-- ƒ£Ã¨øÚ£®Modal£© -->
+<!-- Ê®°ÊÄÅÊ°ÜÔºàModalÔºâ -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -70,7 +70,7 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel1">
-                    ±‡º≠º«¬º
+                    ÁºñËæëËÆ∞ÂΩï
                 </h4>
             </div>
             <div class="modal-body">
@@ -78,21 +78,5 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
-</div>
-
-<div class="modal fade " id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span>&times;</span>
-                </button>
-                <h4 class="modal-title pull-left" id="myModalLabel2">«Î—°‘ÒŒƒº˛</h4>
-            </div>
-            <div class="modal-body">
-                <div id="dropZone" class="dropzone"></div>
-            </div>
-        </div>
-    </div>
 </div>
 <script type="text/javascript" src="/js/app/woMaterialCost/woMaterialCost.js"></script>

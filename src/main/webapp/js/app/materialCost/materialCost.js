@@ -45,7 +45,7 @@ $(function () {
 
 
     searchModel = [
-        {"param": "locName", "paramDesc": "名称"},
+        {"param": "ecName", "paramDesc": "物资名称"},
         {"param": "status", "paramDesc": "状态"}
     ];
 
