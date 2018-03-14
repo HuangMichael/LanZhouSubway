@@ -82,6 +82,13 @@ $(function () {
     validateForm.call(validateOptions);
 
 
+    $("input[class='wdate']").on("click", function () {
+
+        WdatePicker({maxDate: '%y-%M-%d'});
+
+    });
+
+
 });
 
 
