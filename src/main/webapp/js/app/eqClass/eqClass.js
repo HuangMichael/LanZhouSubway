@@ -48,8 +48,8 @@ $(function () {
 
 
     searchModel = [
-        {"param": "className", "paramDesc": "分类名称"},
-        {"param": "status", "paramDesc": "״̬"}
+        {"param": "name", "paramDesc": "分类名称"},
+        {"param": "status", "paramDesc": "状态"}
     ];
 
 
@@ -76,6 +76,9 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showYes: {
+                to: showYes
             }
         }
     })
@@ -149,30 +152,6 @@ function edit(id) {
     vdm.$set("eqClass", object);
     $("#editModal").modal("show");
 }
-
-
-// /**
-//  *
-//  */
-// function save() {
-//
-//
-//     console.log("let it  be  easy---");
-//     var object = getFormJsonData("form");
-//     var location = JSON.parse(object);
-//     var url = "/location/save";
-//     var obj = {
-//         location: location
-//     }
-//     $.post(url, obj, function (data) {
-//         if (data.result) {
-//             $("#editModal").modal("hide");
-//             $(dataTableName).bootgrid("reload");
-//         }
-//         showMessage(data.result, data["resultDesc"]);
-//     })
-// }
-
 
 /**
  * 编辑记录

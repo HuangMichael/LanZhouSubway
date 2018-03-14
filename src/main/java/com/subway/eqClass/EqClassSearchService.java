@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * �豸����ҵ���ѯ��
+ * 设备分类查询业务类
  *
  * @author huangbin
  * @generate by autoCode
@@ -30,7 +30,7 @@ public class EqClassSearchService extends BaseService implements SortedSearchabl
      */
     public List<EqClass> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return eqClassRepository.findAll();
+        return eqClassRepository.findByNameContainingAndStatus(array[0], array[1]);
     }
 
 
@@ -42,7 +42,7 @@ public class EqClassSearchService extends BaseService implements SortedSearchabl
      */
     public Page<EqClass> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return eqClassRepository.findAll(pageable);
+        return eqClassRepository.findByNameContainingAndStatus(array[0], array[1], pageable);
     }
 
 }
