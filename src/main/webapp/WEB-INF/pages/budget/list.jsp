@@ -20,12 +20,11 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name"
-                                                   name="name"/>
-
+                                            <input class="form-control" id="purpose"
+                                                   name="purpose"/>
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="status">
+                                            <select class="form-control" id="status" onchange="search()">
                                                 <option value="1" selected>有效</option>
                                                 <option value="0">无效</option>
                                             </select>

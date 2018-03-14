@@ -9,7 +9,7 @@ $(function () {
     docName = "采购申请";
     mainObject = "budget";
 
-    formName="#form";
+    formName = "#form";
 
     var searchVue = new Vue({
         el: "#searchBox"
@@ -40,7 +40,7 @@ $(function () {
 
 
     searchModel = [
-        {"param": "locName", "paramDesc": ""},
+        {"param": "purpose", "paramDesc": "申请原因"},
         {"param": "status", "paramDesc": "状态"}];
 
 

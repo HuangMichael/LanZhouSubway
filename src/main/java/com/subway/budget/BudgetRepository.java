@@ -1,11 +1,12 @@
 package com.subway.budget;
-import java.util.List;
-import java.util.Map;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 
 /**
-* ²É¹ºÉêÇëÊı¾İ¿â·ÃÎÊ½Ó¿Ú
 *
 * @author huangbin
 * @generate by autoCode
@@ -13,6 +14,27 @@ import org.springframework.data.jpa.repository.JpaRepository;
 */
 
 public interface BudgetRepository extends JpaRepository<Budget, Long> {
+
+
+    /**
+     * @param purpose ç”³è¯·åŸå› 
+     * @param status çŠ¶æ€
+     * @return
+     */
+    List<Budget> findByPurposeContainingAndStatus(String purpose,String status);
+
+
+
+    /**
+     * @param purpose ç”³è¯·åŸå› 
+     * @param status çŠ¶æ€
+     * @return
+     */
+    Page<Budget> findByPurposeContainingAndStatus(String purpose, String status, Pageable pageable);
+
+
+
+
 
 
 }
