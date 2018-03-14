@@ -402,6 +402,17 @@ var showLocName = function (value) {
 }
 
 
+
+/**
+ *
+ * @param value
+ */
+var showShortLocName = function (value) {
+    return value["locName"];
+}
+
+
+
 /**
  *
  * @param value

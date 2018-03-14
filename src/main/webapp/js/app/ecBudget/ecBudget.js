@@ -62,6 +62,9 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showShortLocName: {
+                to: showShortLocName
             }
         }
     })
