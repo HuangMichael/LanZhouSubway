@@ -33,4 +33,10 @@ public interface UnitRepository extends JpaRepository<Unit, Long> {
      */
     Page<Unit> findByNameContainingAndStatus(String name, String status, Pageable pageable);
 
+
+    /**
+     * @param status
+     * @return
+     */
+    List<Unit> findByStatus(String status);
 }

@@ -65,8 +65,8 @@ $(function () {
 
 
         formatters: {
-            "upload": function (column, row) {
-                return "<button type='button' class='btn btn-xs btn-default command-upload' data-row-id='" + row.id + "'><span class='fa fa-upload'></span></button> "
+            "addUnit": function (column, row) {
+                return "<button type='button' class='btn btn-xs btn-default command-link' data-row-id='" + row.id + "' onclick='addUnit(" + row.id + ")'><span class='fa fa-link'></span></button> "
             },
             "commands": function (column, row) {
                 return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
@@ -81,7 +81,7 @@ $(function () {
                 to: showYes
             }
         }
-    })
+    });
 
 
     $("#searchBtn").trigger("click");
@@ -161,4 +161,11 @@ function add() {
     $("#editModal").modal("show");
 }
 
+
+/**
+ * 添加外委单位
+ */
+function addUnit() {
+    $("#unitModal").modal("show");
+}
 

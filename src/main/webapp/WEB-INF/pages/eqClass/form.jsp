@@ -16,10 +16,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="hasChild" class="col-md-2 control-label">有子分类?</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="hasChild" name="hasChild" v-model="eqClass.hasChild"/>
-                </div>
                 <label for="limitHours" class="col-md-2 control-label">维修时限</label>
                 <div class="col-md-4">
                     <input class="form-control" id="limitHours" name="limitHours" v-model="eqClass.limitHours"/>

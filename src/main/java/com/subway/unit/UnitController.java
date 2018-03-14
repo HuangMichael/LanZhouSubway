@@ -56,6 +56,16 @@ public class UnitController extends BaseController {
 
 
     /**
+     * @return 查询所有的外委单位
+     */
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Unit> findAll() {
+        return unitService.findAll();
+    }
+
+
+    /**
      * @param id
      * @return
      */

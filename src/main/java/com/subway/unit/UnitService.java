@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.subway.service.app.BaseService;
+import com.subway.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.subway.service.commonData.CommonDataService;
 import org.springframework.data.domain.Page;
@@ -36,7 +37,7 @@ public class UnitService extends BaseService {
      * @return
      */
     public List<Unit> findAll() {
-        return unitRepository.findAll();
+        return unitRepository.findByStatus(ConstantUtils.STATUS_YES);
     }
 
 

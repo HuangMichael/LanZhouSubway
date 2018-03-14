@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8"  %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="container">
@@ -38,8 +38,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <table id="eqClassListTable"
-                                           class="table table-bordered table-hover table-striped">
+                                    <table id="eqClassListTable" class="table table-bordered table-hover table-striped">
                                         <thead>
                                         <tr>
                                             <%@include file="tableList.jsp" %>
@@ -93,4 +92,22 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade " id="unitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+                <h4 class="modal-title pull-left" id="myModalLabel">关联外委单位</h4>
+            </div>
+            <div class="modal-body">
+                <%@include file="unitList.jsp" %>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="/js/app/eqClass/eqClass.js"></script>
