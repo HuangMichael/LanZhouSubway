@@ -21,7 +21,7 @@ public interface EcBudgetRepository extends JpaRepository<EcBudget, Long> {
      * @param status  状态
      * @return
      */
-    List<EcBudget> findByECnameContainingAndStatusAndAuthKeyContaining(String purpose, String status, String authKey);
+    List<EcBudget> findByEcNameContainingAndStatusAndAuthKeyContaining(String purpose, String status, String authKey);
 
 
     /**
@@ -29,7 +29,7 @@ public interface EcBudgetRepository extends JpaRepository<EcBudget, Long> {
      * @param status  状态
      * @return
      */
-    Page<EcBudget> findByECnameContainingAndStatusAndAuthKeyContaining(String purpose, String status, String authKey, Pageable pageable);
+    Page<EcBudget> findByEcNameContainingAndStatusAndAuthKeyContaining(String purpose, String status, String authKey, Pageable pageable);
 
 
 }

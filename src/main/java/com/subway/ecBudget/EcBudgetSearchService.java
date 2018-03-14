@@ -31,7 +31,7 @@ public class EcBudgetSearchService extends BaseService implements SortedSearchab
      */
     public List<EcBudget> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return ecBudgetRepository.findByECnameContainingAndStatusAndAuthKeyContaining(array[0], array[1],array[2]);
+        return ecBudgetRepository.findByEcNameContainingAndStatusAndAuthKeyContaining(array[0], array[1],array[2]);
     }
 
 
@@ -43,7 +43,7 @@ public class EcBudgetSearchService extends BaseService implements SortedSearchab
      */
     public Page<EcBudget> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return ecBudgetRepository.findByECnameContainingAndStatusAndAuthKeyContaining(array[0], array[1],array[2], pageable);
+        return ecBudgetRepository.findByEcNameContainingAndStatusAndAuthKeyContaining(array[0], array[1],array[2], pageable);
     }
 
 }

@@ -22,7 +22,7 @@ public class EcBudget {
     @Column(length = 20)
     private String applicant;// 
     @Column(length = 20)
-    private String eCname;//
+    private String ecName;//
     @Column(length = 20)
     private String amount;// 
     @Column(length = 20)
