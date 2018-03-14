@@ -384,5 +384,32 @@ var showReportType = function (value) {
 }
 
 
+/**
+ *
+ * @param value
+ */
+var showEqName = function (value) {
+    return value["description"];
+}
+
+
+/**
+ *
+ * @param value
+ */
+var showLocName = function (value) {
+    return value["location"]["locName"];
+}
+
+
+/**
+ *
+ * @param value
+ */
+var showEqClassName = function (value) {
+    return value["name"];
+}
+
+
 
 

@@ -38,13 +38,21 @@ $(function () {
             },
             showReportType: {
                 to: showReportType
+            },
+            showEqName: {
+                to: showEqName
+            },
+            showLocName: {
+                to: showLocName
+            },
+            showEqClassName: {
+                to: showEqClassName
             }
         }
     })
 
 
     $("#searchBtn").trigger("click");
-
 
 
     initSelect();
