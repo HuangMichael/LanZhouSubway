@@ -9,27 +9,21 @@
                 <div class="col-md-4">
                     <input class="form-control" id="id" name="id" type="hidden"
                            v-model="materialCost.id"/>
-                    <input class="form-control" id="ecName" name="ecName"
-                           v-model="materialCost.ecName"/>
+                    <input class="form-control" id="ecName" name="ecName" v-model="materialCost.ecName" required/>
                 </div>
                 <label for="amount" class="col-md-2 control-label">数量</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="amount" name="amount"
-                           v-model="materialCost.amount"/>
+                    <input class="form-control" id="amount" name="amount" v-model="materialCost.amount" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="applicant" class="col-md-2 control-label">申请人</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="applicant" name="applicant"
-                           v-model="materialCost.applicant"/>
+                    <input class="form-control" id="applicant" name="applicant" v-model="materialCost.applicant" required/>
                 </div>
-            </div>
-            <div class="form-group">
                 <label for="applyDate" class="col-md-2 control-label">申请日期</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="applyDate" name="applyDate"
-                           v-model="materialCost.applyDate"/>
+                    <input class="form-control" id="applyDate" name="applyDate" v-model="materialCost.applyDate" required/>
                 </div>
             </div>
         </div>
