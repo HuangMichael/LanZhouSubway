@@ -20,8 +20,7 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="purpose"
-                                                   name="purpose"/>
+                                            <input class="form-control" id="ecName" name="ecName"/>
                                         </div>
                                         <div class="col-md-2">
                                             <select class="form-control" id="status" onchange="search()">
@@ -37,8 +36,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <table id="budgetListTable"
-                                           class="table table-bordered table-hover table-striped">
+                                    <table id="ecBudgetListTable" class="table table-bordered table-hover table-striped">
                                         <thead>
                                         <tr>
                                             <%@include file="tableList.jsp" %>
@@ -93,4 +91,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/js/app/budget/budget.js"></script>
+<script type="text/javascript" src="/js/app/ecBudget/ecBudget.js"></script>

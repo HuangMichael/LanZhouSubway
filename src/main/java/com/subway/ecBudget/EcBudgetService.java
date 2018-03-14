@@ -14,7 +14,7 @@ import static com.subway.utils.ConstantUtils.*;
 
 
 /**
- * �ɹ�����ҵ����
+ * 易耗品申请单业务类
  *
  * @author huangbin
  * @generate by autoCode
@@ -23,31 +23,19 @@ import static com.subway.utils.ConstantUtils.*;
 @Service
 public class EcBudgetService extends BaseService {
 
-
     @Autowired
-    EcBudgetRepository ecBudgetRepository ;
-
+    EcBudgetRepository ecBudgetRepository;
 
     @Autowired
     CommonDataService commonDataService;
-
-    public List<EcBudget> findAll() {
-        return budgetRepository.findAll();
-    }
-
-
-    public Page<EcBudget> findAll(Pageable pageable) {
-        return budgetRepository.findAll(pageable);
-    }
-
 
     /**
      * @param id
      * @return
      */
     public ReturnObject delete(Long id) {
-        budgetRepository.delete(id);
-        EcBudget budget = budgetRepository.getOne(id);
+        ecBudgetRepository.delete(id);
+        EcBudget budget = ecBudgetRepository.getOne(id);
         return commonDataService.getReturnType(budget == null, DELETE_SUCCESS, DELETE_FAILURE);
     }
 
@@ -58,7 +46,7 @@ public class EcBudgetService extends BaseService {
      */
     public ReturnObject save(EcBudget budget) {
 
-        budget = budgetRepository.save(budget);
+        budget = ecBudgetRepository.save(budget);
         return commonDataService.getReturnType(budget != null, SAVE_SUCCESS, SAVE_FAILURE);
     }
 
@@ -68,7 +56,7 @@ public class EcBudgetService extends BaseService {
      * @return
      */
     public EcBudget findById(Long id) {
-        return budgetRepository.getOne(id);
+        return ecBudgetRepository.getOne(id);
     }
 
 }

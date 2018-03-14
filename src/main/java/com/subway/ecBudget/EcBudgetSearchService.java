@@ -1,5 +1,6 @@
 package com.subway.ecBudget;
 
+import com.subway.budget.BudgetRepository;
 import com.subway.service.app.BaseService;
 import com.subway.utils.search.SortedSearchable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.List;
 public class EcBudgetSearchService extends BaseService implements SortedSearchable {
 
     @Autowired
-    BudgetRepository budgetRepository;
+    EcBudgetRepository ecBudgetRepository;
 
 
     /**
@@ -30,7 +31,7 @@ public class EcBudgetSearchService extends BaseService implements SortedSearchab
      */
     public List<EcBudget> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return budgetRepository.findByPurposeContainingAndStatus(array[0], array[1]);
+        return ecBudgetRepository.findByECnameContainingAndStatusAndAuthKeyContaining(array[0], array[1],array[2]);
     }
 
 
@@ -41,8 +42,8 @@ public class EcBudgetSearchService extends BaseService implements SortedSearchab
      * @return
      */
     public Page<EcBudget> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return budgetRepository.findByPurposeContainingAndStatus(array[0], array[1], pageable);
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return ecBudgetRepository.findByECnameContainingAndStatusAndAuthKeyContaining(array[0], array[1],array[2], pageable);
     }
 
 }

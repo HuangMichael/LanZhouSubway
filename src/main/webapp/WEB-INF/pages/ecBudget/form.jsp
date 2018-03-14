@@ -5,90 +5,81 @@
     <div class="form-group">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="applyDate" class="col-md-2 control-label">申请日期</label>
+                <label for="amount" class="col-md-2 control-label">数量</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" type="hidden"
-                           v-model="budget.id"/>
-                    <input class="form-control" onLoad="WdatePicker({maxDate:'%y-%M-%d'})"
-                           onClick="WdatePicker({maxDate:'%y-%M-%d'})" id="applyDate" name="applyDate" v-model="budget.applyDate"/>
+                    <input class="form-control" id="id" name="id" type="hidden" v-model="ecBudget.id"/>
+                    <input class="form-control" id="amount" name="amount" v-model="ecBudget.amount"/>
                 </div>
 
                 <label for="applicant" class="col-md-2 control-label">申请人</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="applicant" name="applicant"
-                           v-model="budget.applicant"/>
+                    <input class="form-control" id="applicant" name="applicant" v-model="ecBudget.applicant"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="applyDep" class="col-md-2 control-label">申请部门</label>
+                <label for="applyDate" class="col-md-2 control-label">申请日期</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="applyDep" name="applyDep"
-                           v-model="budget.applyDep"/>
+                    <input class="form-control Wdate" id="applyDate" name="applyDate" v-model="ecBudget.applyDate"/>
                 </div>
 
-                <label for="accessoryName" class="col-md-2 control-label">配件名称</label>
+                <label for="auditDate" class="col-md-2 control-label">审核日期</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="accessoryName" name="accessoryName"
-                           v-model="budget.accessoryName"/>
+                    <input class="form-control Wdate" id="auditDate" name="auditDate" v-model="ecBudget.auditDate"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="amount" class="col-md-2 control-label">数量</label>
+                <label for="auditor" class="col-md-2 control-label">审核人</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="amount" name="amount"
-                           v-model="budget.amount"/>
+                    <input class="form-control" id="auditor" name="auditor" v-model="ecBudget.auditor"/>
                 </div>
 
-                <label for="specifications" class="col-md-2 control-label">规格</label>
+                <label for="authKey" class="col-md-2 control-label"></label>
                 <div class="col-md-4">
-                    <input class="form-control" id="specifications" name="specifications"
-                           v-model="budget.specifications"/>
+                    <input class="form-control" id="authKey" name="authKey" v-model="ecBudget.authKey"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="approver" class="col-md-2 control-label">批准人</label>
+                <label for="confirmReason" class="col-md-2 control-label">确认原因</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="approver" name="approver"
-                           v-model="budget.approver"/>
+                    <input class="form-control" id="confirmReason" name="confirmReason" v-model="ecBudget.confirmReason"/>
                 </div>
 
-                <label for="handler" class="col-md-2 control-label">经办人</label>
+                <label for="eCname" class="col-md-2 control-label">易耗品名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="handler" name="handler"
-                           v-model="budget.handler"/>
+                    <input class="form-control" id="eCname" name="eCname" v-model="ecBudget.eCname"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="purpose" class="col-md-2 control-label">申请原因</label>
+                <label for="fixAdvice" class="col-md-2 control-label">维修建议</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="purpose" name="purpose"
-                           v-model="budget.purpose"/>
+                    <input class="form-control" id="fixAdvice" name="fixAdvice" v-model="ecBudget.fixAdvice"/>
                 </div>
 
-                <label for="receiver" class="col-md-2 control-label">接收人</label>
+                <label for="leaderAdvice" class="col-md-2 control-label">领导意见</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="receiver" name="receiver"
-                           v-model="budget.receiver"/>
+                    <input class="form-control" id="leaderAdvice" name="leaderAdvice" v-model="ecBudget.leaderAdvice"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="eqClass_id" class="col-md-2 control-label">设备分类</label>
+                <label for="permitted" class="col-md-2 control-label"></label>
                 <div class="col-md-4">
-                    <input class="form-control" id="eqClass_id" name="eqClass_id"
-                           v-model="budget.eqClass_id"/>
+                    <input class="form-control" id="permitted" name="permitted" v-model="ecBudget.permitted"/>
                 </div>
 
-                <label for="locationId" class="col-md-2 control-label">设备位置</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="locationId" name="locationId"
-                           v-model="budget.locationId"/>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status"
-                           v-model="budget.status"/>
+                    <input class="form-control" id="status" name="status" v-model="ecBudget.status"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="updateReason" class="col-md-2 control-label">更换原因</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="updateReason" name="updateReason" v-model="ecBudget.updateReason"/>
+                </div>
+
+                <label for="locationId" class="col-md-2 control-label">所属位置</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="locationId" name="location.id" v-model="ecBudget.location.id"/>
                 </div>
             </div>
         </div>
@@ -97,7 +88,8 @@
         <button type="button" class="btn btn-default"
                 data-dismiss="modal">取消
         </button>
-        <button id="saveBtn" name="saveBtn" class="btn btn-danger">保存
+        <button id="saveBtn" name="saveBtn"
+                class="btn btn-danger">保存
         </button>
     </div>
     </div>

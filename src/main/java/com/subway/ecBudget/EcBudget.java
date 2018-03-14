@@ -44,6 +44,9 @@ public class EcBudget {
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location; //位置
 
+    @Column(length = 20)
+    private String authKey; //授权码
+
     @Column(length = 1)
     private String status; //状态
 
