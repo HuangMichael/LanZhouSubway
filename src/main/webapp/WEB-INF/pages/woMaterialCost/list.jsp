@@ -20,9 +20,9 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="ecName"
-                                                   name="ecName"
-                                                   placeholder="物资名称"/>
+                                            <input class="form-control" id="orderLineNo"
+                                                   name="orderLineNo"
+                                                   placeholder="工单编号"/>
 
                                         </div>
                                         <div class="col-md-2">

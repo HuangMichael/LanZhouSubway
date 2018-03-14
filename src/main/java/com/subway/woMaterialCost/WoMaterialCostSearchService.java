@@ -29,7 +29,7 @@ public class WoMaterialCostSearchService extends BaseService implements SortedSe
      */
     public List<WoMaterialCost> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return woMaterialCostRepository.findByEcNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
+        return woMaterialCostRepository.findByWorkOrder_OrderLineNoContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
     }
 
 
@@ -41,7 +41,7 @@ public class WoMaterialCostSearchService extends BaseService implements SortedSe
      */
     public Page<WoMaterialCost> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return woMaterialCostRepository.findByEcNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
+        return woMaterialCostRepository.findByWorkOrder_OrderLineNoContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
     }
 
 }

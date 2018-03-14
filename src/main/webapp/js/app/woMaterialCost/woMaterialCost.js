@@ -68,7 +68,7 @@ $(function () {
 
 
     searchModel = [
-        {"param": "ecName", "paramDesc": "物资名称"},
+        {"param": "orderLineNo", "paramDesc": "工单编号"},
         {"param": "status", "paramDesc": "状态"}
     ];
 

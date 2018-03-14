@@ -17,22 +17,22 @@ public interface WoMaterialCostRepository extends JpaRepository<WoMaterialCost, 
 
 
     /**
-     * @param ecName
+     * @param orderLineNo
      * @param status
      * @param authKey
      * @return
      */
-    List<WoMaterialCost> findByEcNameContainingAndStatusAndAuthKeyStartingWith(String ecName, String status, String authKey);
+    List<WoMaterialCost> findByWorkOrder_OrderLineNoContainingAndStatusAndAuthKeyStartingWith(String orderLineNo, String status, String authKey);
 
 
     /**
-     * @param ecName
+     * @param orderLineNo
      * @param status
      * @param authKey
      * @param pageable
      * @return
      */
-    Page<WoMaterialCost> findByEcNameContainingAndStatusAndAuthKeyStartingWith(String ecName, String status, String authKey, Pageable pageable);
+    Page<WoMaterialCost> findByWorkOrder_OrderLineNoContainingAndStatusAndAuthKeyStartingWith(String orderLineNo, String status, String authKey, Pageable pageable);
 
 }
 
