@@ -18,7 +18,8 @@ $(function () {
 
 
     searchModel = [
-        {"param": "orderDesc", "paramDesc": "描述"},
+        {"param": "orderDesc", "paramDesc": "工单描述"},
+        {"param": "orderState", "paramDesc": "工单状态"},
         {"param": "status", "paramDesc": "状态"}
     ];
 
@@ -39,8 +40,8 @@ $(function () {
             showStatus: {
                 to: showStatus
             },
-            showReportType:{
-                to:showReportType
+            showReportType: {
+                to: showReportType
             }
         }
     })
