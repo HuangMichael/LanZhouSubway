@@ -69,8 +69,7 @@ $(function () {
     })
 
 
-    // $("#searchBtn").trigger("click");
-
+    $("#searchBtn").trigger("click");
 
     vdm = new Vue({
         el: formName,
