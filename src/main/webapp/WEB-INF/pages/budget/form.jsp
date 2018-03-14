@@ -4,119 +4,99 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-                    <div class="form-group">
-                <label for="id" class="col-md-2 control-label">–Ú∫≈</label>
+            <div class="form-group">
+                <label for="applyDate" class="col-md-2 control-label">Áî≥ËØ∑Êó•Êúü</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id"
+                    <input class="form-control" id="id" name="id" type="hidden"
                            v-model="budget.id"/>
+                    <input class="form-control" id="applyDate" name="applyDate" v-model="budget.applyDate"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="applyDate" class="col-md-2 control-label">…Í«Î»’∆⁄</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="applyDate" name="applyDate"
-                           v-model="budget.applyDate"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="applicant" class="col-md-2 control-label"> …Í«Î»À</label>
+
+                <label for="applicant" class="col-md-2 control-label">Áî≥ËØ∑‰∫∫</label>
                 <div class="col-md-4">
                     <input class="form-control" id="applicant" name="applicant"
                            v-model="budget.applicant"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="applyDep" class="col-md-2 control-label">…Í«Î≤ø√≈</label>
+                <label for="applyDep" class="col-md-2 control-label">Áî≥ËØ∑ÈÉ®Èó®</label>
                 <div class="col-md-4">
                     <input class="form-control" id="applyDep" name="applyDep"
                            v-model="budget.applyDep"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="accessoryName" class="col-md-2 control-label">≈‰º˛√˚≥∆</label>
+
+                <label for="accessoryName" class="col-md-2 control-label">ÈÖç‰ª∂ÂêçÁß∞</label>
                 <div class="col-md-4">
                     <input class="form-control" id="accessoryName" name="accessoryName"
                            v-model="budget.accessoryName"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="amount" class="col-md-2 control-label"> ˝¡ø</label>
+                <label for="amount" class="col-md-2 control-label">Êï∞Èáè</label>
                 <div class="col-md-4">
                     <input class="form-control" id="amount" name="amount"
                            v-model="budget.amount"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="specifications" class="col-md-2 control-label">πÊ∏Ò</label>
+
+                <label for="specifications" class="col-md-2 control-label">ËßÑÊ†º</label>
                 <div class="col-md-4">
                     <input class="form-control" id="specifications" name="specifications"
                            v-model="budget.specifications"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="approver" class="col-md-2 control-label">≈˙◊º»À</label>
+                <label for="approver" class="col-md-2 control-label">ÊâπÂáÜ‰∫∫</label>
                 <div class="col-md-4">
                     <input class="form-control" id="approver" name="approver"
                            v-model="budget.approver"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="handler" class="col-md-2 control-label">æ≠ ÷»À</label>
+
+                <label for="handler" class="col-md-2 control-label">ÁªèÂäû‰∫∫</label>
                 <div class="col-md-4">
                     <input class="form-control" id="handler" name="handler"
                            v-model="budget.handler"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="purpose" class="col-md-2 control-label">…Í«Î‘≠“Ú</label>
+                <label for="purpose" class="col-md-2 control-label">Áî≥ËØ∑ÂéüÂõ†</label>
                 <div class="col-md-4">
                     <input class="form-control" id="purpose" name="purpose"
                            v-model="budget.purpose"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="receiver" class="col-md-2 control-label">Ω” ’»À</label>
+
+                <label for="receiver" class="col-md-2 control-label">Êé•Êî∂‰∫∫</label>
                 <div class="col-md-4">
                     <input class="form-control" id="receiver" name="receiver"
                            v-model="budget.receiver"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="eqClass_id" class="col-md-2 control-label">…Ë±∏∑÷¿‡</label>
+                <label for="eqClass_id" class="col-md-2 control-label">ËÆæÂ§áÂàÜÁ±ª</label>
                 <div class="col-md-4">
                     <input class="form-control" id="eqClass_id" name="eqClass_id"
                            v-model="budget.eqClass_id"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="locationId" class="col-md-2 control-label">…Ë±∏Œª÷√</label>
+
+                <label for="locationId" class="col-md-2 control-label">ËÆæÂ§á‰ΩçÁΩÆ</label>
                 <div class="col-md-4">
                     <input class="form-control" id="locationId" name="locationId"
                            v-model="budget.locationId"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="status" class="col-md-2 control-label">◊¥Ã¨</label>
+                <label for="status" class="col-md-2 control-label">Áä∂ÊÄÅ</label>
                 <div class="col-md-4">
                     <input class="form-control" id="status" name="status"
                            v-model="budget.status"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="authKey" class="col-md-2 control-label"> ⁄»®¬Î</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="authKey" name="authKey"
-                           v-model="budget.authKey"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default"
-                data-dismiss="modal">πÿ±’
+                data-dismiss="modal">ÂèñÊ∂à
         </button>
-        <button id="saveBtn" name="saveBtn"
-                class="btn btn-danger">±£¥Ê
+        <button id="saveBtn" name="saveBtn" class="btn btn-danger">‰øùÂ≠ò
         </button>
     </div>
     </div>

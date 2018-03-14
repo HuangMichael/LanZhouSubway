@@ -5,13 +5,11 @@
 
 
 $(function () {
-
-
-//�����������õ�������
     dataTableName = "#budgetListTable";
     docName = "采购申请";
     mainObject = "budget";
 
+    formName="#form";
 
     var searchVue = new Vue({
         el: "#searchBox"
@@ -19,46 +17,21 @@ $(function () {
 
 
     var validateOptions = {
-        message: '��ֵ��Ч ',
+        message: '数据',
         fields: {
-            "locName": {
-                message: 'λ��������Ч',
+            "applicant": {
+                message: '申请人无效!',
                 validators: {
                     notEmpty: {
-                        message: 'λ�����Ʋ���Ϊ��!'
-                    }
-                }
-            },
-
-            "locName": {
-                message: 'λ��������Ч',
-                validators: {
-                    notEmpty: {
-                        message: 'λ�����Ʋ���Ϊ��!'
-                    }
-                }
-            },
-            "locDesc": {
-                message: 'λ��������Ч',
-                validators: {
-                    notEmpty: {
-                        message: 'λ����������Ϊ��!'
-                    }
-                }
-            },
-            "locLevel": {
-                message: 'λ�ü�����Ч',
-                validators: {
-                    notEmpty: {
-                        message: 'λ�ü�����Ϊ��!'
+                        message: '申请人不能为空!'
                     }
                 }
             },
             "status": {
-                message: '״̬��Ч',
+                message: '状态不能无效',
                 validators: {
                     notEmpty: {
-                        message: '״̬����Ϊ��!'
+                        message: "状态不能为空!"
                     }
                 }
             },
@@ -80,7 +53,14 @@ $(function () {
             };
         },
         url: "/" + mainObject + "/data",
-        formatters: {},
+        formatters: {
+
+            "commands": function (column, row) {
+                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
+                    "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
+            }
+
+        },
         converters: {
             showStatus: {
                 to: showStatus
@@ -89,7 +69,7 @@ $(function () {
     })
 
 
-    $("#searchBtn").trigger("click");
+    // $("#searchBtn").trigger("click");
 
 
     vdm = new Vue({
@@ -107,7 +87,7 @@ $(function () {
 
 
 /**
- * ɾ����¼
+ *
  * @param id
  */
 function del(id) {

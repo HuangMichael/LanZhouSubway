@@ -69,7 +69,7 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel1">
-                    �༭��¼
+                    编辑记录
                 </h4>
             </div>
             <div class="modal-body">

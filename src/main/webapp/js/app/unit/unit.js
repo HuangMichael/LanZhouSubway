@@ -8,9 +8,7 @@ $(function () {
     dataTableName = "#unitListTable";
     docName = "外委单位";
     mainObject = "unit";
-
-
-
+    formName = "#form";
     var searchVue = new Vue({
         el: "#searchBox"
     });
@@ -87,7 +85,6 @@ $(function () {
     validateForm.call(validateOptions);
 
 
-    $("#saveBtn").trigger("click");
 
 });
 
