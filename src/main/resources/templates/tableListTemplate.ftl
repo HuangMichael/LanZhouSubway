@@ -3,7 +3,7 @@
 <#list columns as c>
 <th data-column-id="${c.colName}" data-width="5%"<#if c.converter? length gt 0>
     data-converter="${c.converter}"
-</#if>>${c.colName}
+</#if>>${c.colDesc}
 
 </th>
 </#list>

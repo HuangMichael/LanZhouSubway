@@ -35,6 +35,9 @@ public class MaterialCost implements Serializable {
     @Column(length = 20)
     private String applyDate; //位置描述
 
+    @Column(length = 20)
+    private String applicant; //申请人
+
     @Column(length = 1)
     private String status; //状态
 
