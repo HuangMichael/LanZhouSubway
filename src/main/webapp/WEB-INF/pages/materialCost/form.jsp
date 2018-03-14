@@ -4,28 +4,14 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-                    <div class="form-group">
-                <label for="id" class="col-md-2 control-label">序号</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="id" name="id"
-                           v-model="materialCost.id"/>
-                </div>
-            </div>
             <div class="form-group">
                 <label for="ecName" class="col-md-2 control-label">易耗品名称</label>
                 <div class="col-md-4">
+                    <input class="form-control" id="id" name="id" type="hidden"
+                           v-model="materialCost.id"/>
                     <input class="form-control" id="ecName" name="ecName"
                            v-model="materialCost.ecName"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="location" class="col-md-2 control-label">位置</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="location" name="location"
-                           v-model="materialCost.location"/>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="amount" class="col-md-2 control-label">数量</label>
                 <div class="col-md-4">
                     <input class="form-control" id="amount" name="amount"
@@ -44,20 +30,6 @@
                 <div class="col-md-4">
                     <input class="form-control" id="applyDate" name="applyDate"
                            v-model="materialCost.applyDate"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="authKey" class="col-md-2 control-label">授权码</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="authKey" name="authKey"
-                           v-model="materialCost.authKey"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="status" class="col-md-2 control-label">状态</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="status" name="status"
-                           v-model="materialCost.status"/>
                 </div>
             </div>
         </div>

@@ -12,6 +12,8 @@ $(function () {
     docName = "物料消耗";
     mainObject = "materialCost";
 
+    formName = "#form";
+
 
     var searchVue = new Vue({
         el: "#searchBox"
@@ -21,39 +23,15 @@ $(function () {
     var validateOptions = {
         message: '该值无效 ',
         fields: {
-            "locName": {
-                message: '位置名称无效',
+            "ecName": {
+                message: '易耗品名称无效',
                 validators: {
                     notEmpty: {
-                        message: '位置名称不能为空!'
+                        message: '易耗品名称不能为空!'
                     }
                 }
             },
 
-            "locName": {
-                message: '位置名称无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置名称不能为空!'
-                    }
-                }
-            },
-            "locDesc": {
-                message: '位置描述无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置描述不能为空!'
-                    }
-                }
-            },
-            "locLevel": {
-                message: '位置级别无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置级别不能为空!'
-                    }
-                }
-            },
             "status": {
                 message: '状态无效',
                 validators: {
@@ -81,9 +59,22 @@ $(function () {
             };
         },
         url: "/" + mainObject + "/data",
+
+        formatters: {
+
+            "commands": function (column, row) {
+                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
+                    "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
+            }
+
+        },
+
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showShortLocName: {
+                to: showShortLocName
             }
         }
     })

@@ -23,7 +23,8 @@ public class MaterialCost implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(length = 100)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location; //位置描述
 
     @Column(length = 50)

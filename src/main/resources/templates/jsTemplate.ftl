@@ -11,6 +11,7 @@ $(function () {
 dataTableName = "#${subDirName}ListTable";
 docName = "${comment}";
 mainObject = "${subDirName}";
+formName = "#form";
 
 
 var searchVue = new Vue({
