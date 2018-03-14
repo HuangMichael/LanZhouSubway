@@ -10,6 +10,7 @@ $(function () {
     mainObject = "unit";
 
 
+
     var searchVue = new Vue({
         el: "#searchBox"
     });

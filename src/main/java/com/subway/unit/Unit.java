@@ -34,9 +34,7 @@ public class Unit implements java.io.Serializable {
     @Column(length = 1)
     private String workDays;  //工作制
 
-    @ManyToMany
-    @JoinTable(name = "t_unit_class", joinColumns = {@JoinColumn(name = "unit_id")}, inverseJoinColumns = {@JoinColumn(name = "class_id")})
-    private Set<EqClass> eqClassList;
+
 
     @Column(length = 1, columnDefinition = "default 1")
     private String isOut; //外部标识 默认为外部

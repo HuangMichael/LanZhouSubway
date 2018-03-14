@@ -105,4 +105,18 @@ public class EqClassController extends BaseController {
     }
 
 
+
+    /**
+     * @param classId
+     * @param unitId
+     * @return
+     */
+    @RequestMapping(value = "/addUnit", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject addUnit(@RequestParam("classId") Long classId,@RequestParam("unitId") String unitId) {
+        return eqClassService.addUnit(classId,unitId);
+    }
+
+
+
 }

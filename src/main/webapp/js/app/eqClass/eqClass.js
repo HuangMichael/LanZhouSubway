@@ -3,7 +3,7 @@
 
  */
 
-
+var recordId = null;
 $(function () {
 
     dataTableName = "#eqClassListTable";
@@ -66,6 +66,7 @@ $(function () {
 
         formatters: {
             "addUnit": function (column, row) {
+                recordId = row.id;
                 return "<button type='button' class='btn btn-xs btn-default command-link' data-row-id='" + row.id + "' onclick='addUnit(" + row.id + ")'><span class='fa fa-link'></span></button> "
             },
             "commands": function (column, row) {
@@ -98,7 +99,7 @@ $(function () {
     validateForm.call(validateOptions);
 
 
-    $("#saveBtn").trigger("click");
+    // $("#saveBtn").trigger("click");
 });
 
 
@@ -166,6 +167,6 @@ function add() {
  * 添加外委单位
  */
 function addUnit() {
-    $("#unitModal").modal("show");
+    $("#eqClassModal").modal("show");
 }
 

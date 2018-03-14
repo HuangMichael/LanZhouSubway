@@ -2,8 +2,11 @@ package com.subway.eqClass;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.subway.service.app.BaseService;
+import com.subway.unit.Unit;
+import com.subway.unit.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.subway.service.commonData.CommonDataService;
 import org.springframework.data.domain.Page;
@@ -30,6 +33,10 @@ public class EqClassService extends BaseService {
 
     @Autowired
     CommonDataService commonDataService;
+
+
+    @Autowired
+    UnitRepository unitRepository;
 
     /**
      * @return
@@ -75,6 +82,26 @@ public class EqClassService extends BaseService {
      */
     public EqClass findById(Long id) {
         return eqClassRepository.getOne(id);
+    }
+
+
+    /**
+     * @param eqClassId
+     * @param unitId
+     * @return
+     */
+    public ReturnObject addUnit(Long eqClassId, String unitId) {
+        EqClass eqClass = eqClassRepository.getOne(eqClassId);
+        String unitArray[] = unitId.split(",");
+        Set<Unit> unitSet = eqClass.getUnitSet();
+        Unit unit;
+        for (String id : unitArray) {
+            unit = unitRepository.getOne(Long.parseLong(id));
+            unitSet.add(unit);
+        }
+        eqClass.setUnitSet(unitSet);
+        eqClassRepository.save(eqClass);
+        return commonDataService.getReturnType(eqClass != null, "外委单位关联成功", "外委单位关联失败");
     }
 
 }

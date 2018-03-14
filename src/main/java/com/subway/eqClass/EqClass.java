@@ -2,11 +2,13 @@ package com.subway.eqClass;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.subway.unit.Unit;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by huangbin on 2016/03/13 0023.
@@ -34,6 +36,11 @@ public class EqClass {
     @JsonBackReference("classList")
     @OneToMany(targetEntity = EqClass.class, cascade = CascadeType.ALL, mappedBy = "parent")
     List<EqClass> classList = new ArrayList<>();
+
+
+    @ManyToMany
+    @JoinTable(name = "t_unit_class", joinColumns = {@JoinColumn(name = "class_id")}, inverseJoinColumns = {@JoinColumn(name = "unit_id")})
+    private Set<Unit> unitSet;
 
     @Column(length = 1)
     private Long classLevel;

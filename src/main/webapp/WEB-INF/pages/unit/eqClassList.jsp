@@ -44,21 +44,7 @@
         });
         initBootGrid("#unitListTable");
 
-
-        $("#selUnitBtn").on("click", function () {
-            var selected = $("#unitListTable").bootgrid("getSelectedRows");
-            var classId = recordId;
-            var unitId = selected.join(",");
-            var url = "/eqClass/addUnit";
-            var param = {
-                classId: classId,
-                unitId: unitId
-            }
-            $.post(url, param, function (data) {
-                $("#eqClassModal").modal("hide");
-                showMessage(data["result"], data["resultDesc"]);
-            });
-        });
     });
+
 </script>
 
