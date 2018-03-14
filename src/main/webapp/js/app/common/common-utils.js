@@ -402,7 +402,6 @@ var showLocName = function (value) {
 }
 
 
-
 /**
  *
  * @param value
@@ -410,7 +409,6 @@ var showLocName = function (value) {
 var showShortLocName = function (value) {
     return value["locName"];
 }
-
 
 
 /**
@@ -421,6 +419,22 @@ var showEqClassName = function (value) {
     return value["name"];
 }
 
+
+/**
+ *
+ * @param value
+ */
+var showOrderLineNo = function (value) {
+    return value["orderLineNo"];
+}
+
+/**
+ *
+ * @param value
+ */
+var showOrderDesc = function (value) {
+    return value["orderDesc"];
+}
 
 
 

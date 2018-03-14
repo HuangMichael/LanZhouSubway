@@ -91,6 +91,12 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showOrderLineNo: {
+                to: showOrderLineNo
+            },
+            showOrderDesc: {
+                to: showOrderDesc
             }
         }
     })
