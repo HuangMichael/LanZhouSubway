@@ -20,26 +20,12 @@
             <div class="form-group">
                 <label for="searchServiceName" class="col-md-2 control-label">查询类名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="searchServiceName" name="searchServiceName"
-                           v-model="tableConfig.searchServiceName" required/>
+                    <input class="form-control" id="searchServiceName" name="searchServiceName" v-model="tableConfig.searchServiceName" required/>
                 </div>
 
                 <label for="serviceName" class="col-md-2 control-label">业务类名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="serviceName" name="serviceName"
-                           v-model="tableConfig.serviceName" required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="sortNo" class="col-md-2 control-label">排序</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="sortNo" name="sortNo"
-                           v-model="tableConfig.sortNo" required/>
-                </div>
-
-                <label for="status" class="col-md-2 control-label">状态</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="tableConfig.status" required/>
+                    <input class="form-control" id="serviceName" name="serviceName" v-model="tableConfig.serviceName" required/>
                 </div>
             </div>
             <div class="form-group">
@@ -57,6 +43,13 @@
                 <label for="shortName" class="col-md-2 control-label">类简称</label>
                 <div class="col-md-4">
                     <input class="form-control" id="shortName" name="shortName" v-model="tableConfig.shortName" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="status" class="col-md-2 control-label">状态</label>
+                    <div class="col-md-4">
+                        <input class="form-control" id="status" name="status" v-model="tableConfig.status" required/>
+                    </div>
                 </div>
             </div>
         </div>
