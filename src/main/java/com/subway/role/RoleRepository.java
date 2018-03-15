@@ -23,6 +23,13 @@ interface RoleRepository extends JpaRepository<Role, Long> {
 
 
     /**
+     * @param status
+     * @return
+     */
+    List<Role> findByStatus(String status);
+
+
+    /**
      * @param roleName
      * @param roleDesc
      * @return

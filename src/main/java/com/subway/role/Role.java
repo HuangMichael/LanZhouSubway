@@ -1,10 +1,9 @@
 package com.subway.role;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.subway.domain.app.resoure.Resource;
 import com.subway.domain.user.User;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,11 +28,9 @@ public class Role {
     private long sortNo;
     @Column(nullable = false, length = 1, columnDefinition = "default 1")
     private String status;
-    @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<User> userList;
-    @JsonBackReference("resourceList")
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_role_resource", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "resource_id")})
     private List<Resource> resourceList;

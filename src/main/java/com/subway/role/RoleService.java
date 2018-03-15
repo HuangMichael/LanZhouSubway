@@ -5,7 +5,6 @@ import com.subway.domain.user.User;
 import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
-import com.subway.utils.CommonStatusType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,36 +21,11 @@ import static com.subway.utils.ConstantUtils.*;
 public class RoleService extends BaseService {
 
     @Autowired
-   RoleRepository roleRepository;
-
+    RoleRepository roleRepository;
     @Autowired
     UserRepository userRepository;
     @Autowired
     CommonDataService commonDataService;
-
-
-    /**
-     * 根据状态查询用户
-     */
-    public List<Role> findByStatus(String status) {
-        return roleRepository.findByStatus(status);
-    }
-
-
-    /**
-     * 根据ID查询角色
-     */
-    public Role findById(Long id) {
-        return roleRepository.findById(id);
-    }
-
-
-    /**
-     * @return 查询在用角色
-     */
-    public List<Role> findActiveRole() {
-        return roleRepository.findByStatus(CommonStatusType.STATUS_YES);
-    }
 
 
     /**
@@ -70,12 +44,12 @@ public class RoleService extends BaseService {
 
     public ReturnObject addUsers(Long roleId, String usersIdStr) {
         ReturnObject returnObject = new ReturnObject();
-        Role role = roleRepository.findById(roleId);
+        Role role = roleRepository.getOne(roleId);
         if (usersIdStr != null && !usersIdStr.equals("")) {
             String[] ids = usersIdStr.split(",");
             List<User> userList = role.getUserList();
             for (String id : ids) {
-                User user = userRepository.findById(Long.parseLong(id));
+                User user = userRepository.getOne(Long.parseLong(id));
                 if (!userList.contains(user)) {
                     userList.add(user);
                 }
@@ -104,23 +78,15 @@ public class RoleService extends BaseService {
 
 
     /**
-     * @return 查询所有的id集合
-     */
-    public List<Long> findAllIds() {
-        return roleRepository.findAllId();
-    }
-
-
-    /**
      * @param roleId 角色id
      * @param userId 用户id
      * @return 移除用户
      */
     public ReturnObject removeUser(Long roleId, Long userId) {
         ReturnObject returnObject = new ReturnObject();
-        Role role = roleRepository.findById(roleId);
+        Role role = roleRepository.getOne(roleId);
         List<User> usersOfRole = role.getUserList();
-        User user = userRepository.findById(userId);
+        User user = userRepository.getOne(userId);
         if (usersOfRole.contains(user)) {
             usersOfRole.remove(user);
             role.setUserList(usersOfRole);
@@ -136,12 +102,19 @@ public class RoleService extends BaseService {
 
     /**
      * @param id id
-     * @return 删除外委单位信息
+     * @return 删除角色信息
      */
     public ReturnObject delete(Long id) {
-        roleRepository.delete(id);
+        boolean result = false;
+        String message = "数据有关联,不能删除!";
         Role role = roleRepository.getOne(id);
-        return commonDataService.getReturnType(role == null, DELETE_SUCCESS, DELETE_FAILURE);
+        if (!role.getResourceList().isEmpty() && !role.getUserList().isEmpty()) {
+            message = "菜单信息" + message;
+        } else {
+            roleRepository.delete(id);
+            result = true;
+        }
+        return commonDataService.getReturnType(result, DELETE_SUCCESS, message);
     }
 
 
@@ -150,9 +123,28 @@ public class RoleService extends BaseService {
      * @return 保存角色信息
      */
     public ReturnObject save(Role role) {
-
         role = roleRepository.save(role);
         return commonDataService.getReturnType(role != null, SAVE_SUCCESS, SAVE_FAILURE);
+    }
+
+
+    /**
+     * @param id
+     * @return
+     */
+    public Role findById(Long id) {
+
+        return roleRepository.getOne(id);
+    }
+
+
+    /**
+     * @param status
+     * @return
+     */
+    public List<Role> findByStatus(String status) {
+
+        return roleRepository.findByStatus(status);
     }
 
 

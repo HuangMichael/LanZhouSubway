@@ -58,7 +58,6 @@ $(function () {
             "role": null
         }
     });
-    initSelect();
 
     validateForm.call(validateOptions);
 
@@ -91,9 +90,7 @@ function del(id) {
                     $.ajax({
                         type: "GET",
                         url: url,
-                        success/**
-                         *
-                         */: function (msg) {
+                        success: function (msg) {
                             if (msg) {
                                 showMessage(msg.result, msg["resultDesc"]);
                                 $(dataTableName).bootgrid("reload");

@@ -10,6 +10,7 @@ import com.subway.object.ReturnObject;
 import com.subway.service.app.ResourceService;
 import com.subway.role.RoleService;
 import com.subway.service.user.UserService;
+import com.subway.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Page;
@@ -47,10 +48,9 @@ public class AuthorityController {
     @RequestMapping(value = "/list")
     public String list(ModelMap modelMap) {
         //加载角色列表 显示所有的角色
-        List<Role> roleList = roleService.findByStatus("1");
+        List<Role> roleList = roleService.findByStatus(ConstantUtils.STATUS_YES);
         modelMap.put("roleList", roleList);
-
-        Role role = roleService.findById(1l);
+        Role role = roleList.isEmpty() ? roleList.get(0) : null;
         List<VRoleAuthView> vRoleAuthViews = vRoleAuthViewRepository.findByRole(role);
         modelMap.put("vRoleAuthViews", vRoleAuthViews);
         return "/authority/list";
