@@ -1,52 +1,44 @@
 package com.subway.preMaint;
 
-
 import com.subway.equipment.Equipment;
 import com.subway.unit.Unit;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by huangbin on 2016年10月9日11:42:09
- * 预防性维修
+ * 预防性维护实体类
+ *
+ * @author huangbin
+ * @generate by autoCode
+ * @Date 2018-3-1
  */
 @Entity
-@Table(name = "T_PRE_MAINT")
+@Table(name = "t_pre_maint")
 @Data
-public class PreMaint {
+public class PreMaint implements Serializable {
+    //表之间的关联注解  请自行添加判断
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;  //id
-
-    @Column(length = 20, unique = true)
-    private String pmCode; //维修编号
-
-
+    private Long id;
     @Column(length = 20)
-    private String description; //
-
-
+    private String pmCode;
+    @Column(length = 20)
+    private String createBy;
+    @Column(length = 20)
+    private String createTime;
+    @Column(length = 20)
+    private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_id", referencedColumnName = "id")
-    private Equipment equipment;  //设备
-
+    private Equipment equipment;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unit_id", referencedColumnName = "id")
-    private Unit unit; //外委单位
-
-
+    private Unit unit;
+    @Column(length = 1)
+    private String status;
     @Column(length = 20)
-    private String createBy; //创建人
+    private String authKey;
 
-
-    @Column(length = 20)
-    private String createTime; //创建时间
-
-    @Column(length = 20)
-    private String authKey; //授权码
-
-
-    @Column(length = 20)
-    private String status; //创建时间
 }

@@ -68,6 +68,8 @@ public class TableConfigService extends BaseService {
                 columnConfig.setClassType("Long");
             } else if (classType.contains("double")) {
                 columnConfig.setClassType("Double");
+            }else if (classType.contains("bit")) {
+                columnConfig.setClassType("Boolean");
             }
             tableColumnConfigRepository.save(columnConfig);
         }

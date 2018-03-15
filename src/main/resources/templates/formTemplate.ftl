@@ -4,12 +4,11 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-        <#list columns as c>
+        <#list columns?sort_by("id") as c>
             <div class="form-group">
                 <label for="${c.colName}" class="col-md-2 control-label">${c.colDesc}</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="${c.colName}" name="${c.colName}"
-                           v-model="${subDirName}.${c.colName}"/>
+                    <input class="form-control" id="${c.colName}" name="${c.colName}" v-model="${subDirName}.${c.colName}" <#if c.isNull> required</#if>/>
                 </div>
             </div>
         </#list>

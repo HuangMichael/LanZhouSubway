@@ -46,7 +46,7 @@ public class TableColumnConfig implements Serializable {
 
 
     @Column(length = 1, nullable = false)
-    private String isNull;//表示该列属性是否为空
+    private Boolean isNull;//表示该列属性是否为空
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "table_id", referencedColumnName = "id", nullable = false)
