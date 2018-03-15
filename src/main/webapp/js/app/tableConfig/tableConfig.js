@@ -43,8 +43,10 @@ $(function () {
             },
             showYes: {
                 to: showYes
+            },
+            showTableName: {
+                to: showTableName
             }
-
         }
     });
 

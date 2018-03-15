@@ -7,19 +7,24 @@
 $(function () {
 
 
-//µ¼³ö±ØĞëÅäÖÃµÄÁ½¸öÁ¿
+//å¯¼å‡ºå¿…é¡»é…ç½®çš„ä¸¤ä¸ªé‡
     dataTableName = "#tableColumnConfigListTable";
-    docName = "Êı¾İÁĞÅäÖÃ";
+    docName = "æ•°æ®å­—æ®µé…ç½®";
     mainObject = "tableColumnConfig";
-    var recordId = null;
+    formName = "#form";
 
 
     var searchVue = new Vue({
         el: "#searchBox"
     });
 
+
+    var validateOptions = {};
+
+
     searchModel = [
-        {"param": "colDesc", "paramDesc": "ÁĞÃèÊö"}
+        {"param": "locName", "paramDesc": "åç§°"},
+        {"param": "status", "paramDesc": "çŠ¶æ€"}
     ];
 
 
@@ -33,121 +38,53 @@ $(function () {
         },
         url: "/" + mainObject + "/data",
         formatters: {
-            "upload": function (column, row) {
-                return "<button type=\"button\" class=\"btn btn-xs btn-default command-upload\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-upload\"></span></button> "
-            },
             "commands": function (column, row) {
-                return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
-                    "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></button>";
+                return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "'><span class='fa fa-pencil'></span></button> " +
+                    "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "'><span class='fa fa-trash-o'></span></button>";
             }
         },
         converters: {
-
-            showImage: {
-                to: function (value) {
-                    return "<img src='" + value + "' class='img-circle'  style='height:25px;width: 25px'>";
-                }
-            },
-
-            datetime: {
-                to: function (value) {
-                    return transformYMD(value);
-                }
-            },
-            showYes: {
-                to: function (value) {
-                    return (value == ("1")) ? "ÊÇ" : "·ñ";
-                }
-            },
             showStatus: {
-                to: function (value) {
-                    return (value) ? "ÓĞĞ§" : "ÎŞĞ§";
-                }
-            },
-            showMemberType: {
-                to: function (value) {
-                    return (value == "1") ? "¹ú¼Ò»áÔ±" : "Ê¡¼¶»áÔ±";
-                }
+                to: showStatus
             }
         }
-    }).on("loaded.rs.jquery.bootgrid", function () {
-        /* Executes after data is loaded and rendered */
-        grid.find(".command-edit").on("click", function (e) {
-            edit($(this).data("row-id"));
-        }).end().find(".command-delete").on("click", function (e) {
-            del($(this).data("row-id"));
-        }).end().find(".command-upload").on("click", function (e) {
-            recordId = $(this).data("row-id");
-            showUpload();
-        });
-    });
+    })
 
 
     $("#searchBtn").trigger("click");
 
 
-    formName = "#form";
-
     vdm = new Vue({
         el: formName,
         data: {
-            tableColumnConfig: null,
+            "tableColumnConfig": null
         }
     });
+    initSelect();
 
-
-    $("#dropZone").dropzone({
-        url: "/member/upload",
-        addRemoveLinks: true,
-        dictRemoveLinks: "ÒÆ³ıÎÄ¼ş",
-        dictCancelUpload: "È¡ÏûÉÏ´«",
-        maxFiles: 3,
-        maxFilesize: 5,
-        autoProcessQueue: true,
-        acceptedFiles: ".jpg,.png",
-        init: function () {
-            this.on("success", function (file, data) {
-                //ÉÏ´«Íê³Éºó´¥·¢µÄ·½·¨
-                if (data.result) {
-                    $("#uploadModal").modal("hide");
-
-                    $(dataTableName).bootgrid("reload");
-                    showMessageBox("info", data["resultDesc"]);
-                } else {
-                    showMessageBox("danger", data["resultDesc"]);
-                }
-            });
-            this.on('sending', function (file, xhr, formData) {
-                //´«µİ²ÎÊıÊ±ÔÚsendingÊÂ¼şÖĞformData£¬ĞèÒªÔÚÇ°¶Ë´úÂë¼Óenctype="multipart/form-data"ÊôĞÔ
-                formData.append("mainObject", mainObject);
-                formData.append("recordId", recordId);
-            });
-            this.on("removedfile", function (file) {
-                console.log("File " + file.name + "removed");
-            });
-        }
-    });
+    validateForm.call(validateOptions);
 
 
 });
 
 
 /**
- * É¾³ı¼ÇÂ¼
+ * åˆ é™¤è®°å½•
+ * @param id
  */
 function del(id) {
 
     var url = getMainObject() + "/delete/" + id;
     if (id) {
         bootbox.confirm({
-            message: "È·¶¨ÒªÉ¾³ı¸Ã¼ÇÂ¼Ã´£¿",
+            message: "ç¡®å®šåˆ é™¤è¯¥è®°å½•ä¹ˆ",
             buttons: {
                 confirm: {
-                    label: 'È·¶¨',
+                    label: 'ç¡®å®š',
                     className: 'btn-success'
                 },
                 cancel: {
-                    label: 'È¡Ïû',
+                    label: 'å–æ¶ˆ',
                     className: 'btn-danger'
                 }
             },
@@ -158,12 +95,12 @@ function del(id) {
                         url: url,
                         success: function (msg) {
                             if (msg) {
-                                showMessageBox("info", "¼ÇÂ¼É¾³ı³É¹¦£¡");
+                                showMessage(msg.result, msg["resultDesc"]);
                                 $(dataTableName).bootgrid("reload");
                             }
                         },
                         error: function (msg) {
-                            showMessageBox("danger", "¶Ô²»Æğ£¬Êı¾İÓĞ¹ØÁª£¬²»ÄÜÉ¾³ı£¡ ");
+                            showMessage(msg.result, msg["resultDesc"]);
                         }
                     });
                 }
@@ -174,7 +111,7 @@ function del(id) {
 
 
 /**
- * É¾³ı¼ÇÂ¼
+ * ç¼–è¾‘è®°å½•
  */
 function edit(id) {
     var object = findByIdAndObjectName(id, mainObject);
@@ -184,8 +121,11 @@ function edit(id) {
 
 
 /**
- * ÏÔÊ¾ÉÏ´«ÏÂÔØ
+ * ç¼–è¾‘è®°å½•
  */
-function showUpload() {
-    $("#uploadModal").modal("show");
+function add() {
+    vdm.$set("tableColumnConfig", null);
+    $("#editModal").modal("show");
 }
+
+

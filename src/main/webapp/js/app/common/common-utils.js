@@ -437,4 +437,13 @@ var showOrderDesc = function (value) {
 }
 
 
+/**
+ *
+ * @param value
+ */
+var showTableName = function (value) {
+    return value["tableName"];
+}
+
+
 
