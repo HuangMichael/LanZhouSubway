@@ -46,7 +46,7 @@
 
             <li class="dropdown user" id="header-user">
                 <a onclick="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                    <img alt="" src="img/avatars/avatar3.jpg"/>
+                    <img alt="" src="${currentUser.photoUrl}"/>
                     <span class="username">${currentUser.personName}(${currentUser.userName})</span>
                     <i class="fa fa-angle-down"></i>
                 </a>
