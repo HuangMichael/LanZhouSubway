@@ -2,15 +2,12 @@
  * Created by huangbin on 2018-3-1 09:46:42.
 
  */
-
-
 $(function () {
-
-
 //导出必须配置的两个量
     dataTableName = "#tableConfigListTable";
     docName = "数据表配置";
     mainObject = "tableConfig";
+    formName = "#form";
     var recordId = null;
 
     var searchVue = new Vue({
@@ -42,73 +39,29 @@ $(function () {
         },
         converters: {
             showStatus: {
-                to: function (value) {
-                    return (value) ? "有效" : "无效";
-                }
+                to: showStatus
+            },
+            showYes: {
+                to: showYes
             }
 
         }
     });
 
-    grid.on("loaded.rs.jquery.bootgrid", function () {
-        /* Executes after data is loaded and rendered */
-        grid.find(".command-edit").on("click", function (e) {
-            edit($(this).data("row-id"));
-        }).end().find(".command-delete").on("click", function (e) {
-            del($(this).data("row-id"));
-        }).end().find(".command-upload").on("click", function (e) {
-            recordId = $(this).data("row-id");
-            showUpload();
-        });
-    });
+    initSelect();
 
 
     $("#searchBtn").trigger("click");
 
-
-    formName = "#form";
-
     vdm = new Vue({
         el: formName,
         data: {
-            member: null,
+            tableConfig: null,
         }
     });
 
 
-    $("#dropZone").dropzone({
-        url: "/member/upload",
-        addRemoveLinks: true,
-        dictRemoveLinks: "移除文件",
-        dictCancelUpload: "取消上传",
-        maxFiles: 3,
-        maxFilesize: 5,
-        autoProcessQueue: true,
-        acceptedFiles: ".jpg,.png",
-        init: function () {
-            this.on("success", function (file, data) {
-                //上传完成后触发的方法
-                if (data.result) {
-                    $("#uploadModal").modal("hide");
-
-                    $(dataTableName).bootgrid("reload");
-                    showMessageBox("info", data["resultDesc"]);
-                } else {
-                    showMessageBox("danger", data["resultDesc"]);
-                }
-            });
-            this.on('sending', function (file, xhr, formData) {
-                //传递参数时在sending事件中formData，需要在前端代码加enctype="multipart/form-data"属性
-                formData.append("mainObject", mainObject);
-                formData.append("recordId", recordId);
-            });
-            this.on("removedfile", function (file) {
-                console.log("File " + file.name + "removed");
-            });
-        }
-    });
-
-
+    validateForm.call();
 });
 
 
@@ -158,7 +111,6 @@ function del(id) {
  */
 function edit(id) {
     var object = findByIdAndObjectName(id, mainObject);
-    console.log("member-----------------------" + JSON.stringify(object));
     vdm.$set(mainObject, object);
     $("#editModal").modal("show");
 }
@@ -181,4 +133,13 @@ function formatConfig(id) {
     $.getJSON(url, function (data) {
         showMessage(data["result"], data["resultDesc"]);
     })
+}
+
+
+/**
+ * 编辑记录
+ */
+function add() {
+    vdm.$set("tableConfig", null);
+    $("#editModal").modal("show");
 }

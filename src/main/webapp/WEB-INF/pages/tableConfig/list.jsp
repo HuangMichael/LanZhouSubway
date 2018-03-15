@@ -33,13 +33,10 @@
                                             </select>
                                         </div>
                                         <div class="col-md-2">
-                                            <button id="searchBtn" class="btn btn-default" onclick="search()">
-                                                查询
-                                            </button>
+                                            <%@include file="../common/common-searchBtn.jsp" %>
                                         </div>
                                     </div>
-                                    <table id="tableConfigListTable"
-                                           class="table table-bordered table-hover table-striped">
+                                    <table id="tableConfigListTable" class="table table-bordered table-hover table-striped">
                                         <thead>
                                         <tr>
                                             <%@include file="tableList.jsp" %>
@@ -56,6 +53,41 @@
             <%@include file="../common/common-back2top.jsp" %>
         </div>
         <!-- /CONTENT-->
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    编辑记录
+                </h4>
+            </div>
+            <div class="modal-body">
+                <%@include file="form.jsp" %>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="modal fade " id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+                <h4 class="modal-title pull-left" id="myModalLabel2">请选择文件</h4>
+            </div>
+            <div class="modal-body">
+                <div id="dropZone" class="dropzone"></div>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="/js/app/tableConfig/tableConfig.js"></script>

@@ -6,7 +6,7 @@
 var mainObject = "";
 var exportObject = mainObject;
 var vdm = null; //定义form数据模型
-var formName = "";
+var formName = "#form";
 var selectedIds = [];
 var pointer = null;
 var dataTableName = "";
@@ -14,15 +14,10 @@ var ids = [];//所有的ID的集合
 var docName = "";
 var formTab = null;
 var locs = [];
-var eqClasses = [];
 var eqs = [];
 var lines = [];
-var stations = [];
 var units = []; //外委单位信息
 var searchModel = [];
-var expiredCount = 0;
-
-var formReadOnly = true;
 
 
 /**
@@ -149,37 +144,6 @@ function findObjById(objName, id) {
     return object;
 }
 
-
-/**
- *  上一条 记录
- */
-function backwards() {
-    pointer = pointer ? pointer : 0;
-    if (pointer <= 0) {
-        showMessageBoxCenter("danger", "center", "当前记录是第一条");
-    } else {
-        pointer = pointer - 1;
-        //判断当前指针位置
-        showDetail(selectedIds[pointer]);
-    }
-}
-
-/**
- *  下一条记录
- */
-function forwards() {
-
-    pointer = pointer ? pointer : 0;
-    if (pointer >= selectedIds.length - 1) {
-        showMessageBoxCenter("danger", "center", "当前记录是最后一条");
-
-    } else {
-        pointer = pointer + 1;
-        showDetail(selectedIds[pointer]);
-    }
-}
-
-
 /**
  * 新增预防性维修计划
  */
@@ -190,16 +154,6 @@ function add() {
     formTab.tab('show');
 
 }
-
-
-// /**
-//  * 编辑记录 使文本框可编辑
-//  */
-// function edit() {
-//     formReadOnly = !formReadOnly;
-//     setFormReadStatus(formName, formReadOnly);
-// }
-
 
 /**
  * 保存设备信息
@@ -301,7 +255,6 @@ function findAllRecordId() {
 }
 
 
-
 /**
  *导出excel
  */
@@ -391,14 +344,12 @@ function exportExcelByName(dataTableName, nodeState, docName) {
  *  初始化下拉选择组件
  */
 function initSelect() {
-
-
-    /*  $("select").select2({
-          theme: "bootstrap",
-          tags: "true",
-          placeholder: "请选择...",
-          allowClear: true
-      });*/
+    $("select").select2({
+        theme: "bootstrap",
+        tags: "true",
+        placeholder: "请选择...",
+        allowClear: true
+    });
 }
 
 
@@ -647,7 +598,6 @@ function showUpload() {
 }
 
 
-
 /**
  *查询所有的表配置信息
  * @param url
@@ -664,6 +614,6 @@ function findListByUrl(url) {
 }
 
 
-var edit_del_btn = function (row){
+var edit_del_btn = function (row) {
     return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " + "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
 }

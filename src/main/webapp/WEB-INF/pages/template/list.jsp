@@ -32,11 +32,9 @@
                                             </select>
                                         </div>
                                         <div class="col-md-2">
-                                            <button id="searchBtn" class="btn btn-default" onclick="search()">查询
-                                            </button>
+                                            <%@include file="../common/common-searchBtn.jsp" %>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade in active" id="tab_1_0">
                                         <table id="templateListTable"
                                                class="table table-bordered table-hover table-striped">
                                             <thead>
@@ -46,7 +44,6 @@
                                             </thead>
                                         </table>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
