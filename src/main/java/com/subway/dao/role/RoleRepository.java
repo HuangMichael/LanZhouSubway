@@ -4,15 +4,15 @@ package com.subway.dao.role;
 import com.subway.domain.role.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
 /**
  * Created by huangbin on 2016/1/8 0008.
  */
-public interface RoleRepository extends CrudRepository<Role, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
     /**
      * 查询所有角色
      */
@@ -52,12 +52,6 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
      */
     List<Role> findByRoleNameContainsAndRoleDescContains(String roleName, String roleDesc);
 
-
-    /**
-     * @param roleDesc 角色描述
-     * @return 根据角色描述模糊查询
-     */
-    List<Role> findByRoleDescContains(String roleDesc);
 
 
     /**

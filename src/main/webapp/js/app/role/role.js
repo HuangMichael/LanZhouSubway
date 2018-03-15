@@ -1,8 +1,3 @@
-var locs = [];
-var eqs = [];
-var persons = [];
-var listTab = $('#myTab li:eq(0) a');
-var formTab = $('#myTab li:eq(1) a');
 var object = null;
 
 $.ajaxSettings.async = false;
@@ -45,50 +40,39 @@ $(function () {
     mainObject = "role";
     //初始化从数据库获取列表数据
     searchModel = [{"param": "roleName", "paramDesc": "角色名称"}, {"param": "roleDesc", "paramDesc": "角色描述"}];
-    // locs = findMyLoc();
-    var person_location = "/commonData/findActivePerson";
-    $.getJSON(person_location, function (data) {
-        persons = data;
-    });
 
 
-    initBootGridMenu(dataTableName, null);
-    initSelect.call();
-    //初始化查询所有的
-    ids = findAllRecordId();
-    selectedIds = ids;
-    validateForm.call(validationConfig);
-
-    vdm = new Vue({
-        el: formName,
-        data: {
-            role: findById(selectedIds[pointer]),
-            // locs: locs,
-            persons: persons
+    var grid = $(dataTableName).bootgrid({
+        selection: true,
+        ajax: true,
+        post: function () {
+            return {
+                id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
+            };
+        },
+        url: "/" + mainObject + "/data",
+        formatters: {
+            "commands": showCommandsBtn
+        },
+        converters: {
+            showStatus: {
+                to: showStatus
+            },
         }
     });
 
 
-    //含有子列表加载的  需要重写
+    initSelect.call();
+    //初始化查询所有的
+    validateForm.call(validationConfig);
+    vdm = new Vue({
+        el: formName,
+        data: {
+            role: null,
 
-    $(formTab).on("click", function () {
-        showDetail();
-    })
-
-
+        }
+    });
 });
-
-
-/**
- *  显示明细
- */
-function showDetail() {
-    pointer = pointer ? pointer : 0;
-    var object = findById(selectedIds[pointer]);
-    vdm.$set(getMainObject(), object);
-    setFormReadStatus(formName, true);
-    loadUsers(selectedIds[pointer]);
-}
 
 
 /**

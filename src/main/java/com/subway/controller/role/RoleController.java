@@ -11,6 +11,7 @@ import com.subway.service.app.ResourceService;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.service.role.RoleSearchService;
 import com.subway.service.role.RoleService;
+import com.subway.unit.Unit;
 import com.subway.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -72,14 +73,29 @@ public class RoleController extends BaseController {
     }
 
 
+
+
+
+
     /**
-     * 保存角色信息
+     * @param id
+     * @return
      */
-    @RequestMapping(value = "/save", method = {RequestMethod.POST})
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public ReturnObject save(Role role) {
-        role = roleService.save(role);
-        return commonDataService.getReturnType(role != null, "角色信息保存成功!", "角色信息保存失败!");
+    public ReturnObject delete(@PathVariable("id") Long id) {
+        return roleService.delete(id);
+    }
+
+
+    /**
+     * @param unit
+     * @return
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(Unit unit) {
+        return roleService.save(unit);
     }
 
 

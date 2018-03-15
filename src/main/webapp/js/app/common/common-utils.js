@@ -455,6 +455,14 @@ var showOrderDesc = function (value) {
  *
  * @param value
  */
+var showGender = function (value) {
+    return value ? '男' : "女";
+}
+
+/**
+ *
+ * @param value
+ */
 var showTableName = function (value) {
 
 

@@ -48,12 +48,15 @@ $(function () {
             },
             showImage: {
                 to: showImage
+            },
+            showGender: {
+                to: showGender
             }
         }
     });
 
 
-// initSelect.call();
+initSelect.call();
 //初始化查询所有的
     validateForm.call(validationConfig);
     vdm = new Vue({
@@ -86,9 +89,6 @@ $(function () {
             });
             this.on('sending', function (file, xhr, formData) {
                 //传递参数时在sending事件中formData，需要在前端代码加enctype="multipart/form-data"属性
-
-
-                console.log("recordId-------------------" + recordId);
                 formData.append("mainObject", mainObject);
                 formData.append("recordId", recordId);
             });
@@ -155,7 +155,6 @@ function edit(id) {
  */
 function showUpload(id) {
     recordId = id;
-    console.log("showUpload recordId---------------" + recordId);
     $("#uploadModal").modal("show");
 
 }
@@ -175,5 +174,12 @@ function download(id) {
 
 
 
+/**
+ * 新建记录
+ */
+function add() {
+    vdm.$set("user", null);
+    $("#editModal").modal("show");
+}
 
 

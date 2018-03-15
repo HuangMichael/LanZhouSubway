@@ -7,8 +7,10 @@
         <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false">ID</th>
         <th data-column-id="userName" data-sortable="true" data-width="5%">用户名</th>
         <th data-column-id="personName" data-sortable="true" data-width="5%">姓名</th>
-        <th data-column-id="photoUrl" data-width="8%" data-converter="showImage">用户头像</th>
-        <th data-column-id="idCard" data-sortable="true" data-width="15%">身份证号</th>
+        <th data-column-id="photoUrl" data-width="5%" data-converter="showImage">用户头像</th>
+        <th data-column-id="gender" data-width="5%" data-converter="showGender">性别</th>
+        <th data-column-id="birthDate" data-width="8%" data-converter="birthDate" data-visible=false>出生日期</th>
+        <th data-column-id="idCard" data-sortable="true" data-width="20%" data-visible=false>身份证号</th>
         <th data-column-id="email" data-sortable="true" data-width="15%">电子邮箱</th>
         <th data-column-id="telephone" data-sortable="true" data-width="15%">联系电话</th>
         <%--<th data-column-id="status" data-sortable="true" data-width="5%" data-converter="showStatus">状态</th>--%>

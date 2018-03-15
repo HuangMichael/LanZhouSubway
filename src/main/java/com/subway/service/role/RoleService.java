@@ -6,14 +6,15 @@ import com.subway.domain.role.Role;
 import com.subway.domain.user.User;
 import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
+import com.subway.service.commonData.CommonDataService;
 import com.subway.utils.CommonStatusType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.subway.utils.ConstantUtils.*;
 
 
 /**
@@ -27,6 +28,8 @@ public class RoleService extends BaseService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    CommonDataService commonDataService;
 
 
     /**
@@ -42,28 +45,6 @@ public class RoleService extends BaseService {
      */
     public Role findById(Long id) {
         return roleRepository.findById(id);
-    }
-
-
-    /**
-     * @param roleDesc 角色描述
-     * @return 根据角色描述关键字进行查询
-     */
-    public Page<Role> findByRoleDescContains(String roleDesc, Pageable pageable) {
-        return roleRepository.findByRoleDescContains(roleDesc, pageable);
-    }
-
-
-    /**
-     * @param role
-     * @return 保存角色信息
-     */
-    public Role save(Role role) {
-
-        if (role.getStatus() == null) {
-            role.setStatus(CommonStatusType.STATUS_YES);
-        }
-        return roleRepository.save(role);
     }
 
 
@@ -153,6 +134,27 @@ public class RoleService extends BaseService {
             returnObject.setResultDesc("角色移除用户失败!");
         }
         return returnObject;
+    }
+
+    /**
+     * @param id id
+     * @return 删除外委单位信息
+     */
+    public ReturnObject delete(Long id) {
+        roleRepository.delete(id);
+        Role role = roleRepository.getOne(id);
+        return commonDataService.getReturnType(role == null, DELETE_SUCCESS, DELETE_FAILURE);
+    }
+
+
+    /**
+     * @param role
+     * @return 保存角色信息
+     */
+    public ReturnObject save(Role role) {
+
+        role = roleRepository.save(role);
+        return commonDataService.getReturnType(role != null, SAVE_SUCCESS, SAVE_FAILURE);
     }
 
 
