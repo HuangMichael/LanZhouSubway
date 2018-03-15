@@ -101,27 +101,6 @@ public class UserController extends BaseController {
 
 
     /**
-     * 保存用户信息
-     *
-     * @param personId
-     * @param locationId
-     * @return 创建用户
-     */
-    @RequestMapping(value = "/createUser", method = {RequestMethod.POST})
-    @ResponseBody
-    public ReturnObject createUser(@RequestParam("userName") String userName, @RequestParam("personId") Long personId, @RequestParam("locationId") Long locationId) {
-        User user = new User();
-        user.setUserName(userName);
-        user = userService.createUser(user);
-        ReturnObject returnObject = new ReturnObject();
-        returnObject.setResult(user != null);
-        String resStr = returnObject.getResult() ? "成功" : "失败";
-        returnObject.setResultDesc("用户信息创建" + resStr);
-        returnObject.getObjectsList().add(user);
-        return returnObject;
-    }
-
-    /**
      * @param session  当前会话
      * @param modelMap 显示个人信息
      * @return

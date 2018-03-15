@@ -1,34 +1,41 @@
 package com.subway.role;
 
-import lombok.Data;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.subway.domain.app.resoure.Resource;
+import com.subway.domain.user.User;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 /**
-* 角色信息实体类
-*
-* @author huangbin
-* @generate by autoCode
-* @Date 2018-3-1
-*/
+ * Created by huangbin on 2016/03/14 0023.
+ * 角色信息
+ */
 @Entity
-@Table(name = "t_role")
+@Table(name = "T_ROLE")
 @Data
-public class Role  implements Serializable {
 
-
-//表之间的关联注解  请自行添加判断
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-private Long id;
-    @Column( length = 20,nullable = false)
+public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(length = 20, unique = true, nullable = false)
     private String roleName;
-    @Column( length = 50,nullable = false)
+    @Column(length = 50, unique = true, nullable = false)
     private String roleDesc;
-    @Column( length = 0)
-    private Long sortNo;
-    @Column( length = 1,nullable = false)
+    @Column(scale = 1000)
+    private long sortNo;
+    @Column(nullable = false, length = 1, columnDefinition = "default 1")
     private String status;
-
+    @JsonBackReference
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private List<User> userList;
+    @JsonBackReference("resourceList")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "t_role_resource", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "resource_id")})
+    private List<Resource> resourceList;
 }
+

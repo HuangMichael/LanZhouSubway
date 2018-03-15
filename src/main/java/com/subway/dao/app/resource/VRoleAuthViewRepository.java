@@ -1,7 +1,7 @@
 package com.subway.dao.app.resource;
 
 import com.subway.domain.app.resoure.VRoleAuthView;
-import com.subway.domain.role.Role;
+import com.subway.role.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

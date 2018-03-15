@@ -40,7 +40,7 @@ id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
 url: "/" + mainObject + "/data",
 formatters: {
 "commands": function (column, row) {
-return edit_del_btn;
+return showCommandsBtn;
 }
 },
 converters: {

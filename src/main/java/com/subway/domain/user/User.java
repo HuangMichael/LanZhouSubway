@@ -1,7 +1,7 @@
 package com.subway.domain.user;
 
 
-import com.subway.domain.role.Role;
+import com.subway.role.Role;
 import lombok.Data;
 import org.codehaus.jackson.annotate.JsonIgnore;
 

@@ -1,7 +1,7 @@
 package com.subway.domain.app.resoure;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.subway.domain.role.Role;
+import com.subway.role.Role;
 import lombok.*;
 
 import javax.persistence.*;
