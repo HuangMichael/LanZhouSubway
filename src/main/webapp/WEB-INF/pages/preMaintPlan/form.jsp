@@ -4,58 +4,26 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-                    <div class="form-group">
-                <label for="id" class="col-md-2 control-label">序号</label>
+            <div class="form-group">
+                <label for="planCode" class="col-md-2 control-label">计划编号</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="preMaintPlan.id" />
+                    <input class="form-control" id="id" name="id" v-model="preMaintPlan.id" type="hidden"/>
+                    <input class="form-control" id="planCode" name="planCode" v-model="preMaintPlan.planCode"/>
+                </div>
+
+                <label for="planDesc" class="col-md-2 control-label">计划名称</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="planDesc" name="planDesc" v-model="preMaintPlan.planDesc"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="pmCode" class="col-md-2 control-label">编号</label>
+                <label for="exeState" class="col-md-2 control-label">执行状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="pmCode" name="pmCode" v-model="preMaintPlan.pmCode"  required/>
+                    <input class="form-control" id="exeState" name="exeState" v-model="preMaintPlan.exeState"/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="createBy" class="col-md-2 control-label">创建人</label>
+                <label for="cron" class="col-md-2 control-label">周期表达式</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="createBy" name="createBy" v-model="preMaintPlan.createBy"  required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="createTime" class="col-md-2 control-label">创建时间</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="createTime" name="createTime" v-model="preMaintPlan.createTime"  required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="description" class="col-md-2 control-label">描述</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="description" name="description" v-model="preMaintPlan.description"  required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="equipmentId" class="col-md-2 control-label">设备</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="equipmentId" name="equipmentId" v-model="preMaintPlan.equipmentId"  required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="unitId" class="col-md-2 control-label">外委单位</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="unitId" name="unitId" v-model="preMaintPlan.unitId"  required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="status" class="col-md-2 control-label">状态</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="preMaintPlan.status"  required/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="authKey" class="col-md-2 control-label">授权码</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="authKey" name="authKey" v-model="preMaintPlan.authKey"  required/>
+                    <input class="form-control" id="cron" name="cron" v-model="preMaintPlan.cron"/>
                 </div>
             </div>
         </div>
