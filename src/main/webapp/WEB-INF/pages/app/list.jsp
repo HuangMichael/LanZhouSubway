@@ -24,6 +24,9 @@
                                                 <input class="form-control" id="name"
                                                        name="name"
                                                        placeholder="应用名称"/>
+                                            </div>
+
+                                            <div class="col-md-2">
 
                                                 <select class="form-control" id="status">
                                                     <option value="1" selected>有效</option>

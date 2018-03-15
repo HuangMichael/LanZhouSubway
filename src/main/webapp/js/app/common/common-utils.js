@@ -379,8 +379,7 @@ var showOrderState = function (value) {
  * @param value
  */
 var showReportType = function (value) {
-    var reportTypes = {"s": "设备报修", "w": "位置报修"}
-    return reportTypes[value];
+    return value == 's' ? "设备报修" : "位置报修";
 }
 
 
@@ -389,7 +388,8 @@ var showReportType = function (value) {
  * @param value
  */
 var showEqName = function (value) {
-    return value["description"];
+    return value ? value["description"] : "无";
+
 }
 
 
@@ -398,7 +398,8 @@ var showEqName = function (value) {
  * @param value
  */
 var showLocName = function (value) {
-    return value["location"]["locName"];
+
+    return value ? value["location"]["locName"] : "无";
 }
 
 
@@ -407,7 +408,9 @@ var showLocName = function (value) {
  * @param value
  */
 var showShortLocName = function (value) {
-    return value["locName"];
+
+    return value ? value["locName"] : "无";
+
 }
 
 
@@ -416,7 +419,8 @@ var showShortLocName = function (value) {
  * @param value
  */
 var showEqClassName = function (value) {
-    return value["name"];
+    return value ? value["name"] : "无";
+
 }
 
 
@@ -425,7 +429,7 @@ var showEqClassName = function (value) {
  * @param value
  */
 var showOrderLineNo = function (value) {
-    return value["orderLineNo"];
+    return value ? value["orderLineNo"] : "无";
 }
 
 /**
@@ -433,7 +437,7 @@ var showOrderLineNo = function (value) {
  * @param value
  */
 var showOrderDesc = function (value) {
-    return value["orderDesc"];
+    return value ? value["orderDesc"] : "无";
 }
 
 
@@ -442,7 +446,11 @@ var showOrderDesc = function (value) {
  * @param value
  */
 var showTableName = function (value) {
-    return value["tableName"];
+
+
+
+    // console.log("showTableName-------------" + JSON.stringify(value));
+    return value ? value["tableName"] : "无";
 }
 
 
