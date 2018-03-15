@@ -24,6 +24,12 @@
                                                 <input class="form-control" id="name"
                                                        name="name"
                                                        placeholder="应用名称"/>
+
+                                                <select class="form-control" id="status">
+                                                    <option value="1" selected>有效</option>
+                                                    <option value="0">无效</option>
+                                                </select>
+
                                             </div>
                                             <div class="col-md-2">
                                                 <%@include file="../common/common-searchBtn.jsp" %>
