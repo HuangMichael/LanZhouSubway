@@ -20,7 +20,14 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name" name="name" placeholder="关键字"/>
+                                            <input class="form-control" id="roleName" name="roleName"
+                                                   placeholder="角色名称"/>
+
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <input class="form-control" id="roleDesc" name="roleDesc"
+                                                   placeholder="角色描述"/>
 
                                         </div>
                                         <div class="col-md-2">

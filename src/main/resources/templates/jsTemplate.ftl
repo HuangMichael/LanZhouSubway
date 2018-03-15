@@ -39,9 +39,7 @@ id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
 },
 url: "/" + mainObject + "/data",
 formatters: {
-"commands": function (column, row) {
-return showCommandsBtn;
-}
+"commands": showCommandsBtn
 },
 converters: {
 showStatus: {

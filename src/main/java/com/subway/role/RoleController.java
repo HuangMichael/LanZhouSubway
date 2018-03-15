@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -38,16 +37,26 @@ public class RoleController extends BaseController {
     RoleSearchService roleSearchService;
 
 
+    /**
+     * @param request
+     * @param current
+     * @param rowCount
+     * @param searchPhrase
+     * @return
+     */
     @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
-    public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
-        Map
-                <String, String[]> parameterMap = request.getParameterMap();
+    public MyPage data(HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
+        Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(roleSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(roleSearchService, searchPhrase, 3, current, rowCount, pageable);
     }
 
 
+    /**
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Role findById(@PathVariable("id") Long id) {
@@ -77,10 +86,18 @@ public class RoleController extends BaseController {
     }
 
 
+    /**
+     * @param request
+     * @param response
+     * @param param
+     * @param docName
+     * @param titles
+     * @param colNames
+     */
     @ResponseBody
     @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-        List<Role> dataList = roleSearchService.findByConditions(param, 2);
+        List<Role> dataList = roleSearchService.findByConditions(param, 3);
         roleService.setDataList(dataList);
         roleService.exportExcel(request, response, docName, titles, colNames);
     }

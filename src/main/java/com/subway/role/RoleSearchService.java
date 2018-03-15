@@ -18,17 +18,6 @@ public class RoleSearchService extends BaseService implements SortedSearchable {
 
     @Autowired
     RoleRepository roleRepository;
-    
-    /**
-     * @param searchPhrase 条件
-     * @param pageable     可分页
-     * @return 根据角色描述关键字进行查询
-     */
-
-    public Page<Role> findByConditions(String searchPhrase, int paramSize, Pageable pageable) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramSize);
-        return roleRepository.findByRoleNameContainsAndRoleDescContains(array[0], array[1], pageable);
-    }
 
 
     /**
@@ -38,7 +27,20 @@ public class RoleSearchService extends BaseService implements SortedSearchable {
 
     public List<Role> findByConditions(String searchPhrase, int paramSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramSize);
-        return roleRepository.findByRoleNameContainsAndRoleDescContains(array[0], array[1]);
+        return roleRepository.findByRoleNameContainsAndRoleDescContainsAndStatus(array[0], array[1], array[2]);
     }
+
+
+    /**
+     * @param searchPhrase 条件
+     * @param pageable     可分页
+     * @return 根据角色描述关键字进行查询
+     */
+
+    public Page<Role> findByConditions(String searchPhrase, int paramSize, Pageable pageable) {
+        String array[] = super.assembleSearchArray(searchPhrase, paramSize);
+        return roleRepository.findByRoleNameContainsAndRoleDescContainsAndStatus(array[0], array[1], array[2], pageable);
+    }
+
 
 }

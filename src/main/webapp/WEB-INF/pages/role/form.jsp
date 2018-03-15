@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="roleName" class="col-md-2 control-label">角色名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="role.id" hidden/>
+                    <input class="form-control" id="id" name="id" v-model="role.id" type="hidden"/>
                     <input class="form-control" id="roleName" name="roleName" v-model="role.roleName"/>
                 </div>
 
