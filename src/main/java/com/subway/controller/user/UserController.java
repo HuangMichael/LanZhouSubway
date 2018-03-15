@@ -236,10 +236,6 @@ public class UserController extends BaseController {
 
 
 
-
-
-
-
     /**
      * @param file       多媒体文件
      * @param mainObject

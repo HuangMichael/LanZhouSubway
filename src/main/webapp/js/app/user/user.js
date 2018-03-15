@@ -1,6 +1,8 @@
 var object = null;
 formName = "#detailForm";
 $.ajaxSettings.async = false;
+
+var recordId = null;
 var validationConfig = {
     message: '该值无效 ',
     fields: {
@@ -26,11 +28,6 @@ $(function () {
     mainObject = "user";
     //初始化从数据库获取列表数据
     searchModel = [{"param": "userName", "paramDesc": "用户名"}];
-    locs = [];
-
-
-    var recordId = null;
-
 
     var grid = $(dataTableName).bootgrid({
         selection: true,
@@ -46,9 +43,13 @@ $(function () {
             "commands": showCommandsBtn
         },
         converters: {
-            showStatus: showStatus
+            showStatus: {
+                to: showStatus
+            },
+            showImage: {
+                to: showImage
+            }
         }
-
     });
 
 
@@ -85,6 +86,9 @@ $(function () {
             });
             this.on('sending', function (file, xhr, formData) {
                 //传递参数时在sending事件中formData，需要在前端代码加enctype="multipart/form-data"属性
+
+
+                console.log("recordId-------------------" + recordId);
                 formData.append("mainObject", mainObject);
                 formData.append("recordId", recordId);
             });
@@ -151,6 +155,7 @@ function edit(id) {
  */
 function showUpload(id) {
     recordId = id;
+    console.log("showUpload recordId---------------" + recordId);
     $("#uploadModal").modal("show");
 
 }
@@ -167,7 +172,6 @@ function download(id) {
         showMessageBox("danger", "对不起，照片还未上传");
     }
 }
-
 
 
 

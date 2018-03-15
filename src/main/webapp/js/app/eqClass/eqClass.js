@@ -95,11 +95,8 @@ $(function () {
         }
     });
     initSelect();
-
     validateForm.call(validateOptions);
 
-
-    // $("#saveBtn").trigger("click");
 });
 
 
