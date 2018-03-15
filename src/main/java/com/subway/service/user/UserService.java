@@ -29,8 +29,6 @@ public class UserService extends BaseService {
     UserRepository userRepository;
 
 
-
-
     @Autowired
     CommonDataService commonDataService;
 
@@ -95,8 +93,6 @@ public class UserService extends BaseService {
         user.setStatus("1");
         return userRepository.save(user);
     }
-
-
 
 
     /**
@@ -200,7 +196,7 @@ public class UserService extends BaseService {
 //        String msg = vlocations.getLocName() + users.size() + "个用户";
 //        return commonDataService.getReturnType(!users.isEmpty(), msg + "数据授权成功", "数据授权失败，请重试");
 
-   return null;
+        return null;
     }
 
 
@@ -238,7 +234,6 @@ public class UserService extends BaseService {
     }
 
 
-
     /**
      * @param id id
      * @return 根据id删除对象
@@ -250,4 +245,14 @@ public class UserService extends BaseService {
     }
 
 
+    /**
+     * @param recordId 记录id
+     * @param filePath 文件的路径
+     */
+    public void writeUploadLog(String filePath, Long recordId) {
+        super.writeUploadLog(filePath, recordId);
+        User user = userRepository.getOne(recordId);
+        user.setPhotoUrl(filePath);
+        userRepository.save(user);
+    }
 }

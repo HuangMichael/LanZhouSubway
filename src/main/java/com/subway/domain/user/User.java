@@ -25,6 +25,9 @@ public class User {
     @Column(length = 50, columnDefinition = "default '123456'")
     private String password;
 
+    @Column(length = 100)
+    private String photoUrl; //1男 0女
+
     @Column(length = 1)
     private String gender; //1男 0女
 

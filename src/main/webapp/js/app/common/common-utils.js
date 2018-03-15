@@ -464,4 +464,25 @@ var showTableName = function (value) {
 }
 
 
+/**
+ *
+ * @param column
+ * @param row
+ * @returns {string}
+ */
+var showCommandsBtn = function (column, row) {
+    return "<button type='button' class='btn btn-xs btn-default command-upload' data-row-id='" + row.id + "' onclick='showUpload(" + row.id + ")'><span class='fa fa-upload'></span></button> ";
+}
+
+/**
+ *
+ * @param column
+ * @param row
+ * @returns {string}
+ */
+var showUploadBtn = function (column, row) {
+    return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " +
+        "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
+}
+
 

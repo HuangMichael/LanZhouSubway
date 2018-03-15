@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -233,5 +234,24 @@ public class UserController extends BaseController {
         return userService.delete(id);
     }
 
+
+
+
+
+
+
+    /**
+     * @param file       多媒体文件
+     * @param mainObject
+     * @param recordId
+     * @return 上传多媒体文件 返回信息
+     * @throws Exception
+     */
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject upload(@RequestParam("file") MultipartFile file, @RequestParam("mainObject") String mainObject, @RequestParam("recordId") Long recordId) throws Exception {
+        Boolean result = userService.upload(file, mainObject, recordId);
+        return getCommonDataService().getReturnType(result, "文件上传成功", "文件上传失败");
+    }
 
 }
