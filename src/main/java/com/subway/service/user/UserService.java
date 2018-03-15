@@ -1,7 +1,6 @@
 package com.subway.service.user;
 
 import com.subway.dao.user.UserRepository;
-import com.subway.domain.person.Person;
 import com.subway.domain.user.User;
 import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -126,9 +124,7 @@ public class UserService extends BaseService {
                 result = true;
                 //将用户人员信息放入session.
                 HttpSession session = request.getSession();
-                Person person = user.getPerson();
                 session.setAttribute("currentUser", user);
-                session.setAttribute("person", person);
             }
         }
         return commonDataService.getReturnType(result, "用户登录成功", failMessage);

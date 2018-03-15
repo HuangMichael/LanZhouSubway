@@ -1,7 +1,6 @@
 package com.subway.controller.common;
 
 
-import com.subway.domain.person.Person;
 import com.subway.service.commonData.CommonDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * Created by huangbin on 2015/12/23 0023.
@@ -23,22 +21,6 @@ import java.util.List;
 public class CommonDataController extends BaseController {
     @Autowired
     CommonDataService commonDataService;
-
-
-
-
-
-    /**
-     * @return 获得设备状态
-     */
-    @RequestMapping(value = "/findActivePerson", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Person> findActivePerson( ) {
-
-//        return commonDataService.findActivePerson();
-
-        return null;
-    }
 
 
     /**
@@ -60,11 +42,6 @@ public class CommonDataController extends BaseController {
     @ResponseBody
     public Boolean reload(HttpSession session) {
         boolean result = false;
-//        User user = (User) session.getAttribute("currentUser");
-//
-//        if (user != null) {
-//            result = commonDataService.reload(user, session);
-//        }
         return result;
     }
 

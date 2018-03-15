@@ -1,7 +1,6 @@
 package com.subway.domain.user;
 
 
-import com.subway.domain.person.Person;
 import com.subway.domain.role.Role;
 import lombok.Data;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -26,12 +25,17 @@ public class User {
     @Column(length = 50, columnDefinition = "default '123456'")
     private String password;
 
+    @Column(length = 1)
+    private String gender; //1男 0女
+
+    @Column(length = 20)
+    private String birthDate; //出生年月
+
     @Column(length = 20)
     private String personName;
 
     @Column(length = 20)
     private String idCard;
-
 
     @Column(length = 50)
     private String email;
@@ -39,16 +43,12 @@ public class User {
     @Column(length = 20)
     private String telephone;
 
-    @OneToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roleList;
 
     @Column(scale = 1000)
-    private long sortNo;
+    private Long sortNo;
 
     @Column(nullable = false, length = 1, columnDefinition = "varchar(1) default '1'")
     private String status;

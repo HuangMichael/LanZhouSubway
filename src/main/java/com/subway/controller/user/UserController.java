@@ -4,7 +4,6 @@ package com.subway.controller.user;
 import com.subway.controller.common.BaseController;
 import com.subway.dao.user.UserRepository;
 import com.subway.domain.app.MyPage;
-import com.subway.domain.person.Person;
 import com.subway.domain.user.User;
 import com.subway.object.ReturnObject;
 import com.subway.service.app.ResourceService;
