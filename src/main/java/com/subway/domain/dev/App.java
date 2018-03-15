@@ -25,8 +25,8 @@ public class App {
     @Column(length = 50, nullable = false)
     private String appDesc;//生效时间
 
-    @OneToOne
-    @JoinColumn(name = "table_config_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "table_config_id", referencedColumnName = "id", nullable = false)
     private TableConfig tableConfig;
 
     @Column(length = 20, nullable = false)

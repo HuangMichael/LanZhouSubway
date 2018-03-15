@@ -17,7 +17,6 @@
                         <div class="box-body">
                             <div id="contentDiv">
                                 <div class="box-body">
-                                    <div class="tabbable">
 
                                         <div class="form-group" style="margin-bottom:10px;position:inherit"
                                              id="searchBox">
@@ -27,8 +26,7 @@
                                                        placeholder="应用名称"/>
                                             </div>
                                             <div class="col-md-2">
-                                                <button id="searchBtn" class="btn btn-default" onclick="search()">查询
-                                                </button>
+                                                <%@include file="../common/common-searchBtn.jsp" %>
                                             </div>
                                         </div>
                                         <table id="appListTable"
@@ -40,7 +38,6 @@
                                             </thead>
                                         </table>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>

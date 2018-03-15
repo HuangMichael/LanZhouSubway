@@ -11,52 +11,7 @@ $(function () {
     docName = "位置信息";
     mainObject = "app";
     formName = "#form";
-    var validateOptions = {
-        message: '该值无效 ',
-        fields: {
-            "locName": {
-                message: '位置名称无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置名称不能为空!'
-                    }
-                }
-            },
-
-            "locName": {
-                message: '位置名称无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置名称不能为空!'
-                    }
-                }
-            },
-            "locDesc": {
-                message: '位置描述无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置描述不能为空!'
-                    }
-                }
-            },
-            "locLevel": {
-                message: '位置级别无效',
-                validators: {
-                    notEmpty: {
-                        message: '位置级别不能为空!'
-                    }
-                }
-            },
-            "status": {
-                message: '状态无效',
-                validators: {
-                    notEmpty: {
-                        message: '状态不能为空!'
-                    }
-                }
-            },
-        }
-    };
+    var validateOptions = null;
 
 
     var searchVue = new Vue({
@@ -90,7 +45,11 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showTableName: {
+                to: showTableName
             }
+
         }
     })
 
