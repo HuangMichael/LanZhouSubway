@@ -15,10 +15,6 @@ import java.util.List;
 @Entity
 @Table(name = "T_RESOURCE")
 @Data
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +30,7 @@ public class Resource {
     @Column(length = 1)
     private Long resourceLevel;//资源级别
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100)
     private String appName;//应用名称
 
 

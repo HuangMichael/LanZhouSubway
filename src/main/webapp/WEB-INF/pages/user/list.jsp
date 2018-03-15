@@ -18,12 +18,10 @@
                             <div class="form-group" style="margin-bottom:10px;position:inherit"
                                  id="searchBox">
                                 <div class="col-md-2">
-                                    <input class="form-control" id="userName" name="userName"
-                                           placeholder="用户名"/>
+                                    <input class="form-control" id="userName" name="userName" placeholder="用户名"/>
                                 </div>
                                 <div class="col-md-2">
-                                    <button id="searchBtn" class="btn btn-default" onclick="search()">查询
-                                    </button>
+                                    <%@include file="../common/common-searchBtn.jsp" %>
                                 </div>
                             </div>
                             <%@include file="userList.jsp" %>

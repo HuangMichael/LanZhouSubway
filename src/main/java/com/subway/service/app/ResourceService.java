@@ -185,7 +185,6 @@ public class ResourceService extends BaseService {
         if (!exits) {
             resource.setResourceUrl(url);
             resource.setResourceName(url);
-            resource.setStaticFlag(true);
             resource = resourceRepository.save(resource);
         }
         return resource;
