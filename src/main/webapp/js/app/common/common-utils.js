@@ -397,6 +397,16 @@ var showEqName = function (value) {
  *
  * @param value
  */
+var showUnitName = function (value) {
+    return value ? value["name"] : "无";
+
+}
+
+
+/**
+ *
+ * @param value
+ */
 var showLocName = function (value) {
 
     return value ? value["location"]["locName"] : "无";

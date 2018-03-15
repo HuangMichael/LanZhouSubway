@@ -32,11 +32,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-2">
-                                            <button id="clearBtn" class="btn btn-default"
-                                                    onclick="resetSearch()">清空
-                                            </button>
-                                            <button id="searchBtn" class="btn btn-default" onclick="search()">查询
-                                            </button>
+                                            <%@include file="../common/common-searchBtn.jsp" %>
                                         </div>
                                     </div>
                                     <table id="preMaintListTable"
