@@ -1,35 +1,48 @@
 package com.subway.preMaintPlan;
+
 import com.subway.service.app.BaseService;
 import com.subway.utils.search.SortedSearchable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**
-* 预防性维护计划业务查询类
-*
-* @author huangbin
-* @generate by autoCode
-* @Date 2018-3-1
-*/
+ * 预防性维护计划业务查询类
+ *
+ * @author huangbin
+ * @generate by autoCode
+ * @Date 2018-3-1
+ */
 @Service
-public class  PreMaintPlanSearchService extends BaseService implements SortedSearchable {
+public class PreMaintPlanSearchService extends BaseService implements SortedSearchable {
 
-@Autowired
-PreMaintPlanRepository  preMaintPlanRepository;
-
-
-public List< PreMaintPlan> findByConditions(String searchPhrase, int paramsSize) {
-String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-return  preMaintPlanRepository.findAll();
-}
+    @Autowired
+    PreMaintPlanRepository preMaintPlanRepository;
 
 
-public Page< PreMaintPlan> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
-String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-return  preMaintPlanRepository.findAll( pageable);
-}
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @return
+     */
+    public List<PreMaintPlan> findByConditions(String searchPhrase, int paramsSize) {
+        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
+        return preMaintPlanRepository.findByPlanDescContainingAndStatus(array[0], array[1]);
+    }
+
+
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @param pageable
+     * @return
+     */
+    public Page<PreMaintPlan> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
+        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
+        return preMaintPlanRepository.findByPlanDescContainingAndStatus(array[0], array[1], pageable);
+    }
 
 }

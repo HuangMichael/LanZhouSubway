@@ -20,13 +20,13 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name"
-                                                   name="name"
-                                                   placeholder="关键字"/>
+                                            <input class="form-control" id="planDesc"
+                                                   name="planDesc"
+                                                   placeholder="计划名称"/>
 
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="status">
+                                            <select class="form-control" id="status"  onchange="search()">
                                                 <option value="1" selected>有效</option>
                                                 <option value="0">无效</option>
                                             </select>
@@ -74,21 +74,5 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
-</div>
-
-<div class="modal fade " id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span>&times;</span>
-                </button>
-                <h4 class="modal-title pull-left" id="myModalLabel2">请选择文件</h4>
-            </div>
-            <div class="modal-body">
-                <div id="dropZone" class="dropzone"></div>
-            </div>
-        </div>
-    </div>
 </div>
 <script type="text/javascript" src="/js/app/preMaintPlan/preMaintPlan.js"></script>

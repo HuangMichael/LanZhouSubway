@@ -8,7 +8,6 @@ import com.subway.object.ReturnObject;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.service.dev.AppSearchService;
 import com.subway.service.dev.AppService;
-import com.subway.tableConfig.TableConfig;
 import com.subway.utils.PageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,8 +74,6 @@ public class AppController extends BaseController {
     @ResponseBody
     public ReturnObject autoCode(@RequestParam("appId") Long appId) {
         //根据应用选择的应用配置信息
-
-        System.out.println("appId---------------" + appId);
         boolean result = appService.autoCode(appId);
         return commonDataService.getReturnType(result, "应用生成成功", "应用生成失败");
     }
