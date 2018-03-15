@@ -54,10 +54,20 @@ public class TableConfigService extends BaseService {
         TableConfig tableConfig = tableConfigRepository.getOne(id);
         List<TableColumnConfig> tableColumnConfigList = tableColumnConfigRepository.findByTableConfigAndStatus(tableConfig, ConstantUtils.STATUS_YES);
         String originName;
+        String classType;
+        //下划线进行替换
         for (TableColumnConfig columnConfig : tableColumnConfigList) {
             originName = columnConfig.getColName();
+            classType = columnConfig.getClassType();
             if (originName.contains("_")) {
                 columnConfig.setColName(StringUtils.convertColName(originName));
+            }
+            if (classType.startsWith("varchar")) {
+                columnConfig.setClassType("String");
+            } else if (classType.contains("int")) {
+                columnConfig.setClassType("Long");
+            } else if (classType.contains("double")) {
+                columnConfig.setClassType("Double");
             }
             tableColumnConfigRepository.save(columnConfig);
         }
