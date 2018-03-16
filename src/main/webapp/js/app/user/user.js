@@ -55,6 +55,8 @@ $(function () {
         }
     });
 
+    search();
+
 
 // initSelect.call();
 //初始化查询所有的
@@ -171,7 +173,6 @@ function download(id) {
         showMessageBox("danger", "对不起，照片还未上传");
     }
 }
-
 
 
 /**

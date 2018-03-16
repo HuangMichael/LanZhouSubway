@@ -456,7 +456,7 @@ var showOrderDesc = function (value) {
  * @param value
  */
 var showGender = function (value) {
-    return value ? '男' : "女";
+    return value == '1' ? '男' : "女";
 }
 
 /**
