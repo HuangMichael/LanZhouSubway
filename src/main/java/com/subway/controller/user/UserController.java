@@ -180,15 +180,6 @@ public class UserController extends BaseController {
     }
 
 
-    /**
-     * 取消用户数据授权信息
-     */
-    @RequestMapping(value = "/removeLoc", method = {RequestMethod.POST})
-    @ResponseBody
-    public ReturnObject removeLoc(@RequestParam("userId") Long userId) {
-        boolean result = userService.removeLoc(userId);
-        return commonDataService.getReturnType(result, "用户数据授权取消成功", "用户数据授权取消失败");
-    }
 
 
     /**
