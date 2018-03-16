@@ -190,7 +190,7 @@ public class UserService extends BaseService {
      * @return 根据状态和授权查询用户
      */
     public List<User> findAllByAuthKey(String status, String authKey) {
-        return userRepository.findByStatusAuthKeyStartingWith(status, authKey);
+        return userRepository.findByStatusAndAuthKeyStartingWith(status, authKey);
     }
 
 }

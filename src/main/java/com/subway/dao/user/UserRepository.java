@@ -100,5 +100,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @param authKey 授权码
      * @return 根据状态和授权码查询用户信息
      */
-    List<User> findByStatusAuthKeyStartingWith(String status, String authKey);
+    List<User> findByStatusAndAuthKeyStartingWith(String status, String authKey);
 }

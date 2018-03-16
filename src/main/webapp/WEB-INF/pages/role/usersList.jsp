@@ -3,13 +3,10 @@
        style="max-height: 300px;overflow: scroll">
     <thead>
     <tr>
-        <th data-column-id="id" data-identifier="true" data-type="numeric" data-align="center" data-width="3%">序号</th>
+        <th data-column-id="id" data-identifier="true" data-type="numeric" data-align="center" data-width="10%">序号</th>
         <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false">ID</th>
-        <th data-column-id="userName" data-sortable="true" data-width="5%">用户名</th>
-        <th data-column-id="personName" data-sortable="true" data-width="5%">姓名</th>
-        <th data-column-id="gender" data-width="5%" data-converter="showGender">性别</th>
-        <th data-column-id="addUserBtn" data-width="5%" data-formatter="addUserBtn">添加用户</th>
-
+        <th data-column-id="userName" data-sortable="true" data-width="45%">用户名</th>
+        <th data-column-id="personName" data-sortable="true" data-width="45%">姓名</th>
 
     </tr>
     </thead>
@@ -31,7 +28,7 @@
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">取消
     </button>
-    <button type="button" id="selUnitBtn" name="selUnitBtn" class="btn btn-danger">确定
+    <button type="button" id="selUsersBtn" name="selUsersBtn" class="btn btn-danger">确定
     </button>
 </div>
 

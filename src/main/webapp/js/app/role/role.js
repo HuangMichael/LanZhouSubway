@@ -3,7 +3,7 @@
 
  */
 
-
+var recordId = null;
 $(function () {
 
 
@@ -39,8 +39,10 @@ $(function () {
         },
         url: "/" + mainObject + "/data",
         formatters: {
-
-            "addUser": addUserBtn,
+            "addUser": function (column, row) {
+                recordId = row.id;
+                return "<button type='button' class='btn btn-xs btn-default command-plus' data-row-id='" + row.id + "' onclick='addUsers(" + row.id + ")'><span class='fa fa-plus'></span></button> "
+            },
             "commands": showCommandsBtn
         },
         converters: {
@@ -127,4 +129,10 @@ function add() {
     $("#editModal").modal("show");
 }
 
+/**
+ * 添加用户
+ */
+function addUsers() {
+    $("#usersModal").modal("show");
+}
 

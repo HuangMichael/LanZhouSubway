@@ -525,7 +525,7 @@ var showCommandsBtn = function (column, row) {
  * @returns {string}
  */
 var addUserBtn = function (column, row) {
-    return "<button type='button' class='btn btn-xs btn-default' data-row-id='" + row.id + "' onclick='addUsers(" + row.id + ")'><span class='fa fa-plus-square-o'></span></button> ";
+    return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='addUsers(" + row.id + ")'><span class='fa fa-plus'></span></button> ";
 }
 
 

@@ -11,7 +11,7 @@
                     <!-- BOX -->
                     <div class="box border blue">
                         <div class="box-title">
-                            <h4><i class="fa fa-table"></i>维修单信息</h4>
+                            <h4><i class="fa fa-table"></i>报修单信息</h4>
                         </div>
                         <%@include file="../common/common-menubar.jsp" %>
                         <div class="box-body">
@@ -26,17 +26,10 @@
 
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="status">
-                                                <option value="1" selected>有效</option>
-                                                <option value="0">无效</option>
-                                            </select>
+                                            <%@include file="../common/common-status-select.jsp" %>
                                         </div>
                                         <div class="col-md-2">
-                                            <button id="clearBtn" class="btn btn-default"
-                                                    onclick="resetSearch()">清空
-                                            </button>
-                                            <button id="searchBtn" class="btn btn-default" onclick="search()">查询
-                                            </button>
+                                            <%@include file="../common/common-searchBtn.jsp" %>
                                         </div>
                                     </div>
                                     <table id="workOrderListTable"
