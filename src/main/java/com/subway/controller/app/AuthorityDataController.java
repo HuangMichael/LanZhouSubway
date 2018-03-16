@@ -6,10 +6,9 @@ import com.subway.dao.app.resource.VRoleAuthViewRepository;
 import com.subway.domain.app.MyPage;
 import com.subway.domain.app.resoure.VRoleAuthView;
 import com.subway.role.Role;
-import com.subway.object.ReturnObject;
+import com.subway.role.RoleService;
 import com.subway.service.app.ResourceService;
 import com.subway.service.commonData.CommonDataService;
-import com.subway.role.RoleService;
 import com.subway.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -32,36 +31,14 @@ import java.util.List;
 public class AuthorityDataController extends BaseController {
     @Autowired
     ResourceService resourceService;
-
     @Autowired
     RoleService roleService;
     @Autowired
     VRoleAuthViewRepository vRoleAuthViewRepository;
-
     @Autowired
     UserService userService;
-
-
     @Autowired
     CommonDataService commonDataService;
-
-    /**
-     * 初始化展示授权列表
-     *
-     * @param locationId 位置信息id
-     * @param userIds    选择的用户ids
-     * @return
-     */
-    @RequestMapping(value = "/grant", method = RequestMethod.POST)
-    @ResponseBody
-    public ReturnObject grant(@RequestParam("locationId") Long locationId, @RequestParam("userIds") String userIds) {
-
-
-        userService.grantDataAuth(locationId, userIds);
-
-
-        return commonDataService.getReturnType(true, "数据授权成功!", "数据授权失败!");
-    }
 
     /**
      * @param roleId
@@ -176,43 +153,6 @@ public class AuthorityDataController extends BaseController {
     }
 
 
-    /**
-     * 载入明细信息
-     *
-     * @param locationId
-     * @param modelMap
-     * @return
-     */
-    @RequestMapping(value = "/popUsers/{locationId}", method = RequestMethod.GET)
-    public String popUsers(@PathVariable("locationId") Long locationId, ModelMap modelMap) {
-        List<Object> usersNotInLocation = userService.findUsersNotInLocation(locationId);
-        modelMap.put("usersNotInLocation", usersNotInLocation);
-        return "/authorityData/popUsers";
-    }
 
 
-    /**
-     * 载入该位置下数据授权的用户
-     *
-     * @param locationId
-     * @param modelMap
-     * @return
-     */
-    @RequestMapping(value = "/loadUsers/{locationId}", method = RequestMethod.GET)
-    public String loadUsers(@PathVariable("locationId") Long locationId, ModelMap modelMap) {
-        List<Object> usersInLocation = userService.findUsersInLocation(locationId);
-        modelMap.put("usersInLocation", usersInLocation);
-        return "/authorityData/locUsers";
-    }
-
-    /**
-     * @param locationId 位置id
-     * @param userIds    用户id字符串
-     * @return 将locationId的数据权限授予users
-     */
-    @RequestMapping(value = "/grantDataAuth", method = RequestMethod.POST)
-    @ResponseBody
-    public ReturnObject grantDataAuth(@RequestParam("locationId") Long locationId, @RequestParam("userIds") String userIds) {
-        return userService.grantDataAuth(locationId, userIds);
-    }
 }

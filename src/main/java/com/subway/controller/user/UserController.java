@@ -10,10 +10,7 @@ import com.subway.service.app.ResourceService;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.service.user.UserSearchService;
 import com.subway.service.user.UserService;
-import com.subway.utils.CommonStatusType;
-import com.subway.utils.MD5Util;
-import com.subway.utils.PageUtils;
-import com.subway.utils.SessionUtil;
+import com.subway.utils.*;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -217,6 +214,17 @@ public class UserController extends BaseController {
     public ReturnObject upload(@RequestParam("file") MultipartFile file, @RequestParam("mainObject") String mainObject, @RequestParam("recordId") Long recordId) throws Exception {
         Boolean result = userService.upload(file, mainObject, recordId);
         return getCommonDataService().getReturnType(result, "文件上传成功", "文件上传失败");
+    }
+
+
+    /**
+     * @return 查询用户管理的用户
+     */
+    @RequestMapping(value = "/findAllByAuthKey", method = RequestMethod.GET)
+    @ResponseBody
+    public List<User> findAllByAuthKey(HttpSession session) {
+        User user = SessionUtil.getCurrentUserBySession(session);
+        return userService.findAllByAuthKey(ConstantUtils.STATUS_YES, user.getAuthKey());
     }
 
 }

@@ -184,3 +184,11 @@ function add() {
 }
 
 
+
+/**
+ * 添加用户
+ */
+function addUsers() {
+    $("#usersModal").modal("show");
+}
+

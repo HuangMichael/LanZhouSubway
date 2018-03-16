@@ -520,6 +520,17 @@ var showCommandsBtn = function (column, row) {
 
 /**
  *
+ * @param column
+ * @param row
+ * @returns {string}
+ */
+var addUserBtn = function (column, row) {
+    return "<button type='button' class='btn btn-xs btn-default' data-row-id='" + row.id + "' onclick='addUsers(" + row.id + ")'><span class='fa fa-plus-square-o'></span></button> ";
+}
+
+
+/**
+ *
  * @param value
  * @returns {*}
  */

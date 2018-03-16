@@ -71,19 +71,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(nativeQuery = true, value = "SELECT  u.id,u.user_name FROM t_user u WHERE u.vlocations_id = :locationId AND u.status = 1")
     List<Object> findUsersInLocation(@Param("locationId") Long locationId);
 
-    /**
-     * @param roleId
-     * @return
-     */
-    @Query(value = "select r.userList from Role r where r.id = :roleId")
-    List<User> findUserListByRoleId(@Param("roleId") Long roleId);
 
 
-    /**
-     * @return 查找所有的id
-     */
-    @Query("select e.id from User e order by e.id asc")
-    List<Long> findAllId();
 
 
     /**
@@ -105,4 +94,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
     Page<User> findByUserNameContainingAndPersonNameContainingAndStatusAndAuthKeyContaining(String userName, String personName, String status, String authKey, Pageable pageable);
 
+
+    /**
+     * @param status  状态
+     * @param authKey 授权码
+     * @return 根据状态和授权码查询用户信息
+     */
+    List<User> findByStatusAuthKeyStartingWith(String status, String authKey);
 }

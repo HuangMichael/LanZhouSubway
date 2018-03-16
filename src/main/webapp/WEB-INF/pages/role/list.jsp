@@ -80,4 +80,21 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+
+<div class="modal fade " id="usersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+                <h4 class="modal-title pull-left" id="myModalLabel">关联用户信息</h4>
+            </div>
+            <div class="modal-body">
+                <%@include file="usersList.jsp" %>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="/js/app/role/role.js"></script>

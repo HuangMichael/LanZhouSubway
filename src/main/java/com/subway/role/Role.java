@@ -8,6 +8,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by huangbin on 2016/03/14 0023.
@@ -33,7 +34,7 @@ public class Role {
     @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private List<User> userList;
+    private Set<User> userSet;
 
     @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY)

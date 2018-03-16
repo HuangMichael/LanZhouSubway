@@ -103,4 +103,16 @@ public class RoleController extends BaseController {
     }
 
 
+
+    /**
+     * @param roleId
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject addUser(@RequestParam("roleId") Long roleId,@RequestParam("userId") String userId) {
+        return roleService.addUser(roleId,userId);
+    }
+
 }

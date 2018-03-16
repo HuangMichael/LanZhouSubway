@@ -39,6 +39,8 @@ $(function () {
         },
         url: "/" + mainObject + "/data",
         formatters: {
+
+            "addUser": addUserBtn,
             "commands": showCommandsBtn
         },
         converters: {

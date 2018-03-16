@@ -138,7 +138,6 @@ public class UserService extends BaseService {
     }
 
 
-
     /**
      * 修改用户密码
      */
@@ -155,68 +154,11 @@ public class UserService extends BaseService {
     }
 
 
-    public List<Long> selectAllId() {
-
-        return userRepository.findAllId();
-    }
-
-    /**
-     * @param locationId 对位置locationId对人员进行授权
-     * @param userIds
-     * @return
-     */
-    public ReturnObject grantDataAuth(Long locationId, String userIds) {
-//        Vlocations vlocations = vlocationsRepository.findById(locationId);
-//        String userIdArray[] = userIds.split(",");
-//        Long userId = null;
-//        User user = null;
-//        List<User> users = new ArrayList<User>();
-//        for (String str : userIdArray) {
-//            userId = Long.parseLong(str);
-//            user = userRepository.findById(userId);
-//            user.setVlocations(vlocations);
-//            userRepository.save(user);
-//            users.add(user);
-//        }
-//        String msg = vlocations.getLocName() + users.size() + "个用户";
-//        return commonDataService.getReturnType(!users.isEmpty(), msg + "数据授权成功", "数据授权失败，请重试");
-
-        return null;
-    }
 
 
-    /**
-     * @param locationId
-     * @return 查询不在当前位置的用户信息
-     */
-    public List<Object> findUsersNotInLocation(Long locationId) {
-        return userRepository.findUsersNotInLocation(locationId);
-    }
 
 
-    /**
-     * @param locationId
-     * @return 查询在当前位置的用户信息
-     */
-    public List<Object> findUsersInLocation(Long locationId) {
-        return userRepository.findUsersInLocation(locationId);
-    }
 
-
-    /**
-     * @param userId 用户id
-     * @return 移除用户数据授权
-     */
-    public Boolean removeLoc(Long userId) {
-        boolean result = false;
-        User user = userRepository.findById(userId);
-        if (user != null) {
-//            user.setVlocations(null);
-            user = userRepository.save(user);
-//            result = user.getVlocations() == null;
-        }
-        return result;
-    }
 
 
     /**
@@ -240,4 +182,15 @@ public class UserService extends BaseService {
         user.setPhotoUrl(filePath);
         userRepository.save(user);
     }
+
+
+    /**
+     * @param status  状态
+     * @param authKey 授权码
+     * @return 根据状态和授权查询用户
+     */
+    public List<User> findAllByAuthKey(String status, String authKey) {
+        return userRepository.findByStatusAuthKeyStartingWith(status, authKey);
+    }
+
 }
