@@ -26,8 +26,8 @@ public class UserSearchService extends BaseService implements SortedSearchable {
      * @return 根据多条件关键字进行查询
      */
     public List<User> findByConditions(String searchPhrase, int paramSize) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramSize);
-        return userRepository.findByUserNameContaining(array[0]);
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramSize);
+        return userRepository.findByUserNameContainingAndPersonNameContainingAndStatusAndAuthKeyContaining(array[0],array[1],array[2],array[3]);
     }
 
 
@@ -36,8 +36,8 @@ public class UserSearchService extends BaseService implements SortedSearchable {
      * @return 根据多条件关键字进行查询
      */
     public Page<User> findByConditions(String searchPhrase, int paramSize, Pageable pageable) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramSize);
-        return userRepository.findByUserNameContaining(array[0], pageable);
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramSize);
+        return userRepository.findByUserNameContainingAndPersonNameContainingAndStatusAndAuthKeyContaining(array[0],array[1],array[2],array[3], pageable);
     }
 
 

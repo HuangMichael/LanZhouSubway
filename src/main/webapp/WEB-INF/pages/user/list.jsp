@@ -20,6 +20,14 @@
                                 <div class="col-md-2">
                                     <input class="form-control" id="userName" name="userName" placeholder="用户名"/>
                                 </div>
+
+                                <div class="col-md-2">
+                                    <input class="form-control" id="personName" name="personName" placeholder="姓名"/>
+                                </div>
+                                <div class="col-md-2">
+                                    <%@include file="../common/common-status-select.jsp" %>
+                                </div>
+
                                 <div class="col-md-2">
                                     <%@include file="../common/common-searchBtn.jsp" %>
                                 </div>

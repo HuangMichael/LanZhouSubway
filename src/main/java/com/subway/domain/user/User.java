@@ -50,6 +50,11 @@ public class User {
     @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private List<Role> roleList;
 
+
+    @Column(length = 20)
+    private String authKey;
+
+
     @Column(scale = 1000)
     private Long sortNo;
 

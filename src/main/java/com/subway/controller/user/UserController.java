@@ -40,6 +40,9 @@ import java.util.Map;
 public class UserController extends BaseController {
 
 
+    private static Integer SEARCH_PARAM_SIZE = 3;
+
+
     @Autowired
     UserRepository userRepository;
 
@@ -73,7 +76,7 @@ public class UserController extends BaseController {
                        @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(userSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(userSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
     }
 
 
@@ -164,17 +167,6 @@ public class UserController extends BaseController {
 
 
     /**
-     * @return 查询所有的id
-     */
-    @RequestMapping(value = "/findAllIds", method = RequestMethod.GET)
-    @ResponseBody
-    List<Long> findAllIds() {
-        return userService.selectAllId();
-    }
-
-
-
-    /**
      * @param request  请求
      * @param response 响应
      * @param param    查询关键字
@@ -185,7 +177,7 @@ public class UserController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-        List<User> dataList = userSearchService.findByConditions(param, 2);
+        List<User> dataList = userSearchService.findByConditions(param, SEARCH_PARAM_SIZE);
         userService.setDataList(dataList);
         userService.exportExcel(request, response, docName, titles, colNames);
     }
@@ -202,7 +194,6 @@ public class UserController extends BaseController {
     }
 
 
-
     /**
      * @param id
      * @return 删除信息
@@ -212,7 +203,6 @@ public class UserController extends BaseController {
     public ReturnObject delete(@PathVariable("id") Long id) {
         return userService.delete(id);
     }
-
 
 
     /**
