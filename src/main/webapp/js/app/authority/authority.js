@@ -32,13 +32,14 @@ $(function () {
             if (data) {
                 obj = data[x];
                 pid = (!obj["parent"]) ? 0 : obj["parent"].id;
-                zNodes[x] = {id: obj.id, pId: pid, name: obj.description, open: true, isParent: 1};
+                zNodes[x] = {id: obj.id, pId: pid, name: obj["resourceName"], open: true, isParent: 1};
             } else {
                 alert("信息加载出错");
             }
         }
         var t = $("#tree");
         t = $.fn.zTree.init(t, setting, zNodes);
+        zTree.expandAll(false);
         demoIframe = $("#testIframe");
         demoIframe.bind("load", loadReady);
 
@@ -69,7 +70,7 @@ $(function () {
             }
         }
     );
-    $("select").select2({theme: "bootstrap"});
+
 
 
     docName = "权限信息";

@@ -34,7 +34,7 @@ interface RoleRepository extends JpaRepository<Role, Long> {
      * @param roleDesc
      * @return
      */
-    List<Role> findByRoleNameContainsAndRoleDescContainsAndStatus(String roleName, String roleDesc, String status);
+    List<Role> findByRoleNameContainingAndRoleDescContainingAndStatus(String roleName, String roleDesc, String status);
 
     /**
      * @param roleName
@@ -42,7 +42,7 @@ interface RoleRepository extends JpaRepository<Role, Long> {
      * @param pageable
      * @return
      */
-    Page<Role> findByRoleNameContainsAndRoleDescContainsAndStatus(String roleName, String roleDesc, String status, Pageable pageable);
+    Page<Role> findByRoleNameContainingAndRoleDescContainingAndStatus(String roleName, String roleDesc, String status, Pageable pageable);
 
 
 }

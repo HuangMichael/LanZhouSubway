@@ -56,7 +56,7 @@ $(function () {
     });
 
 
-initSelect.call();
+// initSelect.call();
 //初始化查询所有的
     validateForm.call(validationConfig);
     vdm = new Vue({

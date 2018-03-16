@@ -138,21 +138,6 @@ public class UserService extends BaseService {
     }
 
 
-    /**
-     * @param userName 用户名
-     * @param status   状态
-     * @return
-     */
-    public User findByUserNameAndStatus(String userName, String status) {
-        List<User> userList = userRepository.findByUserNameAndStatus(userName, status);
-        User user;
-        if (!userList.isEmpty()) {
-            user = userList.get(0);
-        } else {
-            user = null;
-        }
-        return user;
-    }
 
     /**
      * 修改用户密码

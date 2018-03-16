@@ -40,7 +40,7 @@ $(document).ready(function () {
                 zNodes[x] = {
                     id: obj.id,
                     pId: pid,
-                    name: obj.description,
+                    name: obj["resourceName"],
                     open: !pid,
                     isParent: 0
                 };
@@ -54,6 +54,7 @@ $(document).ready(function () {
     demoIframe = $("#testIframe");
     demoIframe.bind("load", loadReady);
     var zTree = $.fn.zTree.getZTreeObj("tree");
+    zTree.expandAll(false);
     zTree.selectNode(zTree.getNodeByParam("id", zNodes[0].id));
 
     function loadReady() {
@@ -62,7 +63,7 @@ $(document).ready(function () {
             maxH = Math.max(bodyH, htmlH),
             minH = Math.min(bodyH, htmlH),
             h = demoIframe.height() >= maxH ? minH : maxH;
-        if (h < 530) h = 530;
+        if (h < 500) h = 500;
         demoIframe.height(h);
     }
 });

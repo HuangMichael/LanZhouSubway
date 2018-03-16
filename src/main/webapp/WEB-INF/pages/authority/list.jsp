@@ -22,8 +22,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <form:select path="roleList" class="form-control" id="role_id" onchange="loadAuthView()">
-                                    <form:options itemLabel="roleDesc" items="${roleList}"
-                                                  itemValue="id"></form:options>
+                                    <form:options itemLabel="roleDesc" items="${roleList}" itemValue="id"></form:options>
                                 </form:select>
                             </div>
                             <div class="col-md-4"><a class="btn  btn-sm btn-danger" onclick="grant()">授权</a></div>

@@ -4,25 +4,25 @@
 
 $(function () {
     //先查询出所有的模块
-    var userName = "";
+    var userId = "";
     $.ajaxSettings.async = false;
     $.getJSON("/getCurrentUser", function (data) {
-        userName = data.id;
+        userId = data.id;
     });
-    var modules = getAllModules(userName);
+    var modules = getAllModules(1);
     var html = '';
     var moduleId = null;
     var apps = [];
     for (var x in modules) {
-        if (modules[x]["resourceDesc"]) {
+        if (modules[x]["resourceName"]) {
             html += '<li class="has-sub">';
-            html += '   <a><i class="' + modules[x]["iconClass"] + '"></i> <span class="menu-text">' + modules[x]["resourceDesc"] + '</span><span class="arrow"></span></a>';
+            html += '   <a><i class="' + modules[x]["iconClass"] + '"></i> <span class="menu-text">' + modules[x]["resourceName"] + '</span><span class="arrow"></span></a>';
             html += '     <ul class="sub" id="sub' + moduleId + '">';
             moduleId = modules[x]["id"];
-            apps = getAppByModule(userName, moduleId);
+            apps = getAppByModule(1, moduleId);
             for (var i in apps) {
-                if (apps[i]["resourceDesc"]) {
-                    html += '       <li><a ' + apps[i]["resourceUrl"] + '><span class="sub-menu-text">' + apps[i]["resourceDesc"] + '</span></a></li>';
+                if (apps[i]["resourceName"]) {
+                    html += '       <li><a ' + apps[i]["resourceUrl"] + '><span class="sub-menu-text">' + apps[i]["resourceName"] + '</span></a></li>';
                 }
             }
             html += '     </ul>';
@@ -51,10 +51,10 @@ $(function () {
  *
  * @returns {Array} 查询所有的一级模块
  */
-function getAllModules(userName) {
+function getAllModules(userId) {
     var modules = [];
     $.ajaxSettings.async = false;
-    var url = "authority/loadModule/" + userName;
+    var url = "authority/loadModule/" + userId;
     $.getJSON(url, function (data) {
         modules = data;
     });
@@ -65,10 +65,10 @@ function getAllModules(userName) {
  *
  * @returns {Array} 查询所有的一级模块
  */
-function getAppByModule(userName, moduleId) {
+function getAppByModule(userId, moduleId) {
     var modules = [];
     $.ajaxSettings.async = false;
-    var url = "authority/loadApp/" + moduleId + "/" + userName;
+    var url = "authority/loadApp/" + moduleId + "/" + userId;
     $.getJSON(url, function (data) {
         modules = data;
     });

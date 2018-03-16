@@ -1,7 +1,5 @@
 var zTree;
 var demoIframe;
-var reportModel = null;
-var eqClasses = [];
 var setting = {
     view: {dblClickExpand: false, showLine: true, selectedMulti: false},
     data: {simpleData: {enable: true, idKey: "id", pIdKey: "pId", rootPId: ""}},

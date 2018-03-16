@@ -27,7 +27,7 @@ public class RoleSearchService extends BaseService implements SortedSearchable {
 
     public List<Role> findByConditions(String searchPhrase, int paramSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramSize);
-        return roleRepository.findByRoleNameContainsAndRoleDescContainsAndStatus(array[0], array[1], array[2]);
+        return roleRepository.findByRoleNameContainingAndRoleDescContainingAndStatus(array[0], array[1], array[2]);
     }
 
 
@@ -39,7 +39,7 @@ public class RoleSearchService extends BaseService implements SortedSearchable {
 
     public Page<Role> findByConditions(String searchPhrase, int paramSize, Pageable pageable) {
         String array[] = super.assembleSearchArray(searchPhrase, paramSize);
-        return roleRepository.findByRoleNameContainsAndRoleDescContainsAndStatus(array[0], array[1], array[2], pageable);
+        return roleRepository.findByRoleNameContainingAndRoleDescContainingAndStatus(array[0], array[1], array[2], pageable);
     }
 
 

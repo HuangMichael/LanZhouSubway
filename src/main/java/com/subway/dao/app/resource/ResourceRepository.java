@@ -2,8 +2,8 @@ package com.subway.dao.app.resource;
 
 
 import com.subway.domain.app.resoure.Resource;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import javax.persistence.OrderBy;
@@ -13,11 +13,8 @@ import java.util.List;
  * Created by huangbin on 2016/3/15 0008.
  * 数据资源查询接口
  */
-public interface ResourceRepository extends CrudRepository<Resource, Long> {
-    /**
-     * 查询所有数据资源
-     */
-    List<Resource> findAll();
+public interface ResourceRepository extends JpaRepository<Resource, Long> {
+
 
     /**
      * 根据状态查询数据资源
@@ -42,14 +39,6 @@ public interface ResourceRepository extends CrudRepository<Resource, Long> {
      */
     Resource findById(long id);
 
-    /**
-     * 保存数据资源
-     */
-    Resource save(Resource resource);
-
-
-    @Override
-    void delete(Resource resource);
 
     @Query("select count(r)>0 from Resource r where r.parent.id =:pid")
     Boolean hasChildren(@Param("pid") long pid);
