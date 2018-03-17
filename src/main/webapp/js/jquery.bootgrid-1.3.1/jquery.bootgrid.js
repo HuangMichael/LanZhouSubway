@@ -1122,7 +1122,7 @@
             iconSearch: "glyphicon-search",
             iconUp: "glyphicon-chevron-up",
             infos: "infos", // must be a unique class name or constellation of class names within the header and footer,
-            left: "text-left",
+            left: "text-center",
             pagination: "pagination", // must be a unique class name or constellation of class names within the header and footer
             paginationButton: "button", // must be a unique class name or constellation of class names within the pagination
 
@@ -1153,7 +1153,6 @@
              * @since 1.1.0
              **/
             selected: "active",
-
             sortable: "sortable",
             table: "bootgrid-table table"
         },

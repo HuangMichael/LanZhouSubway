@@ -4,7 +4,7 @@
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
 .bootgrid-footer, .bootgrid-header {
-    margin: 15px 0
+    margin: 10px 0
 }
 
 .bootgrid-footer a, .bootgrid-header a {
@@ -19,7 +19,7 @@
 }
 
 .bootgrid-footer .search .glyphicon, .bootgrid-header .search .glyphicon {
-    top: 0
+    top: 0;
 }
 
 .bootgrid-footer .search .fa, .bootgrid-header .search .fa {

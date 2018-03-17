@@ -78,6 +78,10 @@ $(function () {
             showReportType: {
                 to: showReportType
             }
+            ,
+            showRunning: {
+                to: showRunning
+            }
         }
     });
 

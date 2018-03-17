@@ -389,6 +389,16 @@ var showReportType = function (value) {
  *
  * @param value
  */
+var showRunning = function (value) {
+    var runningState = ['故障', '正常'];
+    return runningState[value];
+}
+
+
+/**
+ *
+ * @param value
+ */
 var showEqName = function (value) {
     return value ? value["description"] : "无";
 
