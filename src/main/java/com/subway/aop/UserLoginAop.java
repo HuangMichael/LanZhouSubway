@@ -85,18 +85,23 @@ public class UserLoginAop {
     @AfterReturning(value = "execution(* com.subway.workOrder.WorkOrderController.reportFix(..))", returning = "returnObject")
     public void writeWorkOrderReportLog(JoinPoint joinPoint, ReturnObject returnObject) {
         Object[] args = joinPoint.getArgs();
+
+        String type = (String) args[0];
         for (Object object : args) {
             log.info("object------------" + object.toString());
 
         }
         WorkOrder workOrder = (WorkOrder) returnObject.getObject();
-
         WorkOrderLog workOrderLog = new WorkOrderLog();
-        workOrderLog.setContent(workOrder.getEquipment().getDescription() + "报修");
+        if (type.equals("w")) {
+            workOrderLog.setContent(workOrder.getLocation().getLocName() + "[" + workOrder.getOrderDesc() + "]" + "设备报修");
+        } else if (type.equals("s")) {
+            workOrderLog.setContent(workOrder.getEquipment().getLocation().getLocName() + "[" + workOrder.getOrderDesc() + "]" + "位置报修");
+        }
         workOrderLog.setAuthKey("01");
         workOrderLog.setCreator("huangbin");
         workOrderLog.setOrderState("0");
-        workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyyMMddHHmmss"));
+        workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
         workOrderLog.setWorkOrder(workOrder);
         workOrderLog.setSortNo(1l);
         workOrderLog.setStatus("1");
