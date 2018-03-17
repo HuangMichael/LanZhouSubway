@@ -4,7 +4,7 @@
 <th data-column-id="orderLineNo" data-width="10%">工单行号</th>
 <th data-column-id="orderDesc" data-width="15%">报修单描述</th>
 <th data-column-id="reporter" data-width="5%">报修人</th>
-<th data-column-id="reportType" data-width="10%" data-converter="showReportType">报修类型</th>
+<th data-column-id="reportType" data-width="5%" data-converter="showReportType">报修类型</th>
 <th data-column-id="reportTime" data-width="10%">报修时间</th>
 <th data-column-id="creator" data-width="5%">记录人</th>
 <th data-column-id="orderState" data-width="10%" data-converter="showOrderState">工单状态</th>

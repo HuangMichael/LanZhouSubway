@@ -9,7 +9,7 @@
                 <label for="reporter" class="col-md-2 control-label">报修人</label>
                 <div class="col-md-4">
                     <input class="form-control" id="id" name="id" type="hidden"/>
-                    <input class="form-control" id="type" name="type" type="hidden" value="s"/>
+                    <input class="form-control" id="type" name="type" type="hidden" value="w"/>
                     <input class="form-control" id="reporter" name="reporter"/>
                 </div>
 

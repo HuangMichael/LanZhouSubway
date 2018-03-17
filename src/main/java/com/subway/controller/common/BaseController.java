@@ -2,28 +2,18 @@ package com.subway.controller.common;
 
 
 import com.subway.domain.app.resoure.VRoleAuthView;
-import com.subway.object.ReturnObject;
-import com.subway.service.app.BaseService;
 import com.subway.service.app.ResourceService;
 import com.subway.service.commonData.CommonDataService;
-import com.subway.utils.SessionUtil;
 import com.subway.utils.StringUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -34,17 +24,21 @@ import java.util.Map;
 @Controller
 @Data
 @EnableAutoConfiguration
+@Slf4j
 public class BaseController {
-
 
     @Autowired
     protected ResourceService resourceService;
-
 
     @Autowired
     protected CommonDataService commonDataService;
 
 
+    /**
+     * @param httpSession
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "/list")
     public String list(HttpSession httpSession, ModelMap modelMap) {
         //加载查询菜单
@@ -52,17 +46,10 @@ public class BaseController {
         List<VRoleAuthView> appMenus = resourceService.findAppMenusByController(httpSession, controllerName.toUpperCase());
         modelMap.put("appMenus", appMenus);
         String url = "/" + StringUtils.lowerCaseCamel(controllerName) + "/list";
+        log.info("url-------------"+url);
         return url;
     }
 
-
-    /**
-     * @param object 保存对象类型
-     * @return 返回操作值对象
-     */
-    protected ReturnObject save(String objectName, Object object) {
-        return commonDataService.getReturnType(object != null, objectName + "保存成功", objectName + "保存失败");
-    }
 
     /**
      * @param requestMap
@@ -88,17 +75,5 @@ public class BaseController {
         Sort sort = new Sort(direction, sortName);
         return sort;
     }
-
-
-    /**
-     * @param request
-     * @return
-     */
-    public String getFilterStr(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return SessionUtil.getCurrentUserLocationBySession(session);
-    }
-
-
 }
 

@@ -10,18 +10,14 @@ import com.subway.service.commonData.CommonDataService;
 import com.subway.service.reportFix.WorkOrderReport;
 import com.subway.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 
 import static com.subway.utils.ConstantUtils.*;
 
 
 /**
- * ������Ϣҵ����
  *
  * @author huangbin
  * @generate by autoCode
@@ -34,32 +30,19 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
     @Autowired
     EquipmentRepository equipmentRepository;
 
-
     @Autowired
     LocationRepository locationRepository;
-
 
     @Autowired
     WorkOrderRepository workOrderRepository;
 
-
     @Autowired
     CommonDataService commonDataService;
 
-    public List
-            <WorkOrder> findAll() {
-        return workOrderRepository.findAll();
-    }
-
-
-    public Page<WorkOrder> findAll(Pageable pageable) {
-        return workOrderRepository.findAll(pageable);
-    }
-
 
     /**
-     * @param id id
-     * @return ����idɾ������
+     * @param id
+     * @return
      */
     public ReturnObject delete(Long id) {
         workOrderRepository.delete(id);
@@ -70,10 +53,9 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
 
     /**
      * @param workOrder
-     * @return ������Ϣ
+     * @return
      */
     public ReturnObject save(WorkOrder workOrder) {
-
         workOrder = workOrderRepository.save(workOrder);
         return commonDataService.getReturnType(workOrder != null, SAVE_SUCCESS, SAVE_FAILURE);
     }
@@ -111,7 +93,7 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
             workOrder.setEquipment(equipment);
             workOrder.setEqClass(equipment.getEqClass());
             workOrder.setLocation(equipment.getLocation());
-        } else if (type.equals("e")) {
+        } else if (type.equals("w")) {
             location = locationRepository.getOne(id);
             workOrder.setLocation(location);
         }

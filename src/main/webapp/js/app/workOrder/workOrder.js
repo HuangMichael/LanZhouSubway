@@ -34,15 +34,17 @@ $(function () {
         },
         url: "/" + mainObject + "/data",
         converters: {
+
+            showReportType: {
+                to: showReportType
+            },
             showOrderState: {
                 to: showOrderState
             },
             showStatus: {
                 to: showStatus
             },
-            reportType: {
-                to: showReportType
-            }
+
         }
     })
 
