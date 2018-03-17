@@ -29,13 +29,7 @@ $(function () {
     mainObject = "etlTable";
     //初始化从数据库获取列表数据
     searchModel = [{"param": "tableDesc", "paramDesc": "表描述"}];
-    initBootGridMenu(dataTableName, null);
-    //初始化查询所有的
-    ids = findAllRecordId();
 
-
-    console.log("ids---------------" + JSON.stringify(ids));
-    selectedIds = ids;
     validateForm.call(validationConfig);
 
 
