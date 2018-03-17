@@ -92,4 +92,25 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="reportFixModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    设备报修
+                </h4>
+            </div>
+            <div class="modal-body">
+                <%@include file="reportFixForm.jsp" %>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
 <script type="text/javascript" src="/js/app/location/location.js"></script>

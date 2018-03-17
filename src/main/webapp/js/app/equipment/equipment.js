@@ -176,7 +176,8 @@ function del(id) {
 
 
 /**
- * �༭��¼
+ * 编辑记录
+ * @param id
  */
 function edit(id) {
     var object = findByIdAndObjectName(id, mainObject);
@@ -186,7 +187,7 @@ function edit(id) {
 
 
 /**
- * �༭��¼
+ * 新建记录
  */
 function add() {
     vdm.$set("equipment", null);

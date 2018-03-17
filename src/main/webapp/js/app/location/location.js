@@ -84,9 +84,11 @@ $(function () {
             "upload": function (column, row) {
                 return "<button type='button' class='btn btn-xs btn-default command-upload' data-row-id='" + row.id + "'><span class='fa fa-upload'></span></button> "
             },
-            "commands": function (column, row) {
-                return edit_del_btn;
-            }
+            "reportFix": function (column, row) {
+                rowId = row.id;
+                return "<button type='button' class='btn btn-xs btn-default command-wrench' data-row-id='" + row.id + "' onclick='reportFix(" + row.id + ")'><span class='fa fa-wrench'></span></button> "
+            },
+            "commands": showCommandsBtn
         },
         converters: {
             showStatus: {
@@ -108,6 +110,45 @@ $(function () {
     initSelect();
 
     validateForm.call(validateOptions);
+
+
+    $('#reportFixModal').on('show.bs.modal', function (event) {
+        var modal = $(this);  //get modal itself
+        modal.find("#id").val(rowId);
+    });
+
+
+    var fixConfig = {
+        message: '',
+        fields: {
+
+            "creator": {
+                message: '记录人无效',
+                validators: {
+                    notEmpty: {
+                        message: '记录人不能为空'
+                    }
+                }
+            },
+            "reporter": {
+                message: '报修人无效',
+                validators: {
+                    notEmpty: {
+                        message: '报修人不能为空'
+                    }
+                }
+            },
+            "orderDesc": {
+                message: '故障描述无效',
+                validators: {
+                    notEmpty: {
+                        message: '故障描述不能为空'
+                    }
+                }
+            },
+        }
+    };
+    validateFixForm.call(fixConfig);
 
 
 });
@@ -164,30 +205,6 @@ function edit(id) {
     $("#editModal").modal("show");
 }
 
-
-// /**
-//  *
-//  */
-// function save() {
-//
-//
-//     console.log("let it  be  easy---");
-//     var object = getFormJsonData("form");
-//     var location = JSON.parse(object);
-//     var url = "/location/save";
-//     var obj = {
-//         location: location
-//     }
-//     $.post(url, obj, function (data) {
-//         if (data.result) {
-//             $("#editModal").modal("hide");
-//             $(dataTableName).bootgrid("reload");
-//         }
-//         showMessage(data.result, data["resultDesc"]);
-//     })
-// }
-
-
 /**
  * 编辑记录
  */
@@ -196,4 +213,34 @@ function add() {
     $("#editModal").modal("show");
 }
 
+function reportFix(id) {
+    $("#reportFixModal").modal("show");
+}
 
+
+/**
+ *
+ * @param validationConfig
+ */
+function validateFixForm(validationConfig) {
+    $("#reportFixForm")
+        .bootstrapValidator(validationConfig)
+        .on('success.form.bv', function (e) {
+            e.preventDefault();
+            reportFixData("reportFixForm");
+        });
+}
+
+
+/**
+ *
+ * @param form
+ */
+function reportFixData(form) {
+    var param = JSON.parse(getFormJsonData(form));
+    var url = "/workOrder/reportFix";
+    $.post(url, param, function (data) {
+        $("#reportFixModal").modal("hide");
+        showMessage(data["result"], data["resultDesc"]);
+    });
+}
