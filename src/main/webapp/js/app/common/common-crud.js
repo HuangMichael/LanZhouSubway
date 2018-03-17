@@ -10,7 +10,6 @@ var formName = "#form";
 var dataTableName = "";
 var ids = [];//所有的ID的集合
 var docName = "";
-var formTab = null;
 var searchModel = [];
 
 
@@ -138,16 +137,7 @@ function findObjById(objName, id) {
     return object;
 }
 
-/**
- * 新增预防性维修计划
- */
-function add() {
-    setFormReadStatus(formName, false);
-    vdm.$set(mainObject, null);
-    //设置设备状态和运行状态默认值;
-    formTab.tab('show');
 
-}
 
 /**
  * 保存设备信息

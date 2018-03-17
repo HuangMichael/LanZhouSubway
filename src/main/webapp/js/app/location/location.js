@@ -213,8 +213,20 @@ function add() {
     $("#editModal").modal("show");
 }
 
+/**
+ *
+ * @param id
+ */
 function reportFix(id) {
+
+    var eqClasses = findListByUrl("/eqClass/findEqClasses");
+    console.log("eqClasses----------" + JSON.stringify(eqClasses));
+    var fixVue = new Vue({
+        el: "#reportFixForm",
+        eqClasses: eqClasses
+    });
     $("#reportFixModal").modal("show");
+
 }
 
 

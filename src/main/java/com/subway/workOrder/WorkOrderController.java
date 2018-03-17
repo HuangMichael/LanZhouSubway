@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author huangbin
  * @generate by autoCode
  * @Date 2018-3-1
@@ -48,7 +47,7 @@ public class WorkOrderController extends BaseController {
      */
     @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
-    public MyPage data( HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
+    public MyPage data(HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
         return new PageUtils().searchBySortService(workOrderSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
@@ -68,7 +67,7 @@ public class WorkOrderController extends BaseController {
 
     /**
      * @param id
-     * @return 
+     * @return
      */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -78,8 +77,8 @@ public class WorkOrderController extends BaseController {
 
 
     /**
-     * @param workOrder 
-     * @return 
+     * @param workOrder
+     * @return
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
@@ -106,9 +105,9 @@ public class WorkOrderController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/reportFix", method = RequestMethod.POST)
-    public ReturnObject reportFix(@RequestParam("type") String type, @RequestParam("id") Long id, @RequestParam("orderDesc") String orderDesc, @RequestParam("reporter") String reporter) {
-        WorkOrder workOrder = workOrderService.reportFix(type, id, orderDesc, reporter);
-        return commonDataService.getReturnType(workOrder != null, ConstantUtils.REPORT_FIX_SUCCESS, ConstantUtils.REPORT_FIX_FAILURE,workOrder);
+    public ReturnObject reportFix(@RequestParam(value = "eqClassId", required = false) Long eqClassId, @RequestParam("type") String type, @RequestParam("id") Long id, @RequestParam("orderDesc") String orderDesc, @RequestParam("reporter") String reporter) {
+        WorkOrder workOrder = workOrderService.reportFix(type, id, orderDesc, reporter,eqClassId);
+        return commonDataService.getReturnType(workOrder != null, ConstantUtils.REPORT_FIX_SUCCESS, ConstantUtils.REPORT_FIX_FAILURE, workOrder);
     }
 
 

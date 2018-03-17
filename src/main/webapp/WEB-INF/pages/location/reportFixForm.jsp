@@ -19,6 +19,19 @@
                 </div>
 
             </div>
+
+            <div class="form-group">
+                <label for="creator" class="col-md-2 control-label">设备分类</label>
+                <div class="col-md-4">
+                    <select id="eqClassId" nam="eqClassId">
+                        <template v-for="c in eqClasses">
+                            <option value="{{c.id}}">{{c.name}}</option>
+                        </template>
+                    </select>
+                </div>
+            </div>
+
+
             <div class="form-group">
                 <label for="orderDesc" class="col-md-2 control-label">故障描述</label>
                 <div class="col-md-10">

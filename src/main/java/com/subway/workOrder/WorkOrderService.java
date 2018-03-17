@@ -1,5 +1,7 @@
 package com.subway.workOrder;
 
+import com.subway.eqClass.EqClass;
+import com.subway.eqClass.EqClassRepository;
 import com.subway.equipment.Equipment;
 import com.subway.equipment.EquipmentRepository;
 import com.subway.location.Location;
@@ -18,7 +20,6 @@ import static com.subway.utils.ConstantUtils.*;
 
 
 /**
- *
  * @author huangbin
  * @generate by autoCode
  * @Date 2018-3-1
@@ -32,6 +33,10 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
 
     @Autowired
     LocationRepository locationRepository;
+
+
+    @Autowired
+    EqClassRepository eqClassRepository;
 
     @Autowired
     WorkOrderRepository workOrderRepository;
@@ -76,10 +81,11 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
      * @param reporter  报修人
      * @return
      */
-    public WorkOrder reportFix(String type, Long id, String orderDesc, String reporter) {
+    public WorkOrder reportFix(String type, Long id, String orderDesc, String reporter, Long eqClassId) {
 
         Equipment equipment;
         Location location;
+        EqClass eqClass = null;
         //创建 一个工单
         String orderLineNo = DateUtils.convertDate2Str(new Date(), "yyyyMMddHHmmss");
         WorkOrder workOrder = new WorkOrder();
@@ -94,8 +100,10 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
             workOrder.setEqClass(equipment.getEqClass());
             workOrder.setLocation(equipment.getLocation());
         } else if (type.equals("w")) {
+            eqClass = eqClassRepository.getOne(eqClassId);
             location = locationRepository.getOne(id);
             workOrder.setLocation(location);
+            workOrder.setEqClass(eqClass);
         }
 
         workOrder.setReportType(type);

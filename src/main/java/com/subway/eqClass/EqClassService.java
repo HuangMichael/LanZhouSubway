@@ -1,18 +1,18 @@
 package com.subway.eqClass;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
+import com.subway.service.commonData.CommonDataService;
 import com.subway.unit.Unit;
 import com.subway.unit.UnitRepository;
+import com.subway.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.subway.service.commonData.CommonDataService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.subway.object.ReturnObject;
+
+import java.util.List;
+import java.util.Set;
 
 import static com.subway.utils.ConstantUtils.*;
 
@@ -102,6 +102,14 @@ public class EqClassService extends BaseService {
         eqClass.setUnitSet(unitSet);
         eqClassRepository.save(eqClass);
         return commonDataService.getReturnType(eqClass != null, "外委单位关联成功", "外委单位关联失败");
+    }
+
+
+    /**
+     * @return 查询 设备分类
+     */
+    public List<EqClass> findEqClasses() {
+        return eqClassRepository.findByClassLevelGreaterThanAndStatus(2L, ConstantUtils.STATUS_YES);
     }
 
 }

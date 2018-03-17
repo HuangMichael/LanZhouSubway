@@ -13,8 +13,9 @@ public interface WorkOrderReport {
      * @param id
      * @param orderDesc
      * @param reporter
+     * @param eqClassId
      * @return
      */
-    WorkOrder reportFix(String type, Long id,String orderDesc, String reporter);
+    WorkOrder reportFix(String type, Long id,String orderDesc, String reporter, Long eqClassId);
 
 }

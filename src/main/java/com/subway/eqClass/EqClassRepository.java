@@ -1,11 +1,10 @@
 package com.subway.eqClass;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 
 /**
@@ -24,9 +23,7 @@ public interface EqClassRepository extends JpaRepository<EqClass, Long> {
      * @param status
      * @return
      */
-    List<EqClass> findByNameContainingAndStatus(String name,String status);
-
-
+    List<EqClass> findByNameContainingAndStatus(String name, String status);
 
 
     /**
@@ -36,4 +33,12 @@ public interface EqClassRepository extends JpaRepository<EqClass, Long> {
      * @return
      */
     Page<EqClass> findByNameContainingAndStatus(String name, String status, Pageable pageable);
+
+
+    /**
+     * @param classLevel 级别
+     * @param status     状态
+     * @return
+     */
+    List<EqClass> findByClassLevelGreaterThanAndStatus(Long classLevel, String status);
 }

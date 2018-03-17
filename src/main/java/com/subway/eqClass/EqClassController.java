@@ -105,7 +105,6 @@ public class EqClassController extends BaseController {
     }
 
 
-
     /**
      * @param classId
      * @param unitId
@@ -113,10 +112,19 @@ public class EqClassController extends BaseController {
      */
     @RequestMapping(value = "/addUnit", method = RequestMethod.POST)
     @ResponseBody
-    public ReturnObject addUnit(@RequestParam("classId") Long classId,@RequestParam("unitId") String unitId) {
-        return eqClassService.addUnit(classId,unitId);
+    public ReturnObject addUnit(@RequestParam("classId") Long classId, @RequestParam("unitId") String unitId) {
+        return eqClassService.addUnit(classId, unitId);
     }
 
+
+    /**
+     * @return 查询显示的选择的设备分类列表
+     */
+    @RequestMapping(value = "/findEqClasses", method = RequestMethod.GET)
+    @ResponseBody
+    public List<EqClass> findEqClasses() {
+        return eqClassService.findEqClasses();
+    }
 
 
 }
