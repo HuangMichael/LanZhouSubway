@@ -20,15 +20,10 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="eqName"
-                                                   name="eqName" placeholder="分类名称"/>
-
+                                            <input class="form-control" id="eqName" name="eqName" placeholder="分类名称"/>
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="status">
-                                                <option value="1" selected>有效</option>
-                                                <option value="0">无效</option>
-                                            </select>
+                                            <%@include file="../common/common-status-select.jsp" %>
                                         </div>
                                         <div class="col-md-2">
                                             <%@include file="../common/common-searchBtn.jsp" %>

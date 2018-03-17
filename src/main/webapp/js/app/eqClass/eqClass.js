@@ -94,7 +94,7 @@ $(function () {
             "eqClass": null
         }
     });
-    initSelect();
+    // initSelect();
     validateForm.call(validateOptions);
 
 });
