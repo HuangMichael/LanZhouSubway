@@ -4,8 +4,11 @@ package com.subway.aop;
 import com.subway.domain.log.UserLog;
 import com.subway.domain.userLog.UserLogService;
 import com.subway.object.ReturnObject;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import com.subway.utils.DateUtils;
+import com.subway.workOrder.WorkOrder;
+import com.subway.workOrderLog.WorkOrderLog;
+import com.subway.workOrderLog.WorkOrderLogService;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,10 +24,13 @@ import java.util.Date;
  */
 @Component
 @Aspect
+@Slf4j
 public class UserLoginAop {
     @Autowired
     UserLogService userLogService;
-    protected Log log = LogFactory.getLog(this.getClass());
+
+    @Autowired
+    WorkOrderLogService workOrderLogService;
 
     /**
      * @param joinPoint   结合点
@@ -70,4 +76,32 @@ public class UserLoginAop {
 //        userLog.setStatus("退出系统");
 //        userLogService.createUserLog(userLog);
     }
+
+
+    /**
+     * @param joinPoint    结合点
+     * @param returnObject
+     */
+    @AfterReturning(value = "execution(* com.subway.workOrder.WorkOrderController.reportFix(..))", returning = "returnObject")
+    public void writeWorkOrderReportLog(JoinPoint joinPoint, ReturnObject returnObject) {
+        Object[] args = joinPoint.getArgs();
+        for (Object object : args) {
+            log.info("object------------" + object.toString());
+
+        }
+        WorkOrder workOrder = (WorkOrder) returnObject.getObject();
+
+        WorkOrderLog workOrderLog = new WorkOrderLog();
+        workOrderLog.setContent(workOrder.getEquipment().getDescription() + "报修");
+        workOrderLog.setAuthKey("01");
+        workOrderLog.setCreator("huangbin");
+        workOrderLog.setOrderState("0");
+        workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyyMMddHHmmss"));
+        workOrderLog.setWorkOrder(workOrder);
+        workOrderLog.setSortNo(1l);
+        workOrderLog.setStatus("1");
+        workOrderLogService.save(workOrderLog);
+    }
+
+
 }
