@@ -1,22 +1,21 @@
 package com.subway.workOrder;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import com.subway.equipment.Equipment;
 import com.subway.equipment.EquipmentRepository;
 import com.subway.location.Location;
 import com.subway.location.LocationRepository;
+import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
+import com.subway.service.commonData.CommonDataService;
 import com.subway.service.reportFix.WorkOrderReport;
 import com.subway.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.subway.service.commonData.CommonDataService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.subway.object.ReturnObject;
+
+import java.util.Date;
+import java.util.List;
 
 import static com.subway.utils.ConstantUtils.*;
 
@@ -89,16 +88,16 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
     }
 
     /**
-     * @param type 报修方式 按照设备报修  按照位置报修
-     * @param id
-     * @param orderDesc
-     * @param reporter
+     * @param type      报修方式 按照设备报修  按照位置报修
+     * @param id        设备id
+     * @param orderDesc 故障描述
+     * @param reporter  报修人
      * @return
      */
     public WorkOrder reportFix(String type, Long id, String orderDesc, String reporter) {
 
         Equipment equipment;
-        Location location = null;
+        Location location;
         //创建 一个工单
         String orderLineNo = DateUtils.convertDate2Str(new Date(), "yyyyMMddHHmmss");
         WorkOrder workOrder = new WorkOrder();
@@ -111,12 +110,13 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
             equipment = equipmentRepository.findOne(id);
             workOrder.setEquipment(equipment);
             workOrder.setEqClass(equipment.getEqClass());
-        } else {
+            workOrder.setLocation(equipment.getLocation());
+        } else if (type.equals("e")) {
             location = locationRepository.getOne(id);
             workOrder.setLocation(location);
         }
 
-        workOrder.setLocation(location);
+        workOrder.setReportType(type);
         workOrder.setReportTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
         workOrder.setReporter(reporter);
         workOrder.setStatus("1");

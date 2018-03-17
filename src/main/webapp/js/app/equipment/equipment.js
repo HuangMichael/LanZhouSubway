@@ -73,6 +73,10 @@ $(function () {
             },
             showYes: {
                 to: showYes
+            },
+
+            showReportType: {
+                to: showReportType
             }
         }
     });

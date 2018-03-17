@@ -40,7 +40,7 @@ $(function () {
             showStatus: {
                 to: showStatus
             },
-            showReportType: {
+            reportType: {
                 to: showReportType
             }
         }

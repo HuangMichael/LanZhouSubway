@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ������Ϣ
  *
  * @author huangbin
  * @generate by autoCode
@@ -42,8 +41,7 @@ public class WorkOrderController extends BaseController {
     @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
     public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
-        Map
-                <String, String[]> parameterMap = request.getParameterMap();
+        Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
         return new PageUtils().searchBySortService(workOrderSearchService, searchPhrase, 1, current, rowCount, pageable);
     }
@@ -58,7 +56,7 @@ public class WorkOrderController extends BaseController {
 
     /**
      * @param id
-     * @return ɾ����Ϣ
+     * @return 
      */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -68,8 +66,8 @@ public class WorkOrderController extends BaseController {
 
 
     /**
-     * @param workOrder ��Ϣ
-     * @return ������Ϣ
+     * @param workOrder 
+     * @return 
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody

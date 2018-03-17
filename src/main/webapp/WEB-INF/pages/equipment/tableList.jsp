@@ -17,6 +17,6 @@
 <th data-column-id="runDate" data-width="10%" data-visible='false'>运行日期</th>
 <th data-column-id="setupDate" data-width="10%" data-visible='false'>安装日期</th>
 <th data-column-id="warrantyPeriod" data-width="10%" data-visible='false'>保修期限</th>
-<th data-column-id="commands" data-formatter="reportFix" data-sortable="false" data-width="5%">报修</th>
+<th data-column-id="reportFix" data-formatter="reportFix" data-sortable="false" data-width="5%" >报修</th>
 <th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="8%">编辑|删除</th>
 

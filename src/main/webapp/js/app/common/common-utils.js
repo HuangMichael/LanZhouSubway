@@ -373,16 +373,6 @@ var showOrderState = function (value) {
     return orderState[value];
 }
 
-
-/**
- *
- * @param value
- */
-var showReportType = function (value) {
-    return value == 's' ? "设备报修" : "位置报修";
-}
-
-
 /**
  *
  * @param value
@@ -541,7 +531,15 @@ var showImage = function (value) {
     } else {
         return "<img src='upload/memberWorks/no_pic.jpg' class='img-thumbnail'  style='height:25px;width: 25px'>";
     }
-
 }
 
+
+/**
+ * 显示报修方式
+ * @param value
+ * @returns {*}
+ */
+var showReportType = function (value) {
+    return "<img src='image/" + value + ".png' class='img-thumbnail'  style='height:25px;width: 25px'>";
+}
 
