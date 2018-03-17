@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2016/11/4.
+ * Created by huangbin on 2016/11/4.
  */
 
 
@@ -7,16 +7,10 @@ var mainObject = "";
 var exportObject = mainObject;
 var vdm = null; //定义form数据模型
 var formName = "#form";
-var selectedIds = [];
-var pointer = null;
 var dataTableName = "";
 var ids = [];//所有的ID的集合
 var docName = "";
 var formTab = null;
-var locs = [];
-var eqs = [];
-var lines = [];
-var units = []; //外委单位信息
 var searchModel = [];
 
 
@@ -164,68 +158,6 @@ function save() {
 
 
 /**
- * 删除记录
- */
-function del() {
-    //删除时判断当前form的状态
-    var status = formTab.data("status");
-    if (status == "add") {
-        showMessageBoxCenter("danger", "center", "新建记录未保存，无需删除该记录!");
-        return;
-    }
-    //判断选中的tab
-    var bid = selectedIds[0];
-    if (!bid) {
-        showMessageBoxCenter("danger", "center", "请选中一条记录再操作");
-        return;
-    }
-    var url = getMainObject() + "/delete/" + bid;
-    if (bid) {
-        bootbox.confirm({
-            message: "确定要删除该记录么?",
-            buttons: {
-                confirm: {
-                    label: '是',
-                    className: 'btn-success'
-                },
-                cancel: {
-                    label: '否',
-                    className: 'btn-danger'
-                }
-            },
-            callback: function (result) {
-                if (result) {
-                    $.ajax({
-                        type: "GET",
-                        url: url,
-                        success: function (msg) {
-                            if (msg) {
-                                showMessageBox("info", "信息删除成功!");
-                                $(dataTableName).bootgrid("reload");
-                            }
-                        },
-                        error: function (msg) {
-                            showMessageBox("danger", "信息有关联数据，无法删除，请联系管理员");
-                        }
-                    });
-                }
-            }
-        });
-    }
-}
-
-
-/**
- * 显示明细信息
- */
-function showDetail(id) {
-    var object = findById(id);
-    vdm.$set(getMainObject(), object);
-    setFormReadStatus(formName, true);
-}
-
-
-/**
  *
  * @param formId 设置form为只读
  */
@@ -240,18 +172,6 @@ function setFormReadStatus(formId, formLocked) {
         $(formId + " textarea").attr("readonly", "readonly").removeAttr("readonly");
 
     }
-}
-
-/**
- *查询所有的id
- * */
-function findAllRecordId() {
-    $.ajaxSettings.async = false;
-    var url = getMainObject() + "/findAllIds";
-    $.getJSON(url, function (data) {
-        ids = data;
-    });
-    return ids;
 }
 
 
@@ -301,46 +221,6 @@ function exportExcel() {
 
 
 /**
- *导出excel
- */
-function exportExcelByName(dataTableName, nodeState, docName) {
-    var param = $(dataTableName).bootgrid("getSearchPhrase");
-    var columnSettings = $(dataTableName).bootgrid("getColumnSettings");
-
-    var titles = [];
-    var colNames = [];
-    for (var x in columnSettings) {
-        if (columnSettings[x] != undefined && columnSettings[x]["text"] != "" && columnSettings[x]["id"] != "" && columnSettings[x]["text"] && columnSettings[x]["id"] && !columnSettings[x]["identifier"] && !columnSettings[x]["formatter"]) {
-            titles[x] = columnSettings[x]["text"];
-            colNames[x] = columnSettings[x]["id"];
-        }
-
-    }
-    var url = getMainObject() + "/exportExcel?param=" + param + "&docName=" + docName + "&titles=" + titles + "&colNames=" + colNames + "&nodeState=" + nodeState;
-    url = url.trim();
-    bootbox.confirm({
-        message: "确定导出查询结果记录么?",
-        buttons: {
-            confirm: {
-                label: '是',
-                className: 'btn-success'
-            },
-            cancel: {
-                label: '否',
-                className: 'btn-danger'
-            }
-        },
-        callback: function (result) {
-            if (result) {
-                window.location.href = url;
-            }
-        }
-    });
-
-}
-
-
-/**
  *  初始化下拉选择组件
  */
 function initSelect() {
@@ -350,86 +230,6 @@ function initSelect() {
         placeholder: "请选择...",
         allowClear: true
     });
-}
-
-
-/**
- * 初始化bootgrid表格 并监听选择时间
- */
-function initBootGrid(dataTableName) {
-    var config = {
-        selection: true,
-        multiSelect: true,
-        sorting: true
-    }
-    //初始化加载列表
-    $(dataTableName).bootgrid(config).on("selected.rs.jquery.bootgrid", function (e, rows) {
-        //如果默认全部选中
-        var selected = $(dataTableName).bootgrid("getSelectedRows");
-        pointer = 0;
-        if (selected.length === 0) {
-            selectedIds.clear();
-            selectedIds = findAllRecordId();
-        } else {
-            selectedIds = selected.sort(function (a, b) {
-                return a - b
-            });
-        }
-
-    }).on("deselected.rs.jquery.bootgrid", function (e, rows) {
-        var selected = $(dataTableName).bootgrid("getSelectedRows");
-        pointer = 0;
-        selectedIds = selected.sort(function (a, b) {
-            return a - b
-        });
-    });
-
-    $(dataTableName).slideDown("slow");
-}
-
-
-/**
- * 初始化bootgrid表格 并监听选择时间
- */
-function initBootGridMenu(dataTableName, config) {
-
-
-    if (!config) {
-        config = {
-            selection: true,
-            multiSelect: true,
-            sorting: true,
-            rowSelect: true,
-            keepSelection: true,
-            navigation: 0
-
-        }
-    }
-
-    // $(dataTableName).bootgrid("setSearchPhrase", getSearchConfig());
-    //初始化加载列表
-    $(dataTableName).bootgrid(config).on("selected.rs.jquery.bootgrid", function (e, rows) {
-        //如果默认全部选中
-        var selected = $(dataTableName).bootgrid("getSelectedRows");
-        pointer = 0;
-        if (selected.length === 0) {
-            selectedIds.clear();
-            selectedIds = findAllRecordId();
-        } else {
-            selectedIds = selected.sort(function (a, b) {
-                return a - b
-            });
-        }
-
-    }).on("deselected.rs.jquery.bootgrid", function (e, rows) {
-        var selected = $(dataTableName).bootgrid("getSelectedRows");
-        pointer = 0;
-        selectedIds = selected.sort(function (a, b) {
-            return a - b
-        });
-    });
-
-
 }
 
 
@@ -466,12 +266,6 @@ function search() {
 }
 
 
-function complexSearch() {
-    //组装模型
-    $(dataTableName).bootgrid("setSearchPhrase", getSearchConfig()).bootgrid("reload");
-}
-
-
 /**
  *
  * @returns {string} 获取查询的字符串
@@ -489,21 +283,6 @@ function getSearchConfig() {
     });
     return searchParams;
 
-}
-
-function searchMore() {
-    //组装模型
-    var params = $("#searchBox :input");
-    var searchParams = "";
-    $.each(params, function (i, p) {
-        var id = $(p).attr("id");
-        if (!$(p).is(":button")) {
-            var value = ($(p).val()) ? $(p).val().trim() : "";
-            searchParams += value + ",";
-        }
-
-    });
-    $(dataTableName).bootgrid("setSearchPhrase", searchParams).bootgrid("reload");
 }
 
 
@@ -526,16 +305,6 @@ $(function () {
             $("#searchBtn").click();
         }
     });
-
-
-    $(formTab).on("click", function () {
-        selectedIds = findAllRecordId();
-        pointer = 0;
-        var obj = findById(selectedIds[pointer]);
-        vdm.$set(getMainObject(), obj);
-        setFormReadStatus(formName, true);
-    })
-
 });
 
 
@@ -611,9 +380,4 @@ function findListByUrl(url) {
         dataList = data;
     });
     return dataList;
-}
-
-
-var edit_del_btn = function (row) {
-    return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='edit(" + row.id + ")'><span class='fa fa-pencil'></span></button> " + "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
 }
