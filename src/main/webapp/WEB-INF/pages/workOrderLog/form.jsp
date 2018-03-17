@@ -17,21 +17,21 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="order_state" class="col-md-2 control-label">工单状态</label>
+                <label for="orderState" class="col-md-2 control-label">工单状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="order_state" name="order_state" v-model="workOrderLog.order_state"  required/>
+                    <input class="form-control" id="orderState" name="orderState" v-model="workOrderLog.orderState"  required/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="order_state_time" class="col-md-2 control-label">工单状态时间</label>
+                <label for="orderState_time" class="col-md-2 control-label">工单状态时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="order_state_time" name="order_state_time" v-model="workOrderLog.order_state_time"  required/>
+                    <input class="form-control" id="orderState_time" name="orderState_time" v-model="workOrderLog.orderState_time"  required/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="work_order_id" class="col-md-2 control-label">工单</label>
+                <label for="workOrder_id" class="col-md-2 control-label">工单</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="work_order_id" name="work_order_id" v-model="workOrderLog.work_order_id"  required/>
+                    <input class="form-control" id="workOrder_id" name="workOrder_id" v-model="workOrderLog.workOrder_id"  required/>
                 </div>
             </div>
             <div class="form-group">
@@ -41,9 +41,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="sort_no" class="col-md-2 control-label">排序</label>
+                <label for="sortNo" class="col-md-2 control-label">排序</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="sort_no" name="sort_no" v-model="workOrderLog.sort_no"  required/>
+                    <input class="form-control" id="sortNo" name="sortNo" v-model="workOrderLog.sortNo"  required/>
                 </div>
             </div>
             <div class="form-group">
@@ -53,9 +53,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="auth_key" class="col-md-2 control-label">授权</label>
+                <label for="authKey" class="col-md-2 control-label">授权</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="auth_key" name="auth_key" v-model="workOrderLog.auth_key"  required/>
+                    <input class="form-control" id="authKey" name="authKey" v-model="workOrderLog.authKey"  required/>
                 </div>
             </div>
         </div>
