@@ -109,7 +109,7 @@ public class EqClassService extends BaseService {
      * @return 查询 设备分类
      */
     public List<EqClass> findEqClasses() {
-        return eqClassRepository.findByClassLevelGreaterThanAndStatus(2L, ConstantUtils.STATUS_YES);
+        return eqClassRepository.findByClassLevelGreaterThanAndStatus(1L, ConstantUtils.STATUS_YES);
     }
 
 }
