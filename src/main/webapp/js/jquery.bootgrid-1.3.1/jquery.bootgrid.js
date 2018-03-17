@@ -542,8 +542,8 @@
                 $.each(that.columns, function (j, column) {
                     if (column.visible) {
                         var value = ($.isFunction(column.formatter)) ?
-                                column.formatter.call(that, column, row) :
-                                column.converter.to(row[column.id]),
+                            column.formatter.call(that, column, row) :
+                            column.converter.to(row[column.id]),
                             cssClass = (column.cssClass.length > 0) ? " " + column.cssClass : "";
                         cells += tpl.cell.resolve(getParams.call(that, {
                             content: (value == null || value === "") ? "&nbsp;" : value,
@@ -890,7 +890,7 @@
         navigation: 3, // it's a flag: 0 = none, 1 = top, 2 = bottom, 3 = both (top and bottom)
         padding: 2, // page padding (pagination)
         columnSelection: true,
-        rowCount: [10, 25, 50,100], // rows per page int or array of int (-1 represents "All")
+        rowCount: [10, 25, 50, 100], // rows per page int or array of int (-1 represents "All")
 
         /**
          * Enables row selection (to enable multi selection see also `multiSelect`). Default value is `false`.
@@ -1122,7 +1122,7 @@
             iconSearch: "glyphicon-search",
             iconUp: "glyphicon-chevron-up",
             infos: "infos", // must be a unique class name or constellation of class names within the header and footer,
-            left: "text-center",
+            left: "text-left",
             pagination: "pagination", // must be a unique class name or constellation of class names within the header and footer
             paginationButton: "button", // must be a unique class name or constellation of class names within the pagination
 

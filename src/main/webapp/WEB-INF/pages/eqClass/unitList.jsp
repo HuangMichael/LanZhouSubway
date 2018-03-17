@@ -42,7 +42,7 @@
                 unitList: unitList
             }
         });
-        initBootGrid("#unitListTable");
+        $("#unitListTable").bootgrid();
 
 
         $("#selUnitBtn").on("click", function () {
