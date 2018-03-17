@@ -29,7 +29,6 @@ public class WorkOrderLog {
     @Column(length = 20)
     private String orderStateTime; //状态时间
 
-
     @Column(length = 20)
     private String creator; //创建人
 
