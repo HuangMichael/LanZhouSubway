@@ -2,7 +2,7 @@
  * Created by huangbin on 2018-3-1 09:46:42.
 
  */
-
+var fixVue = null;
 
 $(function () {
 
@@ -149,6 +149,10 @@ $(function () {
         }
     };
     validateFixForm.call(fixConfig);
+    fixVue = new Vue({
+        el: "#reportFixForm",
+        eqClasses: []
+    });
 
 
 });
@@ -221,10 +225,7 @@ function reportFix(id) {
 
     var eqClasses = findListByUrl("/eqClass/findEqClasses");
     console.log("eqClasses----------" + JSON.stringify(eqClasses));
-    var fixVue = new Vue({
-        el: "#reportFixForm",
-        eqClasses: eqClasses
-    });
+    fixVue.$set("eqClasses", eqClasses);
     $("#reportFixModal").modal("show");
 
 }
@@ -250,6 +251,8 @@ function validateFixForm(validationConfig) {
  */
 function reportFixData(form) {
     var param = JSON.parse(getFormJsonData(form));
+
+    console.log("param-----------" + JSON.stringify(param));
     var url = "/workOrder/reportFix";
     $.post(url, param, function (data) {
         $("#reportFixModal").modal("hide");

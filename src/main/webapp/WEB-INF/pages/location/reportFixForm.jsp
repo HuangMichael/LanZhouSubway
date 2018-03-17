@@ -21,9 +21,9 @@
             </div>
 
             <div class="form-group">
-                <label for="creator" class="col-md-2 control-label">设备分类</label>
+                <label for="eqClassId" class="col-md-2 control-label">设备分类</label>
                 <div class="col-md-4">
-                    <select id="eqClassId" nam="eqClassId">
+                    <select id="eqClassId" name="eqClassId" class="form-control" style="width:100%">
                         <template v-for="c in eqClasses">
                             <option value="{{c.id}}">{{c.name}}</option>
                         </template>

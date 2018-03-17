@@ -105,7 +105,7 @@ public class WorkOrderController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/reportFix", method = RequestMethod.POST)
-    public ReturnObject reportFix(@RequestParam(value = "eqClassId", required = false) Long eqClassId, @RequestParam("type") String type, @RequestParam("id") Long id, @RequestParam("orderDesc") String orderDesc, @RequestParam("reporter") String reporter) {
+    public ReturnObject reportFix( @RequestParam("type") String type, @RequestParam("id") Long id, @RequestParam("orderDesc") String orderDesc,@RequestParam(value = "eqClassId", required = false) Long eqClassId, @RequestParam("reporter") String reporter) {
         WorkOrder workOrder = workOrderService.reportFix(type, id, orderDesc, reporter,eqClassId);
         return commonDataService.getReturnType(workOrder != null, ConstantUtils.REPORT_FIX_SUCCESS, ConstantUtils.REPORT_FIX_FAILURE, workOrder);
     }
