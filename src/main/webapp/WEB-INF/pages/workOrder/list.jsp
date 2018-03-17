@@ -20,10 +20,17 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="orderDesc"
-                                                   name="orderDesc"
+                                            <input class="form-control" id="orderDesc" name="orderDesc"
                                                    placeholder="报修单描述"/>
+                                        </div>
 
+                                        <div class="col-md-2">
+                                            <select class="form-control" id="orderState" onchange="search()">
+                                                <option value="0" selected>已报修</option>
+                                                <option value="1">已分配</option>
+                                                <option value="2">已完工</option>
+                                                <option value="3">已完工</option>
+                                            </select>
                                         </div>
                                         <div class="col-md-2">
                                             <%@include file="../common/common-status-select.jsp" %>

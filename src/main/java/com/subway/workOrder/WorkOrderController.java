@@ -36,6 +36,8 @@ public class WorkOrderController extends BaseController {
     @Autowired
     WorkOrderSearchService workOrderSearchService;
 
+    private static Integer SEARCH_PARAM_SIZE = 3;
+
 
     /**
      * @param request
@@ -49,7 +51,7 @@ public class WorkOrderController extends BaseController {
     public MyPage data( HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(workOrderSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(workOrderSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
     }
 
 
@@ -89,7 +91,7 @@ public class WorkOrderController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-        List<WorkOrder> dataList = workOrderSearchService.findByConditions(param, 2);
+        List<WorkOrder> dataList = workOrderSearchService.findByConditions(param, SEARCH_PARAM_SIZE);
         workOrderService.setDataList(dataList);
         workOrderService.exportExcel(request, response, docName, titles, colNames);
     }
