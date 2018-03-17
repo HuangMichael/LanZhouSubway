@@ -43,7 +43,7 @@
                 usersList: usersList
             }
         });
-        initBootGrid("#userListTable");
+        $("#userListTable").bootgrid();
         $("#selUsersBtn").on("click", function () {
             var selected = $("#userListTable").bootgrid("getSelectedRows");
             var roleId = recordId;

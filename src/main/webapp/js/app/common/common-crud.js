@@ -295,6 +295,14 @@ function initSearchDate() {
 }
 
 
+/**
+ * 初始化查询起始日期
+ */
+function initBootGrid(obj) {
+    log.info("mainObject调用-----------------" + mainObject);
+}
+
+
 $(function () {
     //取消异步加载
     $.ajaxSettings.async = false;
