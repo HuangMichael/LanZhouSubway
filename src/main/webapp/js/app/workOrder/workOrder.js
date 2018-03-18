@@ -3,10 +3,8 @@
 
  */
 
-
+var rowId = null;
 $(function () {
-
-
     dataTableName = "#workOrderListTable";
     docName = "报修单信息";
     mainObject = "workOrder";
@@ -35,7 +33,10 @@ $(function () {
         url: "/" + mainObject + "/data",
 
         formatters: {
-            "remove": removeBtn
+            "remove": function (column, row) {
+                rowId = row.id;
+                return "<button type='button' class='btn btn-xs btn-default command-remove' data-row-id='" + row.id + "' onclick='removeReport(" + rowId + ")'><span class='fa fa-trash-o'></span></button> ";
+            }
         },
         converters: {
 
@@ -66,6 +67,12 @@ $(function () {
 
 
     validateRemoveForm(null);
+
+
+    $('#removeReportModal').on('show.bs.modal', function (event) {
+        var modal = $(this);  //get modal itself
+        modal.find("#id").val(rowId);
+    });
 
 
 });

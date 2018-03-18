@@ -105,23 +105,22 @@ public class WorkOrderController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/reportFix", method = RequestMethod.POST)
-    public ReturnObject reportFix( @RequestParam("type") String type, @RequestParam("id") Long id, @RequestParam("orderDesc") String orderDesc,@RequestParam(value = "eqClassId", required = false) Long eqClassId, @RequestParam("reporter") String reporter) {
-        WorkOrder workOrder = workOrderService.reportFix(type, id, orderDesc, reporter,eqClassId);
+    public ReturnObject reportFix(@RequestParam("type") String type, @RequestParam("id") Long id, @RequestParam("orderDesc") String orderDesc, @RequestParam(value = "eqClassId", required = false) Long eqClassId, @RequestParam("reporter") String reporter) {
+        WorkOrder workOrder = workOrderService.reportFix(type, id, orderDesc, reporter, eqClassId);
         return commonDataService.getReturnType(workOrder != null, ConstantUtils.REPORT_FIX_SUCCESS, ConstantUtils.REPORT_FIX_FAILURE, workOrder);
     }
 
 
-
     /**
-     * @param id        id
-     * @param reason
+     * @param id     工单id
+     * @param reason 取消原因
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/removeReport", method = RequestMethod.POST)
-    public ReturnObject removeReport( @RequestParam("id") Long id,@RequestParam("reason") String reason ) {
-        WorkOrder workOrder = workOrderService.removeReport( id, reason);
-        return commonDataService.getReturnType(workOrder != null, ConstantUtils.REPORT_FIX_SUCCESS, ConstantUtils.REPORT_FIX_FAILURE, workOrder);
+    public ReturnObject removeReport(@RequestParam("id") Long id, @RequestParam("reason") String reason) {
+        WorkOrder workOrder = workOrderService.removeReport(id, reason);
+        return commonDataService.getReturnType(workOrder != null, ConstantUtils.ORDER_ABORT_SUCCESS, ConstantUtils.ORDER_ABORT_SUCCESS, workOrder);
     }
 
 

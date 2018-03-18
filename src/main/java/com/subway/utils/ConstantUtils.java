@@ -30,4 +30,8 @@ public class ConstantUtils {
     public static final String REPORT_FIX_SUCCESS = "报修成功"; //发布
     public static final String REPORT_FIX_FAILURE = "报修失败"; //发布
 
+
+    public static final String ORDER_ABORT_SUCCESS = "工单取消成功"; //发布
+    public static final String ORDER_ABORT_FAILURE = "工单取消失败"; //发布
+
 }

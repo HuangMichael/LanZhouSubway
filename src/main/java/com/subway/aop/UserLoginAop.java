@@ -109,7 +109,7 @@ public class UserLoginAop {
      * @param joinPoint    结合点
      * @param returnObject
      */
-    @AfterReturning(value = "execution(* com.subway.workOrder.WorkOrderController.reportFix(..))", returning = "returnObject")
+    @AfterReturning(value = "execution(* com.subway.workOrder.WorkOrderController.removeReport(..))", returning = "returnObject")
     public void writeWorkOrderAbortLog(JoinPoint joinPoint, ReturnObject returnObject) {
         Object[] args = joinPoint.getArgs();
         String reason = (String) args[1];
