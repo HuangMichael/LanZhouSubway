@@ -38,8 +38,8 @@ var App = function () {
         }
     };
     var handleSidebar = function () {
-        jQuery(".sidebar-menu .has-sub > a").click(function () {
-            var last = jQuery(".has-sub.open", $(".sidebar-menu"));
+        jQuery(".sidebar-basicMenu .has-sub > a").click(function () {
+            var last = jQuery(".has-sub.open", $(".sidebar-basicMenu"));
             last.removeClass("open");
             jQuery(".arrow", last).removeClass("open");
             jQuery(".sub", last).slideUp(200);
@@ -67,8 +67,8 @@ var App = function () {
                 })
             }
         });
-        jQuery(".sidebar-menu .has-sub .sub .has-sub-sub > a").click(function () {
-            var last = jQuery(".has-sub-sub.open", $(".sidebar-menu"));
+        jQuery(".sidebar-basicMenu .has-sub .sub .has-sub-sub > a").click(function () {
+            var last = jQuery(".has-sub-sub.open", $(".sidebar-basicMenu"));
             last.removeClass("open");
             jQuery(".arrow", last).removeClass("open");
             jQuery(".sub", last).slideUp(200);
@@ -189,7 +189,7 @@ var App = function () {
         })
     };
     var handleFixedSidebar = function () {
-        var menu = $(".sidebar-menu");
+        var menu = $(".sidebar-basicMenu");
         if (menu.parent(".slimScrollDiv").size() === 1) {
             menu.slimScroll({destroy: true});
             menu.removeAttr("style");

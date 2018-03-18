@@ -125,11 +125,11 @@
   margin: 0 !important;
   padding: 0 !important;
 }
-/* Navbar Settings Menu */
+/* Navbar Settings basicMenu */
 .dropdown-menu.skins {
   border-top: 1px solid #486d93;
 }
-/* Navbar Right Menu */
+/* Navbar Right basicMenu */
 .dropdown-menu {
   background-color: #f4f4f4;
 }
@@ -250,7 +250,7 @@
   margin-bottom: 10px !important;
   height: 9px !important;
 }
-/* User Menu */
+/* User basicMenu */
 .dropdown.user a.dropdown-toggle {
   padding: 10px 10px 11px;
 }
@@ -470,8 +470,8 @@
 .sidebar-menu > ul > li > a .arrow.open:before {
   color: #555555 !important;
 }
-/*.sidebar-menu ul > li.active > a .arrow:before,
-.sidebar-menu > ul > li.active > a .arrow.open:before {  
+/*.sidebar-basicMenu ul > li.active > a .arrow:before,
+.sidebar-basicMenu > ul > li.active > a .arrow.open:before {
    color: #fff !important;
 } */
 .sidebar-menu > ul > li > ul.sub > li > a {
@@ -516,7 +516,7 @@
   top: 29px;
   color: #888888;
 }
-/* Mini Menu Search */
+/* Mini basicMenu Search */
 .mini-menu .sidebar-menu #search-bar {
   display: block;
   text-align: center;
@@ -592,7 +592,7 @@
   text-shadow: none;
   background-color: #dd5a43 !important;
 }
-/* Min Menu */
+/* Min basicMenu */
 .mini-menu#sidebar {
   width: 50px;
 }

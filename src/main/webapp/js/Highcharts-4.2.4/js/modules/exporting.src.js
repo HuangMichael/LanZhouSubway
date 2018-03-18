@@ -144,7 +144,7 @@
                         });
                     }
                 }
-                    // Enable this block to add "View SVG" to the dropdown menu
+                    // Enable this block to add "View SVG" to the dropdown basicMenu
                     /*
                      ,{
 
@@ -471,9 +471,9 @@
         },
 
         /**
-         * Display a popup menu for choosing the export type
+         * Display a popup basicMenu for choosing the export type
          *
-         * @param {String} className An identifier for the menu
+         * @param {String} className An identifier for the basicMenu
          * @param {Array} items A collection with text and onclicks for the items
          * @param {Number} x The x position of the opener button
          * @param {Number} y The y position of the opener button
@@ -500,7 +500,7 @@
                     }
                 };
 
-            // create the menu only the first time
+            // create the basicMenu only the first time
             if (!menu) {
 
                 // create a HTML element above the SVG
@@ -528,7 +528,7 @@
                     chart.openMenu = false;
                 };
 
-                // Hide the menu some time after mouse leave (#1357)
+                // Hide the basicMenu some time after mouse leave (#1357)
                 addEvent(menu, 'mouseleave', function () {
                     hideTimer = setTimeout(hide, 500);
                 });
@@ -537,7 +537,7 @@
                 });
 
 
-                // Hide it on clicking or touching outside the menu (#2258, #2335, #2407)
+                // Hide it on clicking or touching outside the basicMenu (#2258, #2335, #2407)
                 addEvent(doc, 'mouseup', docMouseUpHandler);
                 addEvent(chart, 'destroy', function () {
                     removeEvent(doc, 'mouseup', docMouseUpHandler);
@@ -571,12 +571,12 @@
                             }, menuItemStyle), innerMenu);
 
 
-                        // Keep references to menu divs to be able to destroy them
+                        // Keep references to basicMenu divs to be able to destroy them
                         chart.exportDivElements.push(element);
                     }
                 });
 
-                // Keep references to menu and innerMenu div to be able to destroy them
+                // Keep references to basicMenu and innerMenu div to be able to destroy them
                 chart.exportDivElements.push(innerMenu, menu);
 
                 chart.exportMenuWidth = menu.offsetWidth;
@@ -680,7 +680,7 @@
                     'stroke-linecap': 'round',
                     zIndex: 3 // #4955
                 });
-            button.menuClassName = options.menuClassName || PREFIX + 'menu-' + chart.btnCount++;
+            button.menuClassName = options.menuClassName || PREFIX + 'basicMenu-' + chart.btnCount++;
 
             if (btnOptions.symbol) {
                 symbol = renderer.symbol(
@@ -727,7 +727,7 @@
                 }
             }
 
-            // Destroy the divs for the menu
+            // Destroy the divs for the basicMenu
             for (i = 0; i < chart.exportDivElements.length; i++) {
                 elem = chart.exportDivElements[i];
 

@@ -1,4 +1,4 @@
-package com.subway.menu;
+package com.subway.basicMenu;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "T_MENU")
 @Data
-public class Menu {
+public class basicMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -38,7 +38,7 @@ public class Menu {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", referencedColumnName = "id")
-    Menu parent;
+    basicMenu parent;
 
     @Column(length = 1)
     private String status;

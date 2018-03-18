@@ -16,13 +16,13 @@ $(function () {
     for (var x in modules) {
         if (modules[x]["resourceName"]) {
             html += '<li class="has-sub">';
-            html += '   <a><i class="' + modules[x]["iconClass"] + '"></i> <span class="menu-text">' + modules[x]["resourceName"] + '</span><span class="arrow"></span></a>';
+            html += '   <a><i class="' + modules[x]["iconClass"] + '"></i> <span class="basicMenu-text">' + modules[x]["resourceName"] + '</span><span class="arrow"></span></a>';
             html += '     <ul class="sub" id="sub' + moduleId + '">';
             moduleId = modules[x]["id"];
             apps = getAppByModule(1, moduleId);
             for (var i in apps) {
                 if (apps[i]["resourceName"]) {
-                    html += '       <li><a ' + apps[i]["resourceUrl"] + '><span class="sub-menu-text">' + apps[i]["resourceName"] + '</span></a></li>';
+                    html += '       <li><a ' + apps[i]["resourceUrl"] + '><span class="sub-basicMenu-text">' + apps[i]["resourceName"] + '</span></a></li>';
                 }
             }
             html += '     </ul>';
@@ -30,7 +30,7 @@ $(function () {
         }
     }
     $("#menuL1").append(html);
-    $(".sub-menu-text").parent().on("click", function () {
+    $(".sub-basicMenu-text").parent().on("click", function () {
         $(this).css("cursor", "hand");
         var url = $(this).data("url");
         if (url) {

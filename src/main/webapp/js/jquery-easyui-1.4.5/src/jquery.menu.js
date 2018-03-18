@@ -8,25 +8,25 @@
  *
  */
 /**
- * menu - jQuery EasyUI
+ * basicMenu - jQuery EasyUI
  * 
  */
 (function($){
 	$(function(){
 		$(document).unbind('.menu').bind('mousedown.menu', function(e){
-			var m = $(e.target).closest('div.menu,div.combo-p');
+			var m = $(e.target).closest('div.basicMenu,div.combo-p');
 			if (m.length){return}
-			$('body>div.menu-top:visible').not('.menu-inline').menu('hide');
-			hideMenu($('body>div.menu:visible').not('.menu-inline'));
+			$('body>div.basicMenu-top:visible').not('.basicMenu-inline').menu('hide');
+			hideMenu($('body>div.basicMenu:visible').not('.basicMenu-inline'));
 		});
 	});
 	
 	/**
-	 * initialize the target menu, the function can be invoked only once
+	 * initialize the target basicMenu, the function can be invoked only once
 	 */
 	function init(target){
 		var opts = $.data(target, 'menu').options;
-		$(target).addClass('menu-top');	// the top menu
+		$(target).addClass('basicMenu-top');	// the top basicMenu
 		opts.inline ? $(target).addClass('menu-inline') : $(target).appendTo('body');
 		$(target).bind('_resize', function(e, force){
 			if ($(this).hasClass('easyui-fluid') || force){
@@ -44,13 +44,13 @@
 			var menus = [];
 			menu.addClass('menu');
 			menus.push(menu);
-			if (!menu.hasClass('menu-content')){
+			if (!menu.hasClass('basicMenu-content')){
 				menu.children('div').each(function(){
 					var submenu = $(this).children('div');
 					if (submenu.length){
 //						submenu.insertAfter(target);
 						submenu.appendTo('body');
-						this.submenu = submenu;		// point to the sub menu
+						this.submenu = submenu;		// point to the sub basicMenu
 						var mm = splitMenu(submenu);
 						menus = menus.concat(mm);
 					}
@@ -62,7 +62,7 @@
 		function createMenu(menu){
 			var wh = $.parser.parseOptions(menu[0], ['width','height']);
 			menu[0].originalHeight = wh.height || 0;
-			if (menu.hasClass('menu-content')){
+			if (menu.hasClass('basicMenu-content')){
 				menu[0].originalWidth = wh.width || menu._outerWidth();
 			} else {
 				menu[0].originalWidth = wh.width || 0;
@@ -72,31 +72,31 @@
 						disabled: (item.attr('disabled') ? true : undefined)
 					});
 					if (itemOpts.separator){
-						item.addClass('menu-sep');
+						item.addClass('basicMenu-sep');
 					}
-					if (!item.hasClass('menu-sep')){
+					if (!item.hasClass('basicMenu-sep')){
 						item[0].itemName = itemOpts.name || '';
 						item[0].itemHref = itemOpts.href || '';
 						
-						var text = item.addClass('menu-item').html();
-						item.empty().append($('<div class="menu-text"></div>').html(text));
+						var text = item.addClass('basicMenu-item').html();
+						item.empty().append($('<div class="basicMenu-text"></div>').html(text));
 						if (itemOpts.iconCls){
-							$('<div class="menu-icon"></div>').addClass(itemOpts.iconCls).appendTo(item);
+							$('<div class="basicMenu-icon"></div>').addClass(itemOpts.iconCls).appendTo(item);
 						}
 						if (itemOpts.disabled){
 							setDisabled(target, item[0], true);
 						}
 						if (item[0].submenu){
-							$('<div class="menu-rightarrow"></div>').appendTo(item);	// has sub menu
+							$('<div class="basicMenu-rightarrow"></div>').appendTo(item);	// has sub basicMenu
 						}
 						
 						bindMenuItemEvent(target, item);
 					}
 				});
-				$('<div class="menu-line"></div>').prependTo(menu);
+				$('<div class="basicMenu-line"></div>').prependTo(menu);
 			}
 			setMenuSize(target, menu);
-			if (!menu.hasClass('menu-inline')){
+			if (!menu.hasClass('basicMenu-inline')){
 				menu.hide();
 			}
 			
@@ -113,19 +113,19 @@
 			height: 'auto',
 			overflow: 'hidden'
 		});
-		menu.find('.menu-item').each(function(){
+		menu.find('.basicMenu-item').each(function(){
 			$(this)._outerHeight(opts.itemHeight);
-			$(this).find('.menu-text').css({
+			$(this).find('.basicMenu-text').css({
 				height: (opts.itemHeight-2)+'px',
 				lineHeight: (opts.itemHeight-2)+'px'
 			});
 		});
-		menu.removeClass('menu-noline').addClass(opts.noline?'menu-noline':'');
+		menu.removeClass('basicMenu-noline').addClass(opts.noline?'basicMenu-noline':'');
 		
 		var width = menu[0].originalWidth || 'auto';
 		if (isNaN(parseInt(width))){
 			width = 0;
-			menu.find('div.menu-text').each(function(){
+			menu.find('div.basicMenu-text').each(function(){
 				if (width < $(this)._outerWidth()){
 					width = $(this)._outerWidth();
 				}
@@ -138,7 +138,7 @@
 		if (isNaN(parseInt(height))){
 			height = autoHeight;
 			
-			if (menu.hasClass('menu-top') && opts.alignTo){
+			if (menu.hasClass('basicMenu-top') && opts.alignTo){
 				var at = $(opts.alignTo);
 				var h1 = at.offset().top - $(document).scrollTop();
 				var h2 = $(window)._outerHeight() + $(document).scrollTop() - at.offset().top - at._outerHeight();
@@ -156,14 +156,14 @@
 			height: height
 		});
 		menu.css('overflow', menu.outerHeight() < autoHeight ? 'auto' : 'hidden');
-		menu.children('div.menu-line')._outerHeight(autoHeight-2);
+		menu.children('div.basicMenu-line')._outerHeight(autoHeight-2);
 	}
 	
 	/**
-	 * bind menu event
+	 * bind basicMenu event
 	 */
 	function bindMenuEvent(target, menu){
-		if (menu.hasClass('menu-inline')){return}
+		if (menu.hasClass('basicMenu-inline')){return}
 		var state = $.data(target, 'menu');
 		menu.unbind('.menu').bind('mouseenter.menu', function(){
 			if (state.timer){
@@ -180,16 +180,16 @@
 	}
 	
 	/**
-	 * bind menu item event
+	 * bind basicMenu item event
 	 */
 	function bindMenuItemEvent(target, item){
-		if (!item.hasClass('menu-item')){return}
+		if (!item.hasClass('basicMenu-item')){return}
 		item.unbind('.menu');
 		item.bind('click.menu', function(){
 			if ($(this).hasClass('menu-item-disabled')){
 				return;
 			}
-			// only the sub menu clicked can hide all menus
+			// only the sub basicMenu clicked can hide all menus
 			if (!this.submenu){
 				hideAll(target, $(target).hasClass('menu-inline'));
 				var href = this.itemHref;
@@ -201,18 +201,18 @@
 			var item = $(target).menu('getItem', this);
 			$.data(target, 'menu').options.onClick.call(target, item);
 		}).bind('mouseenter.menu', function(e){
-			// hide other menu
+			// hide other basicMenu
 			item.siblings().each(function(){
 				if (this.submenu){
 					hideMenu(this.submenu);
 				}
 				$(this).removeClass('menu-active');
 			});
-			// show this menu
-			item.addClass('menu-active');
+			// show this basicMenu
+			item.addClass('basicMenu-active');
 			
 			if ($(this).hasClass('menu-item-disabled')){
-				item.addClass('menu-active-disabled');
+				item.addClass('basicMenu-active-disabled');
 				return;
 			}
 			
@@ -224,23 +224,23 @@
 				});
 			}
 		}).bind('mouseleave.menu', function(e){
-			item.removeClass('menu-active menu-active-disabled');
+			item.removeClass('basicMenu-active basicMenu-active-disabled');
 			var submenu = item[0].submenu;
 			if (submenu){
 				if (e.pageX>=parseInt(submenu.css('left'))){
-					item.addClass('menu-active');
+					item.addClass('basicMenu-active');
 				} else {
 					hideMenu(submenu);
 				}
 				
 			} else {
-				item.removeClass('menu-active');
+				item.removeClass('basicMenu-active');
 			}
 		});
 	}
 	
 	/**
-	 * hide top menu and it's all sub menus
+	 * hide top basicMenu and it's all sub menus
 	 */
 	function hideAll(target, inline){
 		var state = $.data(target, 'menu');
@@ -258,11 +258,11 @@
 	}
 	
 	/**
-	 * show the menu, the 'param' object has one or more properties:
+	 * show the basicMenu, the 'param' object has one or more properties:
 	 * left: the left position to display
 	 * top: the top position to display
-	 * menu: the menu to display, if not defined, the 'target menu' is used
-	 * parent: the parent menu item to align to
+	 * basicMenu: the basicMenu to display, if not defined, the 'target basicMenu' is used
+	 * parent: the parent basicMenu item to align to
 	 * alignTo: the element object to align to
 	 */
 	function showMenu(target, param){
@@ -271,7 +271,7 @@
 		var opts = $.data(target, 'menu').options;
 		var menu = $(param.menu || target);
 		$(target).menu('resize', menu[0]);
-		if (menu.hasClass('menu-top')){
+		if (menu.hasClass('basicMenu-top')){
 			$.extend(opts, param);
 			left = opts.left;
 			top = opts.top;
@@ -289,7 +289,7 @@
 			if (left < 0){left = 0;}
 			top = _fixTop(top, opts.alignTo);
 		} else {
-			var parent = param.parent;	// the parent menu item
+			var parent = param.parent;	// the parent basicMenu item
 			left = parent.offset().left + parent.outerWidth() - 2;
 			if (left + menu.outerWidth() + 5 > $(window)._outerWidth() + $(document).scrollLeft()){
 				left = parent.offset().left - menu.outerWidth() + 2;
@@ -312,10 +312,10 @@
 		menu.css(opts.position.call(target, menu[0], left, top));
 		menu.show(0, function(){
 			if (!menu[0].shadow){
-				menu[0].shadow = $('<div class="menu-shadow"></div>').insertAfter(menu);
+				menu[0].shadow = $('<div class="basicMenu-shadow"></div>').insertAfter(menu);
 			}
 			menu[0].shadow.css({
-				display:(menu.hasClass('menu-inline')?'none':'block'),
+				display:(menu.hasClass('basicMenu-inline')?'none':'block'),
 				zIndex:$.fn.menu.defaults.zIndex++,
 				left:menu.css('left'),
 				top:menu.css('top'),
@@ -323,7 +323,7 @@
 				height:menu.outerHeight()
 			});
 			menu.css('z-index', $.fn.menu.defaults.zIndex++);
-			if (menu.hasClass('menu-top')){
+			if (menu.hasClass('basicMenu-top')){
 				opts.onShow.call(target);
 			}
 		});
@@ -332,7 +332,7 @@
 	function hideMenu(menu){
 		if (menu && menu.length){
 			hideit(menu);
-			menu.find('div.menu-item').each(function(){
+			menu.find('div.basicMenu-item').each(function(){
 				if (this.submenu){
 					hideMenu(this.submenu);
 				}
@@ -353,7 +353,7 @@
 		var result = null;
 		var tmp = $('<div></div>');
 		function find(menu){
-			menu.children('div.menu-item').each(function(){
+			menu.children('div.basicMenu-item').each(function(){
 				var item = $(target).menu('getItem', this);
 				var s = tmp.empty().html(item.text).text();
 				if (text == $.trim(s)) {
@@ -370,16 +370,16 @@
 	
 	function setDisabled(target, itemEl, disabled){
 		var t = $(itemEl);
-		if (!t.hasClass('menu-item')){return}
+		if (!t.hasClass('basicMenu-item')){return}
 		
 		if (disabled){
-			t.addClass('menu-item-disabled');
+			t.addClass('basicMenu-item-disabled');
 			if (itemEl.onclick){
 				itemEl.onclick1 = itemEl.onclick;
 				itemEl.onclick = null;
 			}
 		} else {
-			t.removeClass('menu-item-disabled');
+			t.removeClass('basicMenu-item-disabled');
 			if (itemEl.onclick1){
 				itemEl.onclick = itemEl.onclick1;
 				itemEl.onclick1 = null;
@@ -392,20 +392,20 @@
 		var menu = $(target);
 		if (param.parent){
 			if (!param.parent.submenu){
-				var submenu = $('<div class="menu"><div class="menu-line"></div></div>').appendTo('body');
+				var submenu = $('<div class="basicMenu"><div class="basicMenu-line"></div></div>').appendTo('body');
 				submenu.hide();
 				param.parent.submenu = submenu;
-				$('<div class="menu-rightarrow"></div>').appendTo(param.parent);
+				$('<div class="basicMenu-rightarrow"></div>').appendTo(param.parent);
 			}
 			menu = param.parent.submenu;
 		}
 		if (param.separator){
-			var item = $('<div class="menu-sep"></div>').appendTo(menu);
+			var item = $('<div class="basicMenu-sep"></div>').appendTo(menu);
 		} else {
-			var item = $('<div class="menu-item"></div>').appendTo(menu);
-			$('<div class="menu-text"></div>').html(param.text).appendTo(item);
+			var item = $('<div class="basicMenu-item"></div>').appendTo(menu);
+			$('<div class="basicMenu-text"></div>').html(param.text).appendTo(item);
 		}
-		if (param.iconCls) $('<div class="menu-icon"></div>').addClass(param.iconCls).appendTo(item);
+		if (param.iconCls) $('<div class="basicMenu-icon"></div>').addClass(param.iconCls).appendTo(item);
 		if (param.id) item.attr('id', param.id);
 		if (param.name){item[0].itemName = param.name}
 		if (param.href){item[0].itemHref = param.href}
@@ -427,7 +427,7 @@
 	function removeItem(target, itemEl){
 		function removeit(el){
 			if (el.submenu){
-				el.submenu.children('div.menu-item').each(function(){
+				el.submenu.children('div.basicMenu-item').each(function(){
 					removeit(this);
 				});
 				var shadow = el.submenu[0].shadow;
@@ -452,7 +452,7 @@
 	}
 	
 	function destroyMenu(target){
-		$(target).children('div.menu-item').each(function(){
+		$(target).children('div.basicMenu-item').each(function(){
 			removeItem(target, this);
 		});
 		if (target.shadow) target.shadow.remove();
@@ -502,38 +502,38 @@
 			});
 		},
 		/**
-		 * set the menu item text
+		 * set the basicMenu item text
 		 * param: {
-		 * 	target: DOM object, indicate the menu item
+		 * 	target: DOM object, indicate the basicMenu item
 		 * 	text: string, the new text
 		 * }
 		 */
 		setText: function(jq, param){
 			return jq.each(function(){
-				$(param.target).children('div.menu-text').html(param.text);
+				$(param.target).children('div.basicMenu-text').html(param.text);
 			});
 		},
 		/**
-		 * set the menu icon class
+		 * set the basicMenu icon class
 		 * param: {
-		 * 	target: DOM object, indicate the menu item
-		 * 	iconCls: the menu item icon class
+		 * 	target: DOM object, indicate the basicMenu item
+		 * 	iconCls: the basicMenu item icon class
 		 * }
 		 */
 		setIcon: function(jq, param){
 			return jq.each(function(){
-				$(param.target).children('div.menu-icon').remove();
+				$(param.target).children('div.basicMenu-icon').remove();
 				if (param.iconCls){
-					$('<div class="menu-icon"></div>').addClass(param.iconCls).appendTo(param.target);
+					$('<div class="basicMenu-icon"></div>').addClass(param.iconCls).appendTo(param.target);
 				}
 			});
 		},
 		/**
-		 * get the menu item data that contains the following property:
+		 * get the basicMenu item data that contains the following property:
 		 * {
-		 * 	target: DOM object, the menu item
-		 *  id: the menu id
-		 * 	text: the menu item text
+		 * 	target: DOM object, the basicMenu item
+		 *  id: the basicMenu id
+		 * 	text: the basicMenu item text
 		 * 	iconCls: the icon class
 		 *  href: a remote address to redirect to
 		 *  onclick: a function to be called when the item is clicked
@@ -544,20 +544,20 @@
 			var item = {
 				target: itemEl,
 				id: t.attr('id'),
-				text: $.trim(t.children('div.menu-text').html()),
-				disabled: t.hasClass('menu-item-disabled'),
+				text: $.trim(t.children('div.basicMenu-text').html()),
+				disabled: t.hasClass('basicMenu-item-disabled'),
 //				href: t.attr('href'),
 //				name: t.attr('name'),
 				name: itemEl.itemName,
 				href: itemEl.itemHref,
 				onclick: itemEl.onclick
 			};
-			var icon = t.children('div.menu-icon');
+			var icon = t.children('div.basicMenu-icon');
 			if (icon.length){
 				var cc = [];
 				var aa = icon.attr('class').split(' ');
 				for(var i=0; i<aa.length; i++){
-					if (aa[i] != 'menu-icon'){
+					if (aa[i] != 'basicMenu-icon'){
 						cc.push(aa[i]);
 					}
 				}
@@ -569,9 +569,9 @@
 			return findItem(jq[0], text);
 		},
 		/**
-		 * append menu item, the param contains following properties:
+		 * append basicMenu item, the param contains following properties:
 		 * parent,id,text,iconCls,href,onclick
-		 * when parent property is assigned, append menu item to it
+		 * when parent property is assigned, append basicMenu item to it
 		 */
 		appendItem: function(jq, param){
 			return jq.each(function(){
@@ -625,8 +625,8 @@
 		align: 'left',
 		minWidth: 120,
 		itemHeight: 22,
-		duration: 100,	// Defines duration time in milliseconds to hide when the mouse leaves the menu.
-		hideOnUnhover: true,	// Automatically hides the menu when mouse exits it
+		duration: 100,	// Defines duration time in milliseconds to hide when the mouse leaves the basicMenu.
+		hideOnUnhover: true,	// Automatically hides the basicMenu when mouse exits it
 		inline: false,	// true to stay inside its parent, false to go on top of all elements
 		fit: false,
 		noline: false,

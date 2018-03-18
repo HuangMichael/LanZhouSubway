@@ -221,7 +221,7 @@
     if (this.isInline) {
       this.picker.addClass('datetimepicker-inline');
     } else {
-      this.picker.addClass('datetimepicker-dropdown-' + this.pickerPosition + ' dropdown-menu');
+      this.picker.addClass('datetimepicker-dropdown-' + this.pickerPosition + ' dropdown-basicMenu');
     }
     if (this.isRTL) {
       this.picker.addClass('datetimepicker-rtl');

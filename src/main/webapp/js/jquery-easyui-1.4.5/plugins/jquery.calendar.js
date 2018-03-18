@@ -16,12 +16,12 @@ $.extend(_4,{width:_3.width,height:_3.height});
 }
 t._size(_4,t.parent());
 t.find(".calendar-body")._outerHeight(t.height()-t.find(".calendar-header")._outerHeight());
-if(t.find(".calendar-menu").is(":visible")){
+if(t.find(".calendar-basicMenu").is(":visible")){
 _5(_2);
 }
 };
 function _6(_7){
-$(_7).addClass("calendar").html("<div class=\"calendar-header\">"+"<div class=\"calendar-nav calendar-prevmonth\"></div>"+"<div class=\"calendar-nav calendar-nextmonth\"></div>"+"<div class=\"calendar-nav calendar-prevyear\"></div>"+"<div class=\"calendar-nav calendar-nextyear\"></div>"+"<div class=\"calendar-title\">"+"<span class=\"calendar-text\"></span>"+"</div>"+"</div>"+"<div class=\"calendar-body\">"+"<div class=\"calendar-menu\">"+"<div class=\"calendar-menu-year-inner\">"+"<span class=\"calendar-nav calendar-menu-prev\"></span>"+"<span><input class=\"calendar-menu-year\" type=\"text\"></input></span>"+"<span class=\"calendar-nav calendar-menu-next\"></span>"+"</div>"+"<div class=\"calendar-menu-month-inner\">"+"</div>"+"</div>"+"</div>");
+$(_7).addClass("calendar").html("<div class=\"calendar-header\">"+"<div class=\"calendar-nav calendar-prevmonth\"></div>"+"<div class=\"calendar-nav calendar-nextmonth\"></div>"+"<div class=\"calendar-nav calendar-prevyear\"></div>"+"<div class=\"calendar-nav calendar-nextyear\"></div>"+"<div class=\"calendar-title\">"+"<span class=\"calendar-text\"></span>"+"</div>"+"</div>"+"<div class=\"calendar-body\">"+"<div class=\"calendar-basicMenu\">"+"<div class=\"calendar-basicMenu-year-inner\">"+"<span class=\"calendar-nav calendar-basicMenu-prev\"></span>"+"<span><input class=\"calendar-basicMenu-year\" type=\"text\"></input></span>"+"<span class=\"calendar-nav calendar-basicMenu-next\"></span>"+"</div>"+"<div class=\"calendar-basicMenu-month-inner\">"+"</div>"+"</div>"+"</div>");
 $(_7).bind("_resize",function(e,_8){
 if($(this).hasClass("easyui-fluid")||_8){
 _1(_7);
@@ -31,8 +31,8 @@ return false;
 };
 function _9(_a){
 var _b=$.data(_a,"calendar").options;
-var _c=$(_a).find(".calendar-menu");
-_c.find(".calendar-menu-year").unbind(".calendar").bind("keypress.calendar",function(e){
+var _c=$(_a).find(".calendar-basicMenu");
+_c.find(".calendar-basicMenu-year").unbind(".calendar").bind("keypress.calendar",function(e){
 if(e.keyCode==13){
 _d(true);
 }
@@ -49,13 +49,13 @@ t.removeClass("calendar-nav-hover");
 }
 }).bind("click.calendar",function(e){
 var t=_e(e.target);
-if(t.hasClass("calendar-menu-next")||t.hasClass("calendar-nextyear")){
+if(t.hasClass("calendar-basicMenu-next")||t.hasClass("calendar-nextyear")){
 _f(1);
 }else{
-if(t.hasClass("calendar-menu-prev")||t.hasClass("calendar-prevyear")){
+if(t.hasClass("calendar-basicMenu-prev")||t.hasClass("calendar-prevyear")){
 _f(-1);
 }else{
-if(t.hasClass("calendar-menu-month")){
+if(t.hasClass("calendar-basicMenu-month")){
 _c.find(".calendar-selected").removeClass("calendar-selected");
 t.addClass("calendar-selected");
 _d(true);
@@ -111,8 +111,8 @@ return $(t);
 }
 };
 function _d(_13){
-var _14=$(_a).find(".calendar-menu");
-var _15=_14.find(".calendar-menu-year").val();
+var _14=$(_a).find(".calendar-basicMenu");
+var _15=_14.find(".calendar-basicMenu-year").val();
 var _16=_14.find(".calendar-selected").attr("abbr");
 if(!isNaN(_15)){
 _b.year=parseInt(_15);
@@ -126,7 +126,7 @@ _14.hide();
 function _f(_17){
 _b.year+=_17;
 _19(_a);
-_c.find(".calendar-menu-year").val(_b.year);
+_c.find(".calendar-basicMenu-year").val(_b.year);
 };
 function _10(_18){
 _b.month+=_18;
@@ -146,22 +146,22 @@ _c.find("td:eq("+(_b.month-1)+")").addClass("calendar-selected");
 };
 function _5(_1a){
 var _1b=$.data(_1a,"calendar").options;
-$(_1a).find(".calendar-menu").show();
-if($(_1a).find(".calendar-menu-month-inner").is(":empty")){
-$(_1a).find(".calendar-menu-month-inner").empty();
-var t=$("<table class=\"calendar-mtable\"></table>").appendTo($(_1a).find(".calendar-menu-month-inner"));
+$(_1a).find(".calendar-basicMenu").show();
+if($(_1a).find(".calendar-basicMenu-month-inner").is(":empty")){
+$(_1a).find(".calendar-basicMenu-month-inner").empty();
+var t=$("<table class=\"calendar-mtable\"></table>").appendTo($(_1a).find(".calendar-basicMenu-month-inner"));
 var idx=0;
 for(var i=0;i<3;i++){
 var tr=$("<tr></tr>").appendTo(t);
 for(var j=0;j<4;j++){
-$("<td class=\"calendar-nav calendar-menu-month\"></td>").html(_1b.months[idx++]).attr("abbr",idx).appendTo(tr);
+$("<td class=\"calendar-nav calendar-basicMenu-month\"></td>").html(_1b.months[idx++]).attr("abbr",idx).appendTo(tr);
 }
 }
 }
 var _1c=$(_1a).find(".calendar-body");
-var _1d=$(_1a).find(".calendar-menu");
-var _1e=_1d.find(".calendar-menu-year-inner");
-var _1f=_1d.find(".calendar-menu-month-inner");
+var _1d=$(_1a).find(".calendar-basicMenu");
+var _1e=_1d.find(".calendar-basicMenu-year-inner");
+var _1f=_1d.find(".calendar-basicMenu-month-inner");
 _1e.find("input").val(_1b.year).focus();
 _1f.find("td.calendar-selected").removeClass("calendar-selected");
 _1f.find("td:eq("+(_1b.month-1)+")").addClass("calendar-selected");
@@ -342,7 +342,7 @@ $(this).addClass("calendar-noborder");
 _1(this);
 _9(this);
 _19(this);
-$(this).find("div.calendar-menu").hide();
+$(this).find("div.calendar-basicMenu").hide();
 });
 };
 $.fn.calendar.methods={options:function(jq){

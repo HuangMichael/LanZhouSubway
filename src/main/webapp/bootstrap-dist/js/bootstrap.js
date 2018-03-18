@@ -478,7 +478,7 @@ if (typeof jQuery === "undefined") {
             }
             return $this.click()
         }
-        var $items = $("[role=menu] li:not(.divider):visible a", $parent);
+        var $items = $("[role=basicMenu] li:not(.divider):visible a", $parent);
         if (!$items.length) {
             return
         }
@@ -539,7 +539,7 @@ if (typeof jQuery === "undefined") {
     };
     $(document).on("click.bs.dropdown.data-api", clearMenus).on("click.bs.dropdown.data-api", ".dropdown form", function (e) {
         e.stopPropagation()
-    }).on("click.bs.dropdown.data-api", toggle, Dropdown.prototype.toggle).on("keydown.bs.dropdown.data-api", toggle + ", [role=menu]", Dropdown.prototype.keydown)
+    }).on("click.bs.dropdown.data-api", toggle, Dropdown.prototype.toggle).on("keydown.bs.dropdown.data-api", toggle + ", [role=basicMenu]", Dropdown.prototype.keydown)
 }(jQuery);
 +function ($) {
     var Modal = function (element, options) {
@@ -1099,7 +1099,7 @@ if (typeof jQuery === "undefined") {
         $(this.selector).parents(".active").removeClass("active");
         var selector = this.selector + '[data-target="' + target + '"],' + this.selector + '[href="' + target + '"]';
         var active = $(selector).parents("li").addClass("active");
-        if (active.parent(".dropdown-menu").length) {
+        if (active.parent(".dropdown-basicMenu").length) {
             active = active.closest("li.dropdown").addClass("active")
         }
         active.trigger("activate.bs.scrollspy")
@@ -1136,7 +1136,7 @@ if (typeof jQuery === "undefined") {
     };
     Tab.prototype.show = function () {
         var $this = this.element;
-        var $ul = $this.closest("ul:not(.dropdown-menu)");
+        var $ul = $this.closest("ul:not(.dropdown-basicMenu)");
         var selector = $this.data("target");
         if (!selector) {
             selector = $this.attr("href");
@@ -1162,7 +1162,7 @@ if (typeof jQuery === "undefined") {
         var transition = callback && $.support.transition && $active.hasClass("fade");
 
         function next() {
-            $active.removeClass("active").find("> .dropdown-menu > .active").removeClass("active");
+            $active.removeClass("active").find("> .dropdown-basicMenu > .active").removeClass("active");
             element.addClass("active");
             if (transition) {
                 element[0].offsetWidth;
@@ -1170,7 +1170,7 @@ if (typeof jQuery === "undefined") {
             } else {
                 element.removeClass("fade")
             }
-            if (element.parent(".dropdown-menu")) {
+            if (element.parent(".dropdown-basicMenu")) {
                 element.closest("li.dropdown").addClass("active")
             }
             callback && callback()
