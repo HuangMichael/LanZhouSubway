@@ -13,11 +13,12 @@ public class ConstantUtils {
     public static final String CONTEXT_PATH = "E:/dev/LanZhouSubway/src/main/webapp/";  //上下文路径
     public static final String GEN_FILE_PATH = "E:/dev/LanZhouSubway/";  //上下文路径
 
-    public static final String AUDIT_STATUS_0 = "0"; //未审核
-    public static final String AUDIT_STATUS_1 = "1"; //初审
-    public static final String AUDIT_STATUS_2 = "2"; //复审
-    public static final String AUDIT_STATUS_3 = "3"; //终审
-    public static final String AUDIT_STATUS_4 = "4"; //发布
+    public static final String ORDER_STATUS_REPORTED = "0"; //加入报修车
+    public static final String ORDER_STATUS_SENT = "1"; //派工
+    public static final String ORDER_STATUS_REPAIRING = "2"; //维修中
+    public static final String ORDER_STATUS_FINISHED = "3"; //已完工
+    public static final String ORDER_STATUS_ABORTED = "4"; //取消
+    public static final String ORDER_STATUS_PAUSED = "5"; //暂停
 
 
     public static final String SAVE_SUCCESS = "信息保存成功"; //

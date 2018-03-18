@@ -111,4 +111,18 @@ public class WorkOrderController extends BaseController {
     }
 
 
+
+    /**
+     * @param id        id
+     * @param reason
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/removeReport", method = RequestMethod.POST)
+    public ReturnObject removeReport( @RequestParam("id") Long id,@RequestParam("reason") String reason ) {
+        WorkOrder workOrder = workOrderService.removeReport( id, reason);
+        return commonDataService.getReturnType(workOrder != null, ConstantUtils.REPORT_FIX_SUCCESS, ConstantUtils.REPORT_FIX_FAILURE, workOrder);
+    }
+
+
 }

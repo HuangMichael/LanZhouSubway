@@ -4,6 +4,7 @@ package com.subway.aop;
 import com.subway.domain.log.UserLog;
 import com.subway.domain.userLog.UserLogService;
 import com.subway.object.ReturnObject;
+import com.subway.utils.ConstantUtils;
 import com.subway.utils.DateUtils;
 import com.subway.workOrder.WorkOrder;
 import com.subway.workOrderLog.WorkOrderLog;
@@ -85,12 +86,7 @@ public class UserLoginAop {
     @AfterReturning(value = "execution(* com.subway.workOrder.WorkOrderController.reportFix(..))", returning = "returnObject")
     public void writeWorkOrderReportLog(JoinPoint joinPoint, ReturnObject returnObject) {
         Object[] args = joinPoint.getArgs();
-
         String type = (String) args[0];
-        for (Object object : args) {
-            log.info("object------------" + object.toString());
-
-        }
         WorkOrder workOrder = (WorkOrder) returnObject.getObject();
         WorkOrderLog workOrderLog = new WorkOrderLog();
         if (type.equals("w")) {
@@ -101,6 +97,28 @@ public class UserLoginAop {
         workOrderLog.setAuthKey("01");
         workOrderLog.setCreator("huangbin");
         workOrderLog.setOrderState("0");
+        workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
+        workOrderLog.setWorkOrder(workOrder);
+        workOrderLog.setSortNo(1l);
+        workOrderLog.setStatus("1");
+        workOrderLogService.save(workOrderLog);
+    }
+
+
+    /**
+     * @param joinPoint    结合点
+     * @param returnObject
+     */
+    @AfterReturning(value = "execution(* com.subway.workOrder.WorkOrderController.reportFix(..))", returning = "returnObject")
+    public void writeWorkOrderAbortLog(JoinPoint joinPoint, ReturnObject returnObject) {
+        Object[] args = joinPoint.getArgs();
+        String reason = (String) args[1];
+        WorkOrder workOrder = (WorkOrder) returnObject.getObject();
+        WorkOrderLog workOrderLog = new WorkOrderLog();
+        workOrderLog.setContent("工单" + workOrder.getOrderLineNo() + reason + "已取消");
+        workOrderLog.setAuthKey("01");
+        workOrderLog.setCreator("huangbin");
+        workOrderLog.setOrderState(ConstantUtils.ORDER_STATUS_ABORTED);
         workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
         workOrderLog.setWorkOrder(workOrder);
         workOrderLog.setSortNo(1l);

@@ -10,6 +10,7 @@ import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.service.reportFix.WorkOrderReport;
+import com.subway.utils.ConstantUtils;
 import com.subway.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,6 +112,18 @@ public class WorkOrderService extends BaseService implements WorkOrderReport {
         workOrder.setReporter(reporter);
         workOrder.setStatus("1");
         workOrder.setOrderState("0");
+        return workOrderRepository.save(workOrder);
+    }
+
+
+    /**
+     * @param id     工单id
+     * @param reason 取消原因
+     * @return
+     */
+    public WorkOrder removeReport(Long id, String reason) {
+        WorkOrder workOrder = workOrderRepository.findOne(id);
+        workOrder.setOrderState(ConstantUtils.ORDER_STATUS_ABORTED);
         return workOrderRepository.save(workOrder);
     }
 }

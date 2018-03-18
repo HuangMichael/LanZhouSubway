@@ -543,6 +543,16 @@ var addUserBtn = function (column, row) {
 
 /**
  *
+ * @param column
+ * @param row
+ * @returns {string}
+ */
+var removeBtn = function (column, row) {
+    return "<button type='button' class='btn btn-xs btn-default command-remove' data-row-id='" + row.id + "' onclick='removeReport(" + row.id + ")'><span class='fa fa-trash-o'></span></button> ";
+}
+
+/**
+ *
  * @param value
  * @returns {*}
  */

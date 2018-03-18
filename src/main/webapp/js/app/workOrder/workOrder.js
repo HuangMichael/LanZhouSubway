@@ -33,6 +33,10 @@ $(function () {
             };
         },
         url: "/" + mainObject + "/data",
+
+        formatters: {
+            "remove": removeBtn
+        },
         converters: {
 
             showReportType: {
@@ -59,6 +63,9 @@ $(function () {
         }
     });
     initSelect();
+
+
+    validateRemoveForm(null);
 
 
 });
@@ -101,6 +108,80 @@ function del(id) {
     }
 }
 
+function removeReport(id) {
 
+
+    var url = getMainObject() + "/removeReport/" + id;
+    if (id) {
+        bootbox.confirm({
+            message: "确定将移除该报修记录么？",
+            buttons: {
+                confirm: {
+                    label: '确定',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: '取消',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function (msg) {
+                            if (msg) {
+                                showMessage(msg.result, msg["resultDesc"]);
+                                $(dataTableName).bootgrid("reload");
+                            }
+                        },
+                        error: function (msg) {
+                            showMessage(msg.result, msg["resultDesc"]);
+                        }
+                    });
+                }
+            }
+        });
+    }
+}
+
+
+/**
+ *
+ * @param id
+ * 移除报修
+ */
+function removeReport(id) {
+    $("#removeReportModal").modal("show");
+}
+
+
+/**
+ *
+ * @param validationConfig
+ */
+function validateRemoveForm(validationConfig) {
+    $("#removeReportForm")
+        .bootstrapValidator(validationConfig)
+        .on('success.form.bv', function (e) {
+            e.preventDefault();
+            removeReportData("removeReportForm");
+        });
+}
+
+
+/**
+ *
+ * @param form
+ */
+function removeReportData(form) {
+    var param = JSON.parse(getFormJsonData(form));
+    var url = "/workOrder/removeReport";
+    $.post(url, param, function (data) {
+        $("#removeReportModal").modal("hide");
+        showMessage(data["result"], data["resultDesc"]);
+    });
+}
 
 

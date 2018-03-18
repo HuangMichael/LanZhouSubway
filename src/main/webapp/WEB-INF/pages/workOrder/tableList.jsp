@@ -9,5 +9,5 @@
 <th data-column-id="creator" data-width="5%">记录人</th>
 <th data-column-id="orderState" data-width="10%" data-converter="showOrderState">工单状态</th>
 <th data-column-id="status" data-width="5%" data-converter="showStatus">状态</th>
-<th data-column-id="commands" data-formatter="commands" data-sortable="false" data-width="6%">编辑|删除</th>
+<th data-column-id="remove" data-formatter="remove" data-sortable="false" data-width="6%">移除</th>
 
