@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "T_MENU")
+@Table(name = "T_BASIC_MENU")
 @Data
 public class BasicMenu {
     @Id
