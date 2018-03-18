@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "T_MENU")
 @Data
-public class basicMenu {
+public class BasicMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -38,7 +38,7 @@ public class basicMenu {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", referencedColumnName = "id")
-    basicMenu parent;
+    BasicMenu parent;
 
     @Column(length = 1)
     private String status;
