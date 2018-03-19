@@ -28,6 +28,7 @@ import java.util.Map;
 @EnableAutoConfiguration
 @RequestMapping("/${subDirName}")
 public class ${className}Controller extends BaseController {
+private static Integer SEARCH_PARAM_SIZE = 2;
 
 @Autowired
 ResourceService resourceService;
@@ -43,7 +44,7 @@ public MyPage data(HttpSession session, HttpServletRequest request, @RequestPara
 Map
 <String, String[]> parameterMap = request.getParameterMap();
 Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-return new PageUtils().searchBySortService(${subDirName}SearchService, searchPhrase, 1, current, rowCount, pageable);
+return new PageUtils().searchBySortService(${subDirName}SearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
 }
 
 
@@ -76,12 +77,10 @@ return ${subDirName}Service.save(${subDirName});
 }
 
 
-
-
 @ResponseBody
 @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
 public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-List< ${className}> dataList = ${subDirName}SearchService.findByConditions(param, 2);
+List< ${className}> dataList = ${subDirName}SearchService.findByConditions(param, SEARCH_PARAM_SIZE);
 ${subDirName}Service.setDataList(dataList);
 ${subDirName}Service.exportExcel(request, response, docName, titles, colNames);
 }

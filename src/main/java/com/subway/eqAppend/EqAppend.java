@@ -1,4 +1,4 @@
-package com.subway.EqAppend;
+package com.subway.eqAppend;
 
 import com.subway.equipment.Equipment;
 import lombok.Data;
