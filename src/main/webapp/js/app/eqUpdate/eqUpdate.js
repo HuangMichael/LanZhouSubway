@@ -23,7 +23,7 @@ $(function () {
 
 
     searchModel = [
-        {"param": "locName", "paramDesc": "名称"},
+        {"param": "applicant", "paramDesc": "申请人"},
         {"param": "status", "paramDesc": "状态"}
     ];
 

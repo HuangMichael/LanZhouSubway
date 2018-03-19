@@ -11,7 +11,7 @@
                     <!-- BOX -->
                     <div class="box border blue">
                         <div class="box-title">
-                            <h4><i class="fa fa-table"></i>设备更新表</h4>
+                            <h4><i class="fa fa-table"></i>设备更新信息</h4>
                         </div>
                         <%@include file="../common/common-menubar.jsp" %>
                         <div class="box-body">
@@ -20,8 +20,8 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name" name="name" placeholder="关键字"/>
-
+                                            <input class="form-control" id="applicant" name="applicant"
+                                                   placeholder="申请人"/>
                                         </div>
                                         <div class="col-md-2">
                                             <select class="form-control" id="status" onchange="search()">

@@ -47,6 +47,11 @@ public class EqUpdate {
     @Column(length = 1)
     private String dataType; //数据分类 1为新置  2为更新
 
+
+    @Column(length = 20)
+    private String authKey; //授权码
+
+
     @Column(length = 1)
     private String status; //状态
 

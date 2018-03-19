@@ -23,13 +23,13 @@ import java.util.Map;
  *
  * @author huangbin
  * @generate by autoCode
- * @Date 2018-3-1
+ * @Date 2018-3-19
  */
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/eqUpdate")
 public class EqUpdateController extends BaseController {
-
+    private static Integer SEARCH_PARAM_SIZE = 2;
     @Autowired
     ResourceService resourceService;
     @Autowired
@@ -51,7 +51,7 @@ public class EqUpdateController extends BaseController {
     public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(eqUpdateSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(eqUpdateSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
     }
 
 
