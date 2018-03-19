@@ -29,15 +29,15 @@ import java.util.Map;
 @EnableAutoConfiguration
 @RequestMapping("/appSearch")
 public class AppSearchController extends BaseController {
-    private static Integer SEARCH_PARAM_SIZE = 2;
 
+
+    private static Integer SEARCH_PARAM_SIZE = 2;
     @Autowired
     ResourceService resourceService;
     @Autowired
     AppSearchsService appSearchService;
     @Autowired
     AppSearchSearchService appSearchSearchService;
-
 
     /**
      * @param session

@@ -1,7 +1,10 @@
 package com.subway.appSearch;
-import java.util.List;
-import java.util.Map;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 
 /**
@@ -15,4 +18,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AppSearchRepository extends JpaRepository<AppSearch, Long> {
 
 
+    /**
+     * @param searchDesc
+     * @param status
+     * @return
+     */
+    List<AppSearch> findBySearchDescContainingAndStatus(String searchDesc,String status);
+
+
+
+    /**
+     * @param searchDesc
+     * @param status
+     * @param pageable
+     * @return
+     */
+    Page<AppSearch> findBySearchDescContainingAndStatus(String searchDesc, String status, Pageable pageable);
 }
