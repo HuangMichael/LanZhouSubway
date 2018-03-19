@@ -3,6 +3,7 @@ package com.subway.aop;
 
 import com.subway.domain.log.UserLog;
 import com.subway.domain.userLog.UserLogService;
+import com.subway.eqUpdate.EqUpdate;
 import com.subway.object.ReturnObject;
 import com.subway.utils.ConstantUtils;
 import com.subway.utils.DateUtils;
@@ -124,6 +125,18 @@ public class UserLoginAop {
         workOrderLog.setSortNo(1l);
         workOrderLog.setStatus("1");
         workOrderLogService.save(workOrderLog);
+    }
+
+    /**
+     * @param joinPoint
+     */
+    @Before(value = "execution(* com.subway.eqUpdate.EqUpdateController.save(..))")
+    public void writeAuthKeyBeforeSave(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        EqUpdate eqUpdate = (EqUpdate) args[0];
+        log.info(args[0].getClass().getName());
+        eqUpdate.setAuthKey("01");
+        log.info("set authKey before save");
     }
 
 
