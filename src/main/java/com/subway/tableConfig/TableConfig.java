@@ -39,7 +39,7 @@ public class TableConfig implements Serializable {
     @Column(length = 100, nullable = false)
     private String repositoryName; //数据库接口业务类名称
 
-    @Column(length = 1, nullable = false)
+    @Column(length = 1)
     private Long sortNo; //状态
 
     @Column(length = 1, nullable = false)

@@ -38,10 +38,20 @@ public class TableConfigService extends BaseService {
 
     /**
      * @param id
-     * @return
+     * @return 根据配置id查询
      */
     public TableConfig findById(Long id) {
         return tableConfigRepository.getOne(id);
+    }
+
+
+
+
+    /**
+     * @return 查询所有表信息
+     */
+    public List<TableConfig> findAll() {
+        return tableConfigRepository.findAll();
     }
 
 

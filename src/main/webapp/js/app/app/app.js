@@ -69,7 +69,7 @@ $(function () {
 
     validateForm.call(validateOptions);
 
-
+    tableConfigs = findListByUrl("/tableConfig/findAll");
 });
 
 
@@ -120,11 +120,9 @@ function del(id) {
  */
 function edit(id) {
 
-    tableConfigs = findListByUrl("/tableConfig/findAll");
     var object = findByIdAndObjectName(id, mainObject);
     vdm.$set("app", object);
     vdm.$set("tableConfigs", tableConfigs);
-    // tableConfigs: tableConfigs
     $("#editModal").modal("show");
 }
 
@@ -133,7 +131,7 @@ function edit(id) {
  * 编辑记录
  */
 function add() {
-    tableConfigs = findListByUrl("/tableConfig/findAll");
+    console.log("tableConfigs------------" + JSON.stringify(tableConfigs));
     vdm.$set("tableConfigs", tableConfigs);
     vdm.$set("app", null);
     $("#editModal").modal("show");

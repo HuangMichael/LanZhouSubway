@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="status" class="col-md-2 control-label">数据表</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="tableConfig.id" v-model="app.tableConfig.id">
+                    <select class="form-control" id="tableConfig.id" v-model="app.tableConfig.id" style="width:100%">
                         <template v-for="config in tableConfigs">
                             <option :value="option.id" v-if="config.id == app.tableConfig.id" selected>
                                 {{config.tableName}}{{config.tableDesc}}
@@ -30,17 +30,9 @@
                         </template>
                     </select>
                 </div>
-            </div>
-
-
-            <div class="form-group">
-                <label for="sortNo" class="col-md-2 control-label">排序</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="sortNo" name="sortNo" v-model="app.sortNo"/>
-                </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="status" v-model="app.status">
+                    <select class="form-control" id="status" v-model="app.status" style="width:100%">
                         <option value="1" selected>有效</option>
                         <option value="0">无效</option>
                     </select>

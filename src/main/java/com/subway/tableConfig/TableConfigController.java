@@ -104,4 +104,16 @@ public class TableConfigController extends BaseController {
         return tableConfigService.save(tableConfig);
     }
 
+
+
+
+    /**
+     * @return
+     */
+    @RequestMapping(value = "findAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TableConfig> findAll() {
+        return tableConfigService.findAll();
+    }
+
 }
