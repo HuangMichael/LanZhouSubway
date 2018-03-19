@@ -42,6 +42,14 @@ public class AppService extends BaseService {
 
 
     /**
+     * @return 查询所有的应用
+     */
+    public List<App> findAll() {
+        return appRepository.findAll();
+    }
+
+
+    /**
      * @param app
      * @return 保存应用信息
      */

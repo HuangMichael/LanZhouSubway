@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 
@@ -64,6 +65,22 @@ public class AppController extends BaseController {
     @ResponseBody
     public App findById(@PathVariable("id") Long id) {
         return appService.findById(id);
+    }
+
+
+
+
+
+
+
+
+    /**
+     * @return
+     */
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<App> findAll() {
+        return appService.findAll();
     }
 
 

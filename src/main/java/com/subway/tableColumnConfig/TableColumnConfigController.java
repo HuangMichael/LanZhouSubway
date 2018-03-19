@@ -3,6 +3,9 @@ package com.subway.tableColumnConfig;
 import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
 import com.subway.service.app.ResourceService;
+import com.subway.tableConfig.TableConfig;
+import com.subway.tableConfig.TableConfigService;
+import com.subway.utils.ConstantUtils;
 import com.subway.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -33,6 +36,9 @@ public class TableColumnConfigController extends BaseController {
     ResourceService resourceService;
     @Autowired
     TableColumnConfigService tableColumnConfigService;
+    @Autowired
+    TableConfigService tableConfigService;
+
     @Autowired
     TableColumnConfigSearchService tableColumnConfigSearchService;
 
@@ -79,6 +85,17 @@ public class TableColumnConfigController extends BaseController {
         List<TableColumnConfig> dataList = tableColumnConfigSearchService.findByConditions(param, 2);
         tableColumnConfigService.setDataList(dataList);
         tableColumnConfigService.exportExcel(request, response, docName, titles, colNames);
+    }
+
+
+    /**
+     * @return
+     */
+    @RequestMapping(value = "/findByTable/{tableId}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TableColumnConfig> findByTable(@PathVariable("tableId") Long tableId) {
+        TableConfig tableConfig = tableConfigService.findById(tableId);
+        return tableColumnConfigService.findByTableConfigAndStatus(tableConfig, ConstantUtils.STATUS_YES);
     }
 
 

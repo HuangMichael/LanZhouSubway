@@ -4,6 +4,7 @@
  */
 
 var apps = [];
+var tableId = null;
 $(function () {
 //导出必须配置的两个量
     dataTableName = "#appSearchListTable";
@@ -21,7 +22,7 @@ $(function () {
 
 
     searchModel = [
-        {"param": "appDesc", "paramDesc": "查询描述"},
+        {"param": "searchDesc", "paramDesc": "查询描述"},
         {"param": "status", "paramDesc": "状态"}
     ];
 
@@ -36,13 +37,21 @@ $(function () {
         },
         url: "/" + mainObject + "/data",
         formatters: {
-            "commands": showCommandsBtn
+            "commands": showCommandsBtn,
+            "addCols": showAddColsBtn
         },
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showYes: {
+                to: showYes
+            },
+            showAppName: {
+                to: showAppName
             }
         }
+
     })
 
 
@@ -126,4 +135,6 @@ function add() {
     $("#editModal").modal("show");
 }
 
-
+function addSearchCols() {
+    $("#searchColsModal").modal("show");
+}

@@ -1,18 +1,15 @@
 package com.subway.tableColumnConfig;
 
-import java.util.List;
-import java.util.Map;
-
 import com.subway.service.app.BaseService;
 import com.subway.tableConfig.TableConfig;
-import com.subway.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
- * 数据列配置业务类
  *
  * @author huangbin
  * @generate by autoCode
@@ -25,27 +22,39 @@ public class TableColumnConfigService extends BaseService {
     @Autowired
     TableColumnConfigRepository tableColumnConfigRepository;
 
+    /**
+     * @return
+     */
     public List<TableColumnConfig> findAll() {
         return tableColumnConfigRepository.findAll();
     }
 
 
+    /**
+     * @param pageable
+     * @return
+     */
     public Page<TableColumnConfig> findAll(Pageable pageable) {
         return tableColumnConfigRepository.findAll(pageable);
     }
 
 
+    /**
+     * @param id
+     * @return
+     */
     public TableColumnConfig findById(Long id) {
         return tableColumnConfigRepository.getOne(id);
     }
 
 
     /**
-     * @param tableConfig 表配置信息
+     * @param tableConfig
+     * @param status
      * @return
      */
-    public List<TableColumnConfig> findByTableConfigAndStatus(TableConfig tableConfig) {
-        return tableColumnConfigRepository.findByTableConfigAndStatus(tableConfig, ConstantUtils.STATUS_YES);
+    public List<TableColumnConfig> findByTableConfigAndStatus(TableConfig tableConfig,String status) {
+        return tableColumnConfigRepository.findByTableConfigAndStatus(tableConfig, status);
     }
 
 }

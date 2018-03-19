@@ -18,18 +18,21 @@
                             style="width:100%" required>
                         <template v-for="a in apps">
                             <option value="{{a.id}}" v-if="a.id == appSearch.app.id" selected>
-                                {{a.appName}}
+                                {{a.appDesc}}
                             </option>
-                            <option value="{{a.id}}" v-else>{{a.appName}}</option>
+                            <option value="{{a.id}}" v-else>{{a.appDesc}}</option>
                         </template>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="hasAuthKey" class="col-md-2 control-label">是否有授权码</label>
+                <label for="hasAuthKey" class="col-md-2 control-label"> 是否过滤</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="hasAuthKey" name="hasAuthKey" v-model="appSearch.hasAuthKey"
-                           required/>
+                    <select class="form-control" id="hasAuthKey" name="hasAuthKey" v-model="appSearch.hasAuthKey"
+                            style="width:100%">
+                        <option value="1" selected>是</option>
+                        <option value="0">否</option>
+                    </select>
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">

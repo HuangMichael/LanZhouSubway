@@ -404,13 +404,22 @@ var showEqName = function (value) {
 
 }
 
-
 /**
  *
  * @param value
  */
 var showUnitName = function (value) {
     return value ? value["name"] : "无";
+
+}
+
+
+/**
+ *
+ * @param value
+ */
+var showAppName = function (value) {
+    return value ? value["appDesc"] : "无";
 
 }
 
@@ -529,6 +538,18 @@ var showCommandsBtn = function (column, row) {
         "<button type='button' class='btn btn-xs btn-default command-delete' data-row-id='" + row.id + "' onclick='del(" + row.id + ")'><span class='fa fa-trash-o'></span></button>";
 }
 
+
+/**
+ *
+ * @param column
+ * @param row
+ * @returns {string}
+ */
+var showAddColsBtn = function (column, row) {
+    tableId = row.app.tableConfig.id;
+    rowId = row.id;
+    return "<button type='button' class='btn btn-xs btn-default command-edit' data-row-id='" + row.id + "' onclick='addSearchCols(" + rowId+ ")'><span class='fa fa-plus-square-o'></span></button> ";
+}
 
 /**
  *
