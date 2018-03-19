@@ -44,9 +44,8 @@ public class EqUpdate {
     @JoinColumn(name = "equipment_id", referencedColumnName = "id")
     private Equipment equipment; //设备位置
 
-    @Column(length = 1, columnDefinition = "default '2'")
+    @Column(length = 1)
     private String dataType; //数据分类 1为新置  2为更新
-
 
     @Column(length = 1)
     private String status; //状态

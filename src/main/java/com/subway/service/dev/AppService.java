@@ -2,22 +2,21 @@ package com.subway.service.dev;
 
 import com.subway.dao.dev.AppRepository;
 import com.subway.domain.dev.App;
+import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
+import com.subway.service.commonData.CommonDataService;
 import com.subway.tableColumnConfig.TableColumnConfig;
 import com.subway.tableColumnConfig.TableColumnConfigRepository;
-import com.subway.tableColumnConfig.TableColumnConfigService;
 import com.subway.tableConfig.TableConfig;
 import com.subway.utils.ConstantUtils;
 import com.subway.utils.autoCode.AutoGenerationJavaCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.List;
 
-import static com.subway.utils.ConstantUtils.GEN_FILE_PATH;
+import static com.subway.utils.ConstantUtils.*;
 
 /**
  * 应用信息接口
@@ -26,8 +25,12 @@ import static com.subway.utils.ConstantUtils.GEN_FILE_PATH;
 public class AppService extends BaseService {
     @Autowired
     AppRepository appRepository;
+
     @Autowired
     TableColumnConfigRepository tableColumnConfigRepository;
+
+    @Autowired
+    CommonDataService commonDataService;
 
     /**
      * @param id
@@ -35,6 +38,16 @@ public class AppService extends BaseService {
      */
     public App findById(Long id) {
         return appRepository.findById(id);
+    }
+
+
+    /**
+     * @param app
+     * @return 保存应用信息
+     */
+    public ReturnObject save(App app) {
+        app = appRepository.save(app);
+        return commonDataService.getReturnType(app != null, SAVE_SUCCESS, SAVE_FAILURE);
     }
 
 

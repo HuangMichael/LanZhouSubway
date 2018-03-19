@@ -66,6 +66,18 @@ public class AppController extends BaseController {
         return appService.findById(id);
     }
 
+
+    /**
+     * @param app
+     * @return 保存应用信息
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(App app) {
+        return appService.save(app);
+    }
+
+
     /**
      * @param appId
      * @return

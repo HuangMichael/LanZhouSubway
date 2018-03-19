@@ -8,31 +8,30 @@
                 <label for="name" class="col-md-2 control-label">应用名称</label>
                 <div class="col-md-4">
                     <input class="form-control" id="id" name="id" v-model="app.id" type="hidden"/>
-                    <input class="form-control" id="name" name="name" v-model="app.name"/>
+                    <input class="form-control" id="name" name="name" v-model="app.name" required/>
                 </div>
                 <label for="appDesc" class="col-md-2 control-label">应用描述</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="appDesc" name="appDesc" v-model="app.appDesc"/>
+                    <input class="form-control" id="appDesc" name="appDesc" v-model="app.appDesc" required/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="status" class="col-md-2 control-label">数据表</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="tableConfig.id" v-model="app.tableConfig.id" style="width:100%">
+                    <select class="form-control" id="tableConfig.id" name="tableConfig.id" v-model="app.tableConfig.id"
+                            style="width:100%" required>
                         <template v-for="config in tableConfigs">
-                            <option :value="option.id" v-if="config.id == app.tableConfig.id" selected>
-                                {{config.tableName}}{{config.tableDesc}}
+                            <option value="{{config.id}}" v-if="config.id == app.tableConfig.id" selected>
+                                {{config.tableName}}
                             </option>
-                            <option :value="option.id" v-else>
-                                {{config.tableName}}{{config.tableDesc}}
-                            </option>
+                            <option value="{{config.id}}" v-else>{{config.tableName}}</option>
                         </template>
                     </select>
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="status" v-model="app.status" style="width:100%">
+                    <select class="form-control" id="status" name="status" v-model="app.status" style="width:100%">
                         <option value="1" selected>有效</option>
                         <option value="0">无效</option>
                     </select>
