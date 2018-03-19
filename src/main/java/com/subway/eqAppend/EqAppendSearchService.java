@@ -30,7 +30,7 @@ public class EqAppendSearchService extends BaseService implements SortedSearchab
      */
     public List<EqAppend> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return eqAppendRepository.findByApplicantContainingAndStatusAndAuthKeyStartingWith(array[0], array[2], array[3]);
+        return eqAppendRepository.findByApplicantContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
     }
 
 
@@ -42,7 +42,7 @@ public class EqAppendSearchService extends BaseService implements SortedSearchab
      */
     public Page<EqAppend> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return eqAppendRepository.findByApplicantContainingAndStatusAndAuthKeyStartingWith(array[0], array[2], array[3], pageable);
+        return eqAppendRepository.findByApplicantContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
     }
 
 }

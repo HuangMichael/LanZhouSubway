@@ -3,6 +3,7 @@ package com.subway.aop;
 
 import com.subway.domain.log.UserLog;
 import com.subway.domain.userLog.UserLogService;
+import com.subway.eqAppend.EqAppend;
 import com.subway.eqUpdate.EqUpdate;
 import com.subway.object.ReturnObject;
 import com.subway.utils.ConstantUtils;
@@ -137,6 +138,20 @@ public class UserLoginAop {
         log.info(args[0].getClass().getName());
         eqUpdate.setAuthKey("01");
         eqUpdate.setStatus(ConstantUtils.STATUS_YES);
+        log.info("set authKey before save");
+    }
+
+
+    /**
+     * @param joinPoint
+     */
+    @Before(value = "execution(* com.subway.eqAppend.EqAppendController.save(..))")
+    public void writeAuthKeyBeforeSaveEqAppend(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        EqAppend append = (EqAppend) args[0];
+        log.info(args[0].getClass().getName());
+        append.setAuthKey("01");
+        append.setStatus(ConstantUtils.STATUS_YES);
         log.info("set authKey before save");
     }
 
