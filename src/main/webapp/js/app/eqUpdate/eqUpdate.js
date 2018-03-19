@@ -43,7 +43,10 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
-            }
+            },
+            showEqName: {
+                to: showEqName
+            },
         }
     })
 
