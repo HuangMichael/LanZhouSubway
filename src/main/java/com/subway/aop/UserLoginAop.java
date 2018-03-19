@@ -136,6 +136,7 @@ public class UserLoginAop {
         EqUpdate eqUpdate = (EqUpdate) args[0];
         log.info(args[0].getClass().getName());
         eqUpdate.setAuthKey("01");
+        eqUpdate.setStatus(ConstantUtils.STATUS_YES);
         log.info("set authKey before save");
     }
 
