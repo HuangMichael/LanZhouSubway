@@ -13,8 +13,8 @@
 
                 <label for="applyDate" class="col-md-2 control-label">申请日期</label>
                 <div class="col-md-4">
-                    <input class="form-control Wdate myDateBox" id="applyDate" name="applyDate"
-                           v-model="eqAppend.applyDate"
+                    <input class="form-control myDateBox" id="applyDate" name="applyDate"
+                           v-model="eqAppend.applyDate" onclick="WdatePicker({maxDate: '%y-%M-%d'})"
                            required/>
                 </div>
             </div>

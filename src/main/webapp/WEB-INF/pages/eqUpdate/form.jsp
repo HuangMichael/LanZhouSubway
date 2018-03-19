@@ -12,7 +12,8 @@
                 </div>
                 <label for="applyDate" class="col-md-2 control-label">申请日期</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="applyDate" name="applyDate" v-model="eqUpdate.applyDate" required/>
+                    <input class="form-control" id="applyDate" name="applyDate" v-model="eqUpdate.applyDate"
+                           onclick="WdatePicker({maxDate: '%y-%M-%d'})" required/>
                 </div>
             </div>
             <div class="form-group">
@@ -28,14 +29,16 @@
             <div class="form-group">
                 <label for="dataType" class="col-md-2 control-label">数据类型</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="dataType" name="dataType" v-model="eqUpdate.dataType" style="width: 100%">
+                    <select class="form-control" id="dataType" name="dataType" v-model="eqUpdate.dataType"
+                            style="width: 100%">
                         <option value="1" selected>新增</option>
                         <option value="0">更新</option>
                     </select>
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <select class="form-control" id="status" name="status" v-model="eqUpdate.status" style="width: 100%">
+                    <select class="form-control" id="status" name="status" v-model="eqUpdate.status"
+                            style="width: 100%">
                         <option value="1" selected>有效</option>
                         <option value="0">无效</option>
                     </select>

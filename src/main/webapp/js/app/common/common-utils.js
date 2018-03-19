@@ -564,3 +564,13 @@ var showImage = function (value) {
         return "<img src='upload/memberWorks/no_pic.jpg' class='img-thumbnail'  style='height:25px;width: 25px'>";
     }
 }
+
+
+var initDatePicker = function () {
+
+    $("input[class='Wdate']").on("click", function () {
+
+        WdatePicker({maxDate: '%y-%M-%d'});
+
+    });
+}

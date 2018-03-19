@@ -59,7 +59,10 @@ $(function () {
     });
     initSelect();
 
+    initDatePicker();
+
     validateForm.call(validateOptions);
+
 
 
 });
