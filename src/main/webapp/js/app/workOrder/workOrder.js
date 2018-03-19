@@ -33,10 +33,11 @@ $(function () {
         url: "/" + mainObject + "/data",
 
         formatters: {
-            "remove": function (column, row) {
+            "commands": function (column, row) {
                 rowId = row.id;
-                return "<button type='button' class='btn btn-xs btn-default command-remove' data-row-id='" + row.id + "' onclick='removeReport(" + rowId + ")'><span class='fa fa-trash-o'></span></button> ";
-            }
+                return "<button type='button' class='btn btn-xs btn-default command-remove' data-row-id='" + row.id + "' onclick='removeReport(" + rowId + ")'><span class='fa fa-trash-o'></span></button> "
+                    + "<button type='button' class='btn btn-xs btn-default command-remove' data-row-id='" + row.id + "' onclick='sendOrder(" + rowId + ")'><span class='fa fa-puzzle-piece'></span></button> ";
+            },
         },
         converters: {
 
@@ -186,9 +187,18 @@ function removeReportData(form) {
     var param = JSON.parse(getFormJsonData(form));
     var url = "/workOrder/removeReport";
     $.post(url, param, function (data) {
+        $(dataTableName).bootgrid("reload");
         $("#removeReportModal").modal("hide");
         showMessage(data["result"], data["resultDesc"]);
     });
 }
 
 
+/**
+ *
+ * @param id
+ * 派工
+ */
+function sendOrder(id) {
+    $("#sendOrderModal").modal("show");
+}

@@ -77,4 +77,23 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+
+<div class="modal fade" id="sendOrderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    工单派工
+                </h4>
+            </div>
+            <div class="modal-body">
+                <%@include file="removeReportForm.jsp" %>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <script type="text/javascript" src="/js/app/workOrder/workOrder.js"></script>

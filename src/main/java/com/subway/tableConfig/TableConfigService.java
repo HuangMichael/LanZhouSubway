@@ -1,8 +1,5 @@
 package com.subway.tableConfig;
 
-import java.util.List;
-import java.util.Map;
-
 import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
@@ -11,9 +8,12 @@ import com.subway.tableColumnConfig.TableColumnConfigRepository;
 import com.subway.utils.ConstantUtils;
 import com.subway.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import static com.subway.utils.ConstantUtils.SAVE_FAILURE;
+import static com.subway.utils.ConstantUtils.SAVE_SUCCESS;
 
 /**
  * @author huangbin
@@ -68,7 +68,7 @@ public class TableConfigService extends BaseService {
                 columnConfig.setClassType("Long");
             } else if (classType.contains("double")) {
                 columnConfig.setClassType("Double");
-            }else if (classType.contains("bit")) {
+            } else if (classType.contains("bit")) {
                 columnConfig.setClassType("Boolean");
             }
             tableColumnConfigRepository.save(columnConfig);
@@ -76,5 +76,15 @@ public class TableConfigService extends BaseService {
         return commonDataService.getReturnType(!tableColumnConfigList.isEmpty(), "数据列配置格式成功", "数据列配置格式失败");
     }
 
+
+    /**
+     * @param tableConfig 数据库表配置信息
+     * @return
+     */
+    public ReturnObject save(TableConfig tableConfig) {
+
+        tableConfig = tableConfigRepository.save(tableConfig);
+        return commonDataService.getReturnType(tableConfig != null, SAVE_SUCCESS, SAVE_FAILURE);
+    }
 
 }

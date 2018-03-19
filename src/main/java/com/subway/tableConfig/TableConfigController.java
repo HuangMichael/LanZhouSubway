@@ -55,7 +55,6 @@ public class TableConfigController extends BaseController {
     }
 
 
-
     /**
      * @param id
      * @return
@@ -84,7 +83,6 @@ public class TableConfigController extends BaseController {
     }
 
 
-
     /**
      * @param id
      * @return
@@ -96,5 +94,14 @@ public class TableConfigController extends BaseController {
     }
 
 
+    /**
+     * @param tableConfig 表配置信息
+     * @return
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(TableConfig tableConfig) {
+        return tableConfigService.save(tableConfig);
+    }
 
 }
