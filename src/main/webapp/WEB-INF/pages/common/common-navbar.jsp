@@ -6,7 +6,8 @@
         <div class="navbar-brand">
             <!-- COMPANY LOGO -->
             <a>
-                <img src="/img/logo/logo.png" alt="${sessionScope.sysName}" class="img-responsive" height="30" width="120">
+                <img src="/img/logo/logo.png" alt="${sessionScope.sysName}" class="img-responsive" height="30"
+                     width="120">
             </a>
             <div class="visible-xs">
                 <a onclick="javascript:void(0)" class="team-status-toggle switcher btn dropdown-toggle">
@@ -22,26 +23,26 @@
         </div>
         <ul class="nav navbar-nav pull-right">
 
-            <li class="dropdown" id="header-notification">
-                <a class="dropdown-toggle" data-toggle="dropdown" id="reportOrder" title="流程审批信息">
-                    <i class="fa  fa-wrench" id="linkTag"></i>
-                    <span class="badge" id="reportOrderSize"></span>
-                </a>
-                <ul class="dropdown-menu notification">
-                    <li class="dropdown-title">
-                        <span id="orderMsgCnt"><i class="fa fa-bell"></i></span>
-                    </li>
-                    <div id="orderBox"></div>
-                </ul>
-            </li>
+            <%--<li class="dropdown" id="header-notification">--%>
+            <%--<a class="dropdown-toggle" data-toggle="dropdown" id="reportOrder" title="流程审批信息">--%>
+            <%--<i class="fa  fa-wrench" id="linkTag"></i>--%>
+            <%--<span class="badge" id="reportOrderSize"></span>--%>
+            <%--</a>--%>
+            <%--<ul class="dropdown-menu notification">--%>
+            <%--<li class="dropdown-title">--%>
+            <%--<span id="orderMsgCnt"><i class="fa fa-bell"></i></span>--%>
+            <%--</li>--%>
+            <%--<div id="orderBox"></div>--%>
+            <%--</ul>--%>
+            <%--</li>--%>
 
 
-            <li class="dropdown" id="header-notification2">
-                <a class="dropdown-toggle" data-toggle="dropdown" id="expiredOrder" title="待办任务信息">
-                    <i class="fa fa-warning"></i>
-                    <span class="badge" id="expiredOrderSize"></span>
-                </a>
-            </li>
+            <%--<li class="dropdown" id="header-notification2">--%>
+            <%--<a class="dropdown-toggle" data-toggle="dropdown" id="expiredOrder" title="待办任务信息">--%>
+            <%--<i class="fa fa-warning"></i>--%>
+            <%--<span class="badge" id="expiredOrderSize"></span>--%>
+            <%--</a>--%>
+            <%--</li>--%>
 
 
             <li class="dropdown user" id="header-user">
@@ -62,11 +63,11 @@
 
 
 <div class="modal fade" id="user_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+    >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">我的信息</h4>
             </div>
             <div class="modal-body" id="profileView">

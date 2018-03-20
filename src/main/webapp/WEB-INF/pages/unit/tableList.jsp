@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
-<th data-column-id="id" data-width="5%">序号</th>
+<th data-column-id="id" data-type="numeric" data-identifier="true" data-width="5%">序号</th>
 <th data-column-id="name" data-width="15%">单位名称</th>
 <th data-column-id="unitDesc" data-width="20%">单位描述</th>
 <th data-column-id="contact" data-width="5%">联系人</th>
