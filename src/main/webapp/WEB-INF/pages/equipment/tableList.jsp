@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
-<th data-column-id="id" data-width="5%">序号</th>
+<th data-column-id="id" data-type="numeric" data-identifier="true" data-width="5%">序号</th>
 <th data-column-id="eqCode" data-width="10%">设备编号</th>
 <th data-column-id="description" data-width="10%">设备描述</th>
 <th data-column-id="location" data-width="15%" data-converter="showShortLocName">设备位置</th>

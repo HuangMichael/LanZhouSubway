@@ -17,11 +17,9 @@
                         <div class="box-body">
                             <div id="contentDiv">
                                 <div class="box-body">
-                                    <div class="form-group" style="margin-bottom:10px;position:inherit"
-                                         id="searchBox">
+                                    <div class="form-group" style="margin-bottom:10px;position:inherit" id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="description"
-                                                   name="description"/>
+                                            <input class="form-control" id="description" name="description"/>
 
                                         </div>
                                         <div class="col-md-2">
