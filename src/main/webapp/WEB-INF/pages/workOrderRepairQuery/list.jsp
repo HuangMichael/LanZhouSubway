@@ -11,7 +11,7 @@
                     <!-- BOX -->
                     <div class="box border blue">
                         <div class="box-title">
-                            <h4><i class="fa fa-table"></i>报修单查询</h4>
+                            <h4><i class="fa fa-table"></i>维修单查询</h4>
                         </div>
                         <%@include file="../common/common-menubar.jsp" %>
                         <div class="box-body">
@@ -20,16 +20,16 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="orderDesc" name="orderDesc"
-                                                   placeholder="报修单描述"/>
-                                        </div>
+                                            <input class="form-control" id="orderDesc"
+                                                   name="orderDesc"
+                                                   placeholder="维修单描述"/>
 
+                                        </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="orderState" onchange="search()">
-                                                <option value="0" selected>已报修</option>
-                                                <option value="1">已分配</option>
-                                                <option value="2">已完工</option>
-                                                <option value="3">已完工</option>
+                                            <select class="form-control" id="nodeState">
+                                                <option value="1" selected>已分配</option>
+                                                <option value="2">已维修</option>
+                                                <option value="3">已完成</option>
                                             </select>
                                         </div>
                                         <div class="col-md-2">
@@ -59,8 +59,4 @@
         <!-- /CONTENT-->
     </div>
 </div>
-
-
-
-
-<script type="text/javascript" src="/js/app/workOrder/workOrder.js"></script>
+<script type="text/javascript" src="/js/app/workOrderRepair/workOrderRepair.js"></script>
