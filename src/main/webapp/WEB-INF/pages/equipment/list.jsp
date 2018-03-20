@@ -25,10 +25,7 @@
 
                                         </div>
                                         <div class="col-md-2">
-                                            <select class="form-control" id="status">
-                                                <option value="1" selected>有效</option>
-                                                <option value="0">无效</option>
-                                            </select>
+                                            <%@include file="../common/common-status-select.jsp" %>
                                         </div>
                                         <div class="col-md-2">
                                             <%@include file="../common/common-searchBtn.jsp" %>

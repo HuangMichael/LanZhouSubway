@@ -82,6 +82,10 @@ $(function () {
             showRunning: {
                 to: showRunning
             }
+            , showShortLocName: {
+                to: showShortLocName
+            }
+
         }
     });
 

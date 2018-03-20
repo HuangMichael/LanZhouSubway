@@ -80,7 +80,7 @@ public class BaseService {
                 array[i] = "";
             }
         }
-        array[paramSize] = "BJ02";
+        array[paramSize] = "BJ10";
         return array;
     }
 

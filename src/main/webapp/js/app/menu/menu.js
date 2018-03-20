@@ -9,6 +9,8 @@ $(function () {
     $.getJSON("/getCurrentUser", function (data) {
         userId = data.id;
     });
+
+    userId = userId ? userId : 1;
     var modules = getAllModules(userId);
     var html = '';
     var moduleId = null;

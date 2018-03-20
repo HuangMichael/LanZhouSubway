@@ -3,10 +3,11 @@
 <th data-column-id="id" data-width="5%">序号</th>
 <th data-column-id="eqCode" data-width="10%">设备编号</th>
 <th data-column-id="description" data-width="10%">设备描述</th>
-<th data-column-id="eqModel" data-width="10%">设备型号</th>
+<th data-column-id="location" data-width="15%" data-converter="showShortLocName">设备位置</th>
+<th data-column-id="eqModel" data-width="10%" data-visible=false>设备型号</th>
 <th data-column-id="maintainer" data-width="10%" data-visible>维修人员</th>
-<th data-column-id="manageLevel" data-width="10%" data-visible>管理等级</th>
-<th data-column-id="manager" data-width="10%" data-visible>管理人员</th>
+<th data-column-id="manageLevel" data-width="10%" data-visible=false>管理等级</th>
+<th data-column-id="manager" data-width="10%" data-visible=false>管理人员</th>
 <th data-column-id="netValue" data-width="10%" data-visible='false'>净值</th>
 <th data-column-id="originalValue" data-width="10%" data-visible='false'>原值</th>
 <th data-column-id="productDate" data-width="10%">生产日期</th>
