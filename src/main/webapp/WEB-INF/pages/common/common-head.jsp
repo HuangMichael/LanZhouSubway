@@ -9,7 +9,7 @@
     <base href="<%=basePath%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta charset="utf-8">
-    <title>兰州地铁EAM</title>
+    <title>股票说后台管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
