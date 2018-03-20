@@ -150,4 +150,13 @@ public class UserService extends BaseService {
         return userRepository.findByStatusAndAuthKeyStartingWith(status, authKey);
     }
 
+
+    /**
+     * @param locationId
+     * @return 查询在当前位置的用户信息
+     */
+    public List<User> findUsersInLocation(Long locationId) {
+        return userRepository.findUsersInLocation(locationId);
+    }
+
 }

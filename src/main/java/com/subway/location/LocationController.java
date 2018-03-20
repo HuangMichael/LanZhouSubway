@@ -2,8 +2,10 @@ package com.subway.location;
 
 import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
+import com.subway.domain.user.User;
 import com.subway.service.app.ResourceService;
 import com.subway.utils.PageUtils;
+import com.subway.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -85,7 +87,7 @@ public class LocationController extends BaseController {
 
     /**
      * @param id
-     * @return ɾ����Ϣ
+     * @return
      */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -108,6 +110,18 @@ public class LocationController extends BaseController {
         List<Location> dataList = locationSearchService.findByConditions(param, 2);
         locationService.setDataList(dataList);
         locationService.exportExcel(request, response, docName, titles, colNames);
+    }
+
+
+    /**
+     * @param httpSession 当前会话
+     * @return 查询的位置树节点集合
+     */
+    @RequestMapping(value = "/findTree")
+    @ResponseBody
+    public List<Object> findTree(HttpSession httpSession) {
+        User user = SessionUtil.getCurrentUserBySession(httpSession);
+        return locationService.findTree(user.getAuthKey());
     }
 
 

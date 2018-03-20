@@ -61,18 +61,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * 查询不在当前位置中的用户信息
      */
-    @Query(nativeQuery = true, value = "SELECT  u.id,u.user_name FROM t_user u WHERE u.vlocations_id != :locationId AND u.status = 1")
-    List<Object> findUsersNotInLocation(@Param("locationId") Long locationId);
+    @Query("SELECT  u FROM User u WHERE u.location.id <> :locationId AND u.status = 1")
+    List<User> findUsersNotInLocation(@Param("locationId") Long locationId);
 
 
     /**
      * 查询在当前位置中的用户信息
      */
-    @Query(nativeQuery = true, value = "SELECT  u.id,u.user_name FROM t_user u WHERE u.vlocations_id = :locationId AND u.status = 1")
-    List<Object> findUsersInLocation(@Param("locationId") Long locationId);
-
-
-
+    @Query("SELECT  u FROM User u WHERE u.location.id = :locationId AND u.status = 1")
+    List<User> findUsersInLocation(@Param("locationId") Long locationId);
 
 
     /**

@@ -21,12 +21,11 @@ $(document).ready(function () {
         for (var x = 0; x < data.length; x++) {
             zNodes[x] = {
                 id: data[x][0],
-                location: data[x][1],
+                locCode: data[x][1],
                 name: data[x][2],
-                superior: data[x][3],
                 pId: (data[x][4]) ? (data[x][4]) : 0,
                 open: data[x][1].length < 4,
-                isParent: pid,
+                isParent: false,
                 halfCheck: true
             };
         }
@@ -59,13 +58,6 @@ $(document).ready(function () {
 
     });
 });
-
-
-/**
- * 数据授权
- */
-
-var selectedUserIds = "";
 
 function grant() {
     var selectNode = getSelectedNode();
@@ -114,8 +106,8 @@ function grantDataAuth() {
  * @param data
  */
 function setLocForm(data) {
-    $("#description").val(data.description);
-    $("#location").val(data.location);
+    $("#description").val(data.locDesc);
+    $("#location").val(data.locCode);
     setFormReadStatus("#detailForm", true);
     loadUserList(data.id);
 }

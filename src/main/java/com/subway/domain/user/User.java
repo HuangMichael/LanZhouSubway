@@ -1,6 +1,7 @@
 package com.subway.domain.user;
 
 
+import com.subway.location.Location;
 import com.subway.role.Role;
 import lombok.Data;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -45,6 +46,12 @@ public class User {
 
     @Column(length = 20)
     private String telephone;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    Location location;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "t_role_user", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})

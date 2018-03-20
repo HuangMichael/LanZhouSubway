@@ -5,6 +5,7 @@ import com.subway.controller.common.BaseController;
 import com.subway.dao.app.resource.VRoleAuthViewRepository;
 import com.subway.domain.app.MyPage;
 import com.subway.domain.app.resoure.VRoleAuthView;
+import com.subway.domain.user.User;
 import com.subway.role.Role;
 import com.subway.role.RoleService;
 import com.subway.service.app.ResourceService;
@@ -153,6 +154,20 @@ public class AuthorityDataController extends BaseController {
     }
 
 
+
+    /**
+     * 载入该位置下数据授权的用户
+     *
+     * @param locationId
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/loadUsers/{locationId}", method = RequestMethod.GET)
+    public String loadUsers(@PathVariable("locationId") Long locationId, ModelMap modelMap) {
+        List<User> usersInLocation = userService.findUsersInLocation(locationId);
+        modelMap.put("usersInLocation", usersInLocation);
+        return "/authorityData/locUsers";
+    }
 
 
 }
