@@ -1,4 +1,4 @@
-package com.subway.sanhu;
+package stockTalk.sanhu;
 
 import lombok.Data;
 
