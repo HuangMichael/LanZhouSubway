@@ -4,9 +4,7 @@ import com.subway.domain.dev.App;
 import com.subway.tableColumnConfig.TableColumnConfig;
 import com.subway.tableColumnConfig.TableColumnConfigService;
 import com.subway.tableConfig.TableConfig;
-import com.subway.template.TemplateService;
 import com.subway.utils.PropertyUtil;
-import com.subway.utils.ReflectUtil;
 import com.subway.utils.StringUtils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -22,7 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.subway.utils.ConstantUtils.CONTEXT_PATH;
 import static com.subway.utils.ConstantUtils.GEN_FILE_PATH;
 
 
@@ -52,11 +49,11 @@ public class AutoGenerationJavaCode {
     static {
 
 
-        templateList.add(new com.subway.template.Template("Template.ftl", ".java", GEN_FILE_PATH + "src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
-        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH + "src/main/java/com/subway/"));
+        templateList.add(new com.subway.template.Template("Template.ftl", ".java", GEN_FILE_PATH + "src/main/java/com/stock/"));
+        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
+        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
+        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
+        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
         templateList.add(new com.subway.template.Template("jsTemplate.ftl", ".js", GEN_FILE_PATH + "src/main/webapp/js/app/"));
         templateList.add(new com.subway.template.Template("listTemplate.ftl", "list.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
         templateList.add(new com.subway.template.Template("tableListTemplate.ftl", "tableList.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
