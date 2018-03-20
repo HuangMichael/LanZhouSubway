@@ -6,12 +6,9 @@ package com.subway.utils;
 public class ConstantUtils {
     public static final String STATUS_YES = "1"; //状态1 表示启用 有效 正常
     public static final String STATUS_NO = "0";  //状态0 表示禁用 无效 异常
-    public static final String MEDIA_TYPE_IMG = "P";  //媒体类型P 表示图片
-    public static final String MEDIA_TYPE_VIDEO = "V";  //媒体类型V 表示视频
-    public static final String MEDIA_TYPE_DOC = "D";  //媒体类型D 表示文档
 
-    public static final String CONTEXT_PATH = "E:/dev/stock/src/main/webapp/";  //上下文路径
-    public static final String GEN_FILE_PATH = "E:/dev/stock/";  //上下文路径
+    public static final String CONTEXT_PATH = "E:/dev/stockTalk/src/main/webapp/";  //上下文路径
+    public static final String GEN_FILE_PATH = "E:/dev/stockTalk/";  //上下文路径
 
     public static final String ORDER_STATUS_REPORTED = "0"; //加入报修车
     public static final String ORDER_STATUS_SENT = "1"; //派工

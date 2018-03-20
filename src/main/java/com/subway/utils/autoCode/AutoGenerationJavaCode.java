@@ -49,11 +49,11 @@ public class AutoGenerationJavaCode {
     static {
 
 
-        templateList.add(new com.subway.template.Template("Template.ftl", ".java", GEN_FILE_PATH + "src/main/java/com/stock/"));
-        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
-        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
-        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
-        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH + "src/main/java/com/stock/"));
+        templateList.add(new com.subway.template.Template("Template.ftl", ".java", GEN_FILE_PATH + "src/main/java/com/stockTalk/"));
+        templateList.add(new com.subway.template.Template("serviceTemplate.ftl", "Service.java", GEN_FILE_PATH + "src/main/java/com/stockTalk/"));
+        templateList.add(new com.subway.template.Template("searchServiceTemplate.ftl", "SearchService.java", GEN_FILE_PATH + "src/main/java/com/stockTalk/"));
+        templateList.add(new com.subway.template.Template("repositoryTemplate.ftl", "Repository.java", GEN_FILE_PATH + "src/main/java/com/stockTalk/"));
+        templateList.add(new com.subway.template.Template("controllerTemplate.ftl", "Controller.java", GEN_FILE_PATH + "src/main/java/com/stockTalk/"));
         templateList.add(new com.subway.template.Template("jsTemplate.ftl", ".js", GEN_FILE_PATH + "src/main/webapp/js/app/"));
         templateList.add(new com.subway.template.Template("listTemplate.ftl", "list.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
         templateList.add(new com.subway.template.Template("tableListTemplate.ftl", "tableList.jsp", GEN_FILE_PATH + "src/main/webapp/WEB-INF/pages/"));
