@@ -1,11 +1,10 @@
 package com.subway.equipment;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 
 /**
@@ -24,7 +23,7 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
      * @param authKey
      * @return
      */
-    List<Equipment> findByDescriptionContainingAndStatusAndAuthKeyContaining(String description,String status,String authKey);
+    List<Equipment> findByDescriptionContainingAndStatusAndAuthKeyStartingWith(String description,String status,String authKey);
 
     /**
      * @param description
@@ -33,6 +32,6 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
      * @param pageable
      * @return
      */
-    Page<Equipment> findByDescriptionContainingAndStatusAndAuthKeyContaining(String description, String status, String authKey, Pageable pageable);
+    Page<Equipment> findByDescriptionContainingAndStatusAndAuthKeyStartingWith(String description, String status, String authKey, Pageable pageable);
 }
 

@@ -33,30 +33,9 @@ public class SessionUtil {
     /**
      * 获取当前用户信息
      */
-    public static User getCurrentUser(HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute("currentUser");
-        return user;
-    }
-
-    /**
-     * 获取当前用户信息
-     */
     public static User getCurrentUserBySession(HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         return user;
-    }
-
-
-    /**
-     * 获取当前用户信息
-     */
-    public static String getCurrentUserLocationBySession(HttpSession session) {
-        User user = (User) session.getAttribute("currentUser");
-        String location = null;
-//        if (user != null) {
-//            location = user.getVlocations().getLocation();
-//        }
-        return location;
     }
 
 }

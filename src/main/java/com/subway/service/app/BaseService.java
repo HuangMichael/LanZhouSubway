@@ -6,18 +6,15 @@ import com.subway.utils.export.docType.ExcelDoc;
 import com.subway.utils.export.exporter.DataExport;
 import com.subway.utils.export.exporter.ExcelDataExporter;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -75,8 +72,6 @@ public class BaseService {
      * @return 组装查询参数数组
      */
     public String[] assembleSearchArrayWithAuthKey(String searchPhrase, int paramSize) {
-
-
         String array[] = new String[paramSize + 1];
         if (!searchPhrase.isEmpty()) {
             array = searchPhrase.split(",", paramSize + 1);
@@ -85,11 +80,7 @@ public class BaseService {
                 array[i] = "";
             }
         }
-
-        log.info("array----1------" + array.toString());
-        array[paramSize] = "01";
-
-        log.info("array------2----" + array.toString());
+        array[paramSize] = "BJ02";
         return array;
     }
 

@@ -69,7 +69,7 @@ public class UserService extends BaseService {
         User userFound = userRepository.findByUserName(userName);
         String failMessage = "";
         Boolean result = false;
-        User user = null;
+        User user;
         if (userFound == null) {
             failMessage = "用户名不存在，请联系管理员!";
         } else {
@@ -146,6 +146,7 @@ public class UserService extends BaseService {
      * @param authKey 授权码
      * @return 根据状态和授权查询用户
      */
+    @Cacheable(key = "'myUsers'", value = "myUsers")
     public List<User> findAllByAuthKey(String status, String authKey) {
         return userRepository.findByStatusAndAuthKeyStartingWith(status, authKey);
     }

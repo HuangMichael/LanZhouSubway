@@ -147,16 +147,12 @@ function removeLocUser(userId) {
             },
             callback: function (result) {
                 if (result) {
-
                     var params = {userId: userId};
                     $.post(url, params, function (data) {
+                        showMessage(data.result, data["resultDesc"]);
                         if (data) {
-                            showMessageBox("info", data["resultDesc"]);
                             $("#usersInLocation").bootgrid("reload");
-                        } else {
-                            showMessageBox("danger", data["resultDesc"]);
                         }
-
                     });
                 }
             }

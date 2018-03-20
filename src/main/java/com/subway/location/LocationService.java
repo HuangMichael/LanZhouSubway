@@ -5,14 +5,11 @@ import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * λ����Ϣҵ����
  *
  * @author huangbin
  * @generate by autoCode
@@ -20,25 +17,10 @@ import java.util.List;
  */
 @Service
 public class LocationService extends BaseService {
-
-
     @Autowired
     LocationRepository locationRepository;
-
-
     @Autowired
     CommonDataService commonDataService;
-
-    public List
-            <Location> findAll() {
-        return locationRepository.findAll();
-    }
-
-
-    public Page<Location> findAll(Pageable pageable) {
-        return locationRepository.findAll(pageable);
-    }
-
 
     /**
      * @param id

@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * �豸��Ϣҵ���ѯ��
- *
  * @author huangbin
  * @generate by autoCode
  * @Date 2018-3-1
@@ -22,7 +20,6 @@ public class EquipmentSearchService extends BaseService implements SortedSearcha
     @Autowired
     EquipmentRepository equipmentRepository;
 
-
     /**
      * @param searchPhrase 搜索关键字组合
      * @param paramsSize
@@ -30,7 +27,7 @@ public class EquipmentSearchService extends BaseService implements SortedSearcha
      */
     public List<Equipment> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return equipmentRepository.findByDescriptionContainingAndStatusAndAuthKeyContaining(array[0], array[1], array[2]);
+        return equipmentRepository.findByDescriptionContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
     }
 
 
@@ -42,10 +39,7 @@ public class EquipmentSearchService extends BaseService implements SortedSearcha
      */
     public Page<Equipment> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        for (String s : array) {
-            log.info("array---s---------" + s);
-        }
-        return equipmentRepository.findByDescriptionContainingAndStatusAndAuthKeyContaining(array[0], array[1], array[2], pageable);
+        return equipmentRepository.findByDescriptionContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
     }
 
 }

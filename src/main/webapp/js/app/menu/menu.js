@@ -9,7 +9,7 @@ $(function () {
     $.getJSON("/getCurrentUser", function (data) {
         userId = data.id;
     });
-    var modules = getAllModules(1);
+    var modules = getAllModules(userId);
     var html = '';
     var moduleId = null;
     var apps = [];
