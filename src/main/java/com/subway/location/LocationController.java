@@ -3,6 +3,7 @@ package com.subway.location;
 import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
 import com.subway.domain.user.User;
+import com.subway.object.ReturnObject;
 import com.subway.service.app.ResourceService;
 import com.subway.utils.ConstantUtils;
 import com.subway.utils.PageUtils;
@@ -14,7 +15,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.subway.object.ReturnObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -130,11 +130,13 @@ public class LocationController extends BaseController {
     /**
      * @return 查询我的位置
      */
-    @RequestMapping(value = "/findMyLocations")
+    @RequestMapping(value = "/findMyLocations", method = RequestMethod.GET)
     @ResponseBody
-    public List<Location> findMyLocations(HttpSession session) {
+    public List<Location> findMyLocations(HttpServletRequest request) {
 //        User user = SessionUtil.getCurrentUserBySession(session);
-        return locationService.findByStatusAndAuthKeyStartingWith(ConstantUtils.STATUS_YES, "BJ10");
+
+        User user = SessionUtil.getCurrentUserBySession(request.getSession());
+        return locationService.findByStatusAndAuthKeyStartingWith(ConstantUtils.STATUS_YES, user.getAuthKey());
     }
 
 }

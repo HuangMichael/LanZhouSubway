@@ -213,12 +213,12 @@ function exportExcel() {
  *  初始化下拉选择组件
  */
 function initSelect() {
-    // $("select").select2({
-    //     theme: "bootstrap",
-    //     tags: "true",
-    //     placeholder: "请选择...",
-    //     allowClear: true
-    // });
+    $("select").select2({
+        theme: "bootstrap",
+        tags: "true",
+        placeholder: "请选择...",
+        allowClear: true
+    });
 }
 
 
@@ -352,7 +352,6 @@ function showUpload() {
  * @return {Array}
  * */
 function findListByUrl(url) {
-
     var dataList = [];
     $.ajaxSettings.async = false;
     $.getJSON(url, function (data) {

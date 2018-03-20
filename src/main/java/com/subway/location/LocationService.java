@@ -58,7 +58,7 @@ public class LocationService extends BaseService {
      * @param authKey 授权码
      * @return 根据授权码查询树结构 模糊查询
      */
-    @Cacheable(key = "'location'+#authKey", value = "myLocations")
+    @Cacheable(key = "'location'+#authKey", value = "locations")
     public List<Object> findTree(String authKey) {
         System.out.println("authKey-------------" + authKey);
         return locationRepository.findTree(authKey + "%");
@@ -68,7 +68,7 @@ public class LocationService extends BaseService {
     /**
      * @return
      */
-    public List<Location> findByStatusAndAuthKeyStartingWith(String status,String authKey) {
-        return locationRepository.findByStatusAndAuthKeyStartingWith(status,authKey);
+    public List<Location> findByStatusAndAuthKeyStartingWith(String status, String authKey) {
+        return locationRepository.findByStatusAndAuthKeyStartingWith(status, authKey);
     }
 }

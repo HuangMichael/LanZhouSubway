@@ -37,7 +37,7 @@ public class SessionUtil {
      */
     public static User getCurrentUserBySession(HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
-        log.info("currentUser--------------" + user.toString());
+        log.info("currentUser--------------" + user.getUserName());
         return user;
     }
 

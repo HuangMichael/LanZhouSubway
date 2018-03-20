@@ -92,9 +92,6 @@ $(function () {
     });
 
 
-    $("#searchBtn").trigger("click");
-
-
     vdm = new Vue({
         el: formName,
         data: {
@@ -102,6 +99,8 @@ $(function () {
         }
     });
     initSelect();
+
+
 
     validateForm.call(validateOptions);
 
@@ -144,11 +143,14 @@ $(function () {
         modal.find("#id").val(rowId);
     });
 
+
+    $("#searchBtn").trigger("click");
+
 });
 
 
 /**
- * ɾ����¼
+ *
  * @param id
  */
 function del(id) {
