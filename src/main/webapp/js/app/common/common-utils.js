@@ -259,18 +259,7 @@ Array.prototype.clear = function () {
 };
 
 
-/**
- *  返回bootgrid 列表中所有的ID数组
- */
-function getAllTableIdsByTableId(tableName) {
-    var records = [];
-    $("#" + tableName + " input[type='checkbox']").each(function (i) {
-        records.push($(this).val());
-    });
-    console.log(records);
-    return records;
 
-}
 
 
 Array.prototype.unique = function () {
