@@ -132,15 +132,36 @@ function loadUserList(locationId) {
  */
 function removeLocUser(userId) {
     var url = "user/removeLoc";
-    var params = {userId: userId};
-    $.post(url, params, function (data) {
-        if (data) {
-            showMessageBox("info", data["resultDesc"]);
-            $("#usersInLocation").bootgrid("reload");
-        } else {
-            showMessageBox("danger", data["resultDesc"]);
-        }
+    if (userId) {
+        bootbox.confirm({
+            message: "确定要取消该用户的数据授权么？",
+            buttons: {
+                confirm: {
+                    label: '确定',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: '取消',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
 
-    });
+                    var params = {userId: userId};
+                    $.post(url, params, function (data) {
+                        if (data) {
+                            showMessageBox("info", data["resultDesc"]);
+                            $("#usersInLocation").bootgrid("reload");
+                        } else {
+                            showMessageBox("danger", data["resultDesc"]);
+                        }
+
+                    });
+                }
+            }
+        });
+    }
+
 
 }
