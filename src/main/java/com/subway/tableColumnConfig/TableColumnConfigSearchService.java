@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Êı¾İÁĞÅäÖÃÒµÎñ²éÑ¯Àà
  *
  * @author huangbin
  * @generate by autoCode
@@ -25,7 +24,7 @@ public class TableColumnConfigSearchService extends BaseService implements Sorte
 
 
     /**
-     * @param searchPhrase ËÑË÷¹Ø¼ü×Ö×éºÏ
+     * @param searchPhrase æœç´¢å…³é”®å­—ç»„åˆ
      * @param paramsSize
      * @return
      */
@@ -36,7 +35,6 @@ public class TableColumnConfigSearchService extends BaseService implements Sorte
 
 
     /**
-     * @param searchPhrase ËÑË÷¹Ø¼ü×Ö×éºÏ
      * @param paramsSize
      * @param pageable
      * @return

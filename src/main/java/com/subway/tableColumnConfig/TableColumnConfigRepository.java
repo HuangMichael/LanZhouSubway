@@ -10,7 +10,6 @@ import java.util.List;
 
 
 /**
- * 数据列配置数据库访问接口
  *
  * @author huangbin
  * @generate by autoCode
@@ -24,17 +23,15 @@ public interface TableColumnConfigRepository extends JpaRepository<TableColumnCo
     /**
      * @param tableConfig
      * @param status
-     * @return 根据配置查询列信息
+     * @return
      */
     List<TableColumnConfig> findByTableConfigAndStatus(TableConfig tableConfig, String status);
-
-
 
 
     /**
      * @param colDesc
      * @param status
-     * @return 根据配置查询列信息
+     * @return
      */
     List<TableColumnConfig> findByColDescContainingAndStatus(String colDesc, String status);
 
@@ -43,7 +40,7 @@ public interface TableColumnConfigRepository extends JpaRepository<TableColumnCo
      * @param colDesc
      * @param status
      * @param pageable
-     * @return 根据配置查询列信息
+     * @return
      */
     Page<TableColumnConfig> findByColDescContainingAndStatus(String colDesc, String status, Pageable pageable);
 }
