@@ -36,11 +36,11 @@ public class Cangwei implements Serializable {
     private Double bdbl;
     @Column(length = 0)
     private Long zj;
-    @Column(length = 1)
+    @Column(length = 20)
     private String gflx;
     @Column(length = 0)
     private Double zltgbcgbl;
-    @Column(length = 1)
+    @Column(length = 20)
     private String gdxz;
     @Column(length = 1)
     private String status;

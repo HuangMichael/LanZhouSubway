@@ -20,7 +20,7 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="name" name="name" placeholder="关键字"/>
+                                            <input class="form-control" id="name" name="name" placeholder="散户名称"/>
 
                                         </div>
                                         <div class="col-md-2">

@@ -23,15 +23,26 @@ public class SanhuSearchService extends BaseService implements SortedSearchable 
     SanhuRepository sanhuRepository;
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @return
+     */
     public List<Sanhu> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return sanhuRepository.findAll();
+        return sanhuRepository.findByNameContainingAndStatus(array[0], array[1]);
     }
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @param pageable
+     * @return
+     */
     public Page<Sanhu> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return sanhuRepository.findAll(pageable);
+        return sanhuRepository.findByNameContainingAndStatus(array[0], array[1], pageable);
     }
 
 }

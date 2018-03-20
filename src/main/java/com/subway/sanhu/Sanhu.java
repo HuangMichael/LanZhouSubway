@@ -18,7 +18,7 @@ public class Sanhu {
     private Long id;  //id
 
     @Column(length = 20)
-    private String name;// 申购日期
+    private String name;// 散户名称
 
 
     @Column(length = 200)

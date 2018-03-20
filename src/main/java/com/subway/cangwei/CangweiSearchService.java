@@ -23,15 +23,27 @@ public class CangweiSearchService extends BaseService implements SortedSearchabl
     CangweiRepository cangweiRepository;
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @return
+     */
     public List<Cangwei> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return cangweiRepository.findAll();
+        return cangweiRepository.findByNameContainingAndStatus(array[0], array[1]);
+
     }
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @param pageable
+     * @return
+     */
     public Page<Cangwei> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return cangweiRepository.findAll(pageable);
+        return cangweiRepository.findByNameContainingAndStatus(array[0], array[1], pageable);
     }
 
 }

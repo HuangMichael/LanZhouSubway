@@ -4,82 +4,74 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-                    <div class="form-group">
-                <label for="id" class="col-md-2 control-label">序号</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="cangwei.id" />
-                </div>
-            </div>
             <div class="form-group">
                 <label for="rq" class="col-md-2 control-label"> 日期</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="rq" name="rq" v-model="cangwei.rq"  required/>
+                    <input class="form-control" id="id" name="id" v-model="cangwei.id" type="hidden"/>
+                    <input class="form-control" id="rq" name="rq" v-model="cangwei.rq" required/>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <label for="code" class="col-md-2 control-label">股票代码</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="code" name="code" v-model="cangwei.code"  required/>
+                    <input class="form-control" id="code" name="code" v-model="cangwei.code" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="name" class="col-md-2 control-label">股票名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="name" name="name" v-model="cangwei.name"  required/>
+                    <input class="form-control" id="name" name="name" v-model="cangwei.name" required/>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <label for="cgs" class="col-md-2 control-label">持股数</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="cgs" name="cgs" v-model="cangwei.cgs"  required/>
+                    <input class="form-control" id="cgs" name="cgs" v-model="cangwei.cgs" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="mc" class="col-md-2 control-label">名次</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="mc" name="mc" v-model="cangwei.mc"  required/>
+                    <input class="form-control" id="mc" name="mc" v-model="cangwei.mc" required/>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <label for="gdmc" class="col-md-2 control-label">股票名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="gdmc" name="gdmc" v-model="cangwei.gdmc"  required/>
+                    <input class="form-control" id="gdmc" name="gdmc" v-model="cangwei.gdmc" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="bdbl" class="col-md-2 control-label">变动比例</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="bdbl" name="bdbl" v-model="cangwei.bdbl"  required/>
+                    <input class="form-control" id="bdbl" name="bdbl" v-model="cangwei.bdbl" required/>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <label for="zj" class="col-md-2 control-label">增减</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="zj" name="zj" v-model="cangwei.zj"  required/>
+                    <input class="form-control" id="zj" name="zj" v-model="cangwei.zj" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="gflx" class="col-md-2 control-label">股份类型</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="gflx" name="gflx" v-model="cangwei.gflx"  required/>
+                    <input class="form-control" id="gflx" name="gflx" v-model="cangwei.gflx" required/>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <label for="zltgbcgbl" class="col-md-2 control-label">流通股东持股比例</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="zltgbcgbl" name="zltgbcgbl" v-model="cangwei.zltgbcgbl"  required/>
+                    <input class="form-control" id="zltgbcgbl" name="zltgbcgbl" v-model="cangwei.zltgbcgbl" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="gdxz" class="col-md-2 control-label">股东性质</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="gdxz" name="gdxz" v-model="cangwei.gdxz"  required/>
+                    <input class="form-control" id="gdxz" name="gdxz" v-model="cangwei.gdxz" required/>
                 </div>
-            </div>
-            <div class="form-group">
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="cangwei.status"  required/>
+                    <select class="form-control" id="status" name="status" v-model="cangwei.status" style="width:100%"
+                            required>
+                        <option value="1" selected>启用</option>
+                        <option value="0">禁用</option>
+                    </select>
                 </div>
             </div>
         </div>
