@@ -32,7 +32,13 @@
                                     <%@include file="../common/common-searchBtn.jsp" %>
                                 </div>
                             </div>
-                            <%@include file="userList.jsp" %>
+                            <table id="userDataTable" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <%@include file="userList.jsp" %>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                     <!-- /BOX -->

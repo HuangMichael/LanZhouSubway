@@ -20,10 +20,7 @@
 
 <script type="text/javascript">
     $(function () {
-
         var tableId = 1;
-
-
         var config = {
             ajax: true,
             get: function ()
@@ -35,7 +32,6 @@
             },
             url: "/tableColumnConfig/findByTable/" + tableId,
             selection: true,
-            multiSelect: true,
         }
         $("#colsListTable").bootgrid(config);
 

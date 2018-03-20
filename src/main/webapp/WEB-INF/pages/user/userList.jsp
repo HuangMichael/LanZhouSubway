@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<table id="userDataTable" class="table table-striped table-bordered table-hover">
-    <thead>
-    <tr>
+
         <th data-column-id="id" data-identifier="true" data-type="numeric" data-align="center" data-width="3%">序号</th>
         <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false">ID</th>
         <th data-column-id="userName" data-sortable="true" data-width="5%">用户名</th>
@@ -16,6 +14,3 @@
         <%--<th data-column-id="status" data-sortable="true" data-width="5%" data-converter="showStatus">状态</th>--%>
         <th data-column-id="upload" data-sortable="true" data-width="5%" data-formatter="upload">上传|下载</th>
         <th data-column-id="commands" data-sortable="true" data-width="5%" data-formatter="commands">编辑|删除</th>
-    </tr>
-    </thead>
-</table>
