@@ -27,7 +27,7 @@ public class EquipmentSearchService extends BaseService implements SortedSearcha
      */
     public List<Equipment> findByConditions(String searchPhrase, int paramsSize) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return equipmentRepository.findByLocation_IdAndDescriptionContainingAndStatusAndAuthKeyStartingWith(Long.parseLong(array[0]), array[1], array[2], array[3]);
+        return equipmentRepository.findByLocation_LocNameContainingAndDescriptionContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], array[3]);
     }
 
 
@@ -39,7 +39,7 @@ public class EquipmentSearchService extends BaseService implements SortedSearcha
      */
     public Page<Equipment> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
         String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
-        return equipmentRepository.findByLocation_IdAndDescriptionContainingAndStatusAndAuthKeyStartingWith(Long.parseLong(array[0]), array[1], array[2], array[3], pageable);
+        return equipmentRepository.findByLocation_LocNameContainingAndDescriptionContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], array[3], pageable);
     }
 
 }

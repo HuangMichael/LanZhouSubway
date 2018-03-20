@@ -35,6 +35,8 @@ import java.util.Map;
 @Slf4j
 public class LocationController extends BaseController {
 
+    private static Integer SEARCH_PARAM_SIZE = 3;
+
     @Autowired
     ResourceService resourceService;
     @Autowired
@@ -55,7 +57,7 @@ public class LocationController extends BaseController {
     public MyPage data(HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(locationSearchService, searchPhrase, 2, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(locationSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
     }
 
 
@@ -107,7 +109,7 @@ public class LocationController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-        List<Location> dataList = locationSearchService.findByConditions(param, 2);
+        List<Location> dataList = locationSearchService.findByConditions(param, SEARCH_PARAM_SIZE);
         locationService.setDataList(dataList);
         locationService.exportExcel(request, response, docName, titles, colNames);
     }
@@ -131,8 +133,8 @@ public class LocationController extends BaseController {
     @RequestMapping(value = "/findMyLocations")
     @ResponseBody
     public List<Location> findMyLocations(HttpSession session) {
-        User user = SessionUtil.getCurrentUserBySession(session);
-        return locationService.findByStatusAndAuthKeyStartingWith(ConstantUtils.STATUS_YES, user.getAuthKey());
+//        User user = SessionUtil.getCurrentUserBySession(session);
+        return locationService.findByStatusAndAuthKeyStartingWith(ConstantUtils.STATUS_YES, "BJ10");
     }
 
 }
