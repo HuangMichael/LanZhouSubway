@@ -8,12 +8,12 @@
                 <label for="roleName" class="col-md-2 control-label">角色名称</label>
                 <div class="col-md-4">
                     <input class="form-control" id="id" name="id" v-model="role.id" type="hidden"/>
-                    <input class="form-control" id="roleName" name="roleName" v-model="role.roleName"/>
+                    <input class="form-control" id="roleName" name="roleName" v-model="role.roleName" required/>
                 </div>
 
                 <label for="roleDesc" class="col-md-2 control-label">角色描述</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="roleDesc" name="roleDesc" v-model="role.roleDesc"/>
+                    <input class="form-control" id="roleDesc" name="roleDesc" v-model="role.roleDesc" required/>
                 </div>
             </div>
             <div class="form-group">
@@ -23,7 +23,11 @@
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="role.status"/>
+                    <select class="form-control" id="status" name="status" v-model="role.status" style="width:100%"
+                            required>
+                        <option value="1" selected>启用</option>
+                        <option value="0">禁用</option>
+                    </select>
                 </div>
             </div>
         </div>

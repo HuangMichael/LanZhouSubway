@@ -20,15 +20,10 @@
                                     <div class="form-group" style="margin-bottom:10px;position:inherit"
                                          id="searchBox">
                                         <div class="col-md-2">
-                                            <input class="form-control" id="roleName" name="roleName"
-                                                   placeholder="角色名称"/>
-
+                                            <input class="form-control" id="roleName" name="roleName" placeholder="角色名称"/>
                                         </div>
-
                                         <div class="col-md-2">
-                                            <input class="form-control" id="roleDesc" name="roleDesc"
-                                                   placeholder="角色描述"/>
-
+                                            <input class="form-control" id="roleDesc" name="roleDesc" placeholder="角色描述"/>
                                         </div>
                                         <div class="col-md-2">
                                             <%@include file="../common/common-status-select.jsp" %>

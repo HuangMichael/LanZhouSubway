@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<table id="userListTable" class="table table-bordered table-hover table-striped"
-       style="max-height: 300px;overflow: scroll">
+<table id="userListTable" class="table table-bordered table-hover table-striped" style="max-height: 300px;overflow: scroll">
     <thead>
     <tr>
         <th data-column-id="id" data-identifier="true" data-type="numeric" data-align="center" data-width="10%">序号</th>
@@ -17,9 +16,7 @@
             <td></td>
             <td>{{u.id}}</td>
             <td>{{u.userName}}</td>
-            <td>{{u.userName}}</td>
-
-            <td>{{u.gender}}</td>
+            <td>{{u.personName}}</td>
         </tr>
     </template>
     </tbody>
