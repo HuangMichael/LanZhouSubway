@@ -5,17 +5,19 @@ import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- *
  * @author huangbin
  * @generate by autoCode
  * @Date 2018-3-1
  */
 @Service
+@CacheConfig
 public class LocationService extends BaseService {
     @Autowired
     LocationRepository locationRepository;
@@ -56,9 +58,17 @@ public class LocationService extends BaseService {
      * @param authKey 授权码
      * @return 根据授权码查询树结构 模糊查询
      */
+    @Cacheable(key = "'location'+#authKey", value = "myLocations")
     public List<Object> findTree(String authKey) {
-        System.out.println("authKey-------------"+authKey);
+        System.out.println("authKey-------------" + authKey);
         return locationRepository.findTree(authKey + "%");
     }
 
+
+    /**
+     * @return
+     */
+    public List<Location> findByStatusAndAuthKeyStartingWith(String status,String authKey) {
+        return locationRepository.findByStatusAndAuthKeyStartingWith(status,authKey);
+    }
 }

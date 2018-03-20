@@ -4,6 +4,7 @@ import com.subway.controller.common.BaseController;
 import com.subway.domain.app.MyPage;
 import com.subway.domain.user.User;
 import com.subway.service.app.ResourceService;
+import com.subway.utils.ConstantUtils;
 import com.subway.utils.PageUtils;
 import com.subway.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,6 @@ public class LocationController extends BaseController {
 
 
     /**
-     * @param session
      * @param request
      * @param current
      * @param rowCount
@@ -52,7 +52,7 @@ public class LocationController extends BaseController {
      */
     @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
-    public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
+    public MyPage data(HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
         return new PageUtils().searchBySortService(locationSearchService, searchPhrase, 2, current, rowCount, pageable);
@@ -124,5 +124,15 @@ public class LocationController extends BaseController {
         return locationService.findTree(user.getAuthKey());
     }
 
+
+    /**
+     * @return 查询我的位置
+     */
+    @RequestMapping(value = "/findMyLocations")
+    @ResponseBody
+    public List<Location> findMyLocations(HttpSession session) {
+        User user = SessionUtil.getCurrentUserBySession(session);
+        return locationService.findByStatusAndAuthKeyStartingWith(ConstantUtils.STATUS_YES, user.getAuthKey());
+    }
 
 }

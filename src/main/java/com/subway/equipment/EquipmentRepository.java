@@ -23,7 +23,7 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
      * @param authKey
      * @return
      */
-    List<Equipment> findByDescriptionContainingAndStatusAndAuthKeyStartingWith(String description,String status,String authKey);
+    List<Equipment> findByDescriptionContainingAndStatusAndAuthKeyStartingWith(String description, String status, String authKey);
 
     /**
      * @param description
@@ -33,5 +33,25 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
      * @return
      */
     Page<Equipment> findByDescriptionContainingAndStatusAndAuthKeyStartingWith(String description, String status, String authKey, Pageable pageable);
+
+
+    /**
+     * @param description
+     * @param status
+     * @param authKey
+     * @return
+     */
+    List<Equipment> findByLocation_IdAndDescriptionContainingAndStatusAndAuthKeyStartingWith(Long locationId, String description, String status, String authKey);
+
+    /**
+     * @param description
+     * @param status
+     * @param authKey
+     * @param pageable
+     * @return
+     */
+    Page<Equipment> findByLocation_IdAndDescriptionContainingAndStatusAndAuthKeyStartingWith(Long locationId,String description, String status, String authKey, Pageable pageable);
+
+
 }
 
