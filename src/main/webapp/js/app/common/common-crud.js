@@ -232,6 +232,11 @@ function resetSearch() {
         if (!$(p).is(":button")) {
             $(p).val("");
         }
+        if ($(p).is(":select")) {
+            var options = $(p).find("option");
+            options.attr("selected", false);
+            options.first().attr("selected", true);
+        }
     });
     $(dataTableName).bootgrid("setSearchPhrase", "").bootgrid("reload");
 }
