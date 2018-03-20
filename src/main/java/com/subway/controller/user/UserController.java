@@ -91,12 +91,14 @@ public class UserController extends BaseController {
 
     /**
      * 保存用户信息
+     *
+     * @param user 用户信息
+     * @return
      */
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
     @ResponseBody
     public ReturnObject save(User user) {
-        user = userService.save(user);
-        return commonDataService.getReturnType(user != null, "用户信息保存成功", "用户信息保存失败");
+        return userService.save(user);
     }
 
 
@@ -178,8 +180,6 @@ public class UserController extends BaseController {
         userService.setDataList(dataList);
         userService.exportExcel(request, response, docName, titles, colNames);
     }
-
-
 
 
     /**

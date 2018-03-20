@@ -4,34 +4,34 @@
     <div class="form-group">
         <label class="col-md-2 col-sm-2 col-lg-2" for="userName">用户名</label>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="userName" name="userName" v-model="user.userName" readonly>
+            <input class="form-control" id="userName" name="userName" v-model="user.userName" required>
             <input type="hidden" class="form-control" id="id" name="id" v-model="user.id" readonly>
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
             <label for="personName">姓名</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="personName" name="personName" v-model="user.personName">
+            <input class="form-control" id="personName" name="personName" v-model="user.personName" required>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 col-sm-2 col-lg-2" for="userName">身份证号</label>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="idCard" name="idCard" v-model="user.idCard">
+            <input class="form-control" id="idCard" name="idCard" v-model="user.idCard" required>
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
             <label for="email">电子邮箱</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="email" name="email" v-model="user.email">
+            <input class="form-control" id="email" name="email" v-model="user.email" required>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-2 col-sm-2 col-lg-2" for="birthDate">出生日期</label>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="birthDate" name="birthDate" v-model="user.birthDate">
+            <input class="form-control myDateBox" id="birthDate" name="birthDate" v-model="user.birthDate">
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
             <label for="gender">性别</label>
@@ -51,7 +51,7 @@
             <label for="email">联系电话</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="telephone" name="telephone" v-model="user.telephone">
+            <input class="form-control" id="telephone" name="telephone" v-model="user.telephone" required>
         </div>
 
 

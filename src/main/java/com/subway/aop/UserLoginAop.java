@@ -2,10 +2,12 @@ package com.subway.aop;
 
 
 import com.subway.domain.log.UserLog;
+import com.subway.domain.user.User;
 import com.subway.domain.userLog.UserLogService;
 import com.subway.eqAppend.EqAppend;
 import com.subway.eqUpdate.EqUpdate;
 import com.subway.object.ReturnObject;
+import com.subway.service.user.UserService;
 import com.subway.utils.ConstantUtils;
 import com.subway.utils.DateUtils;
 import com.subway.workOrder.WorkOrder;
@@ -34,6 +36,10 @@ public class UserLoginAop {
 
     @Autowired
     WorkOrderLogService workOrderLogService;
+
+
+    @Autowired
+    UserService userService;
 
     /**
      * @param joinPoint   结合点
@@ -152,6 +158,23 @@ public class UserLoginAop {
         log.info(args[0].getClass().getName());
         append.setAuthKey("01");
         append.setStatus(ConstantUtils.STATUS_YES);
+        log.info("set authKey before save");
+    }
+
+
+    /**
+     * @param joinPoint
+     */
+    @Before(value = "execution(* com.subway.controller.user.UserController.save(..))")
+    public void writeAuthKeyBeforeSaveUser(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        User user = (User) args[0];
+        log.info(args[0].getClass().getName());
+        if (user.getPassword() == null || user.getPassword().equals("")) {
+            user.setPassword("e10adc3949ba59abbe56e057f20f883e");
+        }
+        user.setAuthKey("01");
+        user.setStatus(ConstantUtils.STATUS_YES);
         log.info("set authKey before save");
     }
 

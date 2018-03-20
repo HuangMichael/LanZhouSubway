@@ -1,5 +1,5 @@
 var object = null;
-formName = "#detailForm";
+// formName = "#detailForm";
 $.ajaxSettings.async = false;
 
 var recordId = null;
@@ -17,6 +17,12 @@ var validationConfig = {
                     max: 20,
                     message: '用户名长度为3到20个字符'
                 }
+            }
+        },
+        email: {
+            validators: {
+                notEmpty: {message: '请输入邮箱'},
+                emailAddress: {message: '请输入正确的邮件地址'}
             }
         }
     }
@@ -56,16 +62,20 @@ $(function () {
     });
 
     search();
-
-
-// initSelect.call();
 //初始化查询所有的
     validateForm.call(validationConfig);
+
+
     vdm = new Vue({
         el: formName,
         data: {
             user: null
         }
+    });
+
+
+    $(".myDateBox").on("click", function () {
+        WdatePicker({maxDate: "Y-m-d"});
     });
 
 
@@ -147,8 +157,9 @@ function del(id) {
  */
 function edit(id) {
     var object = findByIdAndObjectName(id, mainObject);
-    vdm.$set("memberWorks", object);
+    vdm.$set("user", object);
     $("#editModal").modal("show");
+    $("#userName").attr("readonly", true);
 }
 
 

@@ -19,7 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(length = 20, unique = true, nullable = false)
+    @Column(length = 20, unique = true, nullable = false, updatable = false)
     private String userName;
     @JsonIgnore
     @Column(length = 50, columnDefinition = "default '123456'")

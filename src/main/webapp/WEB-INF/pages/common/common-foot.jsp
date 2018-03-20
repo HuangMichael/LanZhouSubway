@@ -12,7 +12,7 @@
 <script type="text/javascript" src="/js/jquery.bootgrid-1.3.1/jquery.bootgrid.js"></script>
 <script type="text/javascript" src="js/app/common/common-utils.js"></script>
 <script type="text/javascript" src="js/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-<script type="text/javascript" src="/js/select2/select2.cdn.js"></script>
+<script type="text/javascript" src="/js/select2/select2.min.js"></script>
 <script type="text/javascript" src="js/dropzone/dropzone.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="/js/jQuery-Cookie/jquery.cookie.min.js"></script>

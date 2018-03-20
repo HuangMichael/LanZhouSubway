@@ -6,8 +6,8 @@ import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
 import com.subway.utils.CommonStatusType;
+import com.subway.utils.ConstantUtils;
 import com.subway.utils.MD5Util;
-import com.subway.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -48,50 +48,14 @@ public class UserService extends BaseService {
         return userRepository.findById(id);
     }
 
-    /**
-     * @return 查询所有的用户
-     */
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
-    }
 
     /**
-     * 对用户进行加密
+     * @param user
+     * @return 保存用户信息
      */
-    public User save(User user) {
-
-        if (user.getPassword() == null) {
-            user.setPassword(MD5Util.md5("123456"));
-        }
-    /*    if (user.getLocation() == null) {
-           // System.out.println("user.getVlocations()-----" + user.getVlocations().getLocName());
-            user.setLocation("BJ");
-        }*/
-        if (user.getSortNo() == 0) {
-            user.setSortNo(1l);
-        }
-        user.setStatus("1");
-
+    public ReturnObject save(User user) {
         user = userRepository.save(user);
-        Object str = RedisUtils.get("userList");
-        if (str != null) {
-            log.info("userList" + str.toString());
-            RedisUtils.del("userList");
-        }
-        return user;
-    }
-
-    /**
-     * 对用户进行加密
-     */
-    public User createUser(User user) {
-        user.setPassword("123456");
-        String password = user.getPassword();
-        if (user.getPassword() != null) {
-            user.setPassword(MD5Util.md5(password));
-        }
-        user.setStatus("1");
-        return userRepository.save(user);
+        return commonDataService.getReturnType(user != null, ConstantUtils.SAVE_SUCCESS, ConstantUtils.SAVE_FAILURE);
     }
 
 
@@ -152,13 +116,6 @@ public class UserService extends BaseService {
             return false;
         }
     }
-
-
-
-
-
-
-
 
 
     /**
