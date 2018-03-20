@@ -102,7 +102,7 @@ public class UserLoginAop {
         } else if (type.equals("s")) {
             workOrderLog.setContent(workOrder.getEquipment().getLocation().getLocName() + "[" + workOrder.getOrderDesc() + "]" + "位置报修");
         }
-        workOrderLog.setAuthKey("01");
+        workOrderLog.setAuthKey("BJ10");
         workOrderLog.setCreator("huangbin");
         workOrderLog.setOrderState("0");
         workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
@@ -124,7 +124,7 @@ public class UserLoginAop {
         WorkOrder workOrder = (WorkOrder) returnObject.getObject();
         WorkOrderLog workOrderLog = new WorkOrderLog();
         workOrderLog.setContent("工单" + workOrder.getOrderLineNo() + reason + "已取消");
-        workOrderLog.setAuthKey("01");
+        workOrderLog.setAuthKey("BJ10");
         workOrderLog.setCreator("huangbin");
         workOrderLog.setOrderState(ConstantUtils.ORDER_STATUS_ABORTED);
         workOrderLog.setOrderStateTime(DateUtils.convertDate2Str(new Date(), "yyyy-MM-dd HH:mm:ss"));
@@ -142,7 +142,7 @@ public class UserLoginAop {
         Object[] args = joinPoint.getArgs();
         EqUpdate eqUpdate = (EqUpdate) args[0];
         log.info(args[0].getClass().getName());
-        eqUpdate.setAuthKey("01");
+        eqUpdate.setAuthKey("BJ10");
         eqUpdate.setStatus(ConstantUtils.STATUS_YES);
         log.info("set authKey before save");
     }
@@ -156,7 +156,7 @@ public class UserLoginAop {
         Object[] args = joinPoint.getArgs();
         EqAppend append = (EqAppend) args[0];
         log.info(args[0].getClass().getName());
-        append.setAuthKey("01");
+        append.setAuthKey("BJ10");
         append.setStatus(ConstantUtils.STATUS_YES);
         log.info("set authKey before save");
     }
@@ -173,7 +173,7 @@ public class UserLoginAop {
         if (user.getPassword() == null || user.getPassword().equals("")) {
             user.setPassword("e10adc3949ba59abbe56e057f20f883e");
         }
-        user.setAuthKey("01");
+        user.setAuthKey("BJ10");
         user.setStatus(ConstantUtils.STATUS_YES);
         log.info("set authKey before save");
     }
