@@ -23,7 +23,7 @@ public class User {
     @Column(length = 20, unique = true, nullable = false, updatable = false)
     private String userName;
     @JsonIgnore
-    @Column(length = 50, columnDefinition = "default '123456'")
+    @Column(length = 50)
     private String password;
 
     @Column(length = 100)
