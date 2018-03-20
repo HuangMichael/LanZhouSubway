@@ -40,7 +40,11 @@
                 usersList: usersList
             }
         });
-        $("#userListTable").bootgrid();
+        $("#userListTable").bootgrid({
+
+            selection: true,
+            multiSelect: true
+        });
         $("#selUsersBtn").on("click", function () {
             var selected = $("#userListTable").bootgrid("getSelectedRows");
             var roleId = recordId;

@@ -3,8 +3,8 @@
        style="max-height: 300px;overflow: scroll">
     <thead>
     <tr>
-        <th data-column-id="id" data-width="5%">序号</th>
-        <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="10%">ID</th>
+        <th data-column-id="id" data-identifier="true" data-type="numeric" data-width="5%">序号</th>
+        <th data-column-id="id" data-type="numeric" data-visible="false" data-width="10%">ID</th>
         <th data-column-id="name" data-width="25%">单位名称</th>
         <th data-column-id="contact" data-width="10%">联系人</th>
         <th data-column-id="telephone" data-width="10%">联系电话</th>
@@ -42,7 +42,10 @@
                 unitList: unitList
             }
         });
-        $("#unitListTable").bootgrid();
+        $("#unitListTable").bootgrid({
+            selection: true,
+            multiSelect: true
+        });
 
 
         $("#selUnitBtn").on("click", function () {
