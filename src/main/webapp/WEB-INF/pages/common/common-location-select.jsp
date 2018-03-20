@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <select class="form-control" id="location" onchange="search()">
     <template v-for="l in locations">
-        <option value="{l.id}">{{l.locDesc}}</option>
+        <option value="{l.locName}">{{l.locDesc}}</option>
     </template>
 </select>
 

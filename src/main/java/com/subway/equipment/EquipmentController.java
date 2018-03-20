@@ -30,7 +30,7 @@ import java.util.Map;
 public class EquipmentController extends BaseController {
 
 
-    private static Integer SEARCH_PARAM_SIZE = 2;
+    private static Integer SEARCH_PARAM_SIZE = 3;
 
     @Autowired
     ResourceService resourceService;
