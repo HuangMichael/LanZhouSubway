@@ -275,17 +275,6 @@ function getSearchConfig() {
 }
 
 
-/**
- * 初始化查询起始日期
- */
-function initSearchDate() {
-    $("#beginDate ").val(addMonthToday(-3, new Date()));
-    $("#endDate").val(transformYMD(new Date().getTime()));
-}
-
-
-
-
 $(function () {
     //取消异步加载
     $.ajaxSettings.async = false;

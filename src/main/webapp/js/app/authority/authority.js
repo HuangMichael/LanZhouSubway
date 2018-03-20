@@ -39,7 +39,6 @@ $(function () {
         }
         var t = $("#tree");
         t = $.fn.zTree.init(t, setting, zNodes);
-        zTree.expandAll(false);
         demoIframe = $("#testIframe");
         demoIframe.bind("load", loadReady);
 
@@ -70,7 +69,6 @@ $(function () {
             }
         }
     );
-
 
 
     docName = "权限信息";
