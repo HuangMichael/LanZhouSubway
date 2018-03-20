@@ -3,10 +3,12 @@
 <table id="usersInLocation" class="table table-striped table-bordered table-hover">
     <thead>
     <tr>
-        <th data-column-id="id">序号</th>
+        <th data-column-id="id" data-width="5%">序号</th>
         <th data-column-id="id" data-type="numeric" data-identifier="true" data-visible="false" data-width="5%">ID</th>
-        <th data-column-id="userName" data-width="85%">用户名</th>
-        <th data-column-id="command" data-formatter="command" data-width="10%">取消授权</th>
+        <th data-column-id="userName" data-width="10%">用户名</th>
+        <th data-column-id="personName" data-width="10%">姓名</th>
+        <th data-column-id="location" data-width="20%">用户位置</th>
+        <th data-column-id="command" data-formatter="command" data-width="10%">操作</th>
     </tr>
     </thead>
     <tbody>
@@ -14,10 +16,16 @@
         <tr class="gradeX">
             <td>${s.index+1}</td>
             <td>
-                    ${u[0]}
+                    ${u.id}
             </td>
             <td>
-                    ${u[1]}
+                    ${u.userName}
+            </td>
+            <td>
+                    ${u.personName}
+            </td>
+            <td>
+                    ${u.location.locDesc}
             </td>
         </tr>
     </c:forEach>
@@ -25,7 +33,6 @@
 </table>
 
 <script type="text/javascript">
-    var selectedUsersId = [];
     $("#usersInLocation").bootgrid({
         rowCount: 8,
         rowSelect: false,
@@ -35,18 +42,5 @@
                 return '<a class="btn btn-default btn-xs"  onclick="removeLocUser(' + row.id + ')" title="取消授权" ><i class="glyphicon glyphicon-remove"></i></a>'
             }
         }
-    }).on("selected.rs.jquery.bootgrid", function (e, rows) {
-        for (var x in rows) {
-            if (rows[x]["id"]) {
-                selectedUsersId.push(rows[x]["id"]);
-            }
-        }
-    }).on("deselected.rs.jquery.bootgrid", function (e, rows) {
-        for (var x in rows) {
-            selectedUsersId.remove(rows[x]["id"]);
-        }
-    })
-
-
-    ;
+    });
 </script>

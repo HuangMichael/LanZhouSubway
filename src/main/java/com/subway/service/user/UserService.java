@@ -159,4 +159,18 @@ public class UserService extends BaseService {
         return userRepository.findUsersInLocation(locationId);
     }
 
+
+    /**
+     * @param userId 用户id
+     * @return 移除用户数据授权
+     */
+    public ReturnObject removeLoc(Long userId) {
+        User user = userRepository.findById(userId);
+        if (user != null) {
+            user.setLocation(null);
+            user = userRepository.save(user);
+        }
+        return commonDataService.getReturnType(user.getLocation() == null, "数据取消授权成功", "数据取消授权失败");
+    }
+
 }
