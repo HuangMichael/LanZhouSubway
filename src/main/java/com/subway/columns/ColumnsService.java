@@ -33,7 +33,7 @@ public class ColumnsService extends BaseService {
      */
     public ReturnObject delete(Long id) {
         columnsRepository.delete(id);
-        Columns columns = columnsRepository.getOne(id);
+        Columns columns = columnsRepository.findOne(id);
         return commonDataService.getReturnType(columns == null, DELETE_SUCCESS, DELETE_FAILURE);
     }
 
