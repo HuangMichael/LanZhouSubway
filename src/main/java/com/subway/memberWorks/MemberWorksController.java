@@ -31,6 +31,8 @@ import java.util.Map;
 @RequestMapping("/memberWorks")
 public class MemberWorksController extends BaseController {
 
+    private static  final Integer   SEARCH_PARAM_SIZE =2;
+
     @Autowired
     ResourceService resourceService;
     @Autowired
@@ -52,7 +54,7 @@ public class MemberWorksController extends BaseController {
     public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(memberWorksSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(memberWorksSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
     }
 
 
@@ -89,7 +91,7 @@ public class MemberWorksController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-        List<MemberWorks> dataList = memberWorksSearchService.findByConditions(param, 2);
+        List<MemberWorks> dataList = memberWorksSearchService.findByConditions(param, SEARCH_PARAM_SIZE);
         memberWorksService.setDataList(dataList);
         memberWorksService.exportExcel(request, response, docName, titles, colNames);
     }

@@ -36,7 +36,6 @@ public class MemberWorks implements Serializable {
     @Column(length = 1)
     private String worksType; //作品类型
 
-
     @Column(length = 200)
     private String photoUrl;//作品路径
 
@@ -50,4 +49,7 @@ public class MemberWorks implements Serializable {
 
     @Column(length = 1, nullable = false)
     private String status;
+
+    @Column(length = 20)
+    private String authKey;//授权码
 }
