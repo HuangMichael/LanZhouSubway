@@ -1,16 +1,16 @@
 /**
  * Created by Administrator on 2016/9/27.
  */
-
+var userId = 1;
 $(function () {
     //先查询出所有的模块
-    var userId = "";
-    $.ajaxSettings.async = false;
-    $.getJSON("/getCurrentUser", function (data) {
-        userId = data.id;
-    });
-
-    userId = userId ? userId : 1;
+    // var userId = 1;
+    // $.ajaxSettings.async = false;
+    // $.getJSON("/getCurrentUser", function (data) {
+    //     userId = data.id;
+    // });
+    //
+    // userId = userId ? userId : 1;
     var modules = getAllModules(userId);
     var html = '';
     var moduleId = null;
