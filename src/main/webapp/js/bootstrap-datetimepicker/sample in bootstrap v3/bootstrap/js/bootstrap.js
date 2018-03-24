@@ -748,7 +748,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       return $this.click()
     }
 
-    var $items = $('[role=menu] li:not(.divider):visible a', $parent);
+    var $items = $('[role=basicMenu] li:not(.divider):visible a', $parent);
 
     if (!$items.length) return;
 
@@ -820,7 +820,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     .on('click.bs.dropdown.data-api', clearMenus)
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', toggle + ', [role=basicMenu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
 
@@ -1685,7 +1685,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
       .parents('li')
       .addClass('active');
 
-    if (active.parent('.dropdown-menu').length)  {
+    if (active.parent('.dropdown-basicMenu').length)  {
       active = active
         .closest('li.dropdown')
         .addClass('active')
@@ -1766,7 +1766,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Tab.prototype.show = function () {
     var $this    = this.element;
-    var $ul      = $this.closest('ul:not(.dropdown-menu)');
+    var $ul      = $this.closest('ul:not(.dropdown-basicMenu)');
     var selector = $this.attr('data-target');
 
     if (!selector) {
@@ -1805,7 +1805,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     function next() {
       $active
         .removeClass('active')
-        .find('> .dropdown-menu > .active')
+        .find('> .dropdown-basicMenu > .active')
         .removeClass('active');
 
       element.addClass('active');
@@ -1817,7 +1817,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         element.removeClass('fade')
       }
 
-      if (element.parent('.dropdown-menu')) {
+      if (element.parent('.dropdown-basicMenu')) {
         element.closest('li.dropdown').addClass('active')
       }
 

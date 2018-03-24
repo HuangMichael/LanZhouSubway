@@ -12576,7 +12576,7 @@
                     id: containerId
                 }, extend({
                     position: RELATIVE,
-                    overflow: HIDDEN, // needed for context menu (avoid scrollbars) and
+                    overflow: HIDDEN, // needed for context basicMenu (avoid scrollbars) and
                         // content overflow in IE
                     width: chartWidth + PX,
                     height: chartHeight + PX,

@@ -10,17 +10,17 @@
 (function($){
 $(function(){
 $(document).unbind(".menu").bind("mousedown.menu",function(e){
-var m=$(e.target).closest("div.menu,div.combo-p");
+var m=$(e.target).closest("div.basicMenu,div.combo-p");
 if(m.length){
 return;
 }
-$("body>div.menu-top:visible").not(".menu-inline").menu("hide");
-_1($("body>div.menu:visible").not(".menu-inline"));
+$("body>div.basicMenu-top:visible").not(".basicMenu-inline").menu("hide");
+_1($("body>div.basicMenu:visible").not(".basicMenu-inline"));
 });
 });
 function _2(_3){
 var _4=$.data(_3,"menu").options;
-$(_3).addClass("menu-top");
+$(_3).addClass("basicMenu-top");
 _4.inline?$(_3).addClass("menu-inline"):$(_3).appendTo("body");
 $(_3).bind("_resize",function(e,_5){
 if($(this).hasClass("easyui-fluid")||_5){
@@ -36,7 +36,7 @@ function _7(_9){
 var _a=[];
 _9.addClass("menu");
 _a.push(_9);
-if(!_9.hasClass("menu-content")){
+if(!_9.hasClass("basicMenu-content")){
 _9.children("div").each(function(){
 var _b=$(this).children("div");
 if(_b.length){
@@ -52,7 +52,7 @@ return _a;
 function _8(_c){
 var wh=$.parser.parseOptions(_c[0],["width","height"]);
 _c[0].originalHeight=wh.height||0;
-if(_c.hasClass("menu-content")){
+if(_c.hasClass("basicMenu-content")){
 _c[0].originalWidth=wh.width||_c._outerWidth();
 }else{
 _c[0].originalWidth=wh.width||0;
@@ -60,29 +60,29 @@ _c.children("div").each(function(){
 var _d=$(this);
 var _e=$.extend({},$.parser.parseOptions(this,["name","iconCls","href",{separator:"boolean"}]),{disabled:(_d.attr("disabled")?true:undefined)});
 if(_e.separator){
-_d.addClass("menu-sep");
+_d.addClass("basicMenu-sep");
 }
-if(!_d.hasClass("menu-sep")){
+if(!_d.hasClass("basicMenu-sep")){
 _d[0].itemName=_e.name||"";
 _d[0].itemHref=_e.href||"";
-var _f=_d.addClass("menu-item").html();
-_d.empty().append($("<div class=\"menu-text\"></div>").html(_f));
+var _f=_d.addClass("basicMenu-item").html();
+_d.empty().append($("<div class=\"basicMenu-text\"></div>").html(_f));
 if(_e.iconCls){
-$("<div class=\"menu-icon\"></div>").addClass(_e.iconCls).appendTo(_d);
+$("<div class=\"basicMenu-icon\"></div>").addClass(_e.iconCls).appendTo(_d);
 }
 if(_e.disabled){
 _10(_3,_d[0],true);
 }
 if(_d[0].submenu){
-$("<div class=\"menu-rightarrow\"></div>").appendTo(_d);
+$("<div class=\"basicMenu-rightarrow\"></div>").appendTo(_d);
 }
 _11(_3,_d);
 }
 });
-$("<div class=\"menu-line\"></div>").prependTo(_c);
+$("<div class=\"basicMenu-line\"></div>").prependTo(_c);
 }
 _12(_3,_c);
-if(!_c.hasClass("menu-inline")){
+if(!_c.hasClass("basicMenu-inline")){
 _c.hide();
 }
 _13(_3,_c);
@@ -92,15 +92,15 @@ function _12(_14,_15){
 var _16=$.data(_14,"menu").options;
 var _17=_15.attr("style")||"";
 _15.css({display:"block",left:-10000,height:"auto",overflow:"hidden"});
-_15.find(".menu-item").each(function(){
+_15.find(".basicMenu-item").each(function(){
 $(this)._outerHeight(_16.itemHeight);
-$(this).find(".menu-text").css({height:(_16.itemHeight-2)+"px",lineHeight:(_16.itemHeight-2)+"px"});
+$(this).find(".basicMenu-text").css({height:(_16.itemHeight-2)+"px",lineHeight:(_16.itemHeight-2)+"px"});
 });
-_15.removeClass("menu-noline").addClass(_16.noline?"menu-noline":"");
+_15.removeClass("basicMenu-noline").addClass(_16.noline?"basicMenu-noline":"");
 var _18=_15[0].originalWidth||"auto";
 if(isNaN(parseInt(_18))){
 _18=0;
-_15.find("div.menu-text").each(function(){
+_15.find("div.basicMenu-text").each(function(){
 if(_18<$(this)._outerWidth()){
 _18=$(this)._outerWidth();
 }
@@ -111,7 +111,7 @@ var _19=_15.outerHeight();
 var _1a=_15[0].originalHeight||"auto";
 if(isNaN(parseInt(_1a))){
 _1a=_19;
-if(_15.hasClass("menu-top")&&_16.alignTo){
+if(_15.hasClass("basicMenu-top")&&_16.alignTo){
 var at=$(_16.alignTo);
 var h1=at.offset().top-$(document).scrollTop();
 var h2=$(window)._outerHeight()+$(document).scrollTop()-at.offset().top-at._outerHeight();
@@ -125,10 +125,10 @@ _1a=$(window).height();
 _15.attr("style",_17);
 _15._size({fit:(_15[0]==_14?_16.fit:false),width:_18,minWidth:_16.minWidth,height:_1a});
 _15.css("overflow",_15.outerHeight()<_19?"auto":"hidden");
-_15.children("div.menu-line")._outerHeight(_19-2);
+_15.children("div.basicMenu-line")._outerHeight(_19-2);
 };
 function _13(_1b,_1c){
-if(_1c.hasClass("menu-inline")){
+if(_1c.hasClass("basicMenu-inline")){
 return;
 }
 var _1d=$.data(_1b,"menu");
@@ -146,7 +146,7 @@ _1e(_1b,$(_1b).hasClass("menu-inline"));
 });
 };
 function _11(_1f,_20){
-if(!_20.hasClass("menu-item")){
+if(!_20.hasClass("basicMenu-item")){
 return;
 }
 _20.unbind(".menu");
@@ -171,9 +171,9 @@ _1(this.submenu);
 }
 $(this).removeClass("menu-active");
 });
-_20.addClass("menu-active");
+_20.addClass("basicMenu-active");
 if($(this).hasClass("menu-item-disabled")){
-_20.addClass("menu-active-disabled");
+_20.addClass("basicMenu-active-disabled");
 return;
 }
 var _23=_20[0].submenu;
@@ -181,16 +181,16 @@ if(_23){
 $(_1f).menu("show",{menu:_23,parent:_20});
 }
 }).bind("mouseleave.menu",function(e){
-_20.removeClass("menu-active menu-active-disabled");
+_20.removeClass("basicMenu-active basicMenu-active-disabled");
 var _24=_20[0].submenu;
 if(_24){
 if(e.pageX>=parseInt(_24.css("left"))){
-_20.addClass("menu-active");
+_20.addClass("basicMenu-active");
 }else{
 _1(_24);
 }
 }else{
-_20.removeClass("menu-active");
+_20.removeClass("basicMenu-active");
 }
 });
 };
@@ -214,7 +214,7 @@ var _2b,top;
 var _2c=$.data(_29,"menu").options;
 var _2d=$(_2a.menu||_29);
 $(_29).menu("resize",_2d[0]);
-if(_2d.hasClass("menu-top")){
+if(_2d.hasClass("basicMenu-top")){
 $.extend(_2c,_2a);
 _2b=_2c.left;
 top=_2c.top;
@@ -257,11 +257,11 @@ return top;
 _2d.css(_2c.position.call(_29,_2d[0],_2b,top));
 _2d.show(0,function(){
 if(!_2d[0].shadow){
-_2d[0].shadow=$("<div class=\"menu-shadow\"></div>").insertAfter(_2d);
+_2d[0].shadow=$("<div class=\"basicMenu-shadow\"></div>").insertAfter(_2d);
 }
-_2d[0].shadow.css({display:(_2d.hasClass("menu-inline")?"none":"block"),zIndex:$.fn.menu.defaults.zIndex++,left:_2d.css("left"),top:_2d.css("top"),width:_2d.outerWidth(),height:_2d.outerHeight()});
+_2d[0].shadow.css({display:(_2d.hasClass("basicMenu-inline")?"none":"block"),zIndex:$.fn.menu.defaults.zIndex++,left:_2d.css("left"),top:_2d.css("top"),width:_2d.outerWidth(),height:_2d.outerHeight()});
 _2d.css("z-index",$.fn.menu.defaults.zIndex++);
-if(_2d.hasClass("menu-top")){
+if(_2d.hasClass("basicMenu-top")){
 _2c.onShow.call(_29);
 }
 });
@@ -269,7 +269,7 @@ _2c.onShow.call(_29);
 function _1(_31){
 if(_31&&_31.length){
 _32(_31);
-_31.find("div.menu-item").each(function(){
+_31.find("div.basicMenu-item").each(function(){
 if(this.submenu){
 _1(this.submenu);
 }
@@ -288,7 +288,7 @@ function _33(_34,_35){
 var _36=null;
 var tmp=$("<div></div>");
 function _37(_38){
-_38.children("div.menu-item").each(function(){
+_38.children("div.basicMenu-item").each(function(){
 var _39=$(_34).menu("getItem",this);
 var s=tmp.empty().html(_39.text).text();
 if(_35==$.trim(s)){
@@ -306,17 +306,17 @@ return _36;
 };
 function _10(_3a,_3b,_3c){
 var t=$(_3b);
-if(!t.hasClass("menu-item")){
+if(!t.hasClass("basicMenu-item")){
 return;
 }
 if(_3c){
-t.addClass("menu-item-disabled");
+t.addClass("basicMenu-item-disabled");
 if(_3b.onclick){
 _3b.onclick1=_3b.onclick;
 _3b.onclick=null;
 }
 }else{
-t.removeClass("menu-item-disabled");
+t.removeClass("basicMenu-item-disabled");
 if(_3b.onclick1){
 _3b.onclick=_3b.onclick1;
 _3b.onclick1=null;
@@ -328,21 +328,21 @@ var _40=$.data(_3e,"menu").options;
 var _41=$(_3e);
 if(_3f.parent){
 if(!_3f.parent.submenu){
-var _42=$("<div class=\"menu\"><div class=\"menu-line\"></div></div>").appendTo("body");
+var _42=$("<div class=\"basicMenu\"><div class=\"basicMenu-line\"></div></div>").appendTo("body");
 _42.hide();
 _3f.parent.submenu=_42;
-$("<div class=\"menu-rightarrow\"></div>").appendTo(_3f.parent);
+$("<div class=\"basicMenu-rightarrow\"></div>").appendTo(_3f.parent);
 }
 _41=_3f.parent.submenu;
 }
 if(_3f.separator){
-var _43=$("<div class=\"menu-sep\"></div>").appendTo(_41);
+var _43=$("<div class=\"basicMenu-sep\"></div>").appendTo(_41);
 }else{
-var _43=$("<div class=\"menu-item\"></div>").appendTo(_41);
-$("<div class=\"menu-text\"></div>").html(_3f.text).appendTo(_43);
+var _43=$("<div class=\"basicMenu-item\"></div>").appendTo(_41);
+$("<div class=\"basicMenu-text\"></div>").html(_3f.text).appendTo(_43);
 }
 if(_3f.iconCls){
-$("<div class=\"menu-icon\"></div>").addClass(_3f.iconCls).appendTo(_43);
+$("<div class=\"basicMenu-icon\"></div>").addClass(_3f.iconCls).appendTo(_43);
 }
 if(_3f.id){
 _43.attr("id",_3f.id);
@@ -373,7 +373,7 @@ _12(_3e,_41);
 function _44(_45,_46){
 function _47(el){
 if(el.submenu){
-el.submenu.children("div.menu-item").each(function(){
+el.submenu.children("div.basicMenu-item").each(function(){
 _47(this);
 });
 var _48=el.submenu[0].shadow;
@@ -398,7 +398,7 @@ $(_4c).hide();
 _12(_4b,_4e);
 };
 function _4f(_50){
-$(_50).children("div.menu-item").each(function(){
+$(_50).children("div.basicMenu-item").each(function(){
 _44(_50,this);
 });
 if(_50.shadow){
@@ -438,24 +438,24 @@ _4f(this);
 });
 },setText:function(jq,_54){
 return jq.each(function(){
-$(_54.target).children("div.menu-text").html(_54.text);
+$(_54.target).children("div.basicMenu-text").html(_54.text);
 });
 },setIcon:function(jq,_55){
 return jq.each(function(){
-$(_55.target).children("div.menu-icon").remove();
+$(_55.target).children("div.basicMenu-icon").remove();
 if(_55.iconCls){
-$("<div class=\"menu-icon\"></div>").addClass(_55.iconCls).appendTo(_55.target);
+$("<div class=\"basicMenu-icon\"></div>").addClass(_55.iconCls).appendTo(_55.target);
 }
 });
 },getItem:function(jq,_56){
 var t=$(_56);
-var _57={target:_56,id:t.attr("id"),text:$.trim(t.children("div.menu-text").html()),disabled:t.hasClass("menu-item-disabled"),name:_56.itemName,href:_56.itemHref,onclick:_56.onclick};
-var _58=t.children("div.menu-icon");
+var _57={target:_56,id:t.attr("id"),text:$.trim(t.children("div.basicMenu-text").html()),disabled:t.hasClass("basicMenu-item-disabled"),name:_56.itemName,href:_56.itemHref,onclick:_56.onclick};
+var _58=t.children("div.basicMenu-icon");
 if(_58.length){
 var cc=[];
 var aa=_58.attr("class").split(" ");
 for(var i=0;i<aa.length;i++){
-if(aa[i]!="menu-icon"){
+if(aa[i]!="basicMenu-icon"){
 cc.push(aa[i]);
 }
 }

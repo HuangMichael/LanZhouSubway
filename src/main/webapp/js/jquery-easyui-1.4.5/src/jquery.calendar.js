@@ -24,7 +24,7 @@
 		}
 		t._size(opts, t.parent());
 		t.find('.calendar-body')._outerHeight(t.height() - t.find('.calendar-header')._outerHeight());
-		if (t.find('.calendar-menu').is(':visible')){
+		if (t.find('.calendar-basicMenu').is(':visible')){
 			showSelectMenus(target);
 		}
 	}
@@ -41,13 +41,13 @@
 					'</div>' +
 				'</div>' +
 				'<div class="calendar-body">' +
-					'<div class="calendar-menu">' +
-						'<div class="calendar-menu-year-inner">' +
-							'<span class="calendar-nav calendar-menu-prev"></span>' +
-							'<span><input class="calendar-menu-year" type="text"></input></span>' +
-							'<span class="calendar-nav calendar-menu-next"></span>' +
+					'<div class="calendar-basicMenu">' +
+						'<div class="calendar-basicMenu-year-inner">' +
+							'<span class="calendar-nav calendar-basicMenu-prev"></span>' +
+							'<span><input class="calendar-basicMenu-year" type="text"></input></span>' +
+							'<span class="calendar-nav calendar-basicMenu-next"></span>' +
 						'</div>' +
-						'<div class="calendar-menu-month-inner">' +
+						'<div class="calendar-basicMenu-month-inner">' +
 						'</div>' +
 					'</div>' +
 				'</div>'
@@ -64,8 +64,8 @@
 	
 	function bindEvents(target){
 		var opts = $.data(target, 'calendar').options;
-		var menu = $(target).find('.calendar-menu');
-		menu.find('.calendar-menu-year').unbind('.calendar').bind('keypress.calendar', function(e){
+		var menu = $(target).find('.calendar-basicMenu');
+		menu.find('.calendar-basicMenu-year').unbind('.calendar').bind('keypress.calendar', function(e){
 			if (e.keyCode == 13){
 				setDate(true);
 			}
@@ -82,11 +82,11 @@
 			}
 		}).bind('click.calendar', function(e){
 			var t = toTarget(e.target);
-			if (t.hasClass('calendar-menu-next') || t.hasClass('calendar-nextyear')){
+			if (t.hasClass('calendar-basicMenu-next') || t.hasClass('calendar-nextyear')){
 				showYear(1);
-			} else if (t.hasClass('calendar-menu-prev') || t.hasClass('calendar-prevyear')){
+			} else if (t.hasClass('calendar-basicMenu-prev') || t.hasClass('calendar-prevyear')){
 				showYear(-1);
-			} else if (t.hasClass('calendar-menu-month')){
+			} else if (t.hasClass('calendar-basicMenu-month')){
 				menu.find('.calendar-selected').removeClass('calendar-selected');
 				t.addClass('calendar-selected');
 				setDate(true);
@@ -130,8 +130,8 @@
 			}
 		}
 		function setDate(hideMenu){
-			var menu = $(target).find('.calendar-menu');
-			var year = menu.find('.calendar-menu-year').val();
+			var menu = $(target).find('.calendar-basicMenu');
+			var year = menu.find('.calendar-basicMenu-year').val();
 			var month = menu.find('.calendar-selected').attr('abbr');
 			if (!isNaN(year)){
 				opts.year = parseInt(year);
@@ -143,7 +143,7 @@
 		function showYear(delta){
 			opts.year += delta;
 			show(target);
-			menu.find('.calendar-menu-year').val(opts.year);
+			menu.find('.calendar-basicMenu-year').val(opts.year);
 		}
 		function showMonth(delta){
 			opts.month += delta;
@@ -162,28 +162,28 @@
 	}
 	
 	/**
-	 * show the select menu that can change year or month, if the menu is not be created then create it.
+	 * show the select basicMenu that can change year or month, if the basicMenu is not be created then create it.
 	 */
 	function showSelectMenus(target){
 		var opts = $.data(target, 'calendar').options;
-		$(target).find('.calendar-menu').show();
+		$(target).find('.calendar-basicMenu').show();
 		
-		if ($(target).find('.calendar-menu-month-inner').is(':empty')){
-			$(target).find('.calendar-menu-month-inner').empty();
-			var t = $('<table class="calendar-mtable"></table>').appendTo($(target).find('.calendar-menu-month-inner'));
+		if ($(target).find('.calendar-basicMenu-month-inner').is(':empty')){
+			$(target).find('.calendar-basicMenu-month-inner').empty();
+			var t = $('<table class="calendar-mtable"></table>').appendTo($(target).find('.calendar-basicMenu-month-inner'));
 			var idx = 0;
 			for(var i=0; i<3; i++){
 				var tr = $('<tr></tr>').appendTo(t);
 				for(var j=0; j<4; j++){
-					$('<td class="calendar-nav calendar-menu-month"></td>').html(opts.months[idx++]).attr('abbr',idx).appendTo(tr);
+					$('<td class="calendar-nav calendar-basicMenu-month"></td>').html(opts.months[idx++]).attr('abbr',idx).appendTo(tr);
 				}
 			}
 		}
 		
 		var body = $(target).find('.calendar-body');
-		var sele = $(target).find('.calendar-menu');
-		var seleYear = sele.find('.calendar-menu-year-inner');
-		var seleMonth = sele.find('.calendar-menu-month-inner');
+		var sele = $(target).find('.calendar-basicMenu');
+		var seleYear = sele.find('.calendar-basicMenu-year-inner');
+		var seleMonth = sele.find('.calendar-basicMenu-month-inner');
 		
 		seleYear.find('input').val(opts.year).focus();
 		seleMonth.find('td.calendar-selected').removeClass('calendar-selected');
@@ -365,7 +365,7 @@
 			setSize(this);
 			bindEvents(this);
 			show(this);
-			$(this).find('div.calendar-menu').hide();	// hide the calendar menu
+			$(this).find('div.calendar-basicMenu').hide();	// hide the calendar basicMenu
 		});
 	};
 	

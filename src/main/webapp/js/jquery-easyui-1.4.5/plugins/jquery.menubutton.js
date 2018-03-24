@@ -76,7 +76,7 @@ var _16=$(_15).menubutton("options");
 if(_16.disabled||!_16.menu){
 return;
 }
-$("body>div.menu-top").menu("hide");
+$("body>div.basicMenu-top").menu("hide");
 var btn=$(_15);
 var mm=$(_16.menu);
 if(mm.length){

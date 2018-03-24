@@ -236,7 +236,7 @@
                     "stroke-linecap": "round",
                     zIndex: 3
                 });
-                d.menuClassName = a.menuClassName || "highcharts-menu-" + b.btnCount++;
+                d.menuClassName = a.menuClassName || "highcharts-basicMenu-" + b.btnCount++;
                 c.symbol && (k = e.symbol(c.symbol, c.symbolX -
                     i / 2, c.symbolY - i / 2, i, i).attr(q(m, {
                     "stroke-width": c.symbolStrokeWidth || 1,

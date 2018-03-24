@@ -5,13 +5,10 @@ import com.subway.domain.dev.App;
 import com.subway.service.app.BaseService;
 import com.subway.tableColumnConfig.TableColumnConfig;
 import com.subway.tableColumnConfig.TableColumnConfigRepository;
-import com.subway.tableColumnConfig.TableColumnConfigService;
 import com.subway.tableConfig.TableConfig;
 import com.subway.utils.ConstantUtils;
 import com.subway.utils.autoCode.AutoGenerationJavaCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -63,4 +60,16 @@ public class AppService extends BaseService {
 
         return result;
     }
+
+
+    /**
+     * @param id 应用id
+     * @return 给应用添加基础菜单
+     */
+    public Boolean addMenus(Long id) {
+        Boolean result = false;
+
+        return result;
+    }
+
 }

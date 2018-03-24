@@ -153,7 +153,7 @@
             });
         });
         
-        //nav menu fix for IE 6 & 7
+        //nav basicMenu fix for IE 6 & 7
         $("ul.nav li").hover( function() {
             $(this).addClass("iehover");
         },function() {

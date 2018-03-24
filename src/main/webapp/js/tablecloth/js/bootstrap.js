@@ -1286,7 +1286,7 @@
           .parent('li')
           .addClass('active');
 
-        if ( active.parent('.dropdown-menu') )  {
+        if ( active.parent('.dropdown-basicMenu') )  {
           active.closest('li.dropdown').addClass('active')
         }
       }
@@ -1361,7 +1361,7 @@
 
   , show: function () {
       var $this = this.element
-        , $ul = $this.closest('ul:not(.dropdown-menu)')
+        , $ul = $this.closest('ul:not(.dropdown-basicMenu)')
         , selector = $this.attr('data-target')
         , previous
         , $target;
@@ -1400,7 +1400,7 @@
       function next() {
         $active
           .removeClass('active')
-          .find('> .dropdown-menu > .active')
+          .find('> .dropdown-basicMenu > .active')
           .removeClass('active');
 
         element.addClass('active');
@@ -1412,7 +1412,7 @@
           element.removeClass('fade')
         }
 
-        if ( element.parent('.dropdown-menu') ) {
+        if ( element.parent('.dropdown-basicMenu') ) {
           element.closest('li.dropdown').addClass('active')
         }
 
@@ -1704,7 +1704,7 @@
   $.fn.typeahead.defaults = {
     source: []
   , items: 8
-  , menu: '<ul class="typeahead dropdown-menu"></ul>'
+  , menu: '<ul class="typeahead dropdown-basicMenu"></ul>'
   , item: '<li><a href="#"></a></li>'
   };
 

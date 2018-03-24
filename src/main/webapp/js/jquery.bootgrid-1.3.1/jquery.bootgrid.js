@@ -1111,7 +1111,7 @@
             dropDownItemButton: "dropdown-item-button", // must be a unique class name or constellation of class names within the actionDropDown
             dropDownItemCheckbox: "dropdown-item-checkbox", // must be a unique class name or constellation of class names within the actionDropDown
             dropDownMenu: "dropdown btn-group", // must be a unique class name or constellation of class names within the actionDropDown
-            dropDownMenuItems: "dropdown-menu pull-right", // must be a unique class name or constellation of class names within the actionDropDown
+            dropDownMenuItems: "dropdown-basicMenu pull-right", // must be a unique class name or constellation of class names within the actionDropDown
             dropDownMenuText: "dropdown-text", // must be a unique class name or constellation of class names within the actionDropDown
             footer: "bootgrid-footer container-fluid",
             header: "bootgrid-header container-fluid",
@@ -1238,7 +1238,7 @@
          **/
         templates: {
             actionButton: "<button class=\"btn btn-default\" type=\"button\" title=\"{{ctx.text}}\">{{ctx.content}}</button> <button class='btn btn-default' type='button' title='导出数据' onclick='exportExcel()'>导出</button>",
-            actionDropDown: "<div class=\"{{css.dropDownMenu}}\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\"><span class=\"{{css.dropDownMenuText}}\">{{ctx.content}}</span> <span class=\"caret\"></span></button><ul class=\"{{css.dropDownMenuItems}}\" role=\"menu\"></ul></div>",
+            actionDropDown: "<div class=\"{{css.dropDownMenu}}\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\"><span class=\"{{css.dropDownMenuText}}\">{{ctx.content}}</span> <span class=\"caret\"></span></button><ul class=\"{{css.dropDownMenuItems}}\" role=\"basicMenu\"></ul></div>",
             actionDropDownItem: "<li><a data-action=\"{{ctx.action}}\" class=\"{{css.dropDownItem}} {{css.dropDownItemButton}}\">{{ctx.text}}</a></li>",
             actionDropDownCheckboxItem: "<li><label class=\"{{css.dropDownItem}}\"><input name=\"{{ctx.name}}\" type=\"checkbox\" value=\"1\" class=\"{{css.dropDownItemCheckbox}}\" {{ctx.checked}} /> {{ctx.label}}</label></li>",
             actions: "<div class=\"{{css.actions}}\"></div>",

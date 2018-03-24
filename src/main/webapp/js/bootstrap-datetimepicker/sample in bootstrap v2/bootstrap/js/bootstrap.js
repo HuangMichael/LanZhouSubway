@@ -389,7 +389,7 @@
 
       if (!isActive || (isActive && e.keyCode == 27)) return $this.click();
 
-      $items = $('[role=menu] li:not(.divider):visible a', $parent);
+      $items = $('[role=basicMenu] li:not(.divider):visible a', $parent);
 
       if (!$items.length) return;
 
@@ -460,9 +460,9 @@
   $(document)
     .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
     .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
+    .on('touchstart.dropdown.data-api', '.dropdown-basicMenu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=basicMenu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
 /* =============================================================
@@ -575,7 +575,7 @@
           .parent('li')
           .addClass('active');
 
-        if (active.parent('.dropdown-menu').length)  {
+        if (active.parent('.dropdown-basicMenu').length)  {
           active = active.closest('li.dropdown').addClass('active')
         }
 
@@ -665,7 +665,7 @@
 
   , show: function () {
       var $this = this.element
-        , $ul = $this.closest('ul:not(.dropdown-menu)')
+        , $ul = $this.closest('ul:not(.dropdown-basicMenu)')
         , selector = $this.attr('data-target')
         , previous
         , $target
@@ -708,7 +708,7 @@
       function next() {
         $active
           .removeClass('active')
-          .find('> .dropdown-menu > .active')
+          .find('> .dropdown-basicMenu > .active')
           .removeClass('active');
 
         element.addClass('active');
@@ -720,7 +720,7 @@
           element.removeClass('fade')
         }
 
-        if ( element.parent('.dropdown-menu') ) {
+        if ( element.parent('.dropdown-basicMenu') ) {
           element.closest('li.dropdown').addClass('active')
         }
 
@@ -2140,7 +2140,7 @@
   $.fn.typeahead.defaults = {
     source: []
   , items: 8
-  , menu: '<ul class="typeahead dropdown-menu"></ul>'
+  , menu: '<ul class="typeahead dropdown-basicMenu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
   };

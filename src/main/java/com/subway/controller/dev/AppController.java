@@ -79,4 +79,18 @@ public class AppController extends BaseController {
     }
 
 
+
+    /**
+     * @param appId
+     * @return
+     */
+    @RequestMapping(value = "/addMenus", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject addMenus(@RequestParam("appId") Long appId) {
+        //根据应用选择的应用配置信息
+        boolean result = appService.autoCode(appId);
+        return commonDataService.getReturnType(result, "应用生成成功", "应用生成失败");
+    }
+
+
 }

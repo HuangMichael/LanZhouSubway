@@ -165,7 +165,7 @@ var bootstrapWizardCreate = function(element, options) {
 			$($href).remove();
 		}
 
-		// Remove menu item
+		// Remove basicMenu item
 		$item.remove();
 	};
 
