@@ -19,8 +19,6 @@ public class MemberWorksSearchService extends BaseService implements SortedSearc
 
     @Autowired
     MemberWorksRepository memberWorksRepository;
-
-
     /**
      * @param paramsSize
      * @return
