@@ -31,6 +31,7 @@ searchModel = [
 
 var grid = $(dataTableName).bootgrid({
 selection: true,
+multiSelect: true,
 ajax: true,
 post: function () {
 return {

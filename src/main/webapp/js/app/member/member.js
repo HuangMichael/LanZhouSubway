@@ -30,6 +30,7 @@ $(function () {
 
     var grid = $(dataTableName).bootgrid({
         selection: true,
+        multiSelect: true,
         ajax: true,
         post: function () {
             return {
@@ -43,6 +44,11 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showYes: {
+                to: showYes
+            }, showImage: {
+                to: showImage
             }
         }
     })
