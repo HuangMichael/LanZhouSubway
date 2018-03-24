@@ -4,11 +4,7 @@ import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import static com.subway.utils.ConstantUtils.*;
 
@@ -30,16 +26,6 @@ public class ColumnsService extends BaseService {
 
     @Autowired
     CommonDataService commonDataService;
-
-    public List<Columns> findAll() {
-        return columnsRepository.findAll();
-    }
-
-
-    public Page<Columns> findAll(Pageable pageable) {
-        return columnsRepository.findAll(pageable);
-    }
-
 
     /**
      * @param id id
@@ -63,6 +49,10 @@ public class ColumnsService extends BaseService {
     }
 
 
+    /**
+     * @param id
+     * @return
+     */
     public Columns findById(Long id) {
         return columnsRepository.getOne(id);
     }

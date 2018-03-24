@@ -38,7 +38,7 @@
             <div class="form-group">
                 <label for="parentId" class="col-md-2 control-label">上级栏目</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="parentId" name="parentId" v-model="columns.parent.id" required/>
+                    <input class="form-control" id="parentId" name="parentId" v-model="columns.parent.id" />
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
