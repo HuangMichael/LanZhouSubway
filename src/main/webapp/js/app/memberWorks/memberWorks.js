@@ -44,6 +44,12 @@ $(function () {
         converters: {
             showStatus: {
                 to: showStatus
+            },
+            showImage: {
+                to: showImage
+            },
+            showYes: {
+                to: showYes
             }
         }
     })
