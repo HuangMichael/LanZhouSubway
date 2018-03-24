@@ -60,6 +60,7 @@ public class UserController extends BaseController {
     /**
      * 分页查询
      *
+     * @param request
      * @param current      当前页
      * @param rowCount     每页条数
      * @param searchPhrase 查询关键字

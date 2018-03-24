@@ -38,16 +38,31 @@ ${className}Service ${subDirName}Service;
 ${className}SearchService ${subDirName}SearchService;
 
 
+
+
+
+
+/**
+* 分页查询
+*
+* @param request
+* @param current      当前页
+* @param rowCount     每页条数
+* @param searchPhrase 查询关键字
+* @return
+*/
 @RequestMapping(value = "/data", method = RequestMethod.POST)
 @ResponseBody
 public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
-Map
-<String, String[]> parameterMap = request.getParameterMap();
+Map<String, String[]> parameterMap = request.getParameterMap();
 Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
 return new PageUtils().searchBySortService(${subDirName}SearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
 }
 
-
+/**
+* @param id 用户id
+* @return 根据${comment}id查询
+*/
 @RequestMapping(value = "/findById/{id}", method = RequestMethod.GET)
 @ResponseBody
 public ${className} findById(@PathVariable("id") Long id) {
@@ -57,7 +72,7 @@ return ${subDirName}Service.findById(id);
 
 /**
 * @param id
-* @return 删除信息
+* @return 删除${comment}信息
 */
 @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 @ResponseBody
@@ -67,8 +82,8 @@ return ${subDirName}Service.delete(id);
 
 
 /**
-* @param ${subDirName} 信息
-* @return 保存信息
+* @param ${comment} 信息
+* @return 保存${comment}信息
 */
 @RequestMapping(value = "/save", method = RequestMethod.POST)
 @ResponseBody
@@ -77,6 +92,17 @@ return ${subDirName}Service.save(${subDirName});
 }
 
 
+
+
+
+/**
+* @param request  请求
+* @param response 响应
+* @param param    查询关键字
+* @param docName  文档名称
+* @param titles   标题集合
+* @param colNames 列名称
+*/
 @ResponseBody
 @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
 public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
