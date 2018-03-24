@@ -21,16 +21,15 @@ public class App {
     @Column(length = 20, nullable = false)
     private String name; //应用名称
 
-
     @Column(length = 50, nullable = false)
-    private String appDesc;//生效时间
+    private String appDesc;//应用描述
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "table_config_id", referencedColumnName = "id", nullable = false)
     private TableConfig tableConfig;
 
     @Column(length = 20)
-    private String sortNo;//排序
+    private Long sortNo;//排序
 
     @Column(length = 1, nullable = false)
     private String status;//状态
