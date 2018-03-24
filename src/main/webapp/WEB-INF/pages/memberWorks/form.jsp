@@ -10,7 +10,7 @@
                     <input class="form-control" id="id" name="id" v-model="memberWorks.id" type="hidden" />
                     <input class="form-control" id="name" name="name" v-model="memberWorks.name" />
                 </div>
-                <label for="photoUrl" class="col-md-2 control-label">作品照片路径</label>
+                <label for="photoUrl" class="col-md-2 control-label">作品照片</label>
                 <div class="col-md-4">
                     <input class="form-control" id="photoUrl" name="photoUrl" v-model="memberWorks.photoUrl"  required/>
                 </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label for="memberId" class="col-md-2 control-label">会员</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="memberId" name="memberId" v-model="memberWorks.memberId"  required/>
+                    <input class="form-control" id="memberId" name="member.id" v-model="memberWorks.member.id"  required/>
                 </div>
                 <label for="unitId" class="col-md-2 control-label">协会</label>
                 <div class="col-md-4">
