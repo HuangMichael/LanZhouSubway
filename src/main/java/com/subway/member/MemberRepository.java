@@ -1,6 +1,10 @@
 package com.subway.member;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 
 /**
@@ -14,4 +18,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
 
+    /**
+     * @param name
+     * @param status
+     * @param authKey
+     * @return
+     */
+    List<Member> findByNameContainingAndStatusAndAuthKeyStartingWith(String name, String status, String authKey);
+
+
+    /**
+     * @param name
+     * @param status
+     * @param authKey
+     * @return
+     */
+    Page<Member> findByNameContainingAndStatusAndAuthKeyStartingWith(String name, String status, String authKey, Pageable pageable);
 }

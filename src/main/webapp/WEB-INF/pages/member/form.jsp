@@ -7,40 +7,42 @@
             <div class="form-group">
                 <label for="cardNo" class="col-md-2 control-label">会员卡号</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="member.id"   type="hidden"/>
-                    <input class="form-control" id="cardNo" name="cardNo" v-model="member.cardNo" />
+                    <input class="form-control" id="id" name="id" v-model="member.id" type="hidden"/>
+                    <input class="form-control" id="cardNo" name="cardNo" v-model="member.cardNo"/>
                 </div>
                 <label for="name" class="col-md-2 control-label">会员姓名</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="name" name="name" v-model="member.name" />
+                    <input class="form-control" id="name" name="name" v-model="member.name"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="createTime" class="col-md-2 control-label">创建时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="createTime" name="createTime" v-model="member.createTime"  required/>
+                    <input class="form-control" id="createTime" name="createTime" v-model="member.createTime"
+                           onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           required/>
                 </div>
                 <label for="enterDate" class="col-md-2 control-label">加入时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="enterDate" name="enterDate" v-model="member.enterDate"  required/>
+                    <input class="form-control" id="enterDate" name="enterDate" v-model="member.enterDate"
+                           onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="memberType" class="col-md-2 control-label">会员类型</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="memberType" name="memberType" v-model="member.memberType"  required/>
+                    <input class="form-control" id="memberType" name="memberType" v-model="member.memberType" required/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="sortNo" class="col-md-2 control-label">排序</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="sortNo" name="sortNo" v-model="member.sortNo"/>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="member.status"  required/>
+                    <select class="form-control" id="status" name="status" v-model="member.status" style="width:100%"
+                            required>
+                        <option value="1" selected>启用</option>
+                        <option value="0">禁用</option>
+                    </select>
                 </div>
             </div>
         </div>

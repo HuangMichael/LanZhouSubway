@@ -23,15 +23,26 @@ public class MemberSearchService extends BaseService implements SortedSearchable
     MemberRepository memberRepository;
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @return
+     */
     public List<Member> findByConditions(String searchPhrase, int paramsSize) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return memberRepository.findAll();
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return memberRepository.findByNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
     }
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @param pageable
+     * @return
+     */
     public Page<Member> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return memberRepository.findAll(pageable);
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return memberRepository.findByNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
     }
 
 }

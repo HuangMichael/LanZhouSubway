@@ -42,7 +42,11 @@
                 </div>
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="columns.status"/>
+                    <select class="form-control" id="status" name="status" v-model="columns.status" style="width:100%"
+                            required>
+                        <option value="1" selected>启用</option>
+                        <option value="0">禁用</option>
+                    </select>
                 </div>
             </div>
         </div>
