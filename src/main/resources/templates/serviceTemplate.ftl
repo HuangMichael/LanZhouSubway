@@ -48,7 +48,7 @@ return  ${subDirName}Repository.findAll(pageable);
 */
 public ReturnObject delete(Long id) {
 ${subDirName}Repository.delete(id);
-${className} ${subDirName} = ${subDirName}Repository.getOne(id);
+${className} ${subDirName} = ${subDirName}Repository.findOne(id);
 return commonDataService.getReturnType(${subDirName} == null, DELETE_SUCCESS, DELETE_FAILURE);
 }
 
