@@ -4,64 +4,45 @@
 <form class="form-horizontal" id="form" method="post">
     <div class="form-group">
         <div class="col-md-12">
-                    <div class="form-group">
-                <label for="id" class="col-md-2 control-label">序号</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="id" name="id" v-model="columns.id" />
-                </div>
-            </div>
             <div class="form-group">
                 <label for="name" class="col-md-2 control-label">栏目名称</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="name" name="name" v-model="columns.name" />
+                    <input class="form-control" id="name" name="name" v-model="columns.name"/>
+                    <input class="form-control" id="id" name="id" v-model="columns.id" type="hidden"/>
                 </div>
-            </div>
-            <div class="form-group">
                 <label for="colDesc" class="col-md-2 control-label">栏目描述</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="colDesc" name="colDesc" v-model="columns.colDesc" />
+                    <input class="form-control" id="colDesc" name="colDesc" v-model="columns.colDesc"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="beginTime" class="col-md-2 control-label">开始时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="beginTime" name="beginTime" v-model="columns.beginTime"  required/>
+                    <input class="form-control" id="beginTime" name="beginTime" v-model="columns.beginTime" required/>
                 </div>
-            </div>
-            <div class="form-group">
                 <label for="endTime" class="col-md-2 control-label">结束时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="endTime" name="endTime" v-model="columns.endTime"  required/>
+                    <input class="form-control" id="endTime" name="endTime" v-model="columns.endTime" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="type" class="col-md-2 control-label">栏目类型</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="type" name="type" v-model="columns.type" />
+                    <input class="form-control" id="type" name="type" v-model="columns.type"/>
                 </div>
-            </div>
-            <div class="form-group">
                 <label for="siteId" class="col-md-2 control-label">所属站点</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="siteId" name="siteId" v-model="columns.siteId"  required/>
+                    <input class="form-control" id="siteId" name="siteId" v-model="columns.siteId" required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="parentId" class="col-md-2 control-label">上级栏目</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="parentId" name="parentId" v-model="columns.parentId"  required/>
+                    <input class="form-control" id="parentId" name="parentId" v-model="columns.parent.id" required/>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="sortNo" class="col-md-2 control-label">排序</label>
-                <div class="col-md-4">
-                    <input class="form-control" id="sortNo" name="sortNo" v-model="columns.sortNo" />
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="status" class="col-md-2 control-label">状态</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="status" name="status" v-model="columns.status" />
+                    <input class="form-control" id="status" name="status" v-model="columns.status"/>
                 </div>
             </div>
         </div>
