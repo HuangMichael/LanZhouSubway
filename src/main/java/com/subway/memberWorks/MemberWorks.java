@@ -4,11 +4,9 @@ package com.subway.memberWorks;
 import com.subway.member.Member;
 import com.subway.unit.Unit;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 会员作品信息
@@ -42,11 +40,11 @@ public class MemberWorks implements Serializable {
     @Column(length = 200)
     private String photoUrl;//作品路径
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date uploadTime;//上传时间
+    @Column(length = 20)
+    private String uploadTime;//上传时间
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date releaseTime;//发布时间
+    @Column(length = 20)
+    private String releaseTime;//发布时间
 
     private Long sortNo;
 
