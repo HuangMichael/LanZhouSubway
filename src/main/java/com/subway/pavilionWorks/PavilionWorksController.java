@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +30,8 @@ import java.util.Map;
 @RequestMapping("/pavilionWorks")
 public class PavilionWorksController extends BaseController {
 
+    private static final Integer SEARCH_PARAM_SIZE = 2;
+
     @Autowired
     ResourceService resourceService;
     @Autowired
@@ -41,11 +42,10 @@ public class PavilionWorksController extends BaseController {
 
     @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
-    public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
-        Map
-                <String, String[]> parameterMap = request.getParameterMap();
+    public MyPage data(HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
+        Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
-        return new PageUtils().searchBySortService(pavilionWorksSearchService, searchPhrase, 1, current, rowCount, pageable);
+        return new PageUtils().searchBySortService(pavilionWorksSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
     }
 
 
@@ -70,15 +70,14 @@ public class PavilionWorksController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public void exportExcel(HttpServletRequest request, HttpServletResponse response, @RequestParam("param") String param, @RequestParam("docName") String docName, @RequestParam("titles") String titles[], @RequestParam("colNames") String[] colNames) {
-        List<PavilionWorks> dataList = pavilionWorksSearchService.findByConditions(param, 2);
+        List<PavilionWorks> dataList = pavilionWorksSearchService.findByConditions(param, SEARCH_PARAM_SIZE);
         pavilionWorksService.setDataList(dataList);
         pavilionWorksService.exportExcel(request, response, docName, titles, colNames);
     }
 
 
-
     /**
-     * @param file    多媒体文件
+     * @param file       多媒体文件
      * @param mainObject
      * @param recordId
      * @return 上传多媒体文件 返回信息
@@ -87,10 +86,20 @@ public class PavilionWorksController extends BaseController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
     public ReturnObject upload(@RequestParam("file") MultipartFile file, @RequestParam("mainObject") String mainObject, @RequestParam("recordId") Long recordId) throws Exception {
-        Boolean result = pavilionWorksService.upload(file, mainObject,recordId);
+        Boolean result = pavilionWorksService.upload(file, mainObject, recordId);
         return getCommonDataService().getReturnType(result, "文件上传成功", "文件上传失败");
     }
 
+
+    /**
+     * @param pavilionWorks
+     * @return 保存栏目信息
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(PavilionWorks pavilionWorks) {
+        return pavilionWorksService.save(pavilionWorks);
+    }
 
 
 }

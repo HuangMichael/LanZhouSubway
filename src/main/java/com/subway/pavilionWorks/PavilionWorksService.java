@@ -1,20 +1,17 @@
 package com.subway.pavilionWorks;
 
-import java.util.List;
-import java.util.Map;
-
 import com.subway.object.ReturnObject;
-import com.subway.pavilionAuthor.PavilionAuthor;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
-import com.subway.utils.ConstantUtils;
-import com.subway.utils.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+import static com.subway.utils.ConstantUtils.SAVE_FAILURE;
+import static com.subway.utils.ConstantUtils.SAVE_SUCCESS;
 
 /**
  * 展馆作品信息业务类
@@ -68,6 +65,19 @@ public class PavilionWorksService extends BaseService {
         PavilionWorks pavilionWorks = pavilionWorksRepository.getOne(id);
         return commonDataService.getReturnType(pavilionWorks == null, "记录删除成功", "记录删除失败");
     }
+
+
+
+    /**
+     * @param pavilionWorks
+     * @return 保存信息
+     */
+    public ReturnObject save(PavilionWorks pavilionWorks) {
+        pavilionWorks = pavilionWorksRepository.save(pavilionWorks);
+        return commonDataService.getReturnType(pavilionWorks != null, SAVE_SUCCESS, SAVE_FAILURE);
+    }
+
+
 
     /**
      * @param recordId 记录id

@@ -1,10 +1,10 @@
 package com.subway.pavilionWorks;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 
 /**
@@ -22,7 +22,7 @@ public interface PavilionWorksRepository extends JpaRepository<PavilionWorks, Lo
      * @param status 作品状态
      * @return
      */
-    List<PavilionWorks> findByNameContainingAndStatus(String name, String status);
+    List<PavilionWorks> findByNameContainingAndStatusAndAuthKeyStartingWith(String name, String status, String authKey);
 
 
     /**
@@ -31,5 +31,5 @@ public interface PavilionWorksRepository extends JpaRepository<PavilionWorks, Lo
      * @param pageable 分页
      * @return
      */
-    Page<PavilionWorks> findByNameContainingAndStatus(String name, String status, Pageable pageable);
+    Page<PavilionWorks> findByNameContainingAndStatusAndAuthKeyStartingWith(String name, String status, String authKey, Pageable pageable);
 }
