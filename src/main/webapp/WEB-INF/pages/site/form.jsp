@@ -12,7 +12,7 @@
             <label for="status">域名</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="domainName" name="domainName" v-model="site.domainName">
+            <input class="form-control" id="domainName" name="domainName" v-model="site.domainName" required>
         </div>
     </div>
     <div class="form-group">
@@ -22,7 +22,7 @@
         <div class="col-md-4 col-sm-4 col-lg-4">
             <input class="form-control" id="beginTime" name="beginTime" v-model="site.beginTime"
                    onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
-                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})">
+                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})" required>
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
             <label for="status">结束时间</label>
@@ -30,7 +30,7 @@
         <div class="col-md-4 col-sm-4 col-lg-4">
             <input class="form-control" id="endTime" name="endTime" v-model="site.endTime"
                    onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
-                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})">
+                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})" required>
         </div>
     </div>
 
@@ -39,13 +39,13 @@
             <label for="name">部署主机</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <input class="form-control" id="deployHost" name="deployHost" v-model="site.deployHost">
+            <input class="form-control" id="deployHost" name="deployHost" v-model="site.deployHost" required>
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
             <label for="status">状态</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-            <select class="form-control" id="status" name="status" required v-model="site.status" style="width:100%"
+            <select class="form-control" id="status" name="status" required v-model="site.status" style="width:100%" required
                     required>
                 <option value="1" selected>启用</option>
                 <option value="0">禁用</option>

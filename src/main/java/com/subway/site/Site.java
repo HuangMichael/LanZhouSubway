@@ -1,11 +1,9 @@
 package com.subway.site;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 站点信息
@@ -27,14 +25,14 @@ public class Site implements Serializable {
     @Column(length = 20, nullable = false)
     private String deployHost; //部署主机
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date beginTime;//生效时间
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date endTime;//失效时间
+    private String beginTime;//生效时间
 
 
-    @Column(length = 20, nullable = false)
+    private String endTime;//失效时间
+
+
+    @Column(length = 20)
     private String sortNo;//排序
 
     @Column(length = 1, nullable = false)
