@@ -21,14 +21,16 @@
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
             <input class="form-control" id="beginTime" name="beginTime" v-model="site.beginTime"
-                   onLoad="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})">
+                   onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})">
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
             <label for="status">结束时间</label>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
             <input class="form-control" id="endTime" name="endTime" v-model="site.endTime"
-                   onLoad="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})">
+                   onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})">
         </div>
     </div>
 
@@ -51,7 +53,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button id="saveBtn" name="saveBtn" class="btn btn-primary btn-danger" type="submit">保存记录</button>
+        <button id="saveBtn" name="saveBtn" class="btn btn-primary btn-danger">保存记录</button>
     </div>
 </form>
 

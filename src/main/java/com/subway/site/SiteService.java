@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.subway.utils.ConstantUtils.*;
+
 /**
- * վ�����业务�?
  *
  * @author huangbin
  * @generate by autoCode
@@ -56,13 +57,27 @@ public class SiteService extends BaseService {
 
 
     /**
-     * @param id id
-     * @return ����idɾ������
+     * @param id
+     * @return
      */
     public ReturnObject delete(Long id) {
         siteRepository.delete(id);
         Site site = siteRepository.getOne(id);
-        return commonDataService.getReturnType(site == null, "��¼ɾ���ɹ�", "��¼ɾ��ʧ��");
+        return commonDataService.getReturnType(site == null, DELETE_SUCCESS, DELETE_FAILURE);
     }
+
+
+
+
+    /**
+     * @param site
+     * @return 保存站点信息
+     */
+    public ReturnObject save(Site site) {
+
+        site = siteRepository.save(site);
+        return commonDataService.getReturnType(site != null, SAVE_SUCCESS, SAVE_FAILURE);
+    }
+
 
 }

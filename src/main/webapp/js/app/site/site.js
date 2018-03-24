@@ -70,6 +70,8 @@ $(function () {
 
     $("#searchBtn").trigger("click");
 
+    validateForm.call(null);
+
 
 });
 
@@ -124,3 +126,12 @@ function edit(id) {
     $("#editModal").modal("show");
 }
 
+
+/**
+ * 新建记录
+ */
+function add() {
+    // var object = findByIdAndObjectName(id, mainObject);
+    vdm.$set("site", null);
+    $("#editModal").modal("show");
+}

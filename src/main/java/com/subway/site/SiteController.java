@@ -94,4 +94,17 @@ public class SiteController extends BaseController {
     }
 
 
+
+
+
+    /**
+     * @param site
+     * @return
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(Site site) {
+        return siteService.save(site);
+    }
+
 }
