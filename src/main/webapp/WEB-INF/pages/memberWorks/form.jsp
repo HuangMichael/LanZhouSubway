@@ -22,13 +22,19 @@
                 </div>
                 <label for="releaseTime" class="col-md-2 control-label">发布时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="releaseTime" name="releaseTime" v-model="memberWorks.releaseTime"  required/>
+                    <input class="form-control" id="releaseTime" name="releaseTime" v-model="memberWorks.releaseTime"
+                           onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           required/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="uploadTime" class="col-md-2 control-label">上传时间</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="uploadTime" name="uploadTime" v-model="memberWorks.uploadTime"  required/>
+                    <input class="form-control" id="uploadTime" name="uploadTime" v-model="memberWorks.uploadTime"
+                           onload="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowToday:false})"
+                           required/>
                 </div>
 
                 <label for="worksType" class="col-md-2 control-label">作品类型</label>
@@ -43,7 +49,7 @@
                 </div>
                 <label for="unitId" class="col-md-2 control-label">协会</label>
                 <div class="col-md-4">
-                    <input class="form-control" id="unitId" name="unit.id" v-model="memberWorks.unitId"  required/>
+                    <input class="form-control" id="unitId" name="unit.id" v-model="memberWorks.unit.id"  required/>
                 </div>
             </div>
             <div class="form-group">

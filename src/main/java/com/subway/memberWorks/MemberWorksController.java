@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +30,7 @@ import java.util.Map;
 @RequestMapping("/memberWorks")
 public class MemberWorksController extends BaseController {
 
-    private static  final Integer   SEARCH_PARAM_SIZE =2;
+    private static final Integer SEARCH_PARAM_SIZE = 2;
 
     @Autowired
     ResourceService resourceService;
@@ -42,7 +41,6 @@ public class MemberWorksController extends BaseController {
 
 
     /**
-     * @param session
      * @param request
      * @param current
      * @param rowCount
@@ -51,7 +49,7 @@ public class MemberWorksController extends BaseController {
      */
     @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
-    public MyPage data(HttpSession session, HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
+    public MyPage data(HttpServletRequest request, @RequestParam(value = "current", defaultValue = "0") int current, @RequestParam(value = "rowCount", defaultValue = "10") Long rowCount, @RequestParam(value = "searchPhrase", required = false) String searchPhrase) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         Pageable pageable = new PageRequest(current - 1, rowCount.intValue(), super.getSort(parameterMap));
         return new PageUtils().searchBySortService(memberWorksSearchService, searchPhrase, SEARCH_PARAM_SIZE, current, rowCount, pageable);
@@ -76,7 +74,19 @@ public class MemberWorksController extends BaseController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ReturnObject delete(@PathVariable("id") Long id) {
+
         return memberWorksService.delete(id);
+    }
+
+
+    /**
+     * @param memberWorks 信息
+     * @return 保存栏目信息
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnObject save(MemberWorks memberWorks) {
+        return memberWorksService.save(memberWorks);
     }
 
 

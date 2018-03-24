@@ -1,24 +1,14 @@
 package com.subway.memberWorks;
 
-import java.util.List;
-import java.util.Map;
-
-import com.subway.columnsContent.ColumnsContent;
-import com.subway.member.Member;
 import com.subway.object.ReturnObject;
 import com.subway.service.app.BaseService;
 import com.subway.service.commonData.CommonDataService;
-import com.subway.utils.ConstantUtils;
-import com.subway.utils.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
+
+import static com.subway.utils.ConstantUtils.*;
 
 /**
- * 会员作品涓氬姟绫?
  *
  * @author huangbin
  * @generate by autoCode
@@ -34,26 +24,20 @@ public class MemberWorksService extends BaseService {
     @Autowired
     CommonDataService commonDataService;
 
-    /**
-     * @return
-     */
-    public List<MemberWorks> findAll() {
-        return memberWorksRepository.findAll();
-    }
-
 
     /**
-     * @param pageable
-     * @return
+     * @param memberWorks
+     * @return 淇濆瓨淇℃伅
      */
-    public Page<MemberWorks> findAll(Pageable pageable) {
-        return memberWorksRepository.findAll(pageable);
+    public ReturnObject save(MemberWorks memberWorks) {
+        memberWorks = memberWorksRepository.save(memberWorks);
+        return commonDataService.getReturnType(memberWorks != null, SAVE_SUCCESS, SAVE_FAILURE);
     }
 
 
     /**
      * @param id
-     * @return
+     * @return 鏌ヨ浼氬憳浣滃搧
      */
     public MemberWorks findById(Long id) {
         return memberWorksRepository.getOne(id);
@@ -61,18 +45,19 @@ public class MemberWorksService extends BaseService {
 
 
     /**
-     * @param id 记录id
-     * @return 根据id删除记录
+     * @param id
+     * @return 鍒犻櫎璁板綍
      */
     public ReturnObject delete(Long id) {
         memberWorksRepository.delete(id);
         MemberWorks memberWorks = memberWorksRepository.getOne(id);
-        return commonDataService.getReturnType(memberWorks == null, "记录删除成功", "记录删除失败");
+        return commonDataService.getReturnType(memberWorks == null, DELETE_SUCCESS, DELETE_FAILURE);
     }
 
+
     /**
-     * @param recordId 记录id
-     * @param filePath 文件的路径
+     * @param filePath 鏂囦欢璺緞
+     * @param recordId 涓婁紶浼氬憳浣滃搧
      */
     @Override
     public void writeUploadLog(String filePath, Long recordId) {
