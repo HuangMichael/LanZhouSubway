@@ -44,5 +44,8 @@ public class Columns implements Serializable {
 
     @Column(length = 1, nullable = false)
     private String status;
+
+    @Column(length = 20)
+    private String authKey;
 }
 

@@ -23,15 +23,26 @@ public class ColumnsSearchService extends BaseService implements SortedSearchabl
     ColumnsRepository columnsRepository;
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @return
+     */
     public List<Columns> findByConditions(String searchPhrase, int paramsSize) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return columnsRepository.findAll();
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return columnsRepository.findByNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2]);
     }
 
 
+    /**
+     * @param searchPhrase 搜索关键字组合
+     * @param paramsSize
+     * @param pageable
+     * @return
+     */
     public Page<Columns> findByConditions(String searchPhrase, int paramsSize, Pageable pageable) {
-        String array[] = super.assembleSearchArray(searchPhrase, paramsSize);
-        return columnsRepository.findAll(pageable);
+        String array[] = super.assembleSearchArrayWithAuthKey(searchPhrase, paramsSize);
+        return columnsRepository.findByNameContainingAndStatusAndAuthKeyStartingWith(array[0], array[1], array[2], pageable);
     }
 
 }
